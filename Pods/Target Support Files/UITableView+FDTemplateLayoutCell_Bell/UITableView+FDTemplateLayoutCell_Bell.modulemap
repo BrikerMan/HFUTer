@@ -1,0 +1,6 @@
+framework module UITableView_FDTemplateLayoutCell_Bell {
+  umbrella header "UITableView+FDTemplateLayoutCell_Bell-umbrella.h"
+
+  export *
+  module * { export * }
+}

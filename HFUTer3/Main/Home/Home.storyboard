@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="lX2-wg-FOF">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <scenes>
+        <!--HomeVC-->
+        <scene sceneID="FI7-2G-Zhh">
+            <objects>
+                <viewController extendedLayoutIncludesOpaqueBars="YES" automaticallyAdjustsScrollViewInsets="NO" id="lX2-wg-FOF" customClass="HFHomeVC" customModule="HFUTer3" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="NBm-Ol-Qno"/>
+                        <viewControllerLayoutGuide type="bottom" id="SAQ-Xu-GYT"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="LTz-lW-Ikb">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uVs-c3-YSu">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="64"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dm9-Eq-DBx">
+                                        <rect key="frame" x="125" y="27" width="70" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="70" id="OVU-Lh-ngB"/>
+                                            <constraint firstAttribute="height" constant="30" id="xGl-gv-Gge"/>
+                                        </constraints>
+                                        <connections>
+                                            <action selector="onNavWeekSelectButtonPressed:" destination="lX2-wg-FOF" eventType="touchUpInside" id="2X6-mC-7mi"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="全部" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="le6-eL-oFa" customClass="LTMorphingLabel" customModule="LTMorphingLabel">
+                                        <rect key="frame" x="135" y="22" width="34" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="ucP-ne-yyb"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="morphingCharacterDelay">
+                                                <real key="value" value="0.0"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hf_nav_home_arrow_icon" translatesAutoresizingMaskIntoConstraints="NO" id="9Fh-de-I30">
+                                        <rect key="frame" x="175" y="37" width="10" height="10"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="10" id="Slj-Hf-dUu"/>
+                                            <constraint firstAttribute="height" constant="10" id="bI3-hY-MbV"/>
+                                        </constraints>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" red="1" green="0.35686274509999999" blue="0.3411764706" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="9Fh-de-I30" firstAttribute="leading" secondItem="le6-eL-oFa" secondAttribute="trailing" constant="6" id="6lQ-wa-rm8"/>
+                                    <constraint firstItem="le6-eL-oFa" firstAttribute="centerX" secondItem="uVs-c3-YSu" secondAttribute="centerX" constant="-8" id="JTA-ss-gu2"/>
+                                    <constraint firstItem="le6-eL-oFa" firstAttribute="centerY" secondItem="uVs-c3-YSu" secondAttribute="centerY" constant="10" id="KID-ke-Tfq"/>
+                                    <constraint firstItem="dm9-Eq-DBx" firstAttribute="centerX" secondItem="uVs-c3-YSu" secondAttribute="centerX" id="VCZ-eE-KbW"/>
+                                    <constraint firstItem="dm9-Eq-DBx" firstAttribute="centerY" secondItem="uVs-c3-YSu" secondAttribute="centerY" constant="10" id="aBd-Cs-6YP"/>
+                                    <constraint firstItem="9Fh-de-I30" firstAttribute="centerY" secondItem="le6-eL-oFa" secondAttribute="centerY" id="dFV-SY-lTj"/>
+                                    <constraint firstAttribute="height" constant="64" id="sW2-f5-PaU"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Umf-gG-cUJ">
+                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Umf-gG-cUJ" firstAttribute="leading" secondItem="LTz-lW-Ikb" secondAttribute="leading" id="3Qq-nB-7ki"/>
+                            <constraint firstItem="uVs-c3-YSu" firstAttribute="top" secondItem="LTz-lW-Ikb" secondAttribute="top" id="5YH-HF-pga"/>
+                            <constraint firstItem="uVs-c3-YSu" firstAttribute="leading" secondItem="LTz-lW-Ikb" secondAttribute="leading" id="8Po-0l-c5A"/>
+                            <constraint firstItem="Umf-gG-cUJ" firstAttribute="top" secondItem="NBm-Ol-Qno" secondAttribute="bottom" constant="44" id="I1X-NO-6rD"/>
+                            <constraint firstAttribute="trailing" secondItem="uVs-c3-YSu" secondAttribute="trailing" id="Mwd-wt-5p7"/>
+                            <constraint firstAttribute="trailing" secondItem="Umf-gG-cUJ" secondAttribute="trailing" id="rxY-Gs-Gbz"/>
+                            <constraint firstItem="SAQ-Xu-GYT" firstAttribute="top" secondItem="Umf-gG-cUJ" secondAttribute="bottom" id="tLI-CR-Cey"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="containView" destination="Umf-gG-cUJ" id="HdO-Ty-Il3"/>
+                        <outlet property="navBarView" destination="uVs-c3-YSu" id="H83-UH-N41"/>
+                        <outlet property="navTitleIconView" destination="9Fh-de-I30" id="k43-7H-T9b"/>
+                        <outlet property="navTitleLabel" destination="le6-eL-oFa" id="ex2-qX-Asx"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Oqh-OL-jAs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="571" y="93"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="hf_nav_home_arrow_icon" width="15" height="15"/>
+    </resources>
+</document>

@@ -1,0 +1,10 @@
+framework module Pitaya {
+  umbrella header "Pitaya.h"
+
+  export *
+  module * { export * }
+}
+
+module Pitaya.Swift {
+    header "Pitaya-Swift.h"
+}
