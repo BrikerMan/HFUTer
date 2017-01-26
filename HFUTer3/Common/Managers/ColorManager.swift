@@ -11,10 +11,7 @@ import UIKit
 
 let defaultColor = UIColor.white
 
-struct HFFlatColor {
-    let name:String
-    let color:UIColor
-}
+lau
 
 class ColorManager {
     static let shared = ColorManager()

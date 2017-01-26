@@ -77,6 +77,8 @@
 		6A3EAAEE1CE0227000809226 /* HFComLoveWallListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A3EAAED1CE0227000809226 /* HFComLoveWallListModel.swift */; };
 		6A3EAAF01CE0263B00809226 /* HFGetCommunityLoveWallListRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A3EAAEF1CE0263B00809226 /* HFGetCommunityLoveWallListRequest.swift */; };
 		6A4101E71D3A06420068FC5B /* DataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A4101E61D3A06420068FC5B /* DataHelper.swift */; };
+		6A67B0F61DE33F1100DE4E62 /* HFCommunityLovaWallTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A67B0F41DE33F1100DE4E62 /* HFCommunityLovaWallTableViewCell.swift */; };
+		6A67B0F71DE33F1100DE4E62 /* HFCommunityLovaWallTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6A67B0F51DE33F1100DE4E62 /* HFCommunityLovaWallTableViewCell.xib */; };
 		6A6A648C1CC51C6D0049715C /* HFBaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A6A648B1CC51C6D0049715C /* HFBaseTableViewCell.swift */; };
 		6A6A649C1CC51E840049715C /* HFGetCommunityLostAndFindRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A6A649B1CC51E840049715C /* HFGetCommunityLostAndFindRequest.swift */; };
 		6A6A64A01CC521860049715C /* HFBaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A6A649F1CC521860049715C /* HFBaseModel.swift */; };
@@ -338,6 +340,8 @@
 		6A3EAAED1CE0227000809226 /* HFComLoveWallListModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFComLoveWallListModel.swift; sourceTree = "<group>"; };
 		6A3EAAEF1CE0263B00809226 /* HFGetCommunityLoveWallListRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFGetCommunityLoveWallListRequest.swift; sourceTree = "<group>"; };
 		6A4101E61D3A06420068FC5B /* DataHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataHelper.swift; sourceTree = "<group>"; };
+		6A67B0F41DE33F1100DE4E62 /* HFCommunityLovaWallTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFCommunityLovaWallTableViewCell.swift; sourceTree = "<group>"; };
+		6A67B0F51DE33F1100DE4E62 /* HFCommunityLovaWallTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HFCommunityLovaWallTableViewCell.xib; sourceTree = "<group>"; };
 		6A6A648B1CC51C6D0049715C /* HFBaseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFBaseTableViewCell.swift; sourceTree = "<group>"; };
 		6A6A649B1CC51E840049715C /* HFGetCommunityLostAndFindRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFGetCommunityLostAndFindRequest.swift; sourceTree = "<group>"; };
 		6A6A649F1CC521860049715C /* HFBaseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFBaseModel.swift; sourceTree = "<group>"; };
@@ -605,6 +609,8 @@
 				6A02E2661CF320CB00DC669A /* FMCommunityLostAndFindCell.xib */,
 				6A02E2671CF320CB00DC669A /* FMCommunityLoveWellCell.swift */,
 				6A02E2681CF320CB00DC669A /* FMCommunityLoveWellCell.xib */,
+				6A67B0F41DE33F1100DE4E62 /* HFCommunityLovaWallTableViewCell.swift */,
+				6A67B0F51DE33F1100DE4E62 /* HFCommunityLovaWallTableViewCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -1445,6 +1451,7 @@
 				6A264F871D02C47800146D03 /* HFMineMessageTableViewCell.xib in Resources */,
 				6A0F76E51D0A894B0096A759 /* HFInfoCalendarVC.xib in Resources */,
 				6A264F8D1D02D39000146D03 /* HFMineNotifTableViewCell.xib in Resources */,
+				6A67B0F71DE33F1100DE4E62 /* HFCommunityLovaWallTableViewCell.xib in Resources */,
 				6B94267E1CA8DFA600C8E85D /* HFChooseTableViewCell.xib in Resources */,
 				6AE4A2901D0009F10025BB79 /* HFCommunityLoveWallDetailVC.xib in Resources */,
 				6A02E2771CF320CB00DC669A /* HFCommunityHomeListView.xib in Resources */,
@@ -1633,6 +1640,7 @@
 				277AB76E1CA02E0500F84FB1 /* HFInfoAcademicClassListVC.swift in Sources */,
 				6A2111E31D6C254F00CB65DE /* HFInfoRankingDetailCell.swift in Sources */,
 				6B2BFBA01C9D304A00FFA661 /* HFHomeScheduleHeaderCell.swift in Sources */,
+				6A67B0F61DE33F1100DE4E62 /* HFCommunityLovaWallTableViewCell.swift in Sources */,
 				6A1CEA811D05245300481D3A /* HFInfoGradesChargeTableHeaderView.swift in Sources */,
 				27949D3B1CC48AB400495206 /* HFInfoGetBookListRequest.swift in Sources */,
 				6AF6BEA01D0A7219003415F5 /* UITableView+Reusable.swift in Sources */,

@@ -42,16 +42,16 @@ class HFUpdateCookieRequest {
                             } else {
                                 let errorInfo = "数据格式错误啊喂"
                                 failed?(errorInfo)
-                                log.errorLog(errorInfo, params: [response.request?.allHTTPHeaderFields ,response.response?.allHeaderFields,response.result.value])
+                                log.errorLog(errorInfo, params: [response.request?.allHTTPHeaderFields ?? "",response.response?.allHeaderFields ?? "",response.result.value ?? ""])
                             }
                         case false:
                             if let resultDic = response.result.value as? [String:AnyObject], let error = resultDic["info"] as? String {
                                 failed?(error)
-                                log.errorLog(error, params: [response.request?.allHTTPHeaderFields,response.response?.allHeaderFields,response.result.value])
+                                log.errorLog(error, params: [response.request?.allHTTPHeaderFields ?? "",response.response?.allHeaderFields ?? "",response.result.value ?? ""])
                             } else {
                                 let errorInfo = "数据格式错误啊喂"
                                 failed?(errorInfo)
-                                log.errorLog(errorInfo, params: [response.request?.allHTTPHeaderFields,response.response?.allHeaderFields,response.result.value])
+                                log.errorLog(errorInfo, params: [response.request?.allHTTPHeaderFields ?? "",response.response?.allHeaderFields ?? "",response.result.value ?? ""])
                             }
                         }
                 }
