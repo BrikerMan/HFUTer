@@ -9,9 +9,12 @@
 import UIKit
 //import ChameleonFramework
 
-let defaultColor = UIColor.white
+struct HFFlatColor {
+    let name:String
+    let color:UIColor
+}
 
-lau
+let defaultColor = UIColor.white
 
 class ColorManager {
     static let shared = ColorManager()

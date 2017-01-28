@@ -16,7 +16,7 @@ target 'HFUTer3' do
     # TableView
     pod 'UITableView+FDTemplateLayoutCell_Bell'  ##优化UITableViewCell高度计算
     pod 'Eureka', '~> 2.0.0-beta.1'                           ## 优秀的TableView封装
-#    pod 'Eureka'
+
     pod 'DZNEmptyDataSet'                   ## 空数据展示
     
     # 动画

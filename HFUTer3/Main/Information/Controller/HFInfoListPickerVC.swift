@@ -55,6 +55,6 @@ extension HFInfoListPickerVC: UITableViewDelegate {
         tableView.reloadData()
         selectedIndex = indexPath.row
         selectedBlock?(selectedIndex)
-        navigationController?.popViewController(animated: true)
+        _ = navigationController?.popViewController(animated: true)
     }
 }

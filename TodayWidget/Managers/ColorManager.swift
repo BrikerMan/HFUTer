@@ -7,6 +7,7 @@
 //
 
 import UIKit
+
 struct HFFlatColor {
     let name:String
     let color:UIColor

@@ -77,7 +77,7 @@ class HFUserRestPassToOriginalVC: HFFormViewController {
         hud.showLoading("正在重置")
         HFBaseRequest.fire("/api/resetPassword", method: HFBaseAPIRequestMethod.POST, params: params, succesBlock: { (request, resultDic) in
             hud.showMassage("重置成功")
-            self.navigationController?.popToRootViewController(animated: true)
+            _ = self.navigationController?.popToRootViewController(animated: true)
         }) { (request, error) in
             hud.showError(error)
         }

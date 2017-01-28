@@ -65,7 +65,7 @@ class HFUserRestPassByEmailVC: HFFormViewController {
         hud.showLoading("正在重置")
         HFBaseRequest.fire("/api/user/applyResetPassword", method: HFBaseAPIRequestMethod.POST, params: params, succesBlock: { (request, resultDic) in
             hud.showMassage("邮件发送成功，请使用邮件中连接重置")
-            self.navigationController?.popToRootViewController(animated: true)
+            _ = self.navigationController?.popToRootViewController(animated: true)
         }) { (request, error) in
             hud.showError(error)
         }

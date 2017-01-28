@@ -159,7 +159,7 @@ class HFFormViewController: FormViewController, UIGestureRecognizerDelegate {
     }
     
     func pop() {
-        navigationController?.popViewController(animated: true)
+        _ = navigationController?.popViewController(animated: true)
     }
     
     func push(_ vc:UIViewController) {

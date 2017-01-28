@@ -34,7 +34,7 @@ class HFInformationVC: HFBaseViewController {
         super.viewDidLoad()
         shouldShowBackButton = false
         automaticallyAdjustsScrollViewInsets = false
-        tableView.registerReusableCell(HFTableInfoCell)
+        tableView.registerReusableCell(HFTableInfoCell.self)
     }
     
 }

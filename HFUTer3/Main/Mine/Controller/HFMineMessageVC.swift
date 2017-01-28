@@ -28,7 +28,7 @@ class HFMineMessageVC: HFBasicViewController {
     }
     
     @IBAction func onPopButtonPressed(_ sender: AnyObject) {
-        self.navigationController?.popViewController(animated: true)
+        _ = navigationController?.popViewController(animated: true)
     }
     
     @IBAction func onSegmentValueChanged(_ sender: AnyObject) {
