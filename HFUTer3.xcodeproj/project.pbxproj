@@ -155,6 +155,8 @@
 		6AC477661D03F92000B4B8BA /* HFInfoGetPlanDetailRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC477651D03F92000B4B8BA /* HFInfoGetPlanDetailRequest.swift */; };
 		6AC924901D0A6DD100E1F43F /* HFTableInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC9248E1D0A6DD100E1F43F /* HFTableInfoCell.swift */; };
 		6AC924911D0A6DD100E1F43F /* HFTableInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6AC9248F1D0A6DD100E1F43F /* HFTableInfoCell.xib */; };
+		6ACB1E9F1E3E28AC00B708C7 /* YYFPSLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6ACB1E9C1E3E28AC00B708C7 /* YYFPSLabel.m */; };
+		6ACB1EA01E3E28AC00B708C7 /* YYWeakProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 6ACB1E9E1E3E28AC00B708C7 /* YYWeakProxy.m */; };
 		6AE4A28F1D0009F10025BB79 /* HFCommunityLoveWallDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AE4A28D1D0009F10025BB79 /* HFCommunityLoveWallDetailVC.swift */; };
 		6AE4A2901D0009F10025BB79 /* HFCommunityLoveWallDetailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6AE4A28E1D0009F10025BB79 /* HFCommunityLoveWallDetailVC.xib */; };
 		6AE4A2961D0017D10025BB79 /* HFComLoveWallCommentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AE4A2951D0017D10025BB79 /* HFComLoveWallCommentModel.swift */; };
@@ -474,6 +476,10 @@
 		6AC477651D03F92000B4B8BA /* HFInfoGetPlanDetailRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFInfoGetPlanDetailRequest.swift; sourceTree = "<group>"; };
 		6AC9248E1D0A6DD100E1F43F /* HFTableInfoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFTableInfoCell.swift; sourceTree = "<group>"; };
 		6AC9248F1D0A6DD100E1F43F /* HFTableInfoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HFTableInfoCell.xib; sourceTree = "<group>"; };
+		6ACB1E9B1E3E28AC00B708C7 /* YYFPSLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYFPSLabel.h; sourceTree = "<group>"; };
+		6ACB1E9C1E3E28AC00B708C7 /* YYFPSLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYFPSLabel.m; sourceTree = "<group>"; };
+		6ACB1E9D1E3E28AC00B708C7 /* YYWeakProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYWeakProxy.h; sourceTree = "<group>"; };
+		6ACB1E9E1E3E28AC00B708C7 /* YYWeakProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYWeakProxy.m; sourceTree = "<group>"; };
 		6AE4A28D1D0009F10025BB79 /* HFCommunityLoveWallDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFCommunityLoveWallDetailVC.swift; sourceTree = "<group>"; };
 		6AE4A28E1D0009F10025BB79 /* HFCommunityLoveWallDetailVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HFCommunityLoveWallDetailVC.xib; sourceTree = "<group>"; };
 		6AE4A2951D0017D10025BB79 /* HFComLoveWallCommentModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFComLoveWallCommentModel.swift; sourceTree = "<group>"; };
@@ -889,6 +895,17 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
+		6ACB1E9A1E3E28AC00B708C7 /* YYFPSLabel */ = {
+			isa = PBXGroup;
+			children = (
+				6ACB1E9B1E3E28AC00B708C7 /* YYFPSLabel.h */,
+				6ACB1E9C1E3E28AC00B708C7 /* YYFPSLabel.m */,
+				6ACB1E9D1E3E28AC00B708C7 /* YYWeakProxy.h */,
+				6ACB1E9E1E3E28AC00B708C7 /* YYWeakProxy.m */,
+			);
+			path = YYFPSLabel;
+			sourceTree = "<group>";
+		};
 		6AE5443F1CFF00D400EB3FE7 /* JSPatch */ = {
 			isa = PBXGroup;
 			children = (
@@ -992,6 +1009,7 @@
 		6B23B0A91C97DA4E0089214D /* Ventor */ = {
 			isa = PBXGroup;
 			children = (
+				6ACB1E9A1E3E28AC00B708C7 /* YYFPSLabel */,
 				6A96F4711E3E093B00F65859 /* EZSwiftExtensions */,
 				6AE8D4001E3D9B4B00E44BE3 /* SwiftyStoreKit.framework */,
 				6AE8D3FC1E3D91DF00E44BE3 /* Toaster.framework */,
@@ -1833,6 +1851,7 @@
 				6A02E2761CF320CB00DC669A /* HFCommunityHomeListView.swift in Sources */,
 				6B61217B1CA2B73D00C56FD4 /* HFMineInfoBindRequest.swift in Sources */,
 				27949D361CC48A9900495206 /* HFInfoBookModel.swift in Sources */,
+				6ACB1E9F1E3E28AC00B708C7 /* YYFPSLabel.m in Sources */,
 				6A1CEA7E1D05245300481D3A /* HFInfoPlanInfoTableViewCell.swift in Sources */,
 				6A96F4B21E3E093B00F65859 /* DoubleExtensions.swift in Sources */,
 				6AE631C91D02AE93002C4AEC /* HFMineMessageListView.swift in Sources */,
@@ -1843,6 +1862,7 @@
 				6A96F4B31E3E093B00F65859 /* ErrorTypeExtensions.swift in Sources */,
 				6A2111E31D6C254F00CB65DE /* HFInfoRankingDetailCell.swift in Sources */,
 				6B2BFBA01C9D304A00FFA661 /* HFHomeScheduleHeaderCell.swift in Sources */,
+				6ACB1EA01E3E28AC00B708C7 /* YYWeakProxy.m in Sources */,
 				6A67B0F61DE33F1100DE4E62 /* HFCommunityLovaWallTableViewCell.swift in Sources */,
 				6A1CEA811D05245300481D3A /* HFInfoGradesChargeTableHeaderView.swift in Sources */,
 				27949D3B1CC48AB400495206 /* HFInfoGetBookListRequest.swift in Sources */,
@@ -2172,6 +2192,7 @@
 					"-licucore",
 					"-ObjC",
 				);
+				OTHER_SWIFT_FLAGS = "$(inherited) \"-D\" \"-DDEBUG\"";
 				PRODUCT_BUNDLE_IDENTIFIER = com.eliyar.hfuter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";

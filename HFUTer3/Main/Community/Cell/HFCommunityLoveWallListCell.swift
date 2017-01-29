@@ -143,7 +143,7 @@ class HFCommunityLoveWallListCell: UITableViewCell, NibReusable {
         let size = CGSize(width: ScreenWidth - 64, height: CGFloat.greatestFiniteMagnitude)
         
         let mod = YYTextLinePositionSimpleModifier()
-        mod.fixedLineHeight = 18
+        mod.fixedLineHeight = 20
         
         let container = YYTextContainer(size: size)
         container.linePositionModifier = mod

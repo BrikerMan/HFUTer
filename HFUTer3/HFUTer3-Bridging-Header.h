@@ -13,3 +13,5 @@
 #import <UMMobClick/MobClick.h>
 
 #import <AVOSCloud/AVOSCloud.h>
+
+#import "YYFPSLabel.h"
