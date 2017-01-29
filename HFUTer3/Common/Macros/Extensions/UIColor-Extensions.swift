@@ -10,6 +10,7 @@ import UIKit
 
 // MARK: - UIColor
 // MARK: - UIColor
+/*
 extension UIColor {
     /**
      Create non-autoreleased color with in the given hex string. Alpha will be set as 1 by default.
@@ -92,5 +93,6 @@ extension UIColor {
         hexString = leadingZerosString + hexString
         self.init(hexString: hexString as String , alpha: alpha)
     }
-}
+//}
 
+*/

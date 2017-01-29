@@ -23,7 +23,7 @@ class HFInformationVC: HFBaseViewController {
         HFTableInfoCellModel(title: "校历"    , icon: "fm_information_calendar"),
         HFTableInfoCellModel(title: "空教室"  , icon: "fm_information_empty"),
         HFTableInfoCellModel(title: "图书借阅", icon: "fm_information_book", isLast: true),
-//        HFTableInfoCellModel(title: "排名查询" , icon: "fm_information_ranking", isLast: true),
+        HFTableInfoCellModel(title: "排名查询" , icon: "fm_information_ranking", isLast: true),
     ]
     
     let tableViewSegues = [

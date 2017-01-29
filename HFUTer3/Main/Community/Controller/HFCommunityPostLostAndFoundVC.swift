@@ -78,7 +78,7 @@ class HFCommunityPostLostAndFoundVC: HFFormViewController {
         let type  = value["type"] as? String,
         let thing = value["thing"] as? String,
             let place = value["place"] as? String,
-        let date = value["date"] as? NSDate,
+        let date = value["date"] as? Date,
         let datetime = value["datetime"] as? String,
         let decs = value["decs"] as? String,
         let anonymous = value["anonymous"] as? Bool
@@ -93,10 +93,11 @@ class HFCommunityPostLostAndFoundVC: HFFormViewController {
             "content":decs as AnyObject
         ]
         
-//        params["type"] = (type == "寻物启事" ? 0 : 1) as AnyObject?
+        params["type"] = (type == "寻物启事" ? 0 : 1)
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd"
-//        params["time"] = formatter.stringFromDate(date) + " " + datetime
+        
+        params["time"] = formatter.string(from: date) + " " + datetime
         params["anonymous"] = anonymous as AnyObject?
         
         print(params)

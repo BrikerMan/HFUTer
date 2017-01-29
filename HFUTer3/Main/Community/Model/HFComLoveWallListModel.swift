@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import YYText
 
 class HFComLoveWallListModel: HFBaseModel {
     var commentCount    = 0
@@ -22,4 +23,7 @@ class HFComLoveWallListModel: HFBaseModel {
     
     // 表白照片
     var cImage:String?
+    
+    
+    var listLayout: YYTextLayout?
 }

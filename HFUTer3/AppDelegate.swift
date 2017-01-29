@@ -123,7 +123,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 
                 if FileManager.default.fileExists(atPath: detaPath) {
                     if let oldValues = NSDictionary(contentsOfFile: detaPath) as? HFRequestParam {
-                        file.saveValues(oldValues)
+                        file.saveValues(oldValues as [String : AnyObject])
                         do {
                             try FileManager.default.removeItem(atPath: detaPath)
                         }

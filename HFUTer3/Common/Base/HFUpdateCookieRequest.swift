@@ -8,8 +8,31 @@
 
 import Foundation
 import AlamofireDomain
+import Pitaya
 
 class HFUpdateCookieRequest {
+    
+    static func update(onSucces succes:(()->Void)?, failed:((_ error:String)->Void)?) {
+//        if let username = DataEnv.user?.sid, let password = DataEnv.user?.password {
+//            
+//            if password == "" {
+//                log.errorLog("没有保存用户名密码啊喂", params:[] )
+//                failed?("")
+//                return
+//            }
+//            
+//            let param: JSON = ["sid":username, "pwd": password.md5()]
+//            log.infoLog("******更新Token请求******", params: [param])
+//            Pita.build(HTTPMethod: .POST, url: APIBaseURL + "/api/user/login")
+//                .addParams(param)
+//                .responseJSON({ (json, response) in
+//                    print(response)
+//                    print(json)
+//                })
+//        }
+        
+    }
+    
     func checkUpdate(onSucces succes:(()->Void)?, failed:((_ error:String)->Void)?) {
         if DataEnv.isLogin && !DataEnv.hasUpdateToken {
             if let username = DataEnv.user?.sid, let password = DataEnv.user?.password {
@@ -20,7 +43,7 @@ class HFUpdateCookieRequest {
                     return
                 }
                 
-                let params = ["sid":username, "pwd": password.md5()]
+                let params: JSON = ["sid":username, "pwd": password.md5()]
                 let url =  APIBaseURL + "/api/user/login"
                 log.infoLog("******更新Token请求******", params: [params])
                 AlamofireDomain.request(url, method: HTTPMethod.post, parameters: params, encoding: URLEncoding.default, headers: nil)

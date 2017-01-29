@@ -44,6 +44,7 @@ class HFCommunityHomeListView: HFXibView {
         super.initFromXib()
         tableView.registerReusableCell(FMCommunityLostAndFindCell.self)
         tableView.registerReusableCell(FMCommunityLoveWellCell.self)
+        tableView.registerReusableCell(HFCommunityLoveWallListCell.self)
         tableView.addLoadMoreView()
         tableView.backgroundColor = HFTheme.BlackAreaColor
         tableView.pullDelegate = self
@@ -102,7 +103,7 @@ class HFCommunityHomeListView: HFXibView {
     }
 }
 
-extension HFCommunityHomeListView:FMCommunityLoveWellCellDelegate {
+extension HFCommunityHomeListView: HFCommunityLoveWallListCellDelegate {
     func cellDidPressOnLike(_ index: Int) {
         delegate?.listView(self, didChooseOnLikeButton: index)
     }
@@ -141,7 +142,7 @@ extension HFCommunityHomeListView: UITableViewDataSource {
             cell.setupModel(lostModels[indexPath.row], index: indexPath)
             return cell
         } else {
-            let cell = tableView.dequeueReusableCell(indexPath: indexPath) as FMCommunityLoveWellCell
+            let cell = tableView.dequeueReusableCell(indexPath: indexPath) as HFCommunityLoveWallListCell
             cell.delegate = self
             cell.setupWithModel(loveModels[indexPath.row], index: indexPath.row)
             return cell
@@ -177,11 +178,7 @@ extension HFCommunityHomeListView: UITableViewDelegate {
                 }
             })
         } else {
-            return tableView.fd_heightForCell(withIdentifier: "FMCommunityLoveWellCell", cacheBy: indexPath, configuration: { (cell) in
-                if let cell = cell as? FMCommunityLoveWellCell {
-                    cell.setupWithModel(self.loveModels[indexPath.row],index: indexPath.row)
-                }
-            })
+            return HFCommunityLoveWallListCell.height(model: loveModels[indexPath.row])
         }
     }
 }

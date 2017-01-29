@@ -99,7 +99,9 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/LTMorphingLabel/LTMorphingLabel.framework"
   install_framework "$BUILT_PRODUCTS_DIR/MJRefresh/MJRefresh.framework"
   install_framework "$BUILT_PRODUCTS_DIR/NVActivityIndicatorView/NVActivityIndicatorView.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/Pitaya/Pitaya.framework"
   install_framework "$BUILT_PRODUCTS_DIR/Qiniu/Qiniu.framework"
+  install_framework "${PODS_ROOT}/Reveal-SDK/RevealServer-6/iOS/RevealServer.framework"
   install_framework "$BUILT_PRODUCTS_DIR/SVProgressHUD/SVProgressHUD.framework"
   install_framework "$BUILT_PRODUCTS_DIR/Shimmer/Shimmer.framework"
   install_framework "$BUILT_PRODUCTS_DIR/SnapKit/SnapKit.framework"
@@ -109,7 +111,9 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/YYCache/YYCache.framework"
   install_framework "$BUILT_PRODUCTS_DIR/YYImage/YYImage.framework"
   install_framework "$BUILT_PRODUCTS_DIR/YYModel/YYModel.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/YYText/YYText.framework"
   install_framework "$BUILT_PRODUCTS_DIR/YYWebImage/YYWebImage.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/ZYCornerRadius/ZYCornerRadius.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/AFNetworking/AFNetworking.framework"
@@ -122,6 +126,7 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/LTMorphingLabel/LTMorphingLabel.framework"
   install_framework "$BUILT_PRODUCTS_DIR/MJRefresh/MJRefresh.framework"
   install_framework "$BUILT_PRODUCTS_DIR/NVActivityIndicatorView/NVActivityIndicatorView.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/Pitaya/Pitaya.framework"
   install_framework "$BUILT_PRODUCTS_DIR/Qiniu/Qiniu.framework"
   install_framework "$BUILT_PRODUCTS_DIR/SVProgressHUD/SVProgressHUD.framework"
   install_framework "$BUILT_PRODUCTS_DIR/Shimmer/Shimmer.framework"
@@ -132,7 +137,9 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "$BUILT_PRODUCTS_DIR/YYCache/YYCache.framework"
   install_framework "$BUILT_PRODUCTS_DIR/YYImage/YYImage.framework"
   install_framework "$BUILT_PRODUCTS_DIR/YYModel/YYModel.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/YYText/YYText.framework"
   install_framework "$BUILT_PRODUCTS_DIR/YYWebImage/YYWebImage.framework"
+  install_framework "$BUILT_PRODUCTS_DIR/ZYCornerRadius/ZYCornerRadius.framework"
 fi
 if [ "${COCOAPODS_PARALLEL_CODE_SIGN}" == "true" ]; then
   wait

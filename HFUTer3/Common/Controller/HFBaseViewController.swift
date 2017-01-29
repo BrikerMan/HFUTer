@@ -40,25 +40,25 @@ fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
 
 class HFBaseViewController: UIViewController, UIGestureRecognizerDelegate {
     
-    var navBar: HFBaseNavBar?
+    var nav: HFBaseNavBar?
     
     var navTitle: String = "" {
         didSet {
-            navBar?.setNavTitle(navTitle)
+            nav?.setNavTitle(navTitle)
         }
     }
     
     var navRightButton:navRightIconType? {
         didSet {
             if let button = navRightButton {
-                navBar?.showNavRightButton(withButton: button)
+                nav?.showNavRightButton(withButton: button)
             }
         }
     }
     
     var shouldShowBackButton = true {
         didSet {
-            navBar?.shouldShowBackButton = shouldShowBackButton
+            nav?.shouldShowBackButton = shouldShowBackButton
         }
     }
     
@@ -94,9 +94,9 @@ class HFBaseViewController: UIViewController, UIGestureRecognizerDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         view.bringSubview(toFront: navBar!)
-        navBar!.setNavTitle(navTitle)
-        navBar!.delegate = self
-        navBar!.shouldShowBackButton = shouldShowBackButton
+        nav!.setNavTitle(navTitle)
+        nav!.delegate = self
+        nav!.shouldShowBackButton = shouldShowBackButton
     }
     
     
@@ -125,10 +125,10 @@ class HFBaseViewController: UIViewController, UIGestureRecognizerDelegate {
     }
     
     fileprivate func addBaseNavBar() {
-        navBar = HFBaseNavBar()
-        view.addSubview(navBar!)
+        nav = HFBaseNavBar()
+        view.addSubview(nav!)
         
-        navBar!.snp.makeConstraints { (make) -> Void in
+        nav!.snp.makeConstraints { (make) -> Void in
             make.top.equalTo(view.snp.top)
             make.left.equalTo(view.snp.left)
             make.right.equalTo(view.snp.right)

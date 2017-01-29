@@ -8,13 +8,14 @@
 
 import Foundation
 import AlamofireDomain
+import Pitaya
 
 struct HFSettings {
     var shouldShowWeekEndClass:Bool
     
     init() {
         let data = PlistManager.settingsPlist.getValues()
-        let settings = data?[HFSettingPlistKey.Settings.rawValue]
+        let settings = data?[HFSettingPlistKey.Settings.rawValue] as? JSON
         self.shouldShowWeekEndClass = settings?[HFSettingPlistKey.ShowWeekendSchedule.rawValue] as? Bool ?? false
     }
     
@@ -103,7 +104,7 @@ class DataManager {
     }
     
     
-    
+    // 更新 Host 和通知
     func updataHostInfo() {
         APIBaseURL = PlistManager.settingsPlist.getValues()?["BaseApiManger"] as? String ?? APIBaseURL
         AlamofireDomain.request(ServerInfoFile, method: HTTPMethod.get, parameters: nil, encoding: URLEncoding.default, headers: nil)
@@ -114,20 +115,37 @@ class DataManager {
                 }
         }
         
-        AlamofireDomain.request(SettingInfo, method: HTTPMethod.get, parameters: nil, encoding: URLEncoding.default, headers: nil)
-            .responseJSON { response in
-                if let resultDic = response.result.value as? [String:AnyObject],
-                    let allowDonate = resultDic["allowDonate"] as? Bool,
-                    let allowDashang = resultDic["allowDashang"] as? Bool,
-                    let helpWebLinks = resultDic["helpWebLinks"] as? [String:String]
-                {
-                    self.helpWebLinks = helpWebLinks
-                    self.allowDonate = allowDonate
-                    self.allowDashang = allowDashang
-                    PlistManager.settingsPlist.saveValues(["allowDonate":allowDonate as AnyObject])
-                    PlistManager.settingsPlist.saveValues(["allowDashang":allowDashang as AnyObject])
+        
+        Pitaya.build(HTTPMethod: .GET, url: SettingInfo)
+            .responseJSON { (json, response) in
+                
+                self.allowDonate  = json["allowDonate"].boolValue
+                self.allowDashang  = json["allowDashang"].boolValue
+                
+                PlistManager.settingsPlist.saveValues(["allowDonate"  : self.allowDonate])
+                PlistManager.settingsPlist.saveValues(["allowDashang" : self.allowDashang])
+                if let link = json["helpWebLinks"].data as? [String:String] {
+                    self.helpWebLinks = link
+                }
+                
+                if let id = json["notif"]["id"].int, let info = json["notif"]["info"].string {
+                    let ignored = PlistManager.settingsPlist.getValues()?["ignored"] as? [Int] ?? []
+                    if !ignored.contains(id) {
+                        delay(seconds: 6, completion: {
+                            NotificationCenter.default.post(name: HFNotification.receiveNewAppNotif.get(),
+                                                            object: nil,
+                                                            userInfo: ["info" : info,
+                                                                       "id"   : id])
+                        })
+                        
+                    }
                 }
         }
+        
+        
+        /*
+        
+         */
     }
     
     func saveToken(_ headers: [AnyHashable: Any]) {

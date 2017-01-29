@@ -41,25 +41,25 @@ extension String {
         }
     }
     
-    
-    // MARK: - 验证
-    //To check text field or String is blank or not
-    var isBlank: Bool {
-        get {
-            let trimmed = trimmingCharacters(in: CharacterSet.whitespaces)
-            return trimmed.isEmpty
-        }
-    }
-    
-    //Validate Email
-    var isEmail: Bool {
-        do {
-            let regex = try NSRegularExpression(pattern: "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$", options: .caseInsensitive)
-            return regex.firstMatch(in: self, options: NSRegularExpression.MatchingOptions(rawValue: 0), range: NSMakeRange(0, self.characters.count)) != nil
-        } catch {
-            return false
-        }
-    }
+//    
+//    // MARK: - 验证
+//    //To check text field or String is blank or not
+//    var isBlank: Bool {
+//        get {
+//            let trimmed = trimmingCharacters(in: CharacterSet.whitespaces)
+//            return trimmed.isEmpty
+//        }
+//    }
+//    
+//    //Validate Email
+//    var isEmail: Bool {
+//        do {
+//            let regex = try NSRegularExpression(pattern: "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$", options: .caseInsensitive)
+//            return regex.firstMatch(in: self, options: NSRegularExpression.MatchingOptions(rawValue: 0), range: NSMakeRange(0, self.characters.count)) != nil
+//        } catch {
+//            return false
+//        }
+//    }
     
     //validate PhoneNumber
 //    var isPhoneNumber: Bool {
@@ -111,13 +111,13 @@ extension String {
         return "\(hash)"
     }
     
-    func base64() -> String!{
-        let plainData = data(using: String.Encoding.utf8)
-        let base64String = plainData?.base64EncodedString(options: NSData.Base64EncodingOptions(rawValue: 0))
-        return base64String!
-    }
+//    func base64() -> String!{
+//        let plainData = data(using: String.Encoding.utf8)
+//        let base64String = plainData?.base64EncodedString(options: NSData.Base64EncodingOptions(rawValue: 0))
+//        return base64String!
+//    }
     
-    // MARK: - 文字截断
+//    // MARK: - 文字截断
     subscript (r: Range<Int>) -> String? { //Optional String as return value
         get {
             let stringCount = self.characters.count as Int
@@ -133,7 +133,7 @@ extension String {
 //            [Range(start: startIndex, end: endIndex)]
         }
     }
-    
+//    
     func matchesForRegexInText(_ regex: String!, text: String!) -> [String] {
         let regex = try! NSRegularExpression(pattern: regex, options: NSRegularExpression.Options(rawValue: 0))
         let nsString = text as NSString

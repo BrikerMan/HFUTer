@@ -28,6 +28,11 @@ class RootViewController: UITabBarController {
         NotificationCenter.default.addObserver(self, selector: #selector(RootViewController.afterLogoutResponse(_:)), name: NSNotification.Name(rawValue: HFNotification.UserLogout.rawValue), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.onReceiveRemoteNotif), name: NSNotification.Name(rawValue: HFNotification.ReceiveRemoteNotif.rawValue), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(self.onClearBandge), name: NSNotification.Name(rawValue: HFNotification.RemoveBundge.rawValue), object: nil)
+       
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(onHaveNewSystemNotif(sendet:)),
+                                               name: HFNotification.receiveNewAppNotif.get(),
+                                               object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -35,6 +40,7 @@ class RootViewController: UITabBarController {
         showLoginVC(false)
     }
     
+
     
     @objc fileprivate func afterLoginResponse(_ sender:AnyObject) {
         selectedIndex = 0
@@ -51,6 +57,33 @@ class RootViewController: UITabBarController {
     @objc fileprivate func onClearBandge() {
         hfTabbar.shouldShowBandge = false
         UIApplication.shared.applicationIconBadgeNumber = 0
+    }
+    
+    @objc fileprivate func onHaveNewSystemNotif(sendet: Notification) {
+        if let notif = sendet.userInfo?["info"] as? String, let id = sendet.userInfo?["id"] as? Int {
+            let alert = UIAlertController(title: nil, message: notif, preferredStyle: .alert)
+            
+            let ignore = UIAlertAction(title: "不再提醒", style: .cancel, handler: { (_) in
+                var ignored = PlistManager.settingsPlist.getValues()?["ignored"] as? [Int] ?? []
+                ignored.append(id)
+                PlistManager.settingsPlist.saveValues(["ignored": ignored])
+            })
+            
+            let done = UIAlertAction(title: "知道了", style: .default, handler: { (_) in
+                
+            })
+            alert.addAction(ignore)
+            alert.addAction(done)
+            if let vc = self.presentedViewController {
+                vc.present(alert, animated: true, completion: {
+                    
+                })
+            } else {
+                self.present(alert, animated: true, completion: {
+                    
+                })
+            }
+        }
     }
     
     fileprivate func showLoginVC(_ animated:Bool) {

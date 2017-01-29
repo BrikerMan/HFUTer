@@ -52,6 +52,7 @@ class FMLogTool {
      */
     func errorLog(_ mesage:String, params:[Any] = [], withFuncName :Bool = true, filename: String = #file, line: Int = #line, function: String = #function) {
         log(mesage, params: params,  withFuncName: withFuncName, level: .error, filename: filename, line: line, function: function)
+        HFToast.showError(mesage)
     }
     
     fileprivate func log(_ mesage:String, params:[Any], withFuncName :Bool, level:FMLogLevelEnum, filename: String, line: Int, function: String) {

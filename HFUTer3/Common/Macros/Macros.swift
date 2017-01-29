@@ -71,6 +71,7 @@ enum HFSettingPlistKey: String {
 
 let ScreenWidth     = UIScreen.main.bounds.size.width
 let ScreenHeight    = UIScreen.main.bounds.size.height
+let ScreenScale     = UIScreen.main.scale
 
 let SeperatorHeight = 1 / UIScreen.main.scale
 
@@ -83,7 +84,8 @@ let DataEnv         = DataManager.shared
 let log             = FMLogTool.shared
 let PlistManager    = PlistManagerTool.shared
 
-typealias HFRequestParam = [String: AnyObject]
+typealias HFRequestParam = [String: Any]
+typealias JSON = [String: Any]
 
 ////////////////////////////////////////////////////////////////////////
 //Notification
@@ -100,6 +102,13 @@ enum HFNotification: String {
     
     case ReceiveRemoteNotif = "ReceiveRemoteNotifNotification"
     case RemoveBundge       = "RemoveBundgeNotification"
+    
+    case receiveNewAppNotif = "receiveNewAppNotifNotification"
+    
+    
+    func get() -> NSNotification.Name{
+         return NSNotification.Name(self.rawValue)
+    }
 }
 
 let HFUserLoginNotification = "HFUserLoginNotification"

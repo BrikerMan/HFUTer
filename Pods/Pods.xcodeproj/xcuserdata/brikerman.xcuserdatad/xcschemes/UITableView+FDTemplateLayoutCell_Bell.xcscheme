@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0820"
+   LastUpgradeVersion = "0700"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "895DB8CA2F2940AB3950D65418341930"
+               BlueprintIdentifier = "FE272AE4A5BCBF2A576A8AE118958E1A"
                BuildableName = "UITableView_FDTemplateLayoutCell_Bell.framework"
                BlueprintName = "UITableView+FDTemplateLayoutCell_Bell"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "895DB8CA2F2940AB3950D65418341930"
+            BlueprintIdentifier = "FE272AE4A5BCBF2A576A8AE118958E1A"
             BuildableName = "UITableView_FDTemplateLayoutCell_Bell.framework"
             BlueprintName = "UITableView+FDTemplateLayoutCell_Bell"
             ReferencedContainer = "container:Pods.xcodeproj">

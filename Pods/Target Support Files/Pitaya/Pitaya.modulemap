@@ -1,0 +1,6 @@
+framework module Pitaya {
+  umbrella header "Pitaya-umbrella.h"
+
+  export *
+  module * { export * }
+}

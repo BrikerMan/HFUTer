@@ -25,6 +25,7 @@ class HFInfoRankingVC: HFBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         getDataRequet()
+        title = "排名查询"
         // Do any additional setup after loading the view.
     }
     

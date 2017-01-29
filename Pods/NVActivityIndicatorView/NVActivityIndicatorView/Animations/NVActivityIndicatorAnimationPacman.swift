@@ -2,8 +2,27 @@
 //  NVActivityIndicatorAnimationPacman.swift
 //  NVActivityIndicatorViewDemo
 //
-//  Created by Nguyen Vinh on 7/25/15.
-//  Copyright (c) 2015 Nguyen Vinh. All rights reserved.
+// The MIT License (MIT)
+
+// Copyright (c) 2016 Vinh Nguyen
+
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
+
+// The above copyright notice and this permission notice shall be included in all
+// copies or substantial portions of the Software.
+
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+// SOFTWARE.
 //
 
 import UIKit
@@ -48,7 +67,7 @@ class NVActivityIndicatorAnimationPacman: NVActivityIndicatorAnimationDelegate {
         let pacman = NVActivityIndicatorShape.pacman.layerWith(size: CGSize(width: pacmanSize, height: pacmanSize), color: color)
         let frame = CGRect(
             x: (layer.bounds.size.width - size.width) / 2,
-            y: (layer.bounds.size.height - size.height) / 2 + size.height / 2 - pacmanSize / 2,
+            y: (layer.bounds.size.height - pacmanSize) / 2,
             width: pacmanSize,
             height: pacmanSize
         )
@@ -89,8 +108,7 @@ class NVActivityIndicatorAnimationPacman: NVActivityIndicatorAnimationDelegate {
         let circle = NVActivityIndicatorShape.circle.layerWith(size: CGSize(width: circleSize, height: circleSize), color: color)
         let frame = CGRect(
             x: (layer.bounds.size.width - size.width) / 2 + size.width - circleSize,
-            y: (layer.bounds.size.height - size.height) / 2 + size.height / 2 - circleSize
-                / 2,
+            y: (layer.bounds.size.height - circleSize) / 2,
             width: circleSize,
             height: circleSize
         )

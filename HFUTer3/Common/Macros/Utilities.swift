@@ -30,6 +30,10 @@ class Utilities {
         let sec =  Int(nowTimeStamp - timeInterval)
         
         let min:Int = Int(sec/60)
+        if sec < 60 {
+            return "\(sec) 秒钟前"
+        }
+        
         if min < 60 {
             return "\(min) 分钟前"
         }

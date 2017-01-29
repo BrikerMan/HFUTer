@@ -65,6 +65,7 @@ class FMCommunityLoveWellCell: UITableViewCell, NibReusable {
         }
         timeLabel.text  = Utilities.getTimeStringFromTimeStamp(model.date_int)
         infoLabel.text  = model.content
+        
         if model.favoriteCount != 0 {
             likeCount.text = "\(model.favoriteCount)"
         } else {

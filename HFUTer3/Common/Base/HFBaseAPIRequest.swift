@@ -96,7 +96,7 @@ class HFBaseAPIManager {
             method = .post
         }
         
-        var paramsDic:[String:AnyObject] = [:]
+        var paramsDic: JSON = [:]
         if let par = requestParams() {
             paramsDic.update(par)
         }

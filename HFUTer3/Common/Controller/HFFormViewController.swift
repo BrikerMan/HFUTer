@@ -11,31 +11,31 @@ import Eureka
 
 class HFFormViewController: FormViewController, UIGestureRecognizerDelegate {
 
-    var navBar: HFBaseNavBar?
+    var nav: HFBaseNavBar?
     
     var navTitle: String = "" {
         didSet {
-            navBar?.setNavTitle(navTitle)
+            nav?.setNavTitle(navTitle)
         }
     }
     
     var hideNavLeftButton: Bool = false {
         didSet {
-            navBar?.navLeftButton.isHidden = hideNavLeftButton
+            nav?.navLeftButton.isHidden = hideNavLeftButton
         }
     }
     
     var navRightButton:navRightIconType? {
         didSet {
             if let button = navRightButton {
-                navBar?.showNavRightButton(withButton: button)
+                nav?.showNavRightButton(withButton: button)
             }
         }
     }
     
     var shouldShowBackButton = true {
         didSet {
-            navBar?.shouldShowBackButton = shouldShowBackButton
+            nav?.shouldShowBackButton = shouldShowBackButton
         }
     }
     
@@ -45,10 +45,6 @@ class HFFormViewController: FormViewController, UIGestureRecognizerDelegate {
         addBaseNavBar()
         if let title = title {
             navTitle = title
-        }
-        
-        if (navigationController?.viewControllers.count)! > 1 {
-            navigationController?.interactivePopGestureRecognizer?.delegate = self
         }
         
         initForm()
@@ -136,13 +132,13 @@ class HFFormViewController: FormViewController, UIGestureRecognizerDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         view.bringSubview(toFront: navBar!)
-        navBar!.setNavTitle(navTitle)
-        navBar!.delegate = self
-        navBar!.shouldShowBackButton = shouldShowBackButton
+        nav!.setNavTitle(navTitle)
+        nav!.delegate = self
+        nav!.shouldShowBackButton = shouldShowBackButton
         tableView?.frame = CGRect(x: 0, y: 64, width: ScreenWidth, height: ScreenHeight-64)
         tableView?.backgroundColor = HFTheme.BlackAreaColor
         tableView?.separatorColor  = HFTheme.SeperatorColor
-        navBar?.navLeftButton.isHidden = hideNavLeftButton
+        nav?.navLeftButton.isHidden = hideNavLeftButton
         automaticallyAdjustsScrollViewInsets = false
     }
     
@@ -168,7 +164,7 @@ class HFFormViewController: FormViewController, UIGestureRecognizerDelegate {
     }
     
     fileprivate func addBaseNavBar() {
-        navBar = HFBaseNavBar()
+        nav = HFBaseNavBar()
         view.addSubview(navBar!)
         
         navBar!.snp.makeConstraints { (make) -> Void in

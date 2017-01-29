@@ -7,11 +7,13 @@ target 'HFUTer3' do
     # UI
     pod 'WSProgressHUD'                     ## 不错的Hud
     pod 'YYWebImage'                        ## 高效ImageView
+    pod 'YYImage/WebP'
     pod 'SnapKit'                           ## AutoLayout
-#    pod 'SVProgressHUD', :git => 'https://github.com/SVProgressHUD/SVProgressHUD.git'
     pod 'SVProgressHUD'
-    pod 'MJRefresh'             ## 下拉刷新
-    pod 'AIFlatSwitch'          ## 动态选择button
+    pod 'MJRefresh'                         ## 下拉刷新
+    pod 'AIFlatSwitch'                      ## 动态选择button
+    pod 'YYText'   , :git => 'https://github.com/BrikerMan/YYText.git'
+    pod 'ZYCornerRadius'                    # 优化圆角绘制
     
     # TableView
     pod 'UITableView+FDTemplateLayoutCell_Bell'  ##优化UITableViewCell高度计算
@@ -27,6 +29,7 @@ target 'HFUTer3' do
     # 网络
     pod 'AlamofireDomain', '~> 4.0'         ## 牛逼的网络请求库
     pod 'KMPlaceholderTextView'             ## 带Placeholder的TextView
+    pod 'Pitaya', :git => 'https://github.com/johnlui/Pitaya.git'
     
     # 数据
     pod 'YYModel'                           ## Dic or Json -> Model
@@ -38,7 +41,7 @@ target 'HFUTer3' do
     pod 'UMengAnalytics-NO-IDFA'
     
     # 调试
-    pod 'Reveal-iOS-SDK', :configurations => ['Debug']
+    pod 'Reveal-SDK', :configurations => ['Debug']
     
 end
 

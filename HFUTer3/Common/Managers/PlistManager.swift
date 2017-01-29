@@ -55,11 +55,11 @@ struct Plist {
      
      - returns: 字典内容
      */
-    func getValues() -> [String:AnyObject]?{
+    func getValues() -> [String:Any]?{
         let fileManager = FileManager.default
         if fileManager.fileExists(atPath: destPath) {
             guard let dict = NSDictionary(contentsOfFile: destPath) else { return .none }
-            return dict as? [String : AnyObject]
+            return dict as? [String : Any]
         } else {
             return nil
         }
@@ -70,8 +70,8 @@ struct Plist {
      
      - parameter dictionary: 保存的[Key:Value]字典。Key使用Macros里面的PlistKey，方便读取存储。
      */
-    func saveValues(_ dictionary:[String:AnyObject]) {
-        var originalData = getValues() ?? [String:AnyObject]()
+    func saveValues(_ dictionary:[String:Any]) {
+        var originalData = getValues() ?? [String:Any]()
         originalData.update(dictionary)
         let dic = originalData as NSDictionary
         dic.write(toFile: destPath, atomically: true)
