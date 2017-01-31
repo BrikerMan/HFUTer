@@ -77,8 +77,6 @@
 		6A3EAAEE1CE0227000809226 /* HFComLoveWallListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A3EAAED1CE0227000809226 /* HFComLoveWallListModel.swift */; };
 		6A3EAAF01CE0263B00809226 /* HFGetCommunityLoveWallListRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A3EAAEF1CE0263B00809226 /* HFGetCommunityLoveWallListRequest.swift */; };
 		6A4101E71D3A06420068FC5B /* DataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A4101E61D3A06420068FC5B /* DataHelper.swift */; };
-		6A67B0F61DE33F1100DE4E62 /* HFCommunityLovaWallTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A67B0F41DE33F1100DE4E62 /* HFCommunityLovaWallTableViewCell.swift */; };
-		6A67B0F71DE33F1100DE4E62 /* HFCommunityLovaWallTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6A67B0F51DE33F1100DE4E62 /* HFCommunityLovaWallTableViewCell.xib */; };
 		6A6A648C1CC51C6D0049715C /* HFBaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A6A648B1CC51C6D0049715C /* HFBaseTableViewCell.swift */; };
 		6A6A649C1CC51E840049715C /* HFGetCommunityLostAndFindRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A6A649B1CC51E840049715C /* HFGetCommunityLostAndFindRequest.swift */; };
 		6A6A64A01CC521860049715C /* HFBaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A6A649F1CC521860049715C /* HFBaseModel.swift */; };
@@ -157,6 +155,16 @@
 		6AC924911D0A6DD100E1F43F /* HFTableInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6AC9248F1D0A6DD100E1F43F /* HFTableInfoCell.xib */; };
 		6ACB1E9F1E3E28AC00B708C7 /* YYFPSLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6ACB1E9C1E3E28AC00B708C7 /* YYFPSLabel.m */; };
 		6ACB1EA01E3E28AC00B708C7 /* YYWeakProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 6ACB1E9E1E3E28AC00B708C7 /* YYWeakProxy.m */; };
+		6ACB1EAF1E40331200B708C7 /* StoryboardBased.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ACB1EA71E40331200B708C7 /* StoryboardBased.swift */; };
+		6ACB1EB01E40331200B708C7 /* StoryboardSceneBased.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ACB1EA81E40331200B708C7 /* StoryboardSceneBased.swift */; };
+		6ACB1EB11E40331200B708C7 /* NibLoadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ACB1EAA1E40331200B708C7 /* NibLoadable.swift */; };
+		6ACB1EB21E40331200B708C7 /* NibOwnerLoadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ACB1EAB1E40331200B708C7 /* NibOwnerLoadable.swift */; };
+		6ACB1EB31E40331200B708C7 /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ACB1EAC1E40331200B708C7 /* Reusable.swift */; };
+		6ACB1EB41E40331200B708C7 /* UICollectionView+Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ACB1EAD1E40331200B708C7 /* UICollectionView+Reusable.swift */; };
+		6ACB1EB51E40331200B708C7 /* UITableView+Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ACB1EAE1E40331200B708C7 /* UITableView+Reusable.swift */; };
+		6ACB1EB81E403D8F00B708C7 /* HFCommunityLoveDetailCommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ACB1EB61E403D8F00B708C7 /* HFCommunityLoveDetailCommentCell.swift */; };
+		6ACB1EB91E403D8F00B708C7 /* HFCommunityLoveDetailCommentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6ACB1EB71E403D8F00B708C7 /* HFCommunityLoveDetailCommentCell.xib */; };
+		6ACB1EBB1E4044DC00B708C7 /* UIView-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ACB1EBA1E4044DC00B708C7 /* UIView-Extensions.swift */; };
 		6AE4A28F1D0009F10025BB79 /* HFCommunityLoveWallDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AE4A28D1D0009F10025BB79 /* HFCommunityLoveWallDetailVC.swift */; };
 		6AE4A2901D0009F10025BB79 /* HFCommunityLoveWallDetailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6AE4A28E1D0009F10025BB79 /* HFCommunityLoveWallDetailVC.xib */; };
 		6AE4A2961D0017D10025BB79 /* HFComLoveWallCommentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AE4A2951D0017D10025BB79 /* HFComLoveWallCommentModel.swift */; };
@@ -185,11 +193,6 @@
 		6AE8D3FD1E3D91DF00E44BE3 /* Toaster.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AE8D3FC1E3D91DF00E44BE3 /* Toaster.framework */; };
 		6AE8D3FF1E3D923300E44BE3 /* HFToast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AE8D3FE1E3D923300E44BE3 /* HFToast.swift */; };
 		6AE8D4011E3D9B4B00E44BE3 /* SwiftyStoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AE8D4001E3D9B4B00E44BE3 /* SwiftyStoreKit.framework */; };
-		6AF6BE9C1D0A7219003415F5 /* NibLoadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AF6BE971D0A7219003415F5 /* NibLoadable.swift */; };
-		6AF6BE9D1D0A7219003415F5 /* NibOwnerLoadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AF6BE981D0A7219003415F5 /* NibOwnerLoadable.swift */; };
-		6AF6BE9E1D0A7219003415F5 /* Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AF6BE991D0A7219003415F5 /* Reusable.swift */; };
-		6AF6BE9F1D0A7219003415F5 /* UICollectionView+Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AF6BE9A1D0A7219003415F5 /* UICollectionView+Reusable.swift */; };
-		6AF6BEA01D0A7219003415F5 /* UITableView+Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AF6BE9B1D0A7219003415F5 /* UITableView+Reusable.swift */; };
 		6AFA64D71D05AA27005B05F5 /* HFMineDonateSuccessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AFA64D61D05AA27005B05F5 /* HFMineDonateSuccessView.swift */; };
 		6AFA64D91D05AA32005B05F5 /* HFMineDonateSuccessView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6AFA64D81D05AA32005B05F5 /* HFMineDonateSuccessView.xib */; };
 		6AFF3DC51D0454DA00B575CA /* jpush-ios-2.1.7.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AFF3DC31D0454DA00B575CA /* jpush-ios-2.1.7.a */; };
@@ -395,8 +398,6 @@
 		6A3EAAED1CE0227000809226 /* HFComLoveWallListModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFComLoveWallListModel.swift; sourceTree = "<group>"; };
 		6A3EAAEF1CE0263B00809226 /* HFGetCommunityLoveWallListRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFGetCommunityLoveWallListRequest.swift; sourceTree = "<group>"; };
 		6A4101E61D3A06420068FC5B /* DataHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataHelper.swift; sourceTree = "<group>"; };
-		6A67B0F41DE33F1100DE4E62 /* HFCommunityLovaWallTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFCommunityLovaWallTableViewCell.swift; sourceTree = "<group>"; };
-		6A67B0F51DE33F1100DE4E62 /* HFCommunityLovaWallTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HFCommunityLovaWallTableViewCell.xib; sourceTree = "<group>"; };
 		6A6A648B1CC51C6D0049715C /* HFBaseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFBaseTableViewCell.swift; sourceTree = "<group>"; };
 		6A6A649B1CC51E840049715C /* HFGetCommunityLostAndFindRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFGetCommunityLostAndFindRequest.swift; sourceTree = "<group>"; };
 		6A6A649F1CC521860049715C /* HFBaseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFBaseModel.swift; sourceTree = "<group>"; };
@@ -480,6 +481,16 @@
 		6ACB1E9C1E3E28AC00B708C7 /* YYFPSLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYFPSLabel.m; sourceTree = "<group>"; };
 		6ACB1E9D1E3E28AC00B708C7 /* YYWeakProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYWeakProxy.h; sourceTree = "<group>"; };
 		6ACB1E9E1E3E28AC00B708C7 /* YYWeakProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = YYWeakProxy.m; sourceTree = "<group>"; };
+		6ACB1EA71E40331200B708C7 /* StoryboardBased.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryboardBased.swift; sourceTree = "<group>"; };
+		6ACB1EA81E40331200B708C7 /* StoryboardSceneBased.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryboardSceneBased.swift; sourceTree = "<group>"; };
+		6ACB1EAA1E40331200B708C7 /* NibLoadable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NibLoadable.swift; sourceTree = "<group>"; };
+		6ACB1EAB1E40331200B708C7 /* NibOwnerLoadable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NibOwnerLoadable.swift; sourceTree = "<group>"; };
+		6ACB1EAC1E40331200B708C7 /* Reusable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reusable.swift; sourceTree = "<group>"; };
+		6ACB1EAD1E40331200B708C7 /* UICollectionView+Reusable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Reusable.swift"; sourceTree = "<group>"; };
+		6ACB1EAE1E40331200B708C7 /* UITableView+Reusable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+Reusable.swift"; sourceTree = "<group>"; };
+		6ACB1EB61E403D8F00B708C7 /* HFCommunityLoveDetailCommentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFCommunityLoveDetailCommentCell.swift; sourceTree = "<group>"; };
+		6ACB1EB71E403D8F00B708C7 /* HFCommunityLoveDetailCommentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HFCommunityLoveDetailCommentCell.xib; sourceTree = "<group>"; };
+		6ACB1EBA1E4044DC00B708C7 /* UIView-Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView-Extensions.swift"; sourceTree = "<group>"; };
 		6AE4A28D1D0009F10025BB79 /* HFCommunityLoveWallDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFCommunityLoveWallDetailVC.swift; sourceTree = "<group>"; };
 		6AE4A28E1D0009F10025BB79 /* HFCommunityLoveWallDetailVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HFCommunityLoveWallDetailVC.xib; sourceTree = "<group>"; };
 		6AE4A2951D0017D10025BB79 /* HFComLoveWallCommentModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFComLoveWallCommentModel.swift; sourceTree = "<group>"; };
@@ -508,11 +519,6 @@
 		6AE8D3FC1E3D91DF00E44BE3 /* Toaster.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Toaster.framework; sourceTree = "<group>"; };
 		6AE8D3FE1E3D923300E44BE3 /* HFToast.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFToast.swift; sourceTree = "<group>"; };
 		6AE8D4001E3D9B4B00E44BE3 /* SwiftyStoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SwiftyStoreKit.framework; sourceTree = "<group>"; };
-		6AF6BE971D0A7219003415F5 /* NibLoadable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NibLoadable.swift; sourceTree = "<group>"; };
-		6AF6BE981D0A7219003415F5 /* NibOwnerLoadable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NibOwnerLoadable.swift; sourceTree = "<group>"; };
-		6AF6BE991D0A7219003415F5 /* Reusable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reusable.swift; sourceTree = "<group>"; };
-		6AF6BE9A1D0A7219003415F5 /* UICollectionView+Reusable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Reusable.swift"; sourceTree = "<group>"; };
-		6AF6BE9B1D0A7219003415F5 /* UITableView+Reusable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITableView+Reusable.swift"; sourceTree = "<group>"; };
 		6AFA64D61D05AA27005B05F5 /* HFMineDonateSuccessView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFMineDonateSuccessView.swift; sourceTree = "<group>"; };
 		6AFA64D81D05AA32005B05F5 /* HFMineDonateSuccessView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HFMineDonateSuccessView.xib; sourceTree = "<group>"; };
 		6AFF3DC31D0454DA00B575CA /* jpush-ios-2.1.7.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "jpush-ios-2.1.7.a"; sourceTree = "<group>"; };
@@ -725,8 +731,8 @@
 				6A02E2681CF320CB00DC669A /* FMCommunityLoveWellCell.xib */,
 				6A96F46D1E3DFE1600F65859 /* HFCommunityLoveWallListCell.swift */,
 				6A96F46E1E3DFE1600F65859 /* HFCommunityLoveWallListCell.xib */,
-				6A67B0F41DE33F1100DE4E62 /* HFCommunityLovaWallTableViewCell.swift */,
-				6A67B0F51DE33F1100DE4E62 /* HFCommunityLovaWallTableViewCell.xib */,
+				6ACB1EB61E403D8F00B708C7 /* HFCommunityLoveDetailCommentCell.swift */,
+				6ACB1EB71E403D8F00B708C7 /* HFCommunityLoveDetailCommentCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -906,6 +912,36 @@
 			path = YYFPSLabel;
 			sourceTree = "<group>";
 		};
+		6ACB1EA51E40331200B708C7 /* Reusable */ = {
+			isa = PBXGroup;
+			children = (
+				6ACB1EA61E40331200B708C7 /* Storyboard */,
+				6ACB1EA91E40331200B708C7 /* View */,
+			);
+			path = Reusable;
+			sourceTree = "<group>";
+		};
+		6ACB1EA61E40331200B708C7 /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				6ACB1EA71E40331200B708C7 /* StoryboardBased.swift */,
+				6ACB1EA81E40331200B708C7 /* StoryboardSceneBased.swift */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		6ACB1EA91E40331200B708C7 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				6ACB1EAA1E40331200B708C7 /* NibLoadable.swift */,
+				6ACB1EAB1E40331200B708C7 /* NibOwnerLoadable.swift */,
+				6ACB1EAC1E40331200B708C7 /* Reusable.swift */,
+				6ACB1EAD1E40331200B708C7 /* UICollectionView+Reusable.swift */,
+				6ACB1EAE1E40331200B708C7 /* UITableView+Reusable.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		6AE5443F1CFF00D400EB3FE7 /* JSPatch */ = {
 			isa = PBXGroup;
 			children = (
@@ -968,18 +1004,6 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		6AF6BE961D0A7219003415F5 /* Reusable */ = {
-			isa = PBXGroup;
-			children = (
-				6AF6BE971D0A7219003415F5 /* NibLoadable.swift */,
-				6AF6BE981D0A7219003415F5 /* NibOwnerLoadable.swift */,
-				6AF6BE991D0A7219003415F5 /* Reusable.swift */,
-				6AF6BE9A1D0A7219003415F5 /* UICollectionView+Reusable.swift */,
-				6AF6BE9B1D0A7219003415F5 /* UITableView+Reusable.swift */,
-			);
-			path = Reusable;
-			sourceTree = "<group>";
-		};
 		6AFF3DC21D0454DA00B575CA /* JPush */ = {
 			isa = PBXGroup;
 			children = (
@@ -1009,12 +1033,12 @@
 		6B23B0A91C97DA4E0089214D /* Ventor */ = {
 			isa = PBXGroup;
 			children = (
+				6ACB1EA51E40331200B708C7 /* Reusable */,
 				6ACB1E9A1E3E28AC00B708C7 /* YYFPSLabel */,
 				6A96F4711E3E093B00F65859 /* EZSwiftExtensions */,
 				6AE8D4001E3D9B4B00E44BE3 /* SwiftyStoreKit.framework */,
 				6AE8D3FC1E3D91DF00E44BE3 /* Toaster.framework */,
 				27EF73211DD08C16009E9592 /* Eureka */,
-				6AF6BE961D0A7219003415F5 /* Reusable */,
 				6A3E80D01D06DBB300E88445 /* AVOSCloud */,
 				6AFF3DC21D0454DA00B575CA /* JPush */,
 				6AE5443F1CFF00D400EB3FE7 /* JSPatch */,
@@ -1485,6 +1509,7 @@
 			isa = PBXGroup;
 			children = (
 				6B89D9051C993DDF0030DD7D /* UIColor-Extensions.swift */,
+				6ACB1EBA1E4044DC00B708C7 /* UIView-Extensions.swift */,
 				6B89D9071C993DED0030DD7D /* String-Extensions.swift */,
 				6B2BFBB01C9D5D7F00FFA661 /* Dictionary-Extensions.swift */,
 			);
@@ -1619,6 +1644,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6ACB1EB91E403D8F00B708C7 /* HFCommunityLoveDetailCommentCell.xib in Resources */,
 				6A1CEA821D05245300481D3A /* HFInfoGradesChargeTableHeaderView.xib in Resources */,
 				6AE631CB1D02AE9C002C4AEC /* HFMineMessageListView.xib in Resources */,
 				6AE631B11D0282EB002C4AEC /* HFTabbarView.xib in Resources */,
@@ -1639,7 +1665,6 @@
 				6A264F871D02C47800146D03 /* HFMineMessageTableViewCell.xib in Resources */,
 				6A0F76E51D0A894B0096A759 /* HFInfoCalendarVC.xib in Resources */,
 				6A264F8D1D02D39000146D03 /* HFMineNotifTableViewCell.xib in Resources */,
-				6A67B0F71DE33F1100DE4E62 /* HFCommunityLovaWallTableViewCell.xib in Resources */,
 				6B94267E1CA8DFA600C8E85D /* HFChooseTableViewCell.xib in Resources */,
 				6AE4A2901D0009F10025BB79 /* HFCommunityLoveWallDetailVC.xib in Resources */,
 				6A02E2771CF320CB00DC669A /* HFCommunityHomeListView.xib in Resources */,
@@ -1782,6 +1807,7 @@
 				6A338F121D04375600A40C98 /* HFHelpInfoWebVC.swift in Sources */,
 				6AE631CD1D02B090002C4AEC /* HFGetMineNotifReqeust.swift in Sources */,
 				6A128E1B1CF5CADB000185C3 /* HFCommunityContactVC.swift in Sources */,
+				6ACB1EB81E403D8F00B708C7 /* HFCommunityLoveDetailCommentCell.swift in Sources */,
 				6A96F4CD1E3E093B00F65859 /* UIViewControllerExtensions.swift in Sources */,
 				6A96F4CA1E3E093B00F65859 /* UITextFieldExtensions.swift in Sources */,
 				6A6A64A31CC521D60049715C /* HFComLostFoundModel.swift in Sources */,
@@ -1798,6 +1824,7 @@
 				6AC924901D0A6DD100E1F43F /* HFTableInfoCell.swift in Sources */,
 				6A264F891D02D09700146D03 /* HFMineNorifModel.swift in Sources */,
 				6A02E27A1CF3366D00DC669A /* HFCommunityPostLostAndFoundVC.swift in Sources */,
+				6ACB1EB51E40331200B708C7 /* UITableView+Reusable.swift in Sources */,
 				6A264F8C1D02D39000146D03 /* HFMineNotifTableViewCell.swift in Sources */,
 				27B191311D01CEDD004F57C7 /* HFMineMessageVC.swift in Sources */,
 				6A96F4A91E3E093B00F65859 /* BlockWebView.swift in Sources */,
@@ -1863,12 +1890,11 @@
 				6A2111E31D6C254F00CB65DE /* HFInfoRankingDetailCell.swift in Sources */,
 				6B2BFBA01C9D304A00FFA661 /* HFHomeScheduleHeaderCell.swift in Sources */,
 				6ACB1EA01E3E28AC00B708C7 /* YYWeakProxy.m in Sources */,
-				6A67B0F61DE33F1100DE4E62 /* HFCommunityLovaWallTableViewCell.swift in Sources */,
+				6ACB1EB11E40331200B708C7 /* NibLoadable.swift in Sources */,
 				6A1CEA811D05245300481D3A /* HFInfoGradesChargeTableHeaderView.swift in Sources */,
 				27949D3B1CC48AB400495206 /* HFInfoGetBookListRequest.swift in Sources */,
 				6A96F4A71E3E093B00F65859 /* BlockSwipe.swift in Sources */,
 				6A96F4D01E3E093B00F65859 /* URLExtensions.swift in Sources */,
-				6AF6BEA01D0A7219003415F5 /* UITableView+Reusable.swift in Sources */,
 				6A96F4AB1E3E093B00F65859 /* BundleExtensions.swift in Sources */,
 				6A96F4A41E3E093B00F65859 /* BlockLongPress.swift in Sources */,
 				6A1CEA801D05245300481D3A /* HFInformationCollectionCell.swift in Sources */,
@@ -1884,7 +1910,6 @@
 				6B89D9291C9954810030DD7D /* HFLoginRegisterRequest.swift in Sources */,
 				6B9426861CA8E47400C8E85D /* HFInfoListPickerVC.swift in Sources */,
 				6B7429BF1CA4EC9200F1015E /* HFPullTableView.swift in Sources */,
-				6AF6BE9F1D0A7219003415F5 /* UICollectionView+Reusable.swift in Sources */,
 				27949D311CC48A5500495206 /* HFInfoBookListVC.swift in Sources */,
 				6A96F4CF1E3E093B00F65859 /* UIWindowExtensions.swift in Sources */,
 				27B730AC1CA2E4C90011D33A /* HFInfoGetAcademicClassDetailRequest.swift in Sources */,
@@ -1908,7 +1933,6 @@
 				6B89D91D1C994D780030DD7D /* Functions.swift in Sources */,
 				6B2BFBAF1C9D56B500FFA661 /* HFGradesModel.swift in Sources */,
 				6A96F4CE1E3E093B00F65859 /* UIViewExtensions.swift in Sources */,
-				6AF6BE9C1D0A7219003415F5 /* NibLoadable.swift in Sources */,
 				6B5C146F1C86EACB00A08941 /* AppDelegate.swift in Sources */,
 				6A96F4D11E3E093B00F65859 /* UserDefaultsExtension.swift in Sources */,
 				6A1CEA781D05245300481D3A /* HFInfoAcademicClassTableCell.swift in Sources */,
@@ -1920,6 +1944,7 @@
 				6B9B675B1C9CE3FF009B5F68 /* HFBasicViewController.swift in Sources */,
 				6AE631AE1D0282EB002C4AEC /* HFTabbarCollectionViewCell.swift in Sources */,
 				6A1CEA841D05249F00481D3A /* HFInfoPlanListDetailCell.swift in Sources */,
+				6ACB1EB31E40331200B708C7 /* Reusable.swift in Sources */,
 				6AE631C21D0289E4002C4AEC /* HFMinePublishLoveWallCell.swift in Sources */,
 				6B1E06C51CA00AAE004E558D /* HFHomeScheduleSelectWeekView.swift in Sources */,
 				6A96F4BD1E3E093B00F65859 /* UIApplicationExtensions.swift in Sources */,
@@ -1943,12 +1968,13 @@
 				6B6121731CA2941200C56FD4 /* HFMineInfoVC.swift in Sources */,
 				6A96F4B41E3E093B00F65859 /* EZSwiftFunctions.swift in Sources */,
 				6B61218F1CA2C2F200C56FD4 /* STConst.m in Sources */,
+				6ACB1EB01E40331200B708C7 /* StoryboardSceneBased.swift in Sources */,
+				6ACB1EAF1E40331200B708C7 /* StoryboardBased.swift in Sources */,
 				6BCF69011C9A5349008646BA /* HFUpdateCookieRequest.swift in Sources */,
 				6A96F4A31E3E093B00F65859 /* BlockButton.swift in Sources */,
 				6A2C98BF1D6C0E1F00BD5182 /* HFMineChangePasswordVC.swift in Sources */,
 				6B2FE06C1CA69D6F00147BC3 /* HFInfoChargeModel.swift in Sources */,
 				6A3EAAEE1CE0227000809226 /* HFComLoveWallListModel.swift in Sources */,
-				6AF6BE9D1D0A7219003415F5 /* NibOwnerLoadable.swift in Sources */,
 				6B23B0DC1C97E0BC0089214D /* HFBasicButton.swift in Sources */,
 				6B9B67021C9AB5EC009B5F68 /* FadeAnimator.swift in Sources */,
 				6AE4A28F1D0009F10025BB79 /* HFCommunityLoveWallDetailVC.swift in Sources */,
@@ -1959,17 +1985,19 @@
 				6A96F4B81E3E093B00F65859 /* NSDictionaryExtensions.swift in Sources */,
 				6B2BFBA41C9D319D00FFA661 /* HFHomeScheduleTitleCell.swift in Sources */,
 				6A02E2701CF320CB00DC669A /* FMCommunityLostAndFindCell.swift in Sources */,
+				6ACB1EBB1E4044DC00B708C7 /* UIView-Extensions.swift in Sources */,
 				6B6121911CA2C2F200C56FD4 /* UIImage+ST.m in Sources */,
 				6AE544451CFF1CA600EB3FE7 /* HFCommunityPostLoveWallVC.swift in Sources */,
 				6A1CEA791D05245300481D3A /* HFInfoBookListTableCell.swift in Sources */,
 				6A96F4BA1E3E093B00F65859 /* StringExtensions.swift in Sources */,
+				6ACB1EB21E40331200B708C7 /* NibOwnerLoadable.swift in Sources */,
 				6A96F4A81E3E093B00F65859 /* BlockTap.swift in Sources */,
-				6AF6BE9E1D0A7219003415F5 /* Reusable.swift in Sources */,
 				6BA9EB0E1C9971FB0017DBC4 /* HFMineVC.swift in Sources */,
 				6AE631BE1D0289E4002C4AEC /* HFMineInfoInfoTableViewCell.swift in Sources */,
 				6B9B67061C9AB9A7009B5F68 /* HFXibView.swift in Sources */,
 				6A264F861D02C47800146D03 /* HFMineMessageTableViewCell.swift in Sources */,
 				6AE631C31D0289E4002C4AEC /* HFMineSettingSwitchCell.swift in Sources */,
+				6ACB1EB41E40331200B708C7 /* UICollectionView+Reusable.swift in Sources */,
 				6A2C98C31D6C20AC00BD5182 /* HFInfoRankingHeaderCell.swift in Sources */,
 				6A96F4AD1E3E093B00F65859 /* CGPointExtensions.swift in Sources */,
 				6B94268C1CA965E300C8E85D /* HFMineSettingVC.swift in Sources */,

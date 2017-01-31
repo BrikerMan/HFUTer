@@ -62,6 +62,7 @@ class HFPullTableView: UITableView {
      */
     func endLoadMore() {
         isLoadingMore = false
+        mj_footer.resetNoMoreData()
         mj_footer.endRefreshing()
     }
     

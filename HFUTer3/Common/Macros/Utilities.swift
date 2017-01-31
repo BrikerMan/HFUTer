@@ -40,22 +40,17 @@ class Utilities {
         
         let hour:Int = Int(min/60)
         
-        if hour < 24 {
+        if hour < 12 {
             return "\(hour) 小时前"
         }
         
+        let date = Date(timeIntervalSince1970: timeInterval)
+        
         let day = Int(hour/24)
-        if day < 30 {
-            return "\(day) 天前"
+        if day < 300 {
+            return date.toString(format: "MM-dd hh:mm")
         }
-        
-        let mounth = Int(day/30)
-        if mounth < 12 {
-            return "\(mounth) 个月前"
-        }
-        
-        let year = Int(mounth/12)
-        return  "\(year) 年前"
+        return date.toString(format: "yy-MM-dd hh:mm")
         
     }
     

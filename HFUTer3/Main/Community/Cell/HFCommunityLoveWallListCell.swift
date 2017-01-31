@@ -29,9 +29,11 @@ class HFCommunityLoveWallListCell: UITableViewCell, NibReusable {
     @IBOutlet weak var likeImageView: UIImageView!
     @IBOutlet weak var commentCountLabel: UILabel!
     
+    @IBOutlet weak var bottomViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var containerBottom: NSLayoutConstraint!
+    
     var infoLabel    = YYLabel()
     var bigImageView = HFImageView(frame: CGRect.zero)
-    
     
     @IBAction func onLikeButtonPressed(_ sender: AnyObject) {
         if model.favorite { return }
@@ -47,7 +49,7 @@ class HFCommunityLoveWallListCell: UITableViewCell, NibReusable {
         bigImageView.cornet(4)
     }
     
-    func setupWithModel(_ model: HFComLoveWallListModel, index: Int) {
+    func setupWithModel(_ model: HFComLoveWallListModel, index: Int, isDetail: Bool = false) {
         self.index = index
         self.model = model
         
@@ -67,44 +69,73 @@ class HFCommunityLoveWallListCell: UITableViewCell, NibReusable {
         
         dateLabel.text  = Utilities.getTimeStringFromTimeStamp(model.date_int)
         
-        if model.favoriteCount != 0 {
-            likeCountLabel.text = "  \(model.favoriteCount)"
+        // 详情页不用设置
+        if !isDetail {
+            if model.favoriteCount != 0 {
+                likeCountLabel.text = "  \(model.favoriteCount)"
+            } else {
+                likeCountLabel.text = "  赞"
+            }
+            
+            if model.commentCount != 0 {
+                commentCountLabel.text = "  \(model.commentCount)"
+            } else {
+                commentCountLabel.text = "  评论"
+            }
+            
+            let image = model.favorite ? "fm_community_love_wall_like_fill" : "fm_community_love_wall_like"
+            likeImageView.image = UIImage(named: image)
+            
+            bottomViewHeight.constant = 30
+            containerBottom.constant  = 4
         } else {
-            likeCountLabel.text = "  赞"
+            bottomViewHeight.constant = 0
+            containerBottom.constant  = 12
         }
-        
-        if model.commentCount != 0 {
-            commentCountLabel.text = "  \(model.commentCount)"
-        } else {
-            commentCountLabel.text = "  评论"
-        }
-        
-        let image = model.favorite ? "fm_community_love_wall_like_fill" : "fm_community_love_wall_like"
-        likeImageView.image = UIImage(named: image)
-        
-        
         
         // Old fashion frame 部分
-        infoLabel.size = model.listLayout!.textBoundingSize
-        infoLabel.textLayout = model.listLayout!
+        // 首页列表补分
+        if !isDetail {
+            infoLabel.frame.origin.x = 54
+            infoLabel.size       = model.listLayout!.textBoundingSize
+            infoLabel.textLayout = model.listLayout!
+        } else {
+            infoLabel.frame.origin.x = 10
+            infoLabel.size       = model.detailLayout!.textBoundingSize
+            infoLabel.textLayout = model.detailLayout!
+        }
+        
+        
         
         if let bigImage = model.cImage {
-            bigImageView.frame = CGRect(x: 53,
-                                        y: model.listLayout!.textBoundingSize.height + 54 + 8,
-                                        w: 200,
-                                        h: 190)
+            var frame = CGRect(x: 53,
+                               y: model.listLayout!.textBoundingSize.height + 54 + 8,
+                               w: 200,
+                               h: 190)
+            if isDetail {
+                frame = CGRect(x: 10,
+                               y: model.detailLayout!.textBoundingSize.height + 54 + 8,
+                               w: ScreenWidth - 20,
+                               h: ScreenWidth - 20)
+            }
+            
+            bigImageView.frame = frame
             
             loadCover(bigImage, finished: { (image) in
-                let size  = image?.size ?? self.bigImageView.size
-                print(size)
-                var width = size.width * 190 / size.height
+                
+                var size = CGSize(width: 100, height: 190)
+                let imagesize  = model.cImageSize ?? image?.size ?? self.bigImageView.size
+                
+                var width = imagesize.width * 190 / imagesize.height
                 if width > ScreenWidth - 64 {
                     width = ScreenWidth - 64
                 }
-                self.bigImageView.frame = CGRect(x: 53,
-                                                 y: model.listLayout!.textBoundingSize.height + 54 + 8,
-                                                 w: width,
-                                                 h: 190)
+                size.width = width
+                let x: CGFloat = !isDetail ? 53 : 10
+                self.bigImageView.frame = CGRect(x: x,
+                                                 y: self.bigImageView.frame.y,
+                                                 w: size.width,
+                                                 h: size.height)
             })
         } else {
             bigImageView.frame = CGRect.zero
@@ -116,47 +147,61 @@ class HFCommunityLoveWallListCell: UITableViewCell, NibReusable {
         let urlString = APIBaseURL + "/res/formatImage?key=" + cover
         if let url = URL(string: urlString) {
             bigImageView.yy_setImage(with: url,
-                             placeholder: placeHolder,
-                             options: [.progressiveBlur, .showNetworkActivity],
-                             progress: nil,
-                             transform: { (image, url) -> UIImage? in
-                                return image.yy_image(byRoundCornerRadius: 4 * ScreenScale)
+                                     placeholder: placeHolder,
+                                     options: [.progressiveBlur, .showNetworkActivity],
+                                     progress: nil,
+                                     transform: { (image, url) -> UIImage? in
+                                        return image.yy_image(byRoundCornerRadius: 4 * ScreenScale)
             }) { (image, url, cacheType, stage, error) in
                 finished?(image)
             }
         }
     }
     
-    static func height(model: HFComLoveWallListModel) -> CGFloat {
+    static func height(model: HFComLoveWallListModel, isDetail: Bool = false) -> CGFloat {
         let imageHeight: CGFloat = model.cImage != nil ? 200 : 0
         
-        if let layout = model.listLayout {
-            
-            return layout.textBoundingSize.height + 52 + 42 + imageHeight
+        if isDetail {
+            if let layout = model.detailLayout {
+                return layout.textBoundingSize.height + 54 + 22 + imageHeight
+            }
+        } else {
+            if let layout = model.listLayout {
+                return layout.textBoundingSize.height + 54 + 44 + imageHeight
+            }
         }
         
         let attText = NSMutableAttributedString(string: model.content, attributes: [
             NSFontAttributeName             : UIFont.systemFont(ofSize: 14),
-            NSForegroundColorAttributeName  : HFTheme.DarkTextColor
+            NSForegroundColorAttributeName  : HFTheme.DarkTextColor,
             ])
         
-        let size = CGSize(width: ScreenWidth - 64, height: CGFloat.greatestFiniteMagnitude)
+        let width = isDetail ? ScreenWidth - 20 : ScreenWidth - 64
+        let size = CGSize(width: width, height: CGFloat.greatestFiniteMagnitude)
         
         let mod = YYTextLinePositionSimpleModifier()
         mod.fixedLineHeight = 20
         
         let container = YYTextContainer(size: size)
         container.linePositionModifier = mod
-        container.maximumNumberOfRows  = 15
-        container.truncationType = YYTextTruncationType.end
-        container.truncationToken = NSAttributedString(string: " ...", attributes: [
-            NSFontAttributeName             : UIFont.systemFont(ofSize: 14),
-            NSForegroundColorAttributeName  : UIColor(hexString: "#3d9cdd")!
-            ])
-        let layout = YYTextLayout(container: container, text: attText)!
-        model.listLayout = layout
         
-        return layout.textBoundingSize.height + 52 + 42 + imageHeight
+        if !isDetail {
+            container.maximumNumberOfRows  = 15
+            container.truncationType = YYTextTruncationType.end
+            container.truncationToken = NSAttributedString(string: " ...", attributes: [
+                NSFontAttributeName             : UIFont.systemFont(ofSize: 14),
+                NSForegroundColorAttributeName  : UIColor(hexString: "#3d9cdd")!
+                ])
+        }
+        let layout = YYTextLayout(container: container, text: attText)!
+
+        if isDetail {
+            model.detailLayout = layout
+            return layout.textBoundingSize.height + 54 + 14 + imageHeight
+        } else {
+            model.listLayout   = layout
+            return layout.textBoundingSize.height + 54 + 44 + imageHeight
+        }
     }
     
 }

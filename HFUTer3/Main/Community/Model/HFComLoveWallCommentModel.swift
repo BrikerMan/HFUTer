@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import YYText
 
 class HFComLoveWallCommentModel: HFBaseModel {
     var name     = ""
@@ -16,6 +17,8 @@ class HFComLoveWallCommentModel: HFBaseModel {
     var date_int = 0
     var uid      = 0
     var at       : [HFComLoveWallCommentAtModel] = []
+    
+    var detailLayout : YYTextLayout? /// 详情页文字布局
 }
 
 class HFComLoveWallCommentAtModel: HFBaseModel {

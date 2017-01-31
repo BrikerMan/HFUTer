@@ -8,7 +8,7 @@
 
 import UIKit
 
-class HFCommunityLoveWallDetailVC: HFBaseViewController {
+class HFCommunityLoveWallDetailVC: HFBaseViewController, XibBasedController {
     
     @IBOutlet weak var tableView: HFPullTableView!
     
@@ -33,6 +33,7 @@ class HFCommunityLoveWallDetailVC: HFBaseViewController {
         commentReqeust.callback = self
         commentReqeust.fire(mainModel.id)
         updateLikeView()
+        tableView.endLoadMore()
     }
     
     fileprivate func updateLikeView() {
@@ -61,8 +62,8 @@ class HFCommunityLoveWallDetailVC: HFBaseViewController {
             self.updateLikeView()
             hud.dismiss()
             NotificationCenter.default.post(name: Notification.Name(rawValue: HFNotification.LoveWallModelUpdate.rawValue), object: nil)
-            }) { (request, error) in
-                hud.showError(error)
+        }) { (request, error) in
+            hud.showError(error)
         }
     }
     
@@ -81,8 +82,11 @@ class HFCommunityLoveWallDetailVC: HFBaseViewController {
     }
     
     fileprivate func initUI() {
-        tableView.registerReusableCell(FMCommunityLoveWellCell.self)
+        tableView.registerReusableCell(HFCommunityLoveWallListCell.self)
+        tableView.registerReusableCell(HFCommunityLoveDetailCommentCell.self)
         tableView.backgroundColor = HFTheme.BlackAreaColor
+        tableView.addLoadMoreView()
+        tableView.pullDelegate = self
         self.automaticallyAdjustsScrollViewInsets = false
         
         self.view.addSubview(loadingView)
@@ -99,71 +103,66 @@ extension HFCommunityLoveWallDetailVC: HFBaseAPIManagerCallBack {
     
     func managerApiCallBackSuccess(_ manager: HFBaseAPIManager) {
         let result =  HFGetComLoveWallCommentRequest.handleData(manager.resultDic)
-        commentList = result
+        if commentReqeust.page == 0 {
+            commentList.removeAll()
+            commentList = result
+        } else {
+            commentList += result
+            if result.isEmpty {
+                tableView.endLoadMoreWithoutWithNoMoreData()
+            } else {
+                tableView.endLoadMore()
+            }
+        }
+        
         tableView.reloadData()
         self.loadingView.hide()
     }
 }
 
-
-extension HFCommunityLoveWallDetailVC: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.section == 0 {
-            return
-        }
-        let model = commentList[indexPath.row]
-        if model.uid == 0 {
-            hud.showError("不能回复匿名用户")
-            return
-        } else {
-//            HFBaseRequest.fire("/api/confession/delete", method: HFBaseAPIRequestMethod.POST, params: ["id":model.id], succesBlock: { (request, resultDic) in
-//               print(resultDic)
-//            }) { (request, error) in
-//                hud.showError(error)
-//            }
-            
+extension HFCommunityLoveWallDetailVC: HFCommunityLoveDetailCommentCellDelegate {
+    func commentCell(cell: HFCommunityLoveDetailCommentCell, didPessOnAction action: HFCommentActionType) {
+        let model = cell.model!
+        switch action {
+        case .replyComment:
             let vc = HFCommonWriteVC()
             vc.at = model.name
             vc.publishBlock = { text,anonymous in
                 let at:NSArray = [model.uid]
                 let atString = at.yy_modelToJSONString()!
                 let param: HFRequestParam = [
-                    "id": self.mainModel.id as AnyObject,
-                    "content":  text as AnyObject,
-                    "anonymous" :anonymous as AnyObject,
-                    "at": atString as AnyObject
+                    "id": self.mainModel.id,
+                    "content":  text,
+                    "anonymous" :anonymous,
+                    "at": atString
                 ]
                 self.sendCommentRequest(param)
             }
             self.present(vc, animated: true, completion: nil)
+            
+        case .delete:
+            HFBaseRequest.fire("/api/confession/delete",
+                               method: HFBaseAPIRequestMethod.POST,
+                               params: ["id":model.id],
+                               succesBlock: { (request, resultDic) in
+                                print(resultDic)
+            }) { (request, error) in
+                hud.showError(error)
+            }
         }
     }
-    
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return tableView.fd_heightForCell(withIdentifier: "FMCommunityLoveWellCell", cacheBy: indexPath, configuration: { (cell) in
-            if let cell = cell as? FMCommunityLoveWellCell {
-                if indexPath.section == 0{
-                    cell.setupWithModel(self.mainModel, index: indexPath.row)
-                } else {
-                    cell.setupWithCommentModel(self.commentList[indexPath.row])
-                }
-                cell.bottomViewHeight.constant = 0
-            }
-        })
+}
+
+extension HFCommunityLoveWallDetailVC: HFPullTableViewPullDelegate {
+    func pullTableViewStartRefeshing(_ tableView: HFPullTableView) {
+        
     }
     
-    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return section == 0 ? 0.01 : 5
-    }
-    
-    
-    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let view = UIView()
-        view.backgroundColor = UIColor.clear
-        return view
+    func pullTableViewStartLoadingMore(_ tableView: HFPullTableView) {
+        commentReqeust.loadNextPage()
     }
 }
+
 
 extension HFCommunityLoveWallDetailVC: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -171,18 +170,90 @@ extension HFCommunityLoveWallDetailVC: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return section == 0 ? 1 : commentList.count
+        if section == 0 {
+            return 1
+        } else {
+            if commentList.isEmpty {
+                return 1
+            } else {
+                return commentList.count
+            }
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(indexPath: indexPath) as FMCommunityLoveWellCell
-        if indexPath.section == 0{
-            cell.setupWithModel(mainModel,index: 0)
+        if indexPath.section == 0 {
+            let cell = tableView.dequeueReusableCell(indexPath: indexPath) as HFCommunityLoveWallListCell
+            cell.setupWithModel(mainModel, index: 0,isDetail: true)
+            return cell
         } else {
-            cell.setupWithCommentModel(commentList[indexPath.row])
+            if commentList.isEmpty {
+                let cell = UITableViewCell()
+                let label = UILabel()
+                label.text = "快来发表你的评论吧"
+                label.font = UIFont.systemFont(ofSize: 12)
+                label.textColor = HFTheme.LightTextColor
+                cell.addSubview(label)
+                label.snp.makeConstraints {
+                    $0.centerY.equalTo(cell.snp.centerY)
+                    $0.centerX.equalTo(cell.snp.centerX)
+                }
+                return cell
+            } else {
+                let cell = tableView.dequeueReusableCell(indexPath: indexPath) as HFCommunityLoveDetailCommentCell
+                cell.delegate = self
+                cell.setup(commentList[indexPath.row], index: indexPath.row)
+                return cell
+            }
         }
-        cell.bottomViewHeight.constant = 0
-        return cell
     }
 }
- 
+
+extension HFCommunityLoveWallDetailVC: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if indexPath.section == 0 {
+            return HFCommunityLoveWallListCell.height(model: mainModel, isDetail: true)
+        } else {
+            if commentList.isEmpty {
+                return 200
+            } else {
+                return HFCommunityLoveDetailCommentCell.height(model: commentList[indexPath.row])
+            }
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return section == 0 ? 0.01 : 30
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        if section == 1 {
+            let view = UIView()
+            let container = UIView()
+            view.addSubview(container)
+            container.snp.makeConstraints {
+                $0.edges.equalTo(view).inset(UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0))
+            }
+            container.backgroundColor = UIColor.white
+            container.addSeperator(isTop: true)
+            container.addSeperator()
+            
+            let label  = UILabel()
+            label.text = "评论 \(mainModel.commentCount) 赞 \(mainModel.favoriteCount)"
+            label.textColor = HFTheme.DarkTextColor
+            label.font = UIFont.systemFont(ofSize: 14, weight: UIFontWeightMedium)
+            
+            container.addSubview(label)
+            label.snp.makeConstraints {
+                $0.centerY.equalTo(container.snp.centerY)
+                $0.left.equalTo(container.snp.left).offset(10)
+            }
+            return view
+        }
+        return nil
+    }
+}

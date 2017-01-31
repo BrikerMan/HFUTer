@@ -131,7 +131,7 @@ class HFFormViewController: FormViewController, UIGestureRecognizerDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        view.bringSubview(toFront: navBar!)
+        view.bringSubview(toFront: nav!)
         nav!.setNavTitle(navTitle)
         nav!.delegate = self
         nav!.shouldShowBackButton = shouldShowBackButton
@@ -165,9 +165,9 @@ class HFFormViewController: FormViewController, UIGestureRecognizerDelegate {
     
     fileprivate func addBaseNavBar() {
         nav = HFBaseNavBar()
-        view.addSubview(navBar!)
+        view.addSubview(nav!)
         
-        navBar!.snp.makeConstraints { (make) -> Void in
+        nav!.snp.makeConstraints { (make) -> Void in
             make.top.equalTo(view.snp.top)
             make.left.equalTo(view.snp.left)
             make.right.equalTo(view.snp.right)

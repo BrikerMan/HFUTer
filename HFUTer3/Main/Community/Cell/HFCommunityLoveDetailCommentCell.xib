@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="125" id="KGk-i7-Jjw" customClass="HFCommunityLoveDetailCommentCell" customModule="HFUTer3" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="125"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="124"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eQx-oq-bSQ" customClass="HFImageView" customModule="HFUTer3" customModuleProvider="target">
+                        <rect key="frame" x="10" y="10" width="34" height="34"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="34" id="OR2-a4-Q4o"/>
+                            <constraint firstAttribute="width" constant="34" id="w1t-wC-BcO"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UserName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JIO-m5-dvo">
+                        <rect key="frame" x="54" y="10" width="70" height="17"/>
+                        <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
+                        <color key="textColor" red="0.31764705882352939" green="0.31764705882352939" blue="0.31764705882352939" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M1y-OW-Zf4">
+                        <rect key="frame" x="54" y="29" width="26" height="15"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lhs-ID-VPX">
+                        <rect key="frame" x="54" y="124" width="266" height="1"/>
+                        <color key="backgroundColor" red="0.87450980392156863" green="0.87450980392156863" blue="0.87450980392156863" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="0.5" id="Eq1-xE-zpD"/>
+                        </constraints>
+                    </view>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E92-eA-25P">
+                        <rect key="frame" x="270" y="7" width="50" height="40"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="50" id="0D2-nt-Myb"/>
+                            <constraint firstAttribute="height" constant="40" id="hVi-DE-7jq"/>
+                        </constraints>
+                        <state key="normal" image="fm_community_love_wall_comment_small"/>
+                        <connections>
+                            <action selector="onActionButtonPressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="W2K-M6-Zsm"/>
+                        </connections>
+                    </button>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="lhs-ID-VPX" secondAttribute="bottom" id="1HD-N9-OxU"/>
+                    <constraint firstItem="eQx-oq-bSQ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="6Ic-30-hUz"/>
+                    <constraint firstItem="lhs-ID-VPX" firstAttribute="leading" secondItem="JIO-m5-dvo" secondAttribute="leading" id="7HA-JU-d5O"/>
+                    <constraint firstAttribute="trailing" secondItem="lhs-ID-VPX" secondAttribute="trailing" id="CKq-kc-t8u"/>
+                    <constraint firstItem="JIO-m5-dvo" firstAttribute="leading" secondItem="eQx-oq-bSQ" secondAttribute="trailing" constant="10" id="D2L-Sh-bxs"/>
+                    <constraint firstItem="M1y-OW-Zf4" firstAttribute="leading" secondItem="JIO-m5-dvo" secondAttribute="leading" id="Ek1-tF-mtl"/>
+                    <constraint firstAttribute="trailing" secondItem="E92-eA-25P" secondAttribute="trailing" id="OYv-nb-x4q"/>
+                    <constraint firstItem="E92-eA-25P" firstAttribute="centerY" secondItem="eQx-oq-bSQ" secondAttribute="centerY" id="QsD-ae-6aA"/>
+                    <constraint firstItem="JIO-m5-dvo" firstAttribute="top" secondItem="eQx-oq-bSQ" secondAttribute="top" id="RhJ-8j-ozv"/>
+                    <constraint firstItem="M1y-OW-Zf4" firstAttribute="bottom" secondItem="eQx-oq-bSQ" secondAttribute="bottom" id="k2d-16-ddK"/>
+                    <constraint firstItem="eQx-oq-bSQ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="vQj-lN-m87"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="actionButton" destination="E92-eA-25P" id="9XV-aq-cIH"/>
+                <outlet property="avatarView" destination="eQx-oq-bSQ" id="Cwl-bL-7Pf"/>
+                <outlet property="dateLabel" destination="M1y-OW-Zf4" id="KR6-ym-sF8"/>
+                <outlet property="usernameLabel" destination="JIO-m5-dvo" id="cG1-fc-Emj"/>
+            </connections>
+            <point key="canvasLocation" x="34" y="94.5"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="fm_community_love_wall_comment_small" width="16" height="14"/>
+    </resources>
+</document>

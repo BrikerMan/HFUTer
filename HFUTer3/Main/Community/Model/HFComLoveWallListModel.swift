@@ -22,8 +22,9 @@ class HFComLoveWallListModel: HFBaseModel {
     var color           = 0
     
     // 表白照片
-    var cImage:String?
+    var cImage : String?
+    var cImageSize : CGSize?
     
-    
-    var listLayout: YYTextLayout?
+    var listLayout   : YYTextLayout?
+    var detailLayout : YYTextLayout? /// 详情页文字布局
 }
