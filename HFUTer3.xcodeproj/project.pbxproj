@@ -73,6 +73,7 @@
 		6A2C98C31D6C20AC00BD5182 /* HFInfoRankingHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A2C98C21D6C20AC00BD5182 /* HFInfoRankingHeaderCell.swift */; };
 		6A338F121D04375600A40C98 /* HFHelpInfoWebVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A338F101D04375600A40C98 /* HFHelpInfoWebVC.swift */; };
 		6A338F131D04375600A40C98 /* HFHelpInfoWebVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6A338F111D04375600A40C98 /* HFHelpInfoWebVC.xib */; };
+		6A3E6F101E407DE7001FA3E3 /* YYLabel+Copyable.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A3E6F0F1E407DE7001FA3E3 /* YYLabel+Copyable.m */; };
 		6A3E80D21D06DBB300E88445 /* AVOSCloud.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A3E80D11D06DBB300E88445 /* AVOSCloud.framework */; };
 		6A3EAAEE1CE0227000809226 /* HFComLoveWallListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A3EAAED1CE0227000809226 /* HFComLoveWallListModel.swift */; };
 		6A3EAAF01CE0263B00809226 /* HFGetCommunityLoveWallListRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A3EAAEF1CE0263B00809226 /* HFGetCommunityLoveWallListRequest.swift */; };
@@ -394,6 +395,8 @@
 		6A2C98C21D6C20AC00BD5182 /* HFInfoRankingHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFInfoRankingHeaderCell.swift; sourceTree = "<group>"; };
 		6A338F101D04375600A40C98 /* HFHelpInfoWebVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFHelpInfoWebVC.swift; sourceTree = "<group>"; };
 		6A338F111D04375600A40C98 /* HFHelpInfoWebVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HFHelpInfoWebVC.xib; sourceTree = "<group>"; };
+		6A3E6F0F1E407DE7001FA3E3 /* YYLabel+Copyable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "YYLabel+Copyable.m"; sourceTree = "<group>"; };
+		6A3E6F111E407DFA001FA3E3 /* YYLabel+Copyable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "YYLabel+Copyable.h"; sourceTree = "<group>"; };
 		6A3E80D11D06DBB300E88445 /* AVOSCloud.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AVOSCloud.framework; sourceTree = "<group>"; };
 		6A3EAAED1CE0227000809226 /* HFComLoveWallListModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFComLoveWallListModel.swift; sourceTree = "<group>"; };
 		6A3EAAEF1CE0263B00809226 /* HFGetCommunityLoveWallListRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFGetCommunityLoveWallListRequest.swift; sourceTree = "<group>"; };
@@ -778,6 +781,15 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		6A3E6F0E1E407DD1001FA3E3 /* YYLabel-Extension */ = {
+			isa = PBXGroup;
+			children = (
+				6A3E6F0F1E407DE7001FA3E3 /* YYLabel+Copyable.m */,
+				6A3E6F111E407DFA001FA3E3 /* YYLabel+Copyable.h */,
+			);
+			path = "YYLabel-Extension";
+			sourceTree = "<group>";
+		};
 		6A3E80D01D06DBB300E88445 /* AVOSCloud */ = {
 			isa = PBXGroup;
 			children = (
@@ -1033,6 +1045,7 @@
 		6B23B0A91C97DA4E0089214D /* Ventor */ = {
 			isa = PBXGroup;
 			children = (
+				6A3E6F0E1E407DD1001FA3E3 /* YYLabel-Extension */,
 				6ACB1EA51E40331200B708C7 /* Reusable */,
 				6ACB1E9A1E3E28AC00B708C7 /* YYFPSLabel */,
 				6A96F4711E3E093B00F65859 /* EZSwiftExtensions */,
@@ -1936,6 +1949,7 @@
 				6B5C146F1C86EACB00A08941 /* AppDelegate.swift in Sources */,
 				6A96F4D11E3E093B00F65859 /* UserDefaultsExtension.swift in Sources */,
 				6A1CEA781D05245300481D3A /* HFInfoAcademicClassTableCell.swift in Sources */,
+				6A3E6F101E407DE7001FA3E3 /* YYLabel+Copyable.m in Sources */,
 				6A96F4C01E3E093B00F65859 /* UIColoredView.swift in Sources */,
 				6B1E06CA1CA00D4B004E558D /* HFHomeScheduleSelectWeekViewCell.swift in Sources */,
 				6B83552D1C980FC5002DBE06 /* HFBaseAPIRequest.swift in Sources */,

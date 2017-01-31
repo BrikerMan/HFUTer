@@ -227,7 +227,7 @@ extension HFCommunityLoveWallDetailVC: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return section == 0 ? 0.01 : 30
+        return section == 0 ? 0.01 : 34
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {

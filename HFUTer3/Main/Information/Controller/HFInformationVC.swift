@@ -32,6 +32,9 @@ class HFInformationVC: HFBaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        collectionView.layer.shadowColor  = UIColor.black.cgColor
+        collectionView.layer.shadowOffset = CGSize(width: 0, height: 2)
+        collectionView.layer.shadowOpacity = 0.2
         shouldShowBackButton = false
         automaticallyAdjustsScrollViewInsets = false
         tableView.registerReusableCell(HFTableInfoCell.self)

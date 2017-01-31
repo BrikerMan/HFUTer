@@ -34,6 +34,7 @@ class HFCommunityLoveDetailCommentCell: UITableViewCell, NibReusable {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        infoLabel.copyingEnabled = true
         addSubview(infoLabel)
         infoLabel.frame = CGRect(x: 54, y: 52, width: 100, height: 100)
         avatarView.cornet(17)

@@ -54,7 +54,7 @@ class HFLoadingView: UIView {
         
         //使用AutoLayout更新位置，居中显示
         indector!.snp.makeConstraints { (make) -> Void in
-            make.centerX.equalTo(self.snp.centerX).offset(-indectorWith/2)
+            make.centerX.equalTo(self.snp.centerX)
             make.centerY.equalTo(self.snp.centerY)
         }
         

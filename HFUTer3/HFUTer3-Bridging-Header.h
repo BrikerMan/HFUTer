@@ -15,3 +15,5 @@
 #import <AVOSCloud/AVOSCloud.h>
 
 #import "YYFPSLabel.h"
+
+#import "YYLabel+Copyable.h"

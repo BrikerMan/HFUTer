@@ -25,7 +25,7 @@ class HFInfoCalendarVC: HFBaseViewController {
         initUI()
         load()
         
-         AnalyseManager.QueryCalender.record()
+        AnalyseManager.QueryCalender.record()
     }
     
     
@@ -41,7 +41,7 @@ class HFInfoCalendarVC: HFBaseViewController {
         
         HFBaseRequest.fire("/api/calendar", succesBlock: { (request, resultDic) in
             if let urlString = resultDic["data"] as? String,  let url = URL(string:urlString) {
-                PlistManager.userDataPlist.saveValues(["calendarURL":urlString as AnyObject])
+                PlistManager.userDataPlist.saveValues(["calendarURL":urlString])
                 self.loadImage(url)
             }
         }) { (request, error) in
@@ -50,9 +50,9 @@ class HFInfoCalendarVC: HFBaseViewController {
     }
     
     func loadImage(_ url: URL) {
-        self.imageView.loadImage(withURL: url, successBlock: {
+        self.imageView.loadImage(withURL: url, allowResize: false) {
             self.loadingView.hide()
-        })
+        }
     }
     
     

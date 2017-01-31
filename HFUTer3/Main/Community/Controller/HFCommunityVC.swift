@@ -21,7 +21,7 @@ class HFCommunityVC: HFBasicViewController {
     
     var actionButton: UIButton!
     
-    fileprivate var isLostAndFound      = true
+    fileprivate var isLostAndFound      = false
     fileprivate var isActionListShowing = false
     
     override func viewDidLoad() {
@@ -40,7 +40,7 @@ class HFCommunityVC: HFBasicViewController {
     @IBAction func onSegmentControlleralueChanged(_ sender: UISegmentedControl) {
         let rect = CGRect(x: ScreenWidth * CGFloat(sender.selectedSegmentIndex), y: 0, width: ScreenWidth, height: ScreenHeight)
         scrollView.scrollRectToVisible(rect, animated: false)
-        isLostAndFound = sender.selectedSegmentIndex == 0
+        isLostAndFound = sender.selectedSegmentIndex == 1
     }
     
     @objc fileprivate func onActionButtonPressed() {
@@ -72,19 +72,21 @@ class HFCommunityVC: HFBasicViewController {
         lostfindView.delegate = self
         scrollView.addSubview(lostfindView)
         
-        lostfindView.snp.makeConstraints { (make) in
-            make.left.top.bottom.equalTo(scrollView)
-            make.width.equalTo(ScreenWidth)
-            make.height.equalTo(ScreenHeight-64-49)
-        }
+
         
         loveWallView = HFCommunityHomeListView()
         loveWallView.delegate = self
         scrollView.addSubview(loveWallView)
         
         loveWallView.snp.makeConstraints { (make) in
+            make.left.top.bottom.equalTo(scrollView)
+            make.width.equalTo(ScreenWidth)
+            make.height.equalTo(ScreenHeight-64-49)
+        }
+        
+        lostfindView.snp.makeConstraints { (make) in
             make.top.bottom.right.equalTo(scrollView)
-            make.left.equalTo(lostfindView.snp.right)
+            make.left.equalTo(loveWallView.snp.right)
             make.width.equalTo(ScreenWidth)
             make.height.equalTo(ScreenHeight-64-49)
         }

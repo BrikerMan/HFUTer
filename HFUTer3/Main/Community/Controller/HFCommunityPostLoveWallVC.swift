@@ -63,7 +63,7 @@ class HFCommunityPostLoveWallVC: HFFormViewController {
             "anonymous" : anonymous as AnyObject
         ]
         
-        var imageData: (String,Data)?
+        var imageData: (name:String,data:Data)?
         
         hud.showLoading("正在发布")
         
@@ -74,7 +74,7 @@ class HFCommunityPostLoveWallVC: HFFormViewController {
             }
         }
         
-        HFBaseRequest.fire(api, image: nil, params: param, succesBlock: { (request, resultDic) in
+        HFBaseRequest.fire(api, image: imageData, params: param, succesBlock: { (request, resultDic) in
             hud.showMassage("发布成功")
             self.pop()
         }) { (request, error) in

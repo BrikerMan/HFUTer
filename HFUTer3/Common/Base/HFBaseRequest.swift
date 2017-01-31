@@ -12,7 +12,7 @@ import AlamofireDomain
 class HFBaseRequest {
     
     class func fire(_ apiURL:String,
-                    image:(name:String,data:NSData)? = nil,
+                    image:(name:String,data: Data)? = nil,
                     method: HFBaseAPIRequestMethod = .POST,
                     params: HFRequestParam = HFRequestParam(),
                     succesBlock:((_ request: HFBaseRequest, _ resultDic:HFRequestParam)->Void)?,
@@ -68,7 +68,7 @@ class HFBaseRequest {
     
     
     fileprivate func uploadFileRequestWithParam(_ apiURL:String,
-                                            image: (name:String,data:NSData)?,
+                                            image: (name:String,data: Data)?,
                                             params: HFRequestParam = HFRequestParam(),
                                             succesBlock:((_ request: HFBaseRequest, _ resultDic:HFRequestParam)->Void)?,
                                             failBlock:((_ request: HFBaseRequest, _ error:String?)->Void)?) {
@@ -129,7 +129,7 @@ class HFBaseRequest {
     
     
     
-    fileprivate func urlRequestWithComponents(_ urlString:String, parameters:HFRequestParam, imageData:(name:String,data:NSData)?) -> (URLRequestConvertible, NSData) {
+    fileprivate func urlRequestWithComponents(_ urlString:String, parameters:HFRequestParam, imageData:(name:String,data: Data)?) -> (URLRequestConvertible, NSData) {
         
         // create url request to send
         var mutableURLRequest =  URLRequest(url:URL(string: urlString)!)

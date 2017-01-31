@@ -58,18 +58,18 @@ class HFImageView: UIImageView {
     func loadCover(_ cover: String, finished:((_ image: UIImage?)->Void)? = nil) {
         let urlString = APIBaseURL + "/res/formatImage?key=" + cover
         if let url = URL(string: urlString) {
-//            let target = CGSize(width: self.size.width * ScreenScale,
-//                                height: self.size.height * ScreenScale)
+            //            let target = CGSize(width: self.size.width * ScreenScale,
+            //                                height: self.size.height * ScreenScale)
             self.yy_setImage(with: url,
                              placeholder: placeHolder,
                              options: [.progressiveBlur, .showNetworkActivity],
                              progress: nil,
                              transform: { (image, url) -> UIImage? in
                                 return image.yy_image(byRoundCornerRadius: self.cornerRadius)
-//                                var image = image.yy_imageByResize(to: target,
-//                                                                   contentMode: UIViewContentMode.scaleAspectFill)
-//                                image = image?.yy_image(byRoundCornerRadius: self.cornerRadius)
-//                                return image
+                                //                                var image = image.yy_imageByResize(to: target,
+                                //                                                                   contentMode: UIViewContentMode.scaleAspectFill)
+                                //                                image = image?.yy_image(byRoundCornerRadius: self.cornerRadius)
+                                //                                return image
             }) { (image, url, cacheType, stage, error) in
                 finished?(image)
             }
@@ -79,7 +79,7 @@ class HFImageView: UIImageView {
      基本的图片加载方法
      - parameter url: 图片链接
      */
-    func loadImage(withURL url:URL, successBlock:(()->Void)? = nil) {
+    func loadImage(withURL url:URL,allowResize: Bool = true, successBlock:(()->Void)? = nil) {
         let target = CGSize(width: self.size.width * ScreenScale,
                             height: self.size.height * ScreenScale)
         self.yy_setImage(with: url,
@@ -87,9 +87,12 @@ class HFImageView: UIImageView {
                          options: [.progressiveBlur, .showNetworkActivity],
                          progress: nil,
                          transform: { (image, url) -> UIImage? in
-                            var image = image.yy_imageByResize(to: target,
-                                                               contentMode: UIViewContentMode.scaleAspectFill)
-                            image = image?.yy_image(byRoundCornerRadius: self.cornerRadius)
+                            var image = image
+                            if allowResize {
+                                image = image.yy_imageByResize(to: target,
+                                                               contentMode: UIViewContentMode.scaleAspectFill) ?? image
+                            }
+                            image = image.yy_image(byRoundCornerRadius: self.cornerRadius) ?? image
                             return image
         }) { (image, url, cacheType, stage, error) in
             successBlock?()
@@ -99,6 +102,6 @@ class HFImageView: UIImageView {
     fileprivate func setup() {
         clipsToBounds = true
         contentMode   = UIViewContentMode.scaleAspectFill
-//        backgroundColor = HFTheme.BlackAreaColor
+        //        backgroundColor = HFTheme.BlackAreaColor
     }
 }

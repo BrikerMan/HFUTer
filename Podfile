@@ -13,7 +13,7 @@ target 'HFUTer3' do
     pod 'MJRefresh'                         ## 下拉刷新
     pod 'AIFlatSwitch'                      ## 动态选择button
     pod 'YYText'   , :git => 'https://github.com/BrikerMan/YYText.git'
-    pod 'ZYCornerRadius'                    # 优化圆角绘制
+    pod 'ZYCornerRadius'                    # 优化圆角绘制r
     
     # TableView
     pod 'UITableView+FDTemplateLayoutCell_Bell'  ##优化UITableViewCell高度计算

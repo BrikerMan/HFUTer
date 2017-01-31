@@ -36,12 +36,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.makeKeyAndVisible()
         window?.tintColor = HFTheme.TintColor
         
-        #if DEBUG
-            let label = YYFPSLabel()
-            window?.addSubview(label)
-            label.frame.origin = CGPoint(x: 5, y: ScreenHeight - 40)
-        #endif
-
+        let label = YYFPSLabel()
+        window?.addSubview(label)
+        label.frame.origin = CGPoint(x: 5, y: ScreenHeight - 40)
         
         return true
     }
