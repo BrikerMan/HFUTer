@@ -145,6 +145,9 @@
 		6A96F4CF1E3E093B00F65859 /* UIWindowExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A96F49F1E3E093B00F65859 /* UIWindowExtensions.swift */; };
 		6A96F4D01E3E093B00F65859 /* URLExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A96F4A01E3E093B00F65859 /* URLExtensions.swift */; };
 		6A96F4D11E3E093B00F65859 /* UserDefaultsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A96F4A11E3E093B00F65859 /* UserDefaultsExtension.swift */; };
+		6A9F1EA71E40BC1700FFC39D /* jcore-ios-1.1.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A9F1EA41E40BC1700FFC39D /* jcore-ios-1.1.0.a */; };
+		6A9F1EA81E40BC1700FFC39D /* jpush-ios-3.0.1.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A9F1EA51E40BC1700FFC39D /* jpush-ios-3.0.1.a */; };
+		6A9F1EAA1E40BC4E00FFC39D /* libresolv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A9F1EA91E40BC4E00FFC39D /* libresolv.tbd */; };
 		6AAF78941D0ACB7E00D08ADC /* HFMineAboutHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AAF78931D0ACB7E00D08ADC /* HFMineAboutHeaderTableViewCell.swift */; };
 		6AB5B8911CF56429001C6F2F /* HFFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AB5B8901CF56429001C6F2F /* HFFormViewController.swift */; };
 		6ABA71C51D092D8200D259F7 /* libicucore.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 6ABA71C41D092D8200D259F7 /* libicucore.tbd */; };
@@ -197,7 +200,6 @@
 		6AE8D4011E3D9B4B00E44BE3 /* SwiftyStoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AE8D4001E3D9B4B00E44BE3 /* SwiftyStoreKit.framework */; };
 		6AFA64D71D05AA27005B05F5 /* HFMineDonateSuccessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AFA64D61D05AA27005B05F5 /* HFMineDonateSuccessView.swift */; };
 		6AFA64D91D05AA32005B05F5 /* HFMineDonateSuccessView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6AFA64D81D05AA32005B05F5 /* HFMineDonateSuccessView.xib */; };
-		6AFF3DC51D0454DA00B575CA /* jpush-ios-2.1.7.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AFF3DC31D0454DA00B575CA /* jpush-ios-2.1.7.a */; };
 		6AFF3DC71D04557100B575CA /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AFF3DC61D04557100B575CA /* CFNetwork.framework */; };
 		6AFF3DC91D04557800B575CA /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AFF3DC81D04557800B575CA /* CoreFoundation.framework */; };
 		6AFF3DCB1D04557D00B575CA /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AFF3DCA1D04557D00B575CA /* CoreTelephony.framework */; };
@@ -472,6 +474,10 @@
 		6A96F49F1E3E093B00F65859 /* UIWindowExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIWindowExtensions.swift; sourceTree = "<group>"; };
 		6A96F4A01E3E093B00F65859 /* URLExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLExtensions.swift; sourceTree = "<group>"; };
 		6A96F4A11E3E093B00F65859 /* UserDefaultsExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsExtension.swift; sourceTree = "<group>"; };
+		6A9F1EA41E40BC1700FFC39D /* jcore-ios-1.1.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "jcore-ios-1.1.0.a"; sourceTree = "<group>"; };
+		6A9F1EA51E40BC1700FFC39D /* jpush-ios-3.0.1.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "jpush-ios-3.0.1.a"; sourceTree = "<group>"; };
+		6A9F1EA61E40BC1700FFC39D /* JPUSHService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPUSHService.h; sourceTree = "<group>"; };
+		6A9F1EA91E40BC4E00FFC39D /* libresolv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libresolv.tbd; path = usr/lib/libresolv.tbd; sourceTree = SDKROOT; };
 		6AAF78931D0ACB7E00D08ADC /* HFMineAboutHeaderTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFMineAboutHeaderTableViewCell.swift; sourceTree = "<group>"; };
 		6AB5B8901CF56429001C6F2F /* HFFormViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFFormViewController.swift; sourceTree = "<group>"; };
 		6ABA71C41D092D8200D259F7 /* libicucore.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libicucore.tbd; path = usr/lib/libicucore.tbd; sourceTree = SDKROOT; };
@@ -526,8 +532,6 @@
 		6AE8D4001E3D9B4B00E44BE3 /* SwiftyStoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SwiftyStoreKit.framework; sourceTree = "<group>"; };
 		6AFA64D61D05AA27005B05F5 /* HFMineDonateSuccessView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFMineDonateSuccessView.swift; sourceTree = "<group>"; };
 		6AFA64D81D05AA32005B05F5 /* HFMineDonateSuccessView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HFMineDonateSuccessView.xib; sourceTree = "<group>"; };
-		6AFF3DC31D0454DA00B575CA /* jpush-ios-2.1.7.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "jpush-ios-2.1.7.a"; sourceTree = "<group>"; };
-		6AFF3DC41D0454DA00B575CA /* JPUSHService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPUSHService.h; sourceTree = "<group>"; };
 		6AFF3DC61D04557100B575CA /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		6AFF3DC81D04557800B575CA /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		6AFF3DCA1D04557D00B575CA /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
@@ -658,6 +662,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6A9F1EAA1E40BC4E00FFC39D /* libresolv.tbd in Frameworks */,
 				6ABA71C51D092D8200D259F7 /* libicucore.tbd in Frameworks */,
 				6A1CEA601D04925500481D3A /* CoreLocation.framework in Frameworks */,
 				6AFF3DCB1D04557D00B575CA /* CoreTelephony.framework in Frameworks */,
@@ -670,13 +675,14 @@
 				6AFF3DD31D04559E00B575CA /* UIKit.framework in Frameworks */,
 				6AFF3DD11D04559300B575CA /* Foundation.framework in Frameworks */,
 				6AFF3DCF1D04558B00B575CA /* CoreGraphics.framework in Frameworks */,
+				6A9F1EA81E40BC1700FFC39D /* jpush-ios-3.0.1.a in Frameworks */,
 				6AFF3DC91D04557800B575CA /* CoreFoundation.framework in Frameworks */,
 				6AFF3DC71D04557100B575CA /* CFNetwork.framework in Frameworks */,
 				6AE544431CFF01C200EB3FE7 /* JavaScriptCore.framework in Frameworks */,
-				6AFF3DC51D0454DA00B575CA /* jpush-ios-2.1.7.a in Frameworks */,
 				6A3E80D21D06DBB300E88445 /* AVOSCloud.framework in Frameworks */,
 				6A0774BD1D06FBE9006D3C2C /* StoreKit.framework in Frameworks */,
 				6AE544411CFF00D400EB3FE7 /* JSPatch.framework in Frameworks */,
+				6A9F1EA71E40BC1700FFC39D /* jcore-ios-1.1.0.a in Frameworks */,
 				ABC177B7B17421ECD3C39761 /* Pods_HFUTer3.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -705,6 +711,7 @@
 		3CD492DC3DFC63018EFDFEAD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6A9F1EA91E40BC4E00FFC39D /* libresolv.tbd */,
 				6ABA71C41D092D8200D259F7 /* libicucore.tbd */,
 				6A0774BC1D06FBE9006D3C2C /* StoreKit.framework */,
 				6A1CEA5F1D04925500481D3A /* CoreLocation.framework */,
@@ -1021,8 +1028,9 @@
 		6AFF3DC21D0454DA00B575CA /* JPush */ = {
 			isa = PBXGroup;
 			children = (
-				6AFF3DC31D0454DA00B575CA /* jpush-ios-2.1.7.a */,
-				6AFF3DC41D0454DA00B575CA /* JPUSHService.h */,
+				6A9F1EA41E40BC1700FFC39D /* jcore-ios-1.1.0.a */,
+				6A9F1EA51E40BC1700FFC39D /* jpush-ios-3.0.1.a */,
+				6A9F1EA61E40BC1700FFC39D /* JPUSHService.h */,
 			);
 			path = JPush;
 			sourceTree = "<group>";

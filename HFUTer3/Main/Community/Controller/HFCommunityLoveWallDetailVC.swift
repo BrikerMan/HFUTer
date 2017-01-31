@@ -73,6 +73,9 @@ class HFCommunityLoveWallDetailVC: HFBaseViewController, XibBasedController {
                             self.mainModel.favorite = true
                             self.mainModel.favoriteCount += 1
                             self.updateLikeView()
+                            runOnMainThread {
+                                self.tableView.reloadData()
+                            }
                             hud.dismiss()
                             NotificationCenter.default.post(name: Notification.Name(rawValue: HFNotification.LoveWallModelUpdate.rawValue), object: nil)
         }) { (request, error) in
@@ -84,14 +87,40 @@ class HFCommunityLoveWallDetailVC: HFBaseViewController, XibBasedController {
         let vc = HFCommonWriteVC()
         vc.publishBlock = { text,anonymous in
             let param: HFRequestParam = [
-                "id": self.mainModel.id as AnyObject,
-                "content":  text as AnyObject,
-                "anonymous" :anonymous as AnyObject
+                "id": self.mainModel.id,
+                "content":  text,
+                "anonymous" :anonymous
             ]
             self.sendCommentRequest(param)
             AnalyseManager.CommentLoveWall.record()
         }
         self.present(vc, animated: true, completion: nil)
+    }
+    
+    func onDeletePressed(model: HFComLoveWallCommentModel, index: Int) {
+        let alert = UIAlertController(title: "确定删除？", message: nil, preferredStyle: .alert)
+        let conferm = UIAlertAction(title: "", style: .destructive) { _ in
+            HFBaseRequest.fire(api: "/api/confession/deleteComment",
+                               method: .POST,
+                               params: ["id":model.id],
+                               response: { (json, error) in
+                                if let error = error {
+                                    HFToast.showError(error)
+                                } else {
+                                    self.commentList.remove(at: index)
+                                    self.mainModel.commentCount -= 1
+                                    runOnMainThread {
+                                        self.tableView.reloadData()
+                                    }
+                                }
+            })
+        }
+        let cancel = UIAlertAction(title: "取消", style: .cancel) { _ in
+            
+        }
+        alert.addAction(conferm)
+        alert.addAction(cancel)
+        self.presentVC(alert)
     }
     
     fileprivate func initUI() {
@@ -154,14 +183,7 @@ extension HFCommunityLoveWallDetailVC: HFCommunityLoveDetailCommentCellDelegate 
             self.present(vc, animated: true, completion: nil)
             
         case .delete:
-            HFBaseRequest.fire("/api/confession/delete",
-                               method: HFBaseAPIRequestMethod.POST,
-                               params: ["id":model.id],
-                               succesBlock: { (request, resultDic) in
-                                print(resultDic)
-            }) { (request, error) in
-                hud.showError(error)
-            }
+              onDeletePressed(model: model, index: cell.index)
         }
     }
 }

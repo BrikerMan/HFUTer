@@ -57,13 +57,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         JPUSHService.registerDeviceToken(deviceToken)
         if let user = DataEnv.user {
-            JPUSHService.setTags(Set([user.sid, testflight]), aliasInbackground: "push")
+            JPUSHService.setTags(Set(["push", testflight]), aliasInbackground: "\(user.sid)")
+        } else {
+            JPUSHService.setTags(Set(["push", testflight]), aliasInbackground: "000000")
         }
         let currentInstallation = AVInstallation.current()
         let sid = DataEnv.user?.sid ?? "\(000000)"
        
         currentInstallation?.setDeviceTokenFrom(deviceToken)
         currentInstallation?.setObject(sid, forKey: "sid")
+        currentInstallation?.channels = [testflight]
         currentInstallation?.saveInBackground()
     }
     

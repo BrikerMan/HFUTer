@@ -61,9 +61,7 @@ class HFInfoGradesCalculatorCell: UITableViewCell, NibReusable {
         cridetLabel.text = "学分：\(model.credit)"
         gpaLabel.text    = "绩点：\(model.gpa)"
 
-//        selectionButton.isSelected = (model.gpa == "公选")
-        
-        
+        selectionButton.isSelected = (model.gpa == "公选")
     }
     
     @IBAction func onSwitchValueChange(_ sender: AnyObject) {

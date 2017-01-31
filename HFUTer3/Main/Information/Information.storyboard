@@ -1838,7 +1838,7 @@
                                                         <action selector="onDeleteButtonPressed:" destination="UAS-ba-W7L" eventType="touchUpInside" id="DYX-z6-f3x"/>
                                                     </connections>
                                                 </button>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hgT-Rb-dFx" customClass="AIFlatSwitch" customModule="HFUTer3" customModuleProvider="target">
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hgT-Rb-dFx">
                                                     <rect key="frame" x="292" y="25" width="20" height="20"/>
                                                     <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
@@ -1878,7 +1878,7 @@
                                             <outlet property="gpaLabel" destination="0bC-c8-AdB" id="tIh-mp-mOa"/>
                                             <outlet property="mekupLabel" destination="vjH-1D-KS4" id="inP-ZO-RUB"/>
                                             <outlet property="scoreLabel" destination="hlw-CQ-4va" id="tdt-pN-bEI"/>
-                                            <outlet property="selectionButton" destination="hgT-Rb-dFx" id="fO7-49-Gkd"/>
+                                            <outlet property="selectionButtonBack" destination="hgT-Rb-dFx" id="Xt2-D9-7qn"/>
                                             <outlet property="titleLabel" destination="AqI-sZ-XhU" id="kEF-NI-l2v"/>
                                         </connections>
                                     </tableViewCell>

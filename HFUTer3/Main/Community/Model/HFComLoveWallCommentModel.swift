@@ -19,7 +19,13 @@ class HFComLoveWallCommentModel: HFBaseModel {
     var at       : [HFComLoveWallCommentAtModel] = []
     
     var detailLayout : YYTextLayout? /// 详情页文字布局
+    
+//    static func ==(lhs: HFComLoveWallCommentModel, rhs: HFComLoveWallCommentModel) -> Bool {
+//        return lhs.id == rhs.id
+//    }
 }
+
+
 
 class HFComLoveWallCommentAtModel: HFBaseModel {
     var id    = 0
