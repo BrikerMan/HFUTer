@@ -35,7 +35,6 @@ class HFGetCommunityLostAndFindRequest: HFBaseAPIManager {
         if let list = data["data"] as? [AnyObject] {
             for item in list {
                 if let model = HFComLostFoundModel.yy_model(withJSON: item) {
-                    
                     models.append(model)
                 }
             }

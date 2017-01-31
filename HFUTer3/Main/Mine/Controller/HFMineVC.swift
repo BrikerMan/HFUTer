@@ -166,7 +166,8 @@ extension HFMineVC: UITableViewDelegate {
             
         default:
             print(indexPath)
-            self.performSegue(withIdentifier: "HFMineSeguePushSettingVC", sender: nil)
+            break
+//            self.performSegue(withIdentifier: "HFMineSeguePushSettingVC", sender: nil)
         }
         tableView.deselectRow(at: indexPath, animated: true)
     }

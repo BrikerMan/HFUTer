@@ -85,6 +85,15 @@ class HFMinePublishVC: HFBasicViewController {
         loveWallRequest.isMine = true
         loveWallRequest.callback = self
         loveWallRequest.loadData()
+        
+        HFBaseRequest.fire(api: "/api/confession/list",
+                           method: .POST,
+                           params: [RequestPage : 0]) { (response, error) in
+                            print("===============  \(response)" )
+                            
+                            
+                            
+        }
     }
 }
 

@@ -125,6 +125,6 @@ extension HFInfoGradesVC: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 20
+        return 26
     }
 }

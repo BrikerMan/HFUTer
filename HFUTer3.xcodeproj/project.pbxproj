@@ -74,6 +74,7 @@
 		6A338F121D04375600A40C98 /* HFHelpInfoWebVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A338F101D04375600A40C98 /* HFHelpInfoWebVC.swift */; };
 		6A338F131D04375600A40C98 /* HFHelpInfoWebVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6A338F111D04375600A40C98 /* HFHelpInfoWebVC.xib */; };
 		6A3E6F101E407DE7001FA3E3 /* YYLabel+Copyable.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A3E6F0F1E407DE7001FA3E3 /* YYLabel+Copyable.m */; };
+		6A3E6F131E408B96001FA3E3 /* HFAPIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A3E6F121E408B96001FA3E3 /* HFAPIRequest.swift */; };
 		6A3E80D21D06DBB300E88445 /* AVOSCloud.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A3E80D11D06DBB300E88445 /* AVOSCloud.framework */; };
 		6A3EAAEE1CE0227000809226 /* HFComLoveWallListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A3EAAED1CE0227000809226 /* HFComLoveWallListModel.swift */; };
 		6A3EAAF01CE0263B00809226 /* HFGetCommunityLoveWallListRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A3EAAEF1CE0263B00809226 /* HFGetCommunityLoveWallListRequest.swift */; };
@@ -397,6 +398,7 @@
 		6A338F111D04375600A40C98 /* HFHelpInfoWebVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HFHelpInfoWebVC.xib; sourceTree = "<group>"; };
 		6A3E6F0F1E407DE7001FA3E3 /* YYLabel+Copyable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "YYLabel+Copyable.m"; sourceTree = "<group>"; };
 		6A3E6F111E407DFA001FA3E3 /* YYLabel+Copyable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "YYLabel+Copyable.h"; sourceTree = "<group>"; };
+		6A3E6F121E408B96001FA3E3 /* HFAPIRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFAPIRequest.swift; sourceTree = "<group>"; };
 		6A3E80D11D06DBB300E88445 /* AVOSCloud.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AVOSCloud.framework; sourceTree = "<group>"; };
 		6A3EAAED1CE0227000809226 /* HFComLoveWallListModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFComLoveWallListModel.swift; sourceTree = "<group>"; };
 		6A3EAAEF1CE0263B00809226 /* HFGetCommunityLoveWallListRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFGetCommunityLoveWallListRequest.swift; sourceTree = "<group>"; };
@@ -1511,6 +1513,7 @@
 			children = (
 				6B83552C1C980FC5002DBE06 /* HFBaseAPIRequest.swift */,
 				6A128E201CF69247000185C3 /* HFBaseRequest.swift */,
+				6A3E6F121E408B96001FA3E3 /* HFAPIRequest.swift */,
 				6BCF69001C9A5349008646BA /* HFUpdateCookieRequest.swift */,
 				6B89D9091C9941800030DD7D /* HFLog.swift */,
 				6B89D91E1C994D920030DD7D /* HFHudView.swift */,
@@ -1567,10 +1570,10 @@
 				6B5C14691C86EACB00A08941 /* Resources */,
 				E81402121332250AF2DE5D30 /* [CP] Embed Pods Frameworks */,
 				B0FAD8F868D7A7AA58F0ACE0 /* [CP] Copy Pods Resources */,
-				6AE4A28C1CFFFE3D0025BB79 /* Fabric */,
 				9734F4D61C1D1C8DA80EA28E /* Embed Pods Frameworks */,
 				6A7988A41D6C79900068C6F6 /* Embed App Extensions */,
 				6AF50A5E1E3C7C9D006B1F75 /* Carthage Run Script */,
+				6AE4A28C1CFFFE3D0025BB79 /* Fabric */,
 			);
 			buildRules = (
 			);
@@ -2014,6 +2017,7 @@
 				6ACB1EB41E40331200B708C7 /* UICollectionView+Reusable.swift in Sources */,
 				6A2C98C31D6C20AC00BD5182 /* HFInfoRankingHeaderCell.swift in Sources */,
 				6A96F4AD1E3E093B00F65859 /* CGPointExtensions.swift in Sources */,
+				6A3E6F131E408B96001FA3E3 /* HFAPIRequest.swift in Sources */,
 				6B94268C1CA965E300C8E85D /* HFMineSettingVC.swift in Sources */,
 				6A96F4CB1E3E093B00F65859 /* UITextViewExtensions.swift in Sources */,
 				6A96F4C41E3E093B00F65859 /* UIImageExtensions.swift in Sources */,
@@ -2205,6 +2209,7 @@
 				CODE_SIGN_ENTITLEMENTS = HFUTer3/HFUTer3.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (

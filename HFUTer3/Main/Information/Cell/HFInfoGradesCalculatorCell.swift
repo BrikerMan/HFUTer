@@ -16,7 +16,7 @@ protocol HFInfoGradesCalculatorCellDelegate :class{
 }
 
 
-class HFInfoGradesCalculatorCell: UITableViewCell {
+class HFInfoGradesCalculatorCell: UITableViewCell, NibReusable {
     
     weak var delegate: HFInfoGradesCalculatorCellDelegate?
     
@@ -29,7 +29,8 @@ class HFInfoGradesCalculatorCell: UITableViewCell {
     @IBOutlet weak var cridetLabel : UILabel!
     @IBOutlet weak var gpaLabel    : LTMorphingLabel!
     
-    @IBOutlet weak var selectionButton: AIFlatSwitch!
+    @IBOutlet weak var selectionButtonBack: UIView!
+    let selectionButton = AIFlatSwitch()
     
     
     override func awakeFromNib() {
@@ -38,6 +39,11 @@ class HFInfoGradesCalculatorCell: UITableViewCell {
         selectionButton.trailStrokeColor = HFTheme.LightTintColor
         gpaLabel.morphingEffect = .fall
         gpaLabel.morphingEnabled = false
+        
+        selectionButtonBack.addSubview(selectionButton)
+        selectionButton.snp.makeConstraints {
+            $0.edges.equalTo(selectionButtonBack)
+        }
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -55,7 +61,7 @@ class HFInfoGradesCalculatorCell: UITableViewCell {
         cridetLabel.text = "学分：\(model.credit)"
         gpaLabel.text    = "绩点：\(model.gpa)"
 
-        selectionButton.isSelected = (model.gpa == "公选")
+//        selectionButton.isSelected = (model.gpa == "公选")
         
         
     }

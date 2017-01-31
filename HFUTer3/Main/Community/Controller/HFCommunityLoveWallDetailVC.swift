@@ -27,6 +27,16 @@ class HFCommunityLoveWallDetailVC: HFBaseViewController, XibBasedController {
         navTitle = "表白详情"
     }
     
+    func loadDetail() {
+        HFBaseRequest.fire("/api/confession/detail" ,
+                           params:[:] ,
+                           succesBlock: { (reqeust, result) in
+                            
+        }) { (request, error) in
+            
+        }
+    }
+    
     @objc fileprivate func loadData() {
         loadingView.show()
         commentReqeust = HFGetComLoveWallCommentRequest()
@@ -56,12 +66,15 @@ class HFCommunityLoveWallDetailVC: HFBaseViewController, XibBasedController {
             return
         }
         hud.showLoading("正在处理")
-        HFBaseRequest.fire("/api/confession/favorite", method: HFBaseAPIRequestMethod.POST, params: ["id":mainModel.id as AnyObject], succesBlock: { (request, resultDic) in
-            self.mainModel.favorite = true
-            self.mainModel.favoriteCount += 1
-            self.updateLikeView()
-            hud.dismiss()
-            NotificationCenter.default.post(name: Notification.Name(rawValue: HFNotification.LoveWallModelUpdate.rawValue), object: nil)
+        HFBaseRequest.fire("/api/confession/favorite",
+                           method: HFBaseAPIRequestMethod.POST,
+                           params: ["id":mainModel.id],
+                           succesBlock: { (request, resultDic) in
+                            self.mainModel.favorite = true
+                            self.mainModel.favoriteCount += 1
+                            self.updateLikeView()
+                            hud.dismiss()
+                            NotificationCenter.default.post(name: Notification.Name(rawValue: HFNotification.LoveWallModelUpdate.rawValue), object: nil)
         }) { (request, error) in
             hud.showError(error)
         }
