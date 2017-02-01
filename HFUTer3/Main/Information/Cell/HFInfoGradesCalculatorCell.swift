@@ -32,7 +32,6 @@ class HFInfoGradesCalculatorCell: UITableViewCell, NibReusable {
     @IBOutlet weak var selectionButtonBack: UIView!
     let selectionButton = AIFlatSwitch()
     
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         selectionButton.strokeColor = HFTheme.TintColor
@@ -44,6 +43,7 @@ class HFInfoGradesCalculatorCell: UITableViewCell, NibReusable {
         selectionButton.snp.makeConstraints {
             $0.edges.equalTo(selectionButtonBack)
         }
+        selectionButton.addTarget(self, action: #selector(onSwitchValueChange(_:)), for: .valueChanged)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

@@ -76,12 +76,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any]) {
         JPUSHService.handleRemoteNotification(userInfo)
-        print("受到通知", userInfo)
+        print("收到通知", userInfo)
         NotificationCenter.default.post(name: Notification.Name(rawValue: HFNotification.ReceiveRemoteNotif.rawValue), object: nil)
     }
     
     func application(_ application: UIApplication, didReceive notification: UILocalNotification) {
-        JPUSHService.showLocalNotification(atFront: notification, identifierKey: nil)
+//        JPUSHService.showLocalNotification(atFront: notification, identifierKey: nil)
     }
     
     func applicationDidBecomeActive(_ application: UIApplication) {

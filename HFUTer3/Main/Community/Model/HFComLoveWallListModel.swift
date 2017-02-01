@@ -21,6 +21,10 @@ class HFComLoveWallListModel: HFBaseModel {
     var name            = ""
     var color           = 0
     
+    // 是否匿名
+    var anonymous = false
+    
+    
     // 表白照片
     var cImage : String?
     var cImageSize : CGSize?

@@ -50,20 +50,22 @@ class HFMinePublishVC: HFBasicViewController {
         lostfindView.delegate = self
         scrollView.addSubview(lostfindView)
         
-        lostfindView.snp.makeConstraints { (make) in
-            make.left.top.bottom.equalTo(scrollView)
-            make.width.equalTo(ScreenWidth)
-            make.height.equalTo(ScreenHeight-64)
-        }
-        
+
         loveWallView = HFCommunityHomeListView()
         loveWallView.isAllowDelete = true
         loveWallView.delegate = self
         scrollView.addSubview(loveWallView)
         
         loveWallView.snp.makeConstraints { (make) in
+            make.left.top.bottom.equalTo(scrollView)
+            make.width.equalTo(ScreenWidth)
+            make.height.equalTo(ScreenHeight-64)
+        }
+        
+        
+        lostfindView.snp.makeConstraints { (make) in
             make.top.bottom.right.equalTo(scrollView)
-            make.left.equalTo(lostfindView.snp.right)
+            make.left.equalTo(loveWallView.snp.right)
             make.width.equalTo(ScreenWidth)
             make.height.equalTo(ScreenHeight-64)
         }
@@ -85,15 +87,6 @@ class HFMinePublishVC: HFBasicViewController {
         loveWallRequest.isMine = true
         loveWallRequest.callback = self
         loveWallRequest.loadData()
-        
-        HFBaseRequest.fire(api: "/api/confession/list",
-                           method: .POST,
-                           params: [RequestPage : 0]) { (response, error) in
-                            print("===============  \(response)" )
-                            
-                            
-                            
-        }
     }
 }
 
@@ -113,7 +106,7 @@ extension HFMinePublishVC: HFBaseAPIManagerCallBack {
         }
         
         if let manager = manager as? HFGetCommunityLoveWallListRequest {
-            let result =  HFGetCommunityLoveWallListRequest.handleData(manager.resultDic)
+            let result =  HFGetCommunityLoveWallListRequest.handleData(manager.resultDic, isMine: true)
             if manager.page == 0 {
                 loveWallView.loveModels.removeAll()
             }

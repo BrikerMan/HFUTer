@@ -48,7 +48,7 @@ class Utilities {
         
         let day = Int(hour/24)
         if day < 300 {
-            return date.toString(format: "MM-dd hh:mm")
+            return date.toString(format: "M-d hh:mm")
         }
         return date.toString(format: "yy-MM-dd hh:mm")
         

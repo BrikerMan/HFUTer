@@ -43,7 +43,6 @@ class HFCommunityHomeListView: HFXibView {
     override func initFromXib() {
         super.initFromXib()
         tableView.registerReusableCell(FMCommunityLostAndFindCell.self)
-        tableView.registerReusableCell(FMCommunityLoveWellCell.self)
         tableView.registerReusableCell(HFCommunityLoveWallListCell.self)
         tableView.addLoadMoreView()
         tableView.backgroundColor = HFTheme.BlackAreaColor

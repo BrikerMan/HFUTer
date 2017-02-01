@@ -30,12 +30,16 @@ class HFGetCommunityLoveWallListRequest: HFBaseAPIManager {
         return ["pageIndex":page as AnyObject]
     }
     
-    static func handleData(_ data:HFRequestParam) -> [HFComLoveWallListModel] {
+    static func handleData(_ data:HFRequestParam, isMine: Bool = false) -> [HFComLoveWallListModel] {
         var models = [HFComLoveWallListModel]()
         
         if let list = data["data"] as? [AnyObject] {
             for item in list {
                 if let model = HFComLoveWallListModel.yy_model(withJSON: item) {
+                    if isMine && !model.anonymous {
+                        model.image = DataEnv.user!.image
+                        model.name  = DataEnv.user!.name
+                    }
                     models.append(model)
                 }
             }
