@@ -114,32 +114,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func handleFristLuacnh() {
-        let isFirstLaunch = UserDefaults.standard.object(forKey: "isFirstLaunchFor\(AppVersion)") as? Bool ?? true
+        let isFirstLaunch = UserDefaults.standard.object(forKey: "isFirstLaunchFor\(ez.appBuild ?? "0000")") as? Bool ?? true
         if isFirstLaunch {
             UserDefaults.standard.set(false, forKey: "isFirstLaunchFor\(AppVersion)")
             
             let cache = YYWebImageManager.shared().cache
             cache?.memoryCache.removeAllObjects()
-            cache?.diskCache.removeAllObjects()
-            
-            let mypaths:NSArray = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.userDomainMask, true) as NSArray
-            let mydocpath:String = mypaths.object(at: 0) as! String
-            
-            for file in [PlistManager.dataPlist,PlistManager.settingsPlist,PlistManager.userDataPlist] {
-                let detaPath = (mydocpath as NSString).appendingPathComponent(file.name).characters.split{$0 == "."}.map(String.init).first!
-                
-                if FileManager.default.fileExists(atPath: detaPath) {
-                    if let oldValues = NSDictionary(contentsOfFile: detaPath) as? HFRequestParam {
-                        file.saveValues(oldValues as [String : AnyObject])
-                        do {
-                            try FileManager.default.removeItem(atPath: detaPath)
-                        }
-                        catch {
-                            print("Ooops! Something went wrong:")
-                        }
-                    }
-                }
-            }
+            cache?.diskCache.removeAllObjects()    
         }
     }
 }

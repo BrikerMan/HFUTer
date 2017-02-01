@@ -48,6 +48,7 @@ class HFCommunityLoveWallListCell: UITableViewCell, NibReusable {
         addSubview(bigImageView)
         avatarView.cornet(17)
         bigImageView.cornet(4)
+        bigImageView.contentMode = .scaleToFill
     }
     
     func setupWithModel(_ model: HFComLoveWallListModel, index: Int, isDetail: Bool = false) {
@@ -108,7 +109,7 @@ class HFCommunityLoveWallListCell: UITableViewCell, NibReusable {
         
         
         
-        if let bigImage = model.cImage {
+        if let _ = model.cImage {
             var frame = CGRect(x: 53,
                                y: model.listLayout!.textBoundingSize.height + 54 + 8,
                                w: 200,
@@ -122,17 +123,20 @@ class HFCommunityLoveWallListCell: UITableViewCell, NibReusable {
             
             bigImageView.frame = frame
             
-            loadCover(bigImage, finished: { (image) in
+            loadCover(for: model, finished: { (image) in
                 
                 var size = CGSize(width: 100, height: 190)
                 let imagesize  = model.cImageSize ?? image?.size ?? self.bigImageView.size
                 
-                var width = imagesize.width * 190 / imagesize.height
-                if width > ScreenWidth - 64 {
-                    width = ScreenWidth - 64
+                let x: CGFloat
+                if !isDetail {
+                    x = 54
+                    size = Utilities.getWidthWithFixedHeight(size: imagesize, height: 190, maxWidth: ScreenWidth - 64)
+                } else {
+                    x = 10
+                    size = Utilities.getImageSize(size: imagesize, maxWidth: ScreenWidth - 20)
                 }
-                size.width = width
-                let x: CGFloat = !isDetail ? 53 : 10
+                
                 self.bigImageView.frame = CGRect(x: x,
                                                  y: self.bigImageView.frame.y,
                                                  w: size.width,
@@ -143,26 +147,39 @@ class HFCommunityLoveWallListCell: UITableViewCell, NibReusable {
         }
     }
     
-    func loadCover(_ cover: String, finished:((_ image: UIImage?)->Void)? = nil) {
+    func loadCover(for model: HFComLoveWallListModel, finished:((_ image: UIImage?)->Void)? = nil) {
         let placeHolder = UIImage(named: "hf_cover_placeholder")
-        let urlString = APIBaseURL + "/res/formatImage?key=" + cover
+        let urlString = APIBaseURL + "/res/formatImage?key=" + model.cImage!
         if let url = URL(string: urlString) {
             bigImageView.yy_setImage(with: url,
                                      placeholder: placeHolder,
-                                     options: [.progressiveBlur, .showNetworkActivity],
-                                     progress: nil,
-                                     transform: { (image, url) -> UIImage? in
-                                        return image.yy_image(byRoundCornerRadius: 4 * ScreenScale)
-            }) { (image, url, cacheType, stage, error) in
+                                     options:  [.progressiveBlur, .showNetworkActivity],
+                                     completion: { (image, url, cacheType, stage, error) in
+                model.cImageSize = image?.size
                 finished?(image)
-            }
+            })
+            
+//            bigImageView.yy_setImage(with: url,
+//                                     placeholder: placeHolder,
+//                                     options: [.progressiveBlur, .showNetworkActivity],
+//                                     progress: nil,
+//                                     transform: { (image, url) -> UIImage? in
+//                                        return image
+////                                        return image.yy_image(byRoundCornerRadius: 4 * ScreenScale)
+//            }) { (image, url, cacheType, stage, error) in
+//                model.cImageSize = image?.size
+//                finished?(image)
+//            }
         }
     }
     
     static func height(model: HFComLoveWallListModel, isDetail: Bool = false) -> CGFloat {
-        let imageHeight: CGFloat = model.cImage != nil ? 200 : 0
+        var imageHeight: CGFloat = model.cImage != nil ? 200 : 0
         
         if isDetail {
+            if let imageSize = model.cImageSize {
+                imageHeight = Utilities.getImageSize(size: imageSize, maxWidth: ScreenWidth - 20).height + 10
+            }
             if let layout = model.detailLayout {
                 return layout.textBoundingSize.height + 54 + 22 + imageHeight
             }
@@ -195,7 +212,7 @@ class HFCommunityLoveWallListCell: UITableViewCell, NibReusable {
                 ])
         }
         let layout = YYTextLayout(container: container, text: attText)!
-
+        
         if isDetail {
             model.detailLayout = layout
             return layout.textBoundingSize.height + 54 + 14 + imageHeight

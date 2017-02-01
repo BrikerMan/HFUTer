@@ -86,7 +86,10 @@ extension HFInfoRankingVC: UITableViewDataSource {
 extension HFInfoRankingVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 0 {
-            return 44
+            return tableView.fd_heightForCell(withIdentifier: "HFInfoRankingHeaderCell", cacheBy: indexPath, configuration: { (cell) in
+                let cell = cell as? HFInfoRankingHeaderCell
+                cell?.setup(self.attempedNumber)
+            })
         } else {
             return 94
         }

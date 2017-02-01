@@ -71,4 +71,25 @@ class Utilities {
         return newImage!
     }
     
+    /// 计算图片大小
+    static func getImageSize(size: CGSize, maxWidth: CGFloat) -> CGSize {
+        if size.width < maxWidth {
+            return size
+        } else {
+            let height = size.height * maxWidth / size.width
+            return CGSize(width: maxWidth, height: height)
+        }
+    }
+    
+    /// 固定高度，计算图片宽度
+    static func getWidthWithFixedHeight(size: CGSize, height: CGFloat, maxWidth: CGFloat) -> CGSize {
+        var width = size.width * height / size.height
+        if width < maxWidth {
+            return CGSize(width: width, height: height)
+        } else {
+            width = maxWidth
+            return CGSize(width: width, height: height)
+        }
+    }
+    
 }

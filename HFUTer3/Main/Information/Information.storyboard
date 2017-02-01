@@ -159,8 +159,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NaP-zw-VvA">
-                                                    <rect key="frame" x="15" y="13" width="38" height="18"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NaP-zw-VvA">
+                                                    <rect key="frame" x="15" y="10" width="350" height="23.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                                     <color key="textColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -168,7 +168,9 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="NaP-zw-VvA" firstAttribute="leading" secondItem="FEd-Wy-vYh" secondAttribute="leading" constant="15" id="9Qc-69-LUk"/>
-                                                <constraint firstItem="NaP-zw-VvA" firstAttribute="centerY" secondItem="FEd-Wy-vYh" secondAttribute="centerY" id="qwJ-8Q-Rwd"/>
+                                                <constraint firstAttribute="bottom" secondItem="NaP-zw-VvA" secondAttribute="bottom" constant="10" id="DmF-6k-pgx"/>
+                                                <constraint firstAttribute="trailing" secondItem="NaP-zw-VvA" secondAttribute="trailing" constant="10" id="PdM-0O-x7Q"/>
+                                                <constraint firstItem="NaP-zw-VvA" firstAttribute="top" secondItem="FEd-Wy-vYh" secondAttribute="top" constant="10" id="ibe-J2-oaw"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -828,7 +830,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="马克思" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jTj-Wc-48G">
-                                                    <rect key="frame" x="245" y="29" width="40" height="15"/>
+                                                    <rect key="frame" x="245" y="28" width="40" height="15"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="40" id="WuJ-tS-MM0"/>
                                                     </constraints>
@@ -837,7 +839,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="马克思" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0NK-YF-lc0">
-                                                    <rect key="frame" x="295" y="29" width="40" height="15"/>
+                                                    <rect key="frame" x="295" y="28" width="40" height="15"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="40" id="lh8-hz-t62"/>
                                                     </constraints>

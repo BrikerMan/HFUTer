@@ -18,8 +18,8 @@ let ServerInfoFile  = "https://coding.net/u/Haidy/p/HfuterSettings/git/raw/maste
 var APIBaseURL      = "http://wehfut.duapp.com"
 let SettingInfo     = "https://coding.net/u/eliyar917/p/HFUTer-Settings/git/raw/master/setting"
 
-let HFSemesterStartTime = 1472407200
-let XCSemesterStartTime = 1472407200
+let HFSemesterStartTime = 1487520000
+let XCSemesterStartTime = 1487520000
 
 let JSPatchAppKey   = "b8f87fcd146b9bc8"
 let JPushAppKey     = "c7031180612e5564f89cca6e"
