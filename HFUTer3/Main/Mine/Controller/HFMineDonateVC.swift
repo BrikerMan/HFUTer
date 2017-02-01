@@ -50,7 +50,7 @@ class HFMineDonateVC: HFBaseViewController {
         
         AnalyseManager.Donate.record()
     }
-
+    
     
     fileprivate func buyProduct(_ product: SKProduct) {
         print("buy " + product.productIdentifier)
@@ -151,11 +151,7 @@ extension HFMineDonateVC: HFMineDonateCellDelegate {
 
 extension HFMineDonateVC: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        if DataEnv.allowDashang {
-            return 3
-        } else {
-            return 2
-        }
+        return 3
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -207,7 +203,11 @@ extension HFMineDonateVC: UITableViewDelegate {
             }
             return 60
         } else {
-            return ScreenWidth + 25
+            if DataEnv.allowDashang {
+                return ScreenWidth + 25
+            } else {
+                return 0
+            }
         }
     }
 }

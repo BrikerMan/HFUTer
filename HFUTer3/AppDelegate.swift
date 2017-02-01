@@ -11,8 +11,8 @@ import Fabric
 import Crashlytics
 import YYWebImage
 
-let Is_Build_For_App_Store = false
-let Is_TestFlight          = true
+let Is_Build_For_App_Store = true
+let Is_TestFlight          = false
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -36,9 +36,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.makeKeyAndVisible()
         window?.tintColor = HFTheme.TintColor
         
-        let label = YYFPSLabel()
-        window?.addSubview(label)
-        label.frame.origin = CGPoint(x: 5, y: ScreenHeight - 40)
+//        let label = YYFPSLabel()
+//        window?.addSubview(label)
+//        label.frame.origin = CGPoint(x: 5, y: ScreenHeight - 40)
         
         return true
     }
