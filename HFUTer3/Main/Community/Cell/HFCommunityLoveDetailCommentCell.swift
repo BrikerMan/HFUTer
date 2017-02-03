@@ -83,7 +83,7 @@ class HFCommunityLoveDetailCommentCell: UITableViewCell, NibReusable {
         }
         
         let textAttributes   = [ NSFontAttributeName: UIFont.systemFont(ofSize: 14), NSForegroundColorAttributeName: HFTheme.DarkTextColor ]
-        let atTextAttributes = [ NSFontAttributeName: UIFont.systemFont(ofSize: 14), NSForegroundColorAttributeName: HFTheme.TintColor ]
+        let atTextAttributes = [ NSFontAttributeName: UIFont.systemFont(ofSize: 14), NSForegroundColorAttributeName: HFTheme.TintColor ] as [String : Any]
         
         var attText: NSMutableAttributedString
         

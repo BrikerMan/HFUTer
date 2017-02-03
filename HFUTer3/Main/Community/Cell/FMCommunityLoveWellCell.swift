@@ -99,8 +99,11 @@ class FMCommunityLoveWellCell: UITableViewCell, NibReusable {
         }
         timeLabel.text  = Utilities.getTimeStringFromTimeStamp(model.date_int)
         
-        let textAttributes   = [ NSFontAttributeName: UIFont.systemFont(ofSize: 14), NSForegroundColorAttributeName: HFTheme.DarkTextColor ]
-        let atTextAttributes = [ NSFontAttributeName: UIFont.systemFont(ofSize: 14), NSForegroundColorAttributeName: HFTheme.TintColor ]
+        let textAttributes   = [ NSFontAttributeName: UIFont.systemFont(ofSize: 14),
+                                 NSForegroundColorAttributeName: HFTheme.DarkTextColor ]
+        
+        let atTextAttributes = [ NSFontAttributeName: UIFont.systemFont(ofSize: 14),
+                                 NSForegroundColorAttributeName: HFTheme.TintColor ] as [String : Any]
         
         if model.at.count == 1 {
             let string = NSMutableAttributedString(string: "@\(model.at[0].name)", attributes: atTextAttributes)

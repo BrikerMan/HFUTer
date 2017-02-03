@@ -28,6 +28,7 @@ class HFMineVC: HFBasicViewController {
                 ],
                 [
                     HFMineListCellInfo("设置","fm_mine_setting",""),
+                    HFMineListCellInfo("主题颜色","fm_mine_donate",""),
                     HFMineListCellInfo("打赏作者","fm_mine_donate",""),
                     HFMineListCellInfo("关于","fm_mine_about",""),
                 ]
@@ -41,6 +42,7 @@ class HFMineVC: HFBasicViewController {
                 ],
                 [
                     HFMineListCellInfo("设置","fm_mine_setting",""),
+                    HFMineListCellInfo("主题颜色","fm_mine_donate",""),
                     HFMineListCellInfo("关于","fm_mine_about",""),
                 ]
             ]
@@ -149,6 +151,9 @@ extension HFMineVC: UITableViewDelegate {
             case 0:
                 self.performSegue(withIdentifier: HFMineSegue.PushSettingVC.rawValue, sender: nil)
             case 1:
+                let vc = HFMineChooseThemeViewController.instantiate()
+                push(vc)
+            case 2:
                 if DataEnv.allowDonate {
                     self.performSegue(withIdentifier: "HFMinePushDonateSegue", sender: nil)
                 } else {

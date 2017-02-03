@@ -236,7 +236,7 @@
                                 <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="avatarCell" rowHeight="80" id="QHk-Wa-qTs" customClass="HFMineInfoAvatarTableViewCell" customModule="HFUTer3" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="55.5" width="375" height="80"/>
+                                        <rect key="frame" x="0.0" y="56" width="375" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="QHk-Wa-qTs" id="ZLV-pP-6ln">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
@@ -288,7 +288,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="infoCell" id="6Ra-Pm-4WC" customClass="HFMineInfoInfoTableViewCell" customModule="HFUTer3" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="135.5" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="136" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6Ra-Pm-4WC" id="stq-PE-jFk">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -383,10 +383,10 @@
                                 <color key="backgroundColor" red="0.96078431372549022" green="0.96078431372549022" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="HFMineSettingSwitchCell" id="dPm-JV-eZj" customClass="HFMineSettingSwitchCell" customModule="HFUTer3" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="56" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="dPm-JV-eZj" id="HdW-36-vQI">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="W4t-O5-IgM">
@@ -455,10 +455,10 @@
                                 <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="donateInfoCell" rowHeight="78" id="x9N-Vq-ipY">
-                                        <rect key="frame" x="0.0" y="55.5" width="320" height="78"/>
+                                        <rect key="frame" x="0.0" y="56" width="320" height="78"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="x9N-Vq-ipY" id="err-N0-fdp">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="77.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="77"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b18-cH-cgy">
@@ -484,10 +484,10 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="IPALoadingCell" id="23D-XH-3EH" customClass="HFDonateLoadingTableViewCell" customModule="HFUTer3" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="133.5" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="134" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="23D-XH-3EH" id="rKe-Nz-XCM">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dft-IZ-RMu">
@@ -524,10 +524,10 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="donateBuyCell" rowHeight="60" id="rfd-2n-aUF" customClass="HFMineDonateCell" customModule="HFUTer3" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="177.5" width="320" height="60"/>
+                                        <rect key="frame" x="0.0" y="178" width="320" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rfd-2n-aUF" id="CLc-s6-Eow">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="59.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="59"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1元赞助" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9nC-LV-5q7">
@@ -573,10 +573,10 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="dashangCell" rowHeight="345" id="prR-wg-fic">
-                                        <rect key="frame" x="0.0" y="237.5" width="320" height="345"/>
+                                        <rect key="frame" x="0.0" y="238" width="320" height="345"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="prR-wg-fic" id="js2-zm-Y9j">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="344.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="344"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="直接打赏至程序员支付宝更好哦~" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hhj-XQ-dxM">
@@ -794,7 +794,7 @@
                                 <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="aboutHeaderCell" rowHeight="90" id="xtY-Kn-hJr" customClass="HFMineAboutHeaderTableViewCell" customModule="HFUTer3" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="55.5" width="375" height="90"/>
+                                        <rect key="frame" x="0.0" y="56" width="375" height="90"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xtY-Kn-hJr" id="ZlT-0K-nbE">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="90"/>
@@ -826,7 +826,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="aboutDataListCell" rowHeight="44" id="LWP-qb-88b" customClass="HFMineListInfoTableViewCell" customModule="HFUTer3" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="145.5" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="146" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="LWP-qb-88b" id="4i0-2l-1eZ">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
