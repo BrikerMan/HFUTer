@@ -56,7 +56,7 @@ class HFTabbarCollectionViewCell: UICollectionViewCell, NibReusable {
         titleLabel.text = title
         if selected {
             titleLabel.textColor = HFTheme.TintColor
-            iconImageView.image  = UIImage(named: icon + "_fill")?.withRenderingMode(.alwaysTemplate)
+            iconImageView.image  = UIImage(named: icon)?.withRenderingMode(.alwaysTemplate)
             dateLabel.textColor  = HFTheme.TintColor
         } else {
             titleLabel.textColor = HFTheme.GreyTextColor

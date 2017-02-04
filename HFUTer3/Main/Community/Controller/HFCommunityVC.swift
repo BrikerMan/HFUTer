@@ -20,8 +20,6 @@ class HFCommunityVC: HFBasicViewController {
     fileprivate var lostfindView: HFCommunityHomeListView!
     fileprivate var loveWallView: HFCommunityHomeListView!
     
-    var actionButton: UIButton!
-    
     fileprivate var isLostAndFound      = false
     fileprivate var isActionListShowing = false
     
@@ -56,13 +54,12 @@ class HFCommunityVC: HFBasicViewController {
     
     override func updateTintColor() {
         topView.backgroundColor = HFTheme.TintColor
-//        actionButton.tintColor  = HFTheme.TintColor
     }
     
     fileprivate func onLikeButtonPressedOnCell(_ index: Int) {
         hud.showLoading("正在处理")
         let model = self.loveWallView.loveModels[index]
-        HFBaseRequest.fire("/api/confession/favorite", method: HFBaseAPIRequestMethod.POST, params: ["id":model.id as AnyObject], succesBlock: { (request, resultDic) in
+        HFBaseRequest.fire("/api/confession/favorite", method: HFBaseAPIRequestMethod.POST, params: ["id":model.id], succesBlock: { (request, resultDic) in
             model.favoriteCount += 1
             model.favorite = true
             self.loveWallView.tableView.reloadData()
@@ -97,36 +94,6 @@ class HFCommunityVC: HFBasicViewController {
             make.width.equalTo(ScreenWidth)
             make.height.equalTo(ScreenHeight-64-49)
         }
-        
-//        let actionButtonBack = UIView()
-//        actionButtonBack.backgroundColor = UIColor.white
-//        actionButtonBack.layer.masksToBounds = false
-//        actionButtonBack.layer.shadowColor   = UIColor.darkGray.cgColor;
-//        actionButtonBack.layer.shadowOffset  = CGSize(width: 1.0, height: 1.0)
-//        actionButtonBack.layer.shadowOpacity = 0.8
-//        actionButtonBack.layer.cornerRadius  = 25
-//        
-//        view.addSubview(actionButtonBack)
-//        actionButtonBack.snp.makeConstraints { (make) in
-//            make.width.height.equalTo(49)
-//            make.bottom.equalTo(scrollView.snp.bottom).offset(-10)
-//            make.right.equalTo(scrollView.snp.right).offset(-10)
-//        }
-//        
-//        
-//        
-//        actionButton = UIButton(type: UIButtonType.custom)
-//        actionButton.tintColor  = HFTheme.TintColor
-//        actionButtonBack.addSubview(actionButton)
-//        
-//        let image = UIImage(named: "hf_comminity_action_button")?.withRenderingMode(.alwaysTemplate)
-//        actionButton.setImage(image, for: UIControlState())
-//        actionButton.addTarget(self, action: #selector(self.onActionButtonPressed), for: .touchUpInside)
-//        
-//        actionButton.snp.makeConstraints {
-//            $0.left.top.equalTo(actionButtonBack)
-//            $0.width.height.equalTo(50)
-//        }
     }
     
     fileprivate func initData() {
@@ -213,6 +180,6 @@ extension HFCommunityVC: UIScrollViewDelegate {
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         let x = scrollView.contentOffset.x / ScreenWidth
         segmentController.selectedSegmentIndex = Int(x)
-        isLostAndFound = Int(x) == 0
+        isLostAndFound = Int(x) != 0
     }
 }

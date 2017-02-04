@@ -114,9 +114,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func handleFristLuacnh() {
-        let isFirstLaunch = UserDefaults.standard.object(forKey: "isFirstLaunchFor\(ez.appBuild ?? "0000")") as? Bool ?? true
+        let key = "isFirstLaunchFor\(ez.appBuild ?? "0000")"
+        let isFirstLaunch = UserDefaults.standard.object(forKey: key) as? Bool ?? true
         if isFirstLaunch {
-            UserDefaults.standard.set(false, forKey: "isFirstLaunchFor\(AppVersion)")
+            UserDefaults.standard.set(false, forKey: key)
             
             let cache = YYWebImageManager.shared().cache
             cache?.memoryCache.removeAllObjects()
