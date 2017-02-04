@@ -83,8 +83,10 @@ class ColorManager {
     }
     
     func saveTintColor(name: String, color: String) {
+        tintName = name
         PlistManager.settingsPlist.saveValues(["主体颜色":name,
                                                "自定义颜色": color])
+        UIApplication.shared.keyWindow?.tintColor = HFTheme.TintColor
         TintColor = UIColor(hexString: color)!
         NotificationCenter.default.post(name: .tintColorUpdated, object: nil)
     }

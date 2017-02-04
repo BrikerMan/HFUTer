@@ -82,7 +82,7 @@ class HFBaseViewController: UIViewController, UIGestureRecognizerDelegate {
             navigationController?.interactivePopGestureRecognizer?.delegate = self
         }
         
-        // Do any additional setup after loading the view.
+        NotificationCenter.default.addObserver(self, selector: #selector(updateTintColor), name: .tintColorUpdated, object: nil)
     }
     
     
@@ -99,6 +99,9 @@ class HFBaseViewController: UIViewController, UIGestureRecognizerDelegate {
         nav!.shouldShowBackButton = shouldShowBackButton
     }
     
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: .tintColorUpdated, object: nil)
+    }
     
     
     @objc fileprivate func gestureTappedOnMainView(_ sender:AnyObject?) {
@@ -106,6 +109,10 @@ class HFBaseViewController: UIViewController, UIGestureRecognizerDelegate {
     }
     
     func onNavRightButtonPressed() {
+        
+    }
+    
+    func updateTintColor() {
         
     }
     

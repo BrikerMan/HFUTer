@@ -15,6 +15,7 @@ class HFCommunityVC: HFBasicViewController {
     
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var segmentController: UISegmentedControl!
+    @IBOutlet weak var topView: UIView!
     
     fileprivate var lostfindView: HFCommunityHomeListView!
     fileprivate var loveWallView: HFCommunityHomeListView!
@@ -43,7 +44,7 @@ class HFCommunityVC: HFBasicViewController {
         isLostAndFound = sender.selectedSegmentIndex == 1
     }
     
-    @objc fileprivate func onActionButtonPressed() {
+    @IBAction fileprivate func onActionButtonPressed() {
         if isLostAndFound {
             let vc = HFCommunityPostLostAndFoundVC()
             self.push(vc)
@@ -51,6 +52,11 @@ class HFCommunityVC: HFBasicViewController {
             let vc = HFCommunityPostLoveWallVC()
             self.push(vc)
         }
+    }
+    
+    override func updateTintColor() {
+        topView.backgroundColor = HFTheme.TintColor
+//        actionButton.tintColor  = HFTheme.TintColor
     }
     
     fileprivate func onLikeButtonPressedOnCell(_ index: Int) {
@@ -68,11 +74,12 @@ class HFCommunityVC: HFBasicViewController {
     }
     
     fileprivate func initUI() {
+        topView.backgroundColor = HFTheme.TintColor
+        
+        
         lostfindView = HFCommunityHomeListView()
         lostfindView.delegate = self
         scrollView.addSubview(lostfindView)
-        
-
         
         loveWallView = HFCommunityHomeListView()
         loveWallView.delegate = self
@@ -91,21 +98,35 @@ class HFCommunityVC: HFBasicViewController {
             make.height.equalTo(ScreenHeight-64-49)
         }
         
-        actionButton = UIButton(type: UIButtonType.custom)
-        self.view.addSubview(actionButton)
-        actionButton.setImage(UIImage(named: "hf_comminity_action_button"), for: UIControlState())
-        actionButton.addTarget(self, action: #selector(self.onActionButtonPressed), for: .touchUpInside)
-        actionButton.snp.makeConstraints { (make) in
-            make.width.height.equalTo(50)
-            make.bottom.equalTo(scrollView.snp.bottom).offset(-10)
-            make.right.equalTo(scrollView.snp.right).offset(-10)
-        }
-        
-        
-        actionButton.layer.masksToBounds =  false
-        actionButton.layer.shadowColor = UIColor.darkGray.cgColor;
-        actionButton.layer.shadowOffset = CGSize(width: 2.0, height: 2.0)
-        actionButton.layer.shadowOpacity = 1.0
+//        let actionButtonBack = UIView()
+//        actionButtonBack.backgroundColor = UIColor.white
+//        actionButtonBack.layer.masksToBounds = false
+//        actionButtonBack.layer.shadowColor   = UIColor.darkGray.cgColor;
+//        actionButtonBack.layer.shadowOffset  = CGSize(width: 1.0, height: 1.0)
+//        actionButtonBack.layer.shadowOpacity = 0.8
+//        actionButtonBack.layer.cornerRadius  = 25
+//        
+//        view.addSubview(actionButtonBack)
+//        actionButtonBack.snp.makeConstraints { (make) in
+//            make.width.height.equalTo(49)
+//            make.bottom.equalTo(scrollView.snp.bottom).offset(-10)
+//            make.right.equalTo(scrollView.snp.right).offset(-10)
+//        }
+//        
+//        
+//        
+//        actionButton = UIButton(type: UIButtonType.custom)
+//        actionButton.tintColor  = HFTheme.TintColor
+//        actionButtonBack.addSubview(actionButton)
+//        
+//        let image = UIImage(named: "hf_comminity_action_button")?.withRenderingMode(.alwaysTemplate)
+//        actionButton.setImage(image, for: UIControlState())
+//        actionButton.addTarget(self, action: #selector(self.onActionButtonPressed), for: .touchUpInside)
+//        
+//        actionButton.snp.makeConstraints {
+//            $0.left.top.equalTo(actionButtonBack)
+//            $0.width.height.equalTo(50)
+//        }
     }
     
     fileprivate func initData() {

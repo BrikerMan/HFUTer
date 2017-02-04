@@ -68,6 +68,19 @@ extension UIColor {
         let alpha = randomAlpha ? CGFloat.random() : 1.0
         return UIColor(red: randomRed, green: randomGreen, blue: randomBlue, alpha: alpha)
     }
+    
+    func hex() -> String {
+        var r:CGFloat = 0
+        var g:CGFloat = 0
+        var b:CGFloat = 0
+        var a:CGFloat = 0
+        
+        getRed(&r, green: &g, blue: &b, alpha: &a)
+        
+        let rgb:Int = (Int)(r*255)<<16 | (Int)(g*255)<<8 | (Int)(b*255)<<0
+        
+        return String(format:"#%06x", rgb)
+    }
 
 }
 

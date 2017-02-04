@@ -15,7 +15,7 @@ class HFHomeScheduleSelectWeekViewCell: UICollectionViewCell {
     var isCurrentWeek = false {
         didSet {
             UIView.animate(withDuration: 0.2, animations: {
-                self.backgroundColor        = self.isCurrentWeek ? HFTheme.LightTintColor : HFTheme.WhiteBackColor
+                self.backgroundColor        = self.isCurrentWeek ? HFTheme.TintColor : HFTheme.WhiteBackColor
                 self.titleLabel.textColor   = self.isCurrentWeek ? HFTheme.WhiteBackColor : HFTheme.DarkTextColor
             }) 
         }

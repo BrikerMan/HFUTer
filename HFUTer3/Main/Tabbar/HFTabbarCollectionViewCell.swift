@@ -46,13 +46,17 @@ class HFTabbarCollectionViewCell: UICollectionViewCell, NibReusable {
             make.centerY.equalTo(iconImageView.snp.centerY).offset(3)
         }
         
+        iconImageView.tintColor = HFTheme.TintColor
+ 
     }
     
+    
+
     func setup(_ title:String, icon: String, selected: Bool) {
         titleLabel.text = title
         if selected {
             titleLabel.textColor = HFTheme.TintColor
-            iconImageView.image  = UIImage(named: icon + "_fill")
+            iconImageView.image  = UIImage(named: icon + "_fill")?.withRenderingMode(.alwaysTemplate)
             dateLabel.textColor  = HFTheme.TintColor
         } else {
             titleLabel.textColor = HFTheme.GreyTextColor
@@ -65,6 +69,7 @@ class HFTabbarCollectionViewCell: UICollectionViewCell, NibReusable {
         } else {
             dateLabel.isHidden = true
         }
+        iconImageView.tintColor = HFTheme.TintColor
     }
     
 }

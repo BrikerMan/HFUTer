@@ -23,22 +23,35 @@ class HFMineHeaderTableViewCell: UITableViewCell {
         super.awakeFromNib()
         avatarView.layer.cornerRadius = 30
         
-        // Initialization code
+        backgroundColor = HFTheme.TintColor
+        offscreenBackView.backgroundColor = HFTheme.TintColor
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(updateColor), name: .tintColorUpdated, object: nil)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
     
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: .tintColorUpdated, object: nil)
+    }
+    
+    func updateColor() {
+        backgroundColor                   = HFTheme.TintColor
+        offscreenBackView.backgroundColor = HFTheme.TintColor
+    }
+    
     
     func setupWithModel(_ model: HFUserModel) {
-        backgroundColor = HFTheme.TintColor
+        backgroundColor                   = HFTheme.TintColor
         offscreenBackView.backgroundColor = HFTheme.TintColor
         
-        avatarView.loadAvatar(avatar: model.image)
         nickNameLabel.text      = model.name
         collegeNameLabel.text   = model.college
         majorNameLabel.text     = model.major
+        
+        avatarView.loadAvatar(avatar: model.image)
     }
 
 }

@@ -19,9 +19,9 @@ class HFCustumRGBColorView: HFXibView {
     
     var color: (r: Int, g: Int, b: Int) = (0,0,0) {
         didSet {
-            let hex = String(format: "%02hhX%02hhX%02hhX", color.r, color.g, color.b)
-            infoLabel.text = "Red \(color.r) Green \(color.g) Blue \(color.b)\n#\(hex)"
-            backView.backgroundColor = UIColor(hexString: hex)!
+            let backColor  = UIColor(red: CGFloat(color.r)/255.0, green: CGFloat(color.g)/255.0, blue: CGFloat(color.b)/255.0, alpha: 1.0)
+            infoLabel.text = "Red \(color.r) Green \(color.g) Blue \(color.b)\n\(backColor.hex())"
+            backView.backgroundColor = backColor
         }
     }
     
@@ -53,6 +53,9 @@ class HFCustumRGBColorView: HFXibView {
         super.initFromXib()
         let cColor = HFTheme.TintColor
         color = (cColor.redComponent, cColor.greenComponent, cColor.blueComponent)
+        rSlider.value = Float(cColor.redComponent)
+        gSlider.value = Float(cColor.greenComponent)
+        bSlider.value = Float(cColor.blueComponent)
     }
     
 

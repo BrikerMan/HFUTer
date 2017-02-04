@@ -99,7 +99,7 @@ class HFCommunityLoveWallDetailVC: HFBaseViewController, XibBasedController {
     
     func onDeletePressed(model: HFComLoveWallCommentModel, index: Int) {
         let alert = UIAlertController(title: "确定删除？", message: nil, preferredStyle: .alert)
-        let conferm = UIAlertAction(title: "", style: .destructive) { _ in
+        let conferm = UIAlertAction(title: "确定", style: .default) { _ in
             HFBaseRequest.fire(api: "/api/confession/deleteComment",
                                method: .POST,
                                params: ["id":model.id],
@@ -108,7 +108,7 @@ class HFCommunityLoveWallDetailVC: HFBaseViewController, XibBasedController {
                                     HFToast.showError(error)
                                 } else {
                                     self.commentList.remove(at: index)
-                                    self.mainModel.commentCount -= 1
+                                    self.mainModel.commentCount = self.commentList.count
                                     runOnMainThread {
                                         self.tableView.reloadData()
                                     }
@@ -156,7 +156,7 @@ extension HFCommunityLoveWallDetailVC: HFBaseAPIManagerCallBack {
                 tableView.endLoadMore()
             }
         }
-        
+        self.mainModel.commentCount = commentList.count
         tableView.reloadData()
         self.loadingView.hide()
     }

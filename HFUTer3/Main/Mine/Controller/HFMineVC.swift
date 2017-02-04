@@ -28,7 +28,7 @@ class HFMineVC: HFBasicViewController {
                 ],
                 [
                     HFMineListCellInfo("设置","fm_mine_setting",""),
-                    HFMineListCellInfo("主题颜色","fm_mine_donate",""),
+                    HFMineListCellInfo("主题颜色","fm_mine_color",""),
                     HFMineListCellInfo("打赏作者","fm_mine_donate",""),
                     HFMineListCellInfo("关于","fm_mine_about",""),
                 ]
@@ -42,7 +42,7 @@ class HFMineVC: HFBasicViewController {
                 ],
                 [
                     HFMineListCellInfo("设置","fm_mine_setting",""),
-                    HFMineListCellInfo("主题颜色","fm_mine_donate",""),
+                    HFMineListCellInfo("主题颜色","fm_mine_color",""),
                     HFMineListCellInfo("关于","fm_mine_about",""),
                 ]
             ]

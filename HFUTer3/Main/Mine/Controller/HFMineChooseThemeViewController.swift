@@ -56,8 +56,7 @@ extension HFMineChooseThemeViewController: UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
         if indexPath.section == 1 {
             let color = HFTheme.flatColors[indexPath.row].color
-            let hex = "\(color.redComponent)\(color.greenComponent)\(color.blueComponent)"
-            HFTheme.saveTintColor(name: HFTheme.flatColors[indexPath.row].name, color: hex)
+            HFTheme.saveTintColor(name: HFTheme.flatColors[indexPath.row].name, color: color.hex())
         } else {
             let custom = HFCustumRGBColorView()
             view.addSubview(custom)
@@ -65,5 +64,6 @@ extension HFMineChooseThemeViewController: UITableViewDelegate {
                 $0.edges.equalTo(self.view)
             }
         }
+        tableView.reloadData()
     }
 }

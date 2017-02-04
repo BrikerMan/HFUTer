@@ -30,6 +30,8 @@ class HFInformationCollectionCell: UICollectionViewCell {
     
     func setupWithModel(_ model: HFInformationFonctionListModel) {
         titleLabel.text = model.title
-        imageView.image = UIImage(named: model.image)
+        let image       = UIImage(named: model.image)?.withRenderingMode(.alwaysTemplate)
+        imageView.image = image
+        imageView.tintColor = HFTheme.TintColor
     }
 }

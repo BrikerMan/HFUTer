@@ -37,12 +37,25 @@
                                             <action selector="onSegmentControlleralueChanged:" destination="OJv-cA-cum" eventType="valueChanged" id="BnP-VC-eul"/>
                                         </connections>
                                     </segmentedControl>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2wV-TU-b5z">
+                                        <rect key="frame" x="330" y="22" width="40" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="40" id="9pt-Np-UHK"/>
+                                            <constraint firstAttribute="height" constant="40" id="kRi-3E-lXK"/>
+                                        </constraints>
+                                        <state key="normal" image="hf_community_publish_plus_icon"/>
+                                        <connections>
+                                            <action selector="onActionButtonPressed" destination="OJv-cA-cum" eventType="touchUpInside" id="LnC-yX-IJR"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="0.35686274509803922" blue="0.3411764705882353" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="64" id="5rw-ta-XU4"/>
                                     <constraint firstItem="LpP-mn-ANG" firstAttribute="centerY" secondItem="dgy-sH-y5P" secondAttribute="centerY" constant="10" id="Kw0-OK-6la"/>
+                                    <constraint firstAttribute="trailing" secondItem="2wV-TU-b5z" secondAttribute="trailing" constant="5" id="iid-X5-ham"/>
                                     <constraint firstItem="LpP-mn-ANG" firstAttribute="centerX" secondItem="dgy-sH-y5P" secondAttribute="centerX" id="n1k-xh-EA1"/>
+                                    <constraint firstItem="2wV-TU-b5z" firstAttribute="centerY" secondItem="dgy-sH-y5P" secondAttribute="centerY" constant="10" id="zRP-g1-hvN"/>
                                 </constraints>
                             </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xbe-GV-FEn">
@@ -66,6 +79,7 @@
                     <connections>
                         <outlet property="scrollView" destination="xbe-GV-FEn" id="yaS-xE-eIm"/>
                         <outlet property="segmentController" destination="LpP-mn-ANG" id="NbS-Hl-evg"/>
+                        <outlet property="topView" destination="dgy-sH-y5P" id="ukN-fq-ENK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TXj-ln-u3w" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -73,6 +87,9 @@
             <point key="canvasLocation" x="378" y="38"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="hf_community_publish_plus_icon" width="20" height="20"/>
+    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

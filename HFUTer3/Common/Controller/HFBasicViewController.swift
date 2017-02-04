@@ -54,7 +54,8 @@ class HFBasicViewController: UIViewController, UIGestureRecognizerDelegate{
         if navigationController?.viewControllers.count > 1 {
             navigationController?.interactivePopGestureRecognizer?.delegate = self
         }
-        // Do any additional setup after loading the view.
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(updateTintColor), name: .tintColorUpdated, object: nil)
     }
     
     override func viewDidDisappear(_ animated: Bool) {
@@ -62,8 +63,16 @@ class HFBasicViewController: UIViewController, UIGestureRecognizerDelegate{
         navigationController?.delegate = nil
     }
     
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: .tintColorUpdated, object: nil)
+    }
+    
     @objc fileprivate func gestureTappedOnMainView(_ sender:AnyObject?) {
         view.endEditing(true)
+    }
+    
+    func updateTintColor() {
+        
     }
     
     func pop() {

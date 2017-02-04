@@ -15,6 +15,8 @@ class HFMinePublishVC: HFBasicViewController {
     @IBOutlet weak var segmentController: UISegmentedControl!
     @IBOutlet weak var scrollView: UIScrollView!
     
+    @IBOutlet weak var topView: UIView!
+    
     var lostfindView:HFCommunityHomeListView!
     var loveWallView:HFCommunityHomeListView!
     
@@ -29,6 +31,7 @@ class HFMinePublishVC: HFBasicViewController {
         initUI()
         initData()
         
+        topView.backgroundColor = HFTheme.TintColor
         AnalyseManager.SeeSelfPost.record()
     }
     
@@ -40,6 +43,10 @@ class HFMinePublishVC: HFBasicViewController {
         let x = CGFloat(segmentController.selectedSegmentIndex) * ScreenWidth
         let rect = CGRect(x: x, y: 0, width: ScreenWidth, height: ScreenHeight-64)
         scrollView.scrollRectToVisible(rect, animated: false)
+    }
+    
+    override func updateTintColor() {
+        topView.backgroundColor = HFTheme.TintColor
     }
     
     fileprivate func initUI() {

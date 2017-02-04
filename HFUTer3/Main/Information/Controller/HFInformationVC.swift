@@ -38,6 +38,14 @@ class HFInformationVC: HFBaseViewController {
         shouldShowBackButton = false
         automaticallyAdjustsScrollViewInsets = false
         tableView.registerReusableCell(HFTableInfoCell.self)
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(updateTint), name: .tintColorUpdated, object: nil)
+    }
+    
+    func updateTint() {
+        runOnMainThread {
+            self.collectionView.reloadData()
+        }
     }
     
 }

@@ -35,12 +35,24 @@ class HFBaseNavBar: HFXibView {
         super.initFromXib()
         navRightButton.isHidden       = true
         navRightButtonImage.isHidden  = true
+        
+        view?.backgroundColor = HFTheme.TintColor
+        NotificationCenter.default.addObserver(self, selector: #selector(updateTintColor), name: .tintColorUpdated, object: nil)
+        
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: .tintColorUpdated, object: nil)
     }
     
     var shouldShowBackButton = true {
         didSet {
             navLeftButton.isHidden = !shouldShowBackButton
         }
+    }
+    
+    func updateTintColor() {
+        view?.backgroundColor = HFTheme.TintColor
     }
     
     func showNavRightButton(withButton button:navRightIconType) {

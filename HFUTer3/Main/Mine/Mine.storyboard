@@ -66,7 +66,6 @@
                                                     </constraints>
                                                 </imageView>
                                             </subviews>
-                                            <color key="backgroundColor" red="1" green="0.35686274509803922" blue="0.3411764705882353" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstItem="pgz-wa-eUj" firstAttribute="centerX" secondItem="Ib0-53-Lgs" secondAttribute="centerX" id="0vH-Ef-ha2"/>
                                                 <constraint firstAttribute="trailing" secondItem="c9O-Bc-048" secondAttribute="trailing" id="4AE-d3-kIH"/>
@@ -81,6 +80,7 @@
                                                 <constraint firstItem="CbT-xy-eGg" firstAttribute="centerX" secondItem="Ib0-53-Lgs" secondAttribute="centerX" id="zdM-7j-xsL"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" red="1" green="0.35686274509803922" blue="0.3411764705882353" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <connections>
                                             <outlet property="avatarView" destination="L88-jf-Gcr" id="lIK-aS-Sgh"/>
                                             <outlet property="collegeNameLabel" destination="pgz-wa-eUj" id="tL5-1Z-CR4"/>
@@ -697,6 +697,7 @@
                     <connections>
                         <outlet property="scrollView" destination="jkE-J5-TqK" id="h9j-CB-xHP"/>
                         <outlet property="segmentController" destination="j2H-gJ-2cM" id="voe-Z7-iOr"/>
+                        <outlet property="topView" destination="qkb-Tj-pPb" id="6et-TT-nuT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VoU-N7-Ewd" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -771,6 +772,7 @@
                     <navigationItem key="navigationItem" id="IVg-Ed-8Vr"/>
                     <connections>
                         <outlet property="scrollView" destination="JmP-ka-TBT" id="Ilb-1a-zg3"/>
+                        <outlet property="topView" destination="bL7-sZ-TRo" id="9BM-qt-mmn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ogo-jK-yDY" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -40,7 +40,18 @@ class HFTabbarView: HFXibView {
     override func initFromXib() {
         super.initFromXib()
         collectionView.registerReusableCell(HFTabbarCollectionViewCell.self)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(updateTint),
+                                               name: .tintColorUpdated,
+                                               object: nil)
     }
+    
+    func updateTint() {
+        runOnMainThread {
+            self.collectionView.reloadData()
+        }
+    }
+    
 }
 
 extension HFTabbarView: UICollectionViewDelegate {

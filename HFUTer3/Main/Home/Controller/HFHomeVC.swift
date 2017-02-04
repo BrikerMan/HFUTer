@@ -30,6 +30,7 @@ class HFHomeVC: HFBasicViewController{
         initUI()
         initData()
         
+        navBarView.backgroundColor = HFTheme.TintColor
         AnalyseManager.OpenSchudule.record()
     }
     
@@ -44,6 +45,10 @@ class HFHomeVC: HFBasicViewController{
     
     @objc fileprivate func reloadSchedules() {
         scheduleView.reloadData()
+    }
+    
+    override func updateTintColor() {
+        navBarView.backgroundColor = HFTheme.TintColor
     }
     
     // MARK:- Load Data
@@ -87,6 +92,8 @@ class HFHomeVC: HFBasicViewController{
             self.navTitleIconView.transform = CGAffineTransform(rotationAngle: rotate)
             },completion: nil)
     }
+    
+    
     
     // MARK: - Init
     fileprivate func initUI() {

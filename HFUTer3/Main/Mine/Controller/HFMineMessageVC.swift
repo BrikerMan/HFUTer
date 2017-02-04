@@ -13,6 +13,7 @@ class HFMineMessageVC: HFBasicViewController {
     var messageRequest  : HFGetMineMessageRequest!
     var notifRequest    : HFGetMineNotifReqeust!
     
+    @IBOutlet weak var topView: UIView!
     @IBOutlet weak var scrollView: UIScrollView!
     
     var messageList: HFMineMessageListView!
@@ -23,6 +24,8 @@ class HFMineMessageVC: HFBasicViewController {
         initUI()
         initData()
         NotificationCenter.default.post(name: Notification.Name(rawValue: HFNotification.RemoveBundge.rawValue), object: nil)
+        
+        topView.backgroundColor = HFTheme.TintColor
         
         AnalyseManager.SeeMessages.record()
     }
@@ -59,6 +62,10 @@ class HFMineMessageVC: HFBasicViewController {
             make.width.equalTo(ScreenWidth)
             make.height.equalTo(ScreenHeight-64)
         }
+    }
+    
+    override func updateTintColor() {
+        topView.backgroundColor = HFTheme.TintColor
     }
     
     
