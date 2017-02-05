@@ -93,7 +93,7 @@ extension HFMineVC: UITableViewDataSource {
         case 1:
             return 3
         case 2:
-            return DataEnv.allowDonate ? 3 : 2
+            return DataEnv.allowDonate ? 4 : 3
         default:
             return 0
         }
