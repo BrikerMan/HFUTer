@@ -35,11 +35,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.rootViewController = rootNavController
         window?.makeKeyAndVisible()
         window?.tintColor = HFTheme.TintColor
-        
-//        let label = YYFPSLabel()
-//        window?.addSubview(label)
-//        label.frame.origin = CGPoint(x: 5, y: ScreenHeight - 40)
-        
+
         return true
     }
     
