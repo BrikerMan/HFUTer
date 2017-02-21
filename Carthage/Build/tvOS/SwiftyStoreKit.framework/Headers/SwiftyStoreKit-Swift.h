@@ -121,6 +121,10 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 #pragma clang diagnostic ignored "-Wproperty-attribute-mismatch"
 #pragma clang diagnostic ignored "-Wduplicate-method-arg"
 
+@interface SKPaymentQueue (SWIFT_EXTENSION(SwiftyStoreKit))
+@end
+
+
 @interface SKPaymentTransaction (SWIFT_EXTENSION(SwiftyStoreKit))
 @end
 

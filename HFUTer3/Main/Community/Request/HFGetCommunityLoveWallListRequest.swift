@@ -26,8 +26,8 @@ class HFGetCommunityLoveWallListRequest: HFBaseAPIManager {
     }
     
     
-    override func requestParams() -> [String : AnyObject]? {
-        return ["pageIndex":page as AnyObject]
+    override func requestParams() -> [String : Any]? {
+        return ["pageIndex":page]
     }
     
     static func handleData(_ data:HFRequestParam, isMine: Bool = false) -> [HFComLoveWallListModel] {

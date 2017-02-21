@@ -125,6 +125,10 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 @end
 
 
+@interface SKPaymentQueue (SWIFT_EXTENSION(SwiftyStoreKit))
+@end
+
+
 @interface SKPaymentTransaction (SWIFT_EXTENSION(SwiftyStoreKit))
 @end
 

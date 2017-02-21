@@ -61,7 +61,7 @@ class HFBaseAPIManager {
     /**
      请求参数
      */
-    func requestParams() -> [String:AnyObject]? {
+    func requestParams() -> [String : Any]? {
         return nil
     }
     

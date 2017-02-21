@@ -25,11 +25,11 @@ class HFLoginRegisterRequest: HFBaseAPIManager {
         return "/api/register"
     }
     
-    override func requestParams() -> [String : AnyObject]? {
+    override func requestParams() -> [String : Any]? {
         return [
-            "sid":username as AnyObject,
-            "pwd":password as AnyObject,
-            "which":type as AnyObject
+            "sid":username,
+            "pwd":password,
+            "which":type
         ]
     }
 }

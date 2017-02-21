@@ -58,24 +58,24 @@ class HFHudView {
         hud.dismiss()
     }
     
-    func showPregress(_ add: String) {
-        if !progressInfoShowing {
-            let window = UIApplication.shared.keyWindow!
-            window.addSubview(progressView)
-            progressView.snp.makeConstraints {
-                $0.left.equalTo(window.snp.left)
-                $0.bottom.equalTo(window.snp.bottom).offset(-50)
-            }
-            progressInfoShowing = true
-        }
-        progressInfo =  progressInfo + "\n" + add 
-        progressView.update(progressInfo)
-    }
-    
-    func hideProgress() {
-        progressView.removeFromSuperview()
-        progressInfoShowing = false
-    }
+//    func showPregress(_ add: String) {
+//        if !progressInfoShowing {
+//            let window = UIApplication.shared.keyWindow!
+//            window.addSubview(progressView)
+//            progressView.snp.makeConstraints {
+//                $0.left.equalTo(window.snp.left)
+//                $0.bottom.equalTo(window.snp.bottom).offset(-50)
+//            }
+//            progressInfoShowing = true
+//        }
+//        progressInfo =  progressInfo + "\n" + add 
+//        progressView.update(progressInfo)
+//    }
+//    
+//    func hideProgress() {
+//        progressView.removeFromSuperview()
+//        progressInfoShowing = false
+//    }
 }
 
 class HFHudBackView: UIView {

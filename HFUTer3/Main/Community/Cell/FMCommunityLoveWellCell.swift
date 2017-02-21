@@ -88,6 +88,7 @@ class FMCommunityLoveWellCell: UITableViewCell, NibReusable {
         let image = model.favorite ? "fm_community_love_wall_like_fill" : "fm_community_love_wall_like"
         likeImageView.image = UIImage(named: image)
         prepareUIForImage(model.cImage)
+
     }
     
     func setupWithCommentModel(_ model: HFComLoveWallCommentModel) {

@@ -25,11 +25,11 @@ class HFInfoGetAcademicClassDetailRequest:HFBaseAPIManager{
         return "/api/user/query/classDetail"
     }
     
-    override func requestParams() -> [String : AnyObject]? {
+    override func requestParams() -> [String : Any]? {
         return [
-            "termCode":termCode as AnyObject,
-            "code":code as AnyObject,
-            "classCode":classCode as AnyObject
+            "termCode":termCode ,
+            "code":code ,
+            "classCode":classCode 
         ]
     }
 }

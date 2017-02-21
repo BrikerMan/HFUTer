@@ -20,6 +20,7 @@ class RootViewController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         preprareViewControllers()
+    
         
         hfTabbar.shouldShowBandge = UIApplication.shared.applicationIconBadgeNumber != 0
         shouldShowDashang()
@@ -134,6 +135,7 @@ class RootViewController: UITabBarController {
         let infoNav = UINavigationController(rootViewController: infoVC)
         let mineNav = UINavigationController(rootViewController: mineVC)
         let communityNav = UINavigationController(rootViewController: communityVC)
+
 
         let navList = [homeNav, communityNav, infoNav, mineNav]
         

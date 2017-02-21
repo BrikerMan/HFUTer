@@ -38,7 +38,7 @@ class HFCommunityLoveWallDetailVC: HFBaseViewController, XibBasedController {
     }
     
     @objc fileprivate func loadData() {
-        loadingView.show()
+//        loadingView.show()
         commentReqeust = HFGetComLoveWallCommentRequest()
         commentReqeust.callback = self
         commentReqeust.fire(mainModel.id)
@@ -131,10 +131,10 @@ class HFCommunityLoveWallDetailVC: HFBaseViewController, XibBasedController {
         tableView.pullDelegate = self
         self.automaticallyAdjustsScrollViewInsets = false
         
-        self.view.addSubview(loadingView)
-        loadingView.snp.makeConstraints { (make) in
-            make.edges.equalTo(UIEdgeInsetsMake(64, 0, 0, 0))
-        }
+//        self.view.addSubview(loadingView)
+//        loadingView.snp.makeConstraints { (make) in
+//            make.edges.equalTo(UIEdgeInsetsMake(64, 0, 0, 0))
+//        }
     }
 }
 

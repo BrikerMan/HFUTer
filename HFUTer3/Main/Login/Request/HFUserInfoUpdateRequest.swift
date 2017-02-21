@@ -28,15 +28,15 @@ class HFUserInfoChangeRequest: HFBaseAPIManager {
         return "/api/user/updateUserInfo"
     }
     
-    override func requestParams() -> [String : AnyObject]? {
-        var param: [String : AnyObject] = [:]
+    override func requestParams() -> [String : Any]? {
+        var param: [String : Any] = [:]
         
         if let image = image {
-            param["image"] = image as AnyObject?
+            param["image"] = image
         }
         
         if let email = email {
-            param["email"] = email as AnyObject?
+            param["email"] = email
         }
         
         return param

@@ -11,14 +11,14 @@ import Foundation
 let EduURL = HFEducationURLs.shared
 
 class HFEducationURLs {
-    
     static let shared = HFEducationURLs()
     
     let xchost = "http://222.195.8.201"
     let hfhost = "http://bkjw.hfut.edu.cn"
     
-    let login = "/pass.asp"
+    let login    = "/pass.asp"
     let schedule = "/student/asp/grkb1.asp"
+    let score    = "/api/schedule/uploadScore"
 }
 
 extension String.Encoding {

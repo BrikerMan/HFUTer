@@ -121,33 +121,6 @@ typedef unsigned int swift_uint4  __attribute__((__ext_vector_type__(4)));
 
 #pragma clang diagnostic ignored "-Wproperty-attribute-mismatch"
 #pragma clang diagnostic ignored "-Wduplicate-method-arg"
-@class SKPaymentQueue;
-@class SKPaymentTransaction;
-
-SWIFT_CLASS("_TtC14SwiftyStoreKit33InAppCompleteTransactionsObserver")
-@interface InAppCompleteTransactionsObserver : NSObject <SKPaymentTransactionObserver>
-@property (nonatomic, readonly, strong) SKPaymentQueue * _Nonnull paymentQueue;
-@property (nonatomic, readonly) BOOL atomically;
-- (void)paymentQueue:(SKPaymentQueue * _Nonnull)queue updatedTransactions:(NSArray<SKPaymentTransaction *> * _Nonnull)transactions;
-- (nonnull instancetype)init SWIFT_UNAVAILABLE;
-@end
-
-@class SKProduct;
-@class SKDownload;
-
-SWIFT_CLASS("_TtC14SwiftyStoreKit27InAppProductPurchaseRequest")
-@interface InAppProductPurchaseRequest : NSObject <SKPaymentTransactionObserver>
-@property (nonatomic, readonly, strong) SKPaymentQueue * _Nonnull paymentQueue;
-@property (nonatomic, readonly, strong) SKProduct * _Nullable product;
-@property (nonatomic, readonly) BOOL atomically;
-- (void)paymentQueue:(SKPaymentQueue * _Nonnull)queue updatedTransactions:(NSArray<SKPaymentTransaction *> * _Nonnull)transactions;
-- (void)paymentQueue:(SKPaymentQueue * _Nonnull)queue removedTransactions:(NSArray<SKPaymentTransaction *> * _Nonnull)transactions;
-- (void)paymentQueue:(SKPaymentQueue * _Nonnull)queue restoreCompletedTransactionsFailedWithError:(NSError * _Nonnull)error;
-- (void)paymentQueueRestoreCompletedTransactionsFinished:(SKPaymentQueue * _Nonnull)queue;
-- (void)paymentQueue:(SKPaymentQueue * _Nonnull)queue updatedDownloads:(NSArray<SKDownload *> * _Nonnull)downloads;
-- (nonnull instancetype)init SWIFT_UNAVAILABLE;
-@end
-
 @class SKProductsRequest;
 @class SKProductsResponse;
 @class SKRequest;
@@ -172,6 +145,32 @@ SWIFT_CLASS("_TtC14SwiftyStoreKit26InAppReceiptRefreshRequest")
 - (void)requestDidFinish:(SKRequest * _Nonnull)request;
 - (void)request:(SKRequest * _Nonnull)request didFailWithError:(NSError * _Nonnull)error;
 - (nonnull instancetype)init SWIFT_UNAVAILABLE;
+@end
+
+@class SKPaymentQueue;
+@class SKPaymentTransaction;
+@class SKDownload;
+
+SWIFT_CLASS("_TtC14SwiftyStoreKit22PaymentQueueController")
+@interface PaymentQueueController : NSObject <SKPaymentTransactionObserver>
+- (void)paymentQueue:(SKPaymentQueue * _Nonnull)queue updatedTransactions:(NSArray<SKPaymentTransaction *> * _Nonnull)transactions;
+- (void)paymentQueue:(SKPaymentQueue * _Nonnull)queue removedTransactions:(NSArray<SKPaymentTransaction *> * _Nonnull)transactions;
+- (void)paymentQueue:(SKPaymentQueue * _Nonnull)queue restoreCompletedTransactionsFailedWithError:(NSError * _Nonnull)error;
+- (void)paymentQueueRestoreCompletedTransactionsFinished:(SKPaymentQueue * _Nonnull)queue;
+- (void)paymentQueue:(SKPaymentQueue * _Nonnull)queue updatedDownloads:(NSArray<SKDownload *> * _Nonnull)downloads;
+- (nonnull instancetype)init SWIFT_UNAVAILABLE;
+@end
+
+@class SKProduct;
+
+SWIFT_CLASS("_TtC14SwiftyStoreKit22ProductsInfoController")
+@interface ProductsInfoController : NSObject
+@property (nonatomic, readonly, copy) NSDictionary<NSString *, SKProduct *> * _Nonnull products;
+- (nonnull instancetype)init OBJC_DESIGNATED_INITIALIZER;
+@end
+
+
+@interface SKPaymentQueue (SWIFT_EXTENSION(SwiftyStoreKit))
 @end
 
 

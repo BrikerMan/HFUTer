@@ -29,13 +29,13 @@ class HFInfoGetEmptyClassroomsResultRequest: HFBaseAPIManager {
         return "/api/user/query/emptyClassRoomResult"
     }
     
-    override func requestParams() -> [String : AnyObject]? {
+    override func requestParams() -> [String : Any]? {
         return [
-            "teachingBuilding":teachingBuilding as AnyObject,
-            "floor":floor as AnyObject,
-            "teachingWeek":teachingWeek as AnyObject,
-            "week":week as AnyObject,
-            "section":section as AnyObject,
+            "teachingBuilding":teachingBuilding,
+            "floor":floor,
+            "teachingWeek":teachingWeek,
+            "week":week,
+            "section":section
         ]
     }
     

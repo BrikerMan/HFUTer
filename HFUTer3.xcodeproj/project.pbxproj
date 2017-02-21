@@ -172,6 +172,10 @@
 		6ACB1EB81E403D8F00B708C7 /* HFCommunityLoveDetailCommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ACB1EB61E403D8F00B708C7 /* HFCommunityLoveDetailCommentCell.swift */; };
 		6ACB1EB91E403D8F00B708C7 /* HFCommunityLoveDetailCommentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6ACB1EB71E403D8F00B708C7 /* HFCommunityLoveDetailCommentCell.xib */; };
 		6ACB1EBB1E4044DC00B708C7 /* UIView-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ACB1EBA1E4044DC00B708C7 /* UIView-Extensions.swift */; };
+		6AE1F4EE1E470CAE003CFA27 /* Base64Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AE1F4E41E470CAE003CFA27 /* Base64Util.m */; };
+		6AE1F4EF1E470CAE003CFA27 /* DESEncryption.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AE1F4E61E470CAE003CFA27 /* DESEncryption.m */; };
+		6AE1F4F11E470CAE003CFA27 /* GTMBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AE1F4EA1E470CAE003CFA27 /* GTMBase64.m */; };
+		6AE1F4F41E473209003CFA27 /* PromiseKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AE1F4F31E473209003CFA27 /* PromiseKit.framework */; };
 		6AE4A28F1D0009F10025BB79 /* HFCommunityLoveWallDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AE4A28D1D0009F10025BB79 /* HFCommunityLoveWallDetailVC.swift */; };
 		6AE4A2901D0009F10025BB79 /* HFCommunityLoveWallDetailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6AE4A28E1D0009F10025BB79 /* HFCommunityLoveWallDetailVC.xib */; };
 		6AE4A2961D0017D10025BB79 /* HFComLoveWallCommentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AE4A2951D0017D10025BB79 /* HFComLoveWallCommentModel.swift */; };
@@ -513,6 +517,14 @@
 		6ACB1EB61E403D8F00B708C7 /* HFCommunityLoveDetailCommentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFCommunityLoveDetailCommentCell.swift; sourceTree = "<group>"; };
 		6ACB1EB71E403D8F00B708C7 /* HFCommunityLoveDetailCommentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HFCommunityLoveDetailCommentCell.xib; sourceTree = "<group>"; };
 		6ACB1EBA1E4044DC00B708C7 /* UIView-Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView-Extensions.swift"; sourceTree = "<group>"; };
+		6AE1F4E31E470CAE003CFA27 /* Base64Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Base64Util.h; sourceTree = "<group>"; };
+		6AE1F4E41E470CAE003CFA27 /* Base64Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Base64Util.m; sourceTree = "<group>"; };
+		6AE1F4E51E470CAE003CFA27 /* DESEncryption.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DESEncryption.h; sourceTree = "<group>"; };
+		6AE1F4E61E470CAE003CFA27 /* DESEncryption.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DESEncryption.m; sourceTree = "<group>"; };
+		6AE1F4E91E470CAE003CFA27 /* GTMBase64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMBase64.h; sourceTree = "<group>"; };
+		6AE1F4EA1E470CAE003CFA27 /* GTMBase64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTMBase64.m; sourceTree = "<group>"; };
+		6AE1F4EB1E470CAE003CFA27 /* GTMDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMDefines.h; sourceTree = "<group>"; };
+		6AE1F4F31E473209003CFA27 /* PromiseKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = PromiseKit.framework; sourceTree = "<group>"; };
 		6AE4A28D1D0009F10025BB79 /* HFCommunityLoveWallDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFCommunityLoveWallDetailVC.swift; sourceTree = "<group>"; };
 		6AE4A28E1D0009F10025BB79 /* HFCommunityLoveWallDetailVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HFCommunityLoveWallDetailVC.xib; sourceTree = "<group>"; };
 		6AE4A2951D0017D10025BB79 /* HFComLoveWallCommentModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFComLoveWallCommentModel.swift; sourceTree = "<group>"; };
@@ -685,6 +697,7 @@
 				6A1CEA601D04925500481D3A /* CoreLocation.framework in Frameworks */,
 				6AFF3DCB1D04557D00B575CA /* CoreTelephony.framework in Frameworks */,
 				6AE8D3FD1E3D91DF00E44BE3 /* Toaster.framework in Frameworks */,
+				6AE1F4F41E473209003CFA27 /* PromiseKit.framework in Frameworks */,
 				6A1CEA5E1D04924800481D3A /* MobileCoreServices.framework in Frameworks */,
 				6AFF3DCD1D04558400B575CA /* SystemConfiguration.framework in Frameworks */,
 				6AFF3DD71D0455B300B575CA /* libz.tbd in Frameworks */,
@@ -990,6 +1003,20 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		6AE1F4E21E470CAE003CFA27 /* Encryption */ = {
+			isa = PBXGroup;
+			children = (
+				6AE1F4E31E470CAE003CFA27 /* Base64Util.h */,
+				6AE1F4E41E470CAE003CFA27 /* Base64Util.m */,
+				6AE1F4E51E470CAE003CFA27 /* DESEncryption.h */,
+				6AE1F4E61E470CAE003CFA27 /* DESEncryption.m */,
+				6AE1F4E91E470CAE003CFA27 /* GTMBase64.h */,
+				6AE1F4EA1E470CAE003CFA27 /* GTMBase64.m */,
+				6AE1F4EB1E470CAE003CFA27 /* GTMDefines.h */,
+			);
+			path = Encryption;
+			sourceTree = "<group>";
+		};
 		6AE5443F1CFF00D400EB3FE7 /* JSPatch */ = {
 			isa = PBXGroup;
 			children = (
@@ -1086,12 +1113,14 @@
 		6B23B0A91C97DA4E0089214D /* Ventor */ = {
 			isa = PBXGroup;
 			children = (
+				6AE1F4F31E473209003CFA27 /* PromiseKit.framework */,
+				6AE8D3FC1E3D91DF00E44BE3 /* Toaster.framework */,
+				6AE8D4001E3D9B4B00E44BE3 /* SwiftyStoreKit.framework */,
+				6AE1F4E21E470CAE003CFA27 /* Encryption */,
 				6A3E6F0E1E407DD1001FA3E3 /* YYLabel-Extension */,
 				6ACB1EA51E40331200B708C7 /* Reusable */,
 				6ACB1E9A1E3E28AC00B708C7 /* YYFPSLabel */,
 				6A96F4711E3E093B00F65859 /* EZSwiftExtensions */,
-				6AE8D4001E3D9B4B00E44BE3 /* SwiftyStoreKit.framework */,
-				6AE8D3FC1E3D91DF00E44BE3 /* Toaster.framework */,
 				27EF73211DD08C16009E9592 /* Eureka */,
 				6A3E80D01D06DBB300E88445 /* AVOSCloud */,
 				6AFF3DC21D0454DA00B575CA /* JPush */,
@@ -1768,6 +1797,7 @@
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/Toaster.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SwiftyStoreKit.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/PromiseKit.framework",
 			);
 			name = "Carthage Run Script";
 			outputPaths = (
@@ -1986,6 +2016,7 @@
 				6A96F4A21E3E093B00F65859 /* ArrayExtensions.swift in Sources */,
 				6AE631BF1D0289E4002C4AEC /* HFMineListActionTableViewCell.swift in Sources */,
 				6B2FE0571CA557A600147BC3 /* HFInfoGradesGpaModel.swift in Sources */,
+				6AE1F4F11E470CAE003CFA27 /* GTMBase64.m in Sources */,
 				6B7429C11CA4F4D300F1015E /* HFInfoGetScoresRequest.swift in Sources */,
 				6AC477621D03CE3800B4B8BA /* HFUserRestPassByEmailVC.swift in Sources */,
 				6A96F4AF1E3E093B00F65859 /* CharacterExtensions.swift in Sources */,
@@ -1993,6 +2024,7 @@
 				6B6121901CA2C2F200C56FD4 /* STUI.m in Sources */,
 				6B41DDC21CA385F400B19803 /* Utilities.swift in Sources */,
 				6A02E2721CF320CB00DC669A /* FMCommunityLoveWellCell.swift in Sources */,
+				6AE1F4EF1E470CAE003CFA27 /* DESEncryption.m in Sources */,
 				6B9210611CA410F700A59095 /* HFInfoGradesVC.swift in Sources */,
 				6B23B0DE1C97E6680089214D /* HFPlaceholdImageView.swift in Sources */,
 				6B89D91D1C994D780030DD7D /* Functions.swift in Sources */,
@@ -2037,6 +2069,7 @@
 				6B61218F1CA2C2F200C56FD4 /* STConst.m in Sources */,
 				6ACB1EB01E40331200B708C7 /* StoryboardSceneBased.swift in Sources */,
 				6ACB1EAF1E40331200B708C7 /* StoryboardBased.swift in Sources */,
+				6AE1F4EE1E470CAE003CFA27 /* Base64Util.m in Sources */,
 				6BCF69011C9A5349008646BA /* HFUpdateCookieRequest.swift in Sources */,
 				6A96F4A31E3E093B00F65859 /* BlockButton.swift in Sources */,
 				6A2C98BF1D6C0E1F00BD5182 /* HFMineChangePasswordVC.swift in Sources */,

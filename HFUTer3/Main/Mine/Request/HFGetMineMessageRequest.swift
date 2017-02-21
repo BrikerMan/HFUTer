@@ -19,9 +19,9 @@ class HFGetMineMessageRequest: HFBaseAPIManager {
         return "/api/user/messageList"
     }
     
-    override func requestParams() -> [String : AnyObject]? {
+    override func requestParams() -> [String : Any]? {
         return [
-            "pageIndex":page as AnyObject
+            "pageIndex":page
         ]
     }
     

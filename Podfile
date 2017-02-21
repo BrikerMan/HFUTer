@@ -5,21 +5,20 @@ use_frameworks!
 
 target 'HFUTer3' do
     # UI
-    pod 'WSProgressHUD'                     ## 不错的Hud
-    pod 'YYWebImage'                        ## 高效ImageView
+    pod 'WSProgressHUD'                         ## 不错的Hud
+    pod 'YYWebImage'                            ## 高效ImageView
     pod 'YYImage/WebP'
-    pod 'SnapKit'                           ## AutoLayout
+    pod 'SnapKit'                               ## AutoLayout
     pod 'SVProgressHUD'
-    pod 'MJRefresh'                         ## 下拉刷新
-    pod 'AIFlatSwitch'                      ## 动态选择button
+    pod 'MJRefresh'                             ## 下拉刷新
+    pod 'AIFlatSwitch'                          ## 动态选择button
     pod 'YYText'   , :git => 'https://github.com/BrikerMan/YYText.git'
-    pod 'ZYCornerRadius'                    # 优化圆角绘制r
+    pod 'ZYCornerRadius'                        # 优化圆角绘制
     
     # TableView
-    pod 'UITableView+FDTemplateLayoutCell_Bell'  ##优化UITableViewCell高度计算
-    pod 'Eureka', '~> 2.0.0-beta.1'                           ## 优秀的TableView封装
-
-    pod 'DZNEmptyDataSet'                   ## 空数据展示
+    pod 'UITableView+FDTemplateLayoutCell_Bell' ##优化UITableViewCell高度计算
+    pod 'Eureka', '~> 2.0.0-beta.1'             ## 优秀的TableView封装
+    pod 'DZNEmptyDataSet'                       ## 空数据展示
     
     # 动画
     pod 'NVActivityIndicatorView'

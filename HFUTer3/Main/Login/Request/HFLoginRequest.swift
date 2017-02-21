@@ -23,10 +23,10 @@ class HFLoginRequest: HFBaseAPIManager {
         return "/api/user/login"
     }
     
-    override func requestParams() -> [String : AnyObject]? {
+    override func requestParams() -> [String : Any]? {
         return [
-            "sid":username as AnyObject,
-            "pwd":password.md5() as AnyObject
+            "sid":username,
+            "pwd":password.md5()
             ]
     }
 }

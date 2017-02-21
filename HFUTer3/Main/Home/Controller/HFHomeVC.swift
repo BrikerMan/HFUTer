@@ -55,10 +55,10 @@ class HFHomeVC: HFBasicViewController{
     
     // MARK:- Load Data
     func loadSchedule() {
-        if let result = HFCourseModel.readCourses(forWeek: currentWeek) {
-            scheduleView.setupWithCourses(result)
-        } else {
-            loadScheduleFromServer()
+        let week = currentWeek
+        viewModel.loadData(week: currentWeek) { (result) in
+            self.scheduleView.setupWithCourses(result)
+            self.scheduleView.setupWithWeek(week)
         }
     }
     
@@ -129,9 +129,7 @@ class HFHomeVC: HFBasicViewController{
         NotificationCenter.default.addObserver(self, selector: #selector(HFHomeVC.afterUserLogin(_:)), name: NSNotification.Name(rawValue: HFUserLoginNotification), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(HFHomeVC.reloadSchedules), name: NSNotification.Name(rawValue: HFNotification.SettingScheduleRelatedUpdate.rawValue), object: nil)
         
-        if DataEnv.isLogin {
-            loadSchedule()
-        }
+ 
         currentWeek = DataEnv.currentWeek
         
         if currentWeek == 0 {
@@ -142,13 +140,9 @@ class HFHomeVC: HFBasicViewController{
         navTitleLabel.setNeedsLayout()
         navTitleLabel.layoutIfNeeded()
         
-        viewModel.loadData(week: currentWeek) { (result) in
-            
-        }
-        
-        if let result = HFCourseModel.readCourses(forWeek: currentWeek) {
-            scheduleView.setupWithCourses(result)
-            scheduleView.setupWithWeek(currentWeek)
+
+        if DataEnv.isLogin {
+            loadSchedule()
         }
         weekSelectView.selectedWeek = currentWeek
     }
@@ -172,10 +166,7 @@ extension HFHomeVC: HFHomeScheduleSelectWeekViewDelegate {
         }
         showOrHideSelectWeekView()
         currentWeek = index
-        if let result = HFCourseModel.readCourses(forWeek: currentWeek) {
-            scheduleView.setupWithCourses(result)
-            scheduleView.setupWithWeek(index)
-        }
+        loadSchedule()
         
         AnalyseManager.ChangeWeeks.record()
     }

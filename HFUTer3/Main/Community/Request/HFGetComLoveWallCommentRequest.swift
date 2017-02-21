@@ -27,11 +27,10 @@ class HFGetComLoveWallCommentRequest: HFBaseAPIManager {
     }
     
     
-    override func requestParams() -> [String : AnyObject]? {
+    override func requestParams() -> [String : Any]? {
         return [
-            "pageIndex":page as AnyObject,
-            "id":id as AnyObject
-        
+            "pageIndex":page,
+            "id":id
         ]
     }
     

@@ -21,12 +21,12 @@ class HFInfoGetPlanDetailRequest: HFBaseAPIManager {
         self.loadData()
     }
     
-    override func requestParams() -> [String : AnyObject]? {
+    override func requestParams() -> [String : Any]? {
         let type = style == 0 ? 1 : 3
         return [
-            "term"  : term as AnyObject,
-            "style" : type as AnyObject,
-            "major" : major as AnyObject
+            "term"  : term,
+            "style" : type,
+            "major" : major
         ]
     }
     

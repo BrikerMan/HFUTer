@@ -27,10 +27,10 @@ class HFMineInfoBindRequest: HFBaseAPIManager {
         return "绑定失败，请输入正确密码"
     }
     
-    override func requestParams() -> [String : AnyObject]? {
+    override func requestParams() -> [String : Any]? {
         return [
-            "which":which as AnyObject,
-            "pwd":password as AnyObject
+            "which":which,
+            "pwd":password
         ]
     }
 }
