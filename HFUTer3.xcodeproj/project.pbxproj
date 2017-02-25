@@ -34,6 +34,7 @@
 		6A02E2761CF320CB00DC669A /* HFCommunityHomeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A02E26C1CF320CB00DC669A /* HFCommunityHomeListView.swift */; };
 		6A02E2771CF320CB00DC669A /* HFCommunityHomeListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6A02E26D1CF320CB00DC669A /* HFCommunityHomeListView.xib */; };
 		6A02E27A1CF3366D00DC669A /* HFCommunityPostLostAndFoundVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A02E2781CF3366D00DC669A /* HFCommunityPostLostAndFoundVC.swift */; };
+		6A06EB0E1E61A41700F18981 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6A06EB0D1E61A41700F18981 /* GoogleService-Info.plist */; };
 		6A0774BD1D06FBE9006D3C2C /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A0774BC1D06FBE9006D3C2C /* StoreKit.framework */; };
 		6A0906E11E45F64E00EEE3F1 /* HFLoginEducationRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A0906E01E45F64E00EEE3F1 /* HFLoginEducationRequest.swift */; };
 		6A0906E31E45F68000EEE3F1 /* HFEducationURLs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A0906E21E45F68000EEE3F1 /* HFEducationURLs.swift */; };
@@ -374,6 +375,7 @@
 		6A02E26C1CF320CB00DC669A /* HFCommunityHomeListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFCommunityHomeListView.swift; sourceTree = "<group>"; };
 		6A02E26D1CF320CB00DC669A /* HFCommunityHomeListView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HFCommunityHomeListView.xib; sourceTree = "<group>"; };
 		6A02E2781CF3366D00DC669A /* HFCommunityPostLostAndFoundVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFCommunityPostLostAndFoundVC.swift; sourceTree = "<group>"; };
+		6A06EB0D1E61A41700F18981 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		6A0774BC1D06FBE9006D3C2C /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		6A0906E01E45F64E00EEE3F1 /* HFLoginEducationRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFLoginEducationRequest.swift; sourceTree = "<group>"; };
 		6A0906E21E45F68000EEE3F1 /* HFEducationURLs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFEducationURLs.swift; sourceTree = "<group>"; };
@@ -1109,6 +1111,7 @@
 		6B23B0A61C97DA4E0089214D /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				6A06EB0D1E61A41700F18981 /* GoogleService-Info.plist */,
 				6B23B0AC1C97DA4E0089214D /* Info.plist */,
 				6B23B0A71C97DA4E0089214D /* Assets.xcassets */,
 				6B23B0A81C97DA4E0089214D /* LaunchScreen.storyboard */,
@@ -1750,6 +1753,7 @@
 				6A338F131D04375600A40C98 /* HFHelpInfoWebVC.xib in Resources */,
 				6A02E2731CF320CB00DC669A /* FMCommunityLoveWellCell.xib in Resources */,
 				6B1E06C71CA00ABF004E558D /* HFHomeScheduleSelectWeekView.xib in Resources */,
+				6A06EB0E1E61A41700F18981 /* GoogleService-Info.plist in Resources */,
 				6A02E26F1CF320CB00DC669A /* FMCommunityActionListViewCell.xib in Resources */,
 				6BA9EAFC1C995DDC0017DBC4 /* Community.storyboard in Resources */,
 				6BA9EAFE1C995DEC0017DBC4 /* Information.storyboard in Resources */,

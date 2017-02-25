@@ -10,6 +10,7 @@ import UIKit
 import Fabric
 import Crashlytics
 import YYWebImage
+import Firebase
 
 let Is_Build_For_App_Store = true
 let Is_TestFlight          = false
@@ -164,7 +165,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         MobClick.start(withConfigure: conf)
         
         Fabric.with([Crashlytics.self])
-        
+        FIRApp.configure()
     }
     
     func handleFristLuacnh() {
