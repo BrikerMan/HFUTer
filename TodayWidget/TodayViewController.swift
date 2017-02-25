@@ -36,7 +36,15 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         completionHandler(NCUpdateResult.newData)
     }
     
-    
+    @available(iOSApplicationExtension 10.0, *)
+    func widgetActiveDisplayModeDidChange(_ activeDisplayMode: NCWidgetDisplayMode, withMaximumSize maxSize: CGSize) {
+        switch activeDisplayMode {
+        case .compact:
+            self.preferredContentSize = CGSize(width: UIScreen.main.bounds.size.width, height: 110)
+        case .expanded:
+            self.preferredContentSize = CGSize(width: UIScreen.main.bounds.size.width, height: 110)
+        }
+    }
     
     func updateData() {
         todayCourses    = DataManager.shared.getTodayCorse()
