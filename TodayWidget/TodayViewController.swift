@@ -50,10 +50,10 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         
         switch activeDisplayMode {
         case .compact:
-            var height = 30
-            if !cources.isEmpty {
-                height = cources[0].cources.count * 60 + 30
-            }
+            let height = 30
+//            if !cources.isEmpty {
+//                height = cources[0].cources.count * 60 + 30
+//            }
             UIView.animate(withDuration: 0.25, animations: {
                 self.preferredContentSize = CGSize(width: UIScreen.main.bounds.size.width, height: CGFloat(height))
             })
@@ -82,7 +82,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     fileprivate func reloadUI() {
         tableView.reloadData()
         if #available(iOSApplicationExtension 10.0, *) {
-            if cources.count == 2 {
+            if !cources.isEmpty {
                 extensionContext?.widgetLargestAvailableDisplayMode = .expanded
             } else {
                 extensionContext?.widgetLargestAvailableDisplayMode = .compact
@@ -139,13 +139,6 @@ extension TodayViewController: UITableViewDataSource {
                 cell.titleLabel.text = DataManager.shared.getHeaderString(indexPath.section == 0)
                 return cell
             } else {
-//                if #available(iOSApplicationExtension 10.0, *),
-//                    extensionContext?.widgetActiveDisplayMode == .compact
-//                        && indexPath.row == 1{
-//                    let cell = tableView.dequeueReusableCell(withIdentifier: "CourceMoreTableViewCell") as! CourceMoreTableViewCell
-//                    
-//                    return cell
-//                }
                 let cell = tableView.dequeueReusableCell(withIdentifier: "CourseTableViewCell")! as! CourseTableViewCell
                 let model = cources[indexPath.section].cources[indexPath.row - 1]
                 cell.blind(model)
@@ -165,11 +158,6 @@ extension TodayViewController: UITableViewDelegate {
         if indexPath.row == 0 {
             return 30
         } else {
-//            if #available(iOSApplicationExtension 10.0, *),
-//                extensionContext?.widgetActiveDisplayMode == .compact
-//                    && indexPath.row == 1{
-//                return 30
-//            }
             return 60
         }
     }

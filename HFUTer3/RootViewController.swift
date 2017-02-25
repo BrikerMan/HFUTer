@@ -8,6 +8,8 @@
 
 import UIKit
 
+var RootController: RootViewController!
+
 class RootViewController: UITabBarController {
     
     var homeVC: HFHomeVC!
@@ -19,6 +21,7 @@ class RootViewController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        RootController = self
         preprareViewControllers()
         
         hfTabbar.shouldShowBandge = UIApplication.shared.applicationIconBadgeNumber != 0

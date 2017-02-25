@@ -48,6 +48,15 @@ class HFInformationVC: HFBaseViewController {
         }
     }
     
+    func pushToGrades() {
+        self.performSegue(withIdentifier: HFInfoSegue.PushGradesVC.rawValue, sender: nil)
+    }
+    
+    func pushToCalendar() {
+        let vc = HFInfoCalendarVC(nibName: "HFInfoCalendarVC", bundle: nil)
+        self.push(vc)
+    }
+    
 }
 
 extension HFInformationVC: UITableViewDataSource {
