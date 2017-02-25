@@ -35,6 +35,7 @@ target 'HFUTer3' do
     pod 'YYModel'                           ## Dic or Json -> Model
     pod 'Qiniu'
     pod 'GzipSwift'
+    pod 'Firebase'
     
     # 统计
     pod 'Fabric'

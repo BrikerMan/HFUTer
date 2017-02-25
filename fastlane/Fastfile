@@ -9,20 +9,19 @@ fastlane_version "1.109.0"
 generated_fastfile_id "aa64c567-ffbd-4e87-8f1b-731201deae45"
 
 default_platform :ios
+xcode_select "/Applications/Xcode8.2.app"
 
 # Fastfile actions accept additional configuration, but
-# don't worry, fastlane will prompt you for required
+
 # info which you can add here later
 lane :beta do
-  cocoapods
-
-  increment_build_number
-
-  # build your iOS app
+  # cocoapods
   gym(
-    # scheme: "YourScheme"
+    workspace: "HFUTer3.xcworkspace",
+	output_directory: "./fastlane/build",
+	scheme: "HFUTer3"
   )
 
-  # upload to Testflight
-  pilot(skip_waiting_for_build_processing: true)
+   # testflight(skip_waiting_for_build_processing: true)
+   firim
 end
