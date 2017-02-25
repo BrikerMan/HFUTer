@@ -39,7 +39,7 @@ class DataManager {
      这次两边开学时间一致，没做区分计算
      */
     func calculateCurrentWeek() -> Int {
-        let from = TimeInterval(1472407200)
+        let from = TimeInterval(1487520000)
         let now = (Date().timeIntervalSince1970)
         var week = Int((now - from)/(7 * 24 * 3600)) + 1
         if week < 0 {

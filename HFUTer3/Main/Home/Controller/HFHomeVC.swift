@@ -18,6 +18,8 @@ class HFHomeVC: HFBasicViewController{
     
     var loadingView: HFLoadingView?
     
+    var viewModel = HFScheduleViewModel()
+    
     fileprivate var currentWeek = 0
     
     fileprivate var scheduleView : HFHomeSchudulesView!
@@ -139,6 +141,11 @@ class HFHomeVC: HFBasicViewController{
         }
         navTitleLabel.setNeedsLayout()
         navTitleLabel.layoutIfNeeded()
+        
+        viewModel.loadData(week: currentWeek) { (result) in
+            
+        }
+        
         if let result = HFCourseModel.readCourses(forWeek: currentWeek) {
             scheduleView.setupWithCourses(result)
             scheduleView.setupWithWeek(currentWeek)
