@@ -9,57 +9,100 @@
 import UIKit
 import NotificationCenter
 
+struct CourseListType {
+    var isToday: Bool
+    var cources: [HFCourseModel]
+    
+}
+
+extension CourseListType: Equatable {
+    static func == (lhs: CourseListType, rhs: CourseListType) -> Bool {
+        return lhs.cources == rhs.cources && lhs.isToday == rhs.isToday
+    }
+}
+
 class TodayViewController: UIViewController, NCWidgetProviding {
     
     @IBOutlet weak var tableView: UITableView!
-    
-    var todayCourses    = [HFCourseModel]()
-    var tomorrowCourses = [HFCourseModel]()
+
+    fileprivate var cources: [CourseListType] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.backgroundColor = UIColor.clear
         updateData()
     }
     
     func widgetPerformUpdate(completionHandler: (@escaping (NCUpdateResult) -> Void)) {
         
-        let newData = DataManager.shared.getTodayCorse()
-        let tomorrowNew = DataManager.shared.getTomoorCourse()
-        if todayCourses == newData && tomorrowCourses == tomorrowNew {
+        let new = fetchNewData()
+        if new == cources {
             completionHandler(NCUpdateResult.noData)
             return
         }
-        todayCourses    = newData
-        tomorrowCourses = tomorrowNew
-        tableView.reloadData()
-        self.preferredContentSize = self.tableView.contentSize
+        cources = new
+        reloadUI()
         completionHandler(NCUpdateResult.newData)
     }
     
     @available(iOSApplicationExtension 10.0, *)
     func widgetActiveDisplayModeDidChange(_ activeDisplayMode: NCWidgetDisplayMode, withMaximumSize maxSize: CGSize) {
+        
         switch activeDisplayMode {
         case .compact:
-            self.preferredContentSize = CGSize(width: UIScreen.main.bounds.size.width, height: 110)
+            var height = 30
+            if !cources.isEmpty {
+                height = cources[0].cources.count * 60 + 30
+            }
+            UIView.animate(withDuration: 0.25, animations: {
+                self.preferredContentSize = CGSize(width: UIScreen.main.bounds.size.width, height: CGFloat(height))
+            })
+            
         case .expanded:
-            self.preferredContentSize = CGSize(width: UIScreen.main.bounds.size.width, height: 110)
+            var height: CGFloat
+            if !cources.isEmpty {
+                height = 0
+                for c in cources {
+                   height += CGFloat(c.cources.count * 60 + 30)
+                }
+            } else {
+                height = 30
+            }
+            UIView.animate(withDuration: 0.25, animations: {
+                self.preferredContentSize = CGSize(width: UIScreen.main.bounds.size.width, height: height)
+            })
         }
     }
     
     func updateData() {
-        todayCourses    = DataManager.shared.getTodayCorse()
-        tomorrowCourses = DataManager.shared.getTomoorCourse()
-        tableView.reloadData()
-        self.preferredContentSize = self.tableView.contentSize
-
+        cources = fetchNewData()
+        reloadUI()
     }
     
-    func courseForIndexPath(_ index: IndexPath) -> [HFCourseModel]{
-        if index.section == 0 {
-            return todayCourses
+    fileprivate func reloadUI() {
+        tableView.reloadData()
+        if #available(iOSApplicationExtension 10.0, *) {
+            if cources.count == 2 {
+                extensionContext?.widgetLargestAvailableDisplayMode = .expanded
+            } else {
+                extensionContext?.widgetLargestAvailableDisplayMode = .compact
+            }
         } else {
-            return tomorrowCourses
+            preferredContentSize = tableView.contentSize
         }
+    }
+    
+    fileprivate func fetchNewData() -> [CourseListType] {
+        var new: [CourseListType] = []
+        let todayCourses    = DataManager.shared.getTodayCorse()
+        let tomorrowCourses = DataManager.shared.getTomoorCourse()
+        if !todayCourses.isEmpty {
+            new.append(CourseListType(isToday: true, cources: todayCourses))
+        }
+        if !tomorrowCourses.isEmpty {
+            new.append(CourseListType(isToday: false,cources: tomorrowCourses))
+        }
+        return new
     }
     
     func widgetMarginInsets(forProposedMarginInsets defaultMarginInsets: UIEdgeInsets) -> UIEdgeInsets {
@@ -70,32 +113,44 @@ class TodayViewController: UIViewController, NCWidgetProviding {
 
 extension TodayViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 2
+        if cources.isEmpty {
+            return 1
+        } else {
+            return cources.count
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let models = section == 0 ? todayCourses : tomorrowCourses
-        if models.isEmpty && !(todayCourses.isEmpty && tomorrowCourses.isEmpty){
-            return 0
+        if cources.isEmpty {
+            return 1
         } else {
-            return models.count + 1
+            return cources[section].cources.count + 1
         }
-        
         
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.row == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "CourceDayHeaderCell") as! CourceDayHeaderCell
-            cell.titleLabel.text = DataManager.shared.getHeaderString(indexPath.section == 0)
-            return cell
-        } else if courseForIndexPath(indexPath).isEmpty {
+        if cources.isEmpty {
             let cell = tableView.dequeueReusableCell(withIdentifier: "NoCourceTableViewCell")!
             return cell
         } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "CourseTableViewCell")! as! CourseTableViewCell
-            cell.blind(courseForIndexPath(indexPath)[indexPath.row - 1])
-            return cell
+            if indexPath.row == 0 {
+                let cell = tableView.dequeueReusableCell(withIdentifier: "CourceDayHeaderCell") as! CourceDayHeaderCell
+                cell.titleLabel.text = DataManager.shared.getHeaderString(indexPath.section == 0)
+                return cell
+            } else {
+//                if #available(iOSApplicationExtension 10.0, *),
+//                    extensionContext?.widgetActiveDisplayMode == .compact
+//                        && indexPath.row == 1{
+//                    let cell = tableView.dequeueReusableCell(withIdentifier: "CourceMoreTableViewCell") as! CourceMoreTableViewCell
+//                    
+//                    return cell
+//                }
+                let cell = tableView.dequeueReusableCell(withIdentifier: "CourseTableViewCell")! as! CourseTableViewCell
+                let model = cources[indexPath.section].cources[indexPath.row - 1]
+                cell.blind(model)
+                return cell
+            }
         }
     }
 }
@@ -108,8 +163,13 @@ extension TodayViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.row == 0 {
-            return 40
+            return 30
         } else {
+//            if #available(iOSApplicationExtension 10.0, *),
+//                extensionContext?.widgetActiveDisplayMode == .compact
+//                    && indexPath.row == 1{
+//                return 30
+//            }
             return 60
         }
     }
