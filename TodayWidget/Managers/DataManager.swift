@@ -23,15 +23,7 @@ class DataManager {
             week += 1
         }
         
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy 年 MM 月 dd"
-        var dayString = ""
-        if isToday {
-            dayString = dateFormatter.string(from: Date())
-        } else {
-            dayString = dateFormatter.string(from: Date().addingTimeInterval(24 * 3600))
-        }
-        return "\(dayString) - \(dayName) - 第 \(week) 周"
+        return "\(dayName) - 第 \(week) 周"
     }
     
     /**
@@ -73,7 +65,7 @@ class DataManager {
         var hours = [HFCourseModel]()
         var week = calculateCurrentWeek()
         
-        var day  = getDayOfWeek()
+        var day = getDayOfWeek()
         if today {
             day -= 1
         } else {
