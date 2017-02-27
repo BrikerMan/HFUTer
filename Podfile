@@ -40,6 +40,7 @@ target 'HFUTer3' do
     pod 'Fabric'
     pod 'Crashlytics'
     pod 'UMengAnalytics-NO-IDFA'
+    pod 'CocoaLumberjack/Swift'
     
     # 调试
     pod 'Reveal-SDK', :configurations => ['Debug']

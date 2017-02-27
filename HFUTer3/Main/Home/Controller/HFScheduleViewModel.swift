@@ -11,32 +11,9 @@ import Foundation
 class HFScheduleViewModel {
     
     func loadData(week: Int, completion: @escaping ((_ models: [CourseDayModel]) -> Void)) {
-        HFEducationRequest.getSchedule(progress: { (progress) in
-            HFToast.showError(progress)
-            
-        }, success: { (result) in
-//            print(result)
-        }, failed: { (error) in
-            HFToast.showError(error)
-            
-        })
-
-        
         if let result = HFCourseModel.readCourses(forWeek: week) {
             completion(result)
         } else {
-            HFEducationRequest.getSchedule(progress: { (progress) in
-                HFToast.showError(progress)
-            
-            }, success: { (result) in
-                print(result)
-                self.save(data: result["data"])
-                if let result = HFCourseModel.readCourses(forWeek: week) {
-                    completion(result)
-                }
-            }, failed: { (error) in
-                HFToast.showError(error)
-            })
             
         }
     }

@@ -11,7 +11,7 @@ import Pitaya
 import Gzip
 import PromiseKit
 
-typealias FaiedBlock        = (_ error: String) -> Void
+typealias FaiedBlock    = (_ error: String) -> Void
 typealias ProgressBlock = (_ progress: String) -> Void
 
 enum EduRequestError: Error {
@@ -30,104 +30,76 @@ class HFEducationRequest {
     static var host     = EduURL.xchost
     static var hasLogin = false
     
-    static func getSchedule(progress: @escaping ProgressBlock,
-                            success:  @escaping (_ result: JSONItem) -> Void,
-                            failed:   @escaping FaiedBlock) {
-        progress("开始登录 ...")
-        getUserPassword().then { info -> Void in
-            print(info.sid)
-            print(info.school)
-            print(info.jwpassword)
-            print(info.mhpassword)
-            
-            print("CODEEEEEEE " + (decrypt(info.jwpassword) ?? "| 解密失败 | \(info.jwpassword) | \(DataEnv.user!.password) |"))
-            print("CODEEEEEEE " + (decrypt(info.mhpassword) ?? "| 解密失败 | \(info.mhpassword) | \(DataEnv.user!.password) |"))
-            
-            host = info.school == 0 ? EduURL.hfhost : EduURL.xchost
-            }.catch{ (error) -> Void in
-                print(error)
-                
+    static func fetchSchedule() {
+        getUserPassword()
+            .then { info -> Promise<Bool> in
+                return login(info: info)
+            }.then { result -> Void in
+                print(result)
+            }.catch { error in
+                print(error.localizedDescription)
         }
-        
-//        login()
-//            .then { success -> Promise<Data> in
-//                progress("登录成功")
-//                progress("从教务系统获取数据 ...")
-//                let url = host + EduURL.schedule
-//                return getDataFromWeb(url: url)
-//            }.then { data -> Promise<JSONItem> in
-//                progress("开始解析 ...")
-//                return parseData(data: data, with: APIBaseURL + "/api/schedule/uploadSchedule")
-//            }.then { json -> Void in
-//                progress("获取解析数据成功")
-//                success(json)
-//            }.catch { (error) -> Void in
-//                print("===========错误 \(error)")
-//        }
     }
     
-    static func getGrades(progress:  @escaping ProgressBlock,
-                            success: @escaping (_ result: JSONItem) -> Void,
-                            failed:  @escaping FaiedBlock) {
-        progress("开始登录 ...")
-        login()
-            .then { success -> Promise<Data> in
-                progress("登录成功")
-                progress("从教务系统获取数据 ...")
-                let url = host + EduURL.score
-                return getDataFromWeb(url: url)
-            }.then { data -> Promise<JSONItem> in
-                progress("开始解析 ...")
-                return parseData(data: data, with: APIBaseURL + "/api/schedule/uploadScore")
-            }.then { json -> Void in
-                progress("获取解析数据成功")
-                success(json)
-            }.catch { (error) -> Void in
-                print("===========错误 \(error)")
-        }
-    }
-
-    typealias UserInfo = (sid: String, school: Int, jwpassword: String, mhpassword: String )
+    typealias UserInfo = (sid: String, school: Int, jwpass: String?, mhpass: String?)
     static func getUserPassword() -> Promise<UserInfo> {
         return Promise<UserInfo> { fulfill, reject in
             HFBaseRequest.fire(api: "/api/user/bindingInfo",
                                method: .GET,
                                response: { (json, error) in
                                 if let error = error {
+                                    Logger.error(error)
                                     reject(EduRequestError.otherError(info: error))
                                 } else {
                                     let sid        = json["data"]["sid"].stringValue
-                                    let school     = json["data"]["sid"].intValue
+                                    let school     = json["data"]["school"].intValue
                                     let jwpassword = json["data"]["pwdPortal"].stringValue
                                     let mhpassword = json["data"]["pwdIMS"].stringValue
-                                
-                                    fulfill((sid, school, jwpassword, mhpassword))
+                                    
+                                    let jwpass = decrypt(jwpassword)
+                                    let mhpass = decrypt(mhpassword)
+                                    self.host = school == 0 ? EduURL.hfhost : EduURL.xchost
+                                    
+                                    fulfill((sid, school, jwpass, mhpass))
+                                    Logger.debug("| 获取用户信息成功 | \(sid) \(school) | 教务 \(jwpass ?? "") | 信息门户 \(mhpass ?? "")")
                                 }
             })
         }
     }
     
-    static func login() -> Promise<Bool> {
+    static func login(info: UserInfo) -> Promise<Bool> {
         return Promise<Bool> { fulfill, reject in
             if hasLogin {
                 fulfill(true)
+                return
             }
-            let url = host + EduURL.login
-            Pita.build(HTTPMethod: .POST, url: url)
-                .setHTTPHeader(Name: "Content-Type", Value: "application/x-www-form-urlencoded")
-                .setHTTPBodyRaw("UserStyle=student&user=2015218508&password=824fc699")
-                .responseData { (data, response) in
-                    if let data = data {
-                        let str = String(data: data, encoding: .gb2312) ?? ""
-                        if str.contains("密码验证") {
-                            return reject(EduRequestError.passwordError)
+            
+            if let jwpass = info.jwpass {
+                let url = host + EduURL.login
+                Pita.build(HTTPMethod: .POST, url: url)
+                    .setHTTPHeader(Name: "Content-Type", Value: "application/x-www-form-urlencoded")
+                    .setHTTPBodyRaw("UserStyle=student&user=\(info.sid)&password=\(jwpass)")
+                    .onNetworkError({ (error) in
+                        reject(error)
+                    })
+                    .responseData { (data, response) in
+                        if let data = data {
+                            let str = String(data: data, encoding: .gb2312) ?? ""
+                            if str.contains("密码验证") {
+                                reject(EduRequestError.passwordError)
+                            } else {
+                                hasLogin = true
+                                fulfill(true)
+                            }
                         } else {
-                            hasLogin = true
-                            return fulfill(true)
+                            reject(EduRequestError.netError)
                         }
-                    } else {
-                        return reject(EduRequestError.netError)
-                    }
+                }
+                return
+            }
+            
+            if let mhpass = info.mhpass {
+                print(mhpass)
             }
         }
     }
@@ -168,7 +140,7 @@ class HFEducationRequest {
                 })
         }
     }
-
+    
     
     static func decrypt(_ original: String) -> String? {
         let doceded = original.DESDecrypt(DataEnv.user!.password.md5())

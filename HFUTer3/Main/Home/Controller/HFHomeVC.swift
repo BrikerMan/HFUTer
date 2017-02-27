@@ -34,6 +34,8 @@ class HFHomeVC: HFBasicViewController{
         
         navBarView.backgroundColor = HFTheme.TintColor
         AnalyseManager.OpenSchudule.record()
+        
+        HFEducationRequest.fetchSchedule()
     }
     
     

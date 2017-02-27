@@ -22,6 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        Logger.invoke()
         handleFristLuacnh()
         DataEnv.updataHostInfo()
         HFUpdateCookieRequest().checkUpdate(onSucces: nil, failed: nil)
@@ -53,16 +54,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                                                       localizedSubtitle: nil,
                                                       icon: icon1,
                                                       userInfo: nil)
+            
             let shortcut2 = UIApplicationShortcutItem(type: "com.eliyar.calendar",
                                                       localizedTitle: "校历",
                                                       localizedSubtitle: nil,
                                                       icon: icon2,
                                                       userInfo: nil)
+            
             let shortcut3 = UIApplicationShortcutItem(type: "com.eliyar.publish_love",
                                                       localizedTitle: "发布表白",
                                                       localizedSubtitle: nil,
                                                       icon: icon3,
                                                       userInfo: nil)
+            
             application.shortcutItems = [shortcut1, shortcut2, shortcut3]
         } else {
             application.shortcutItems = nil
