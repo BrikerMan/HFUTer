@@ -11,10 +11,16 @@ import UIKit
 class CourceDayHeaderCell: UITableViewCell {
 
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var seperatorView: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        if #available(iOSApplicationExtension 10.0, *) { } else {
+            titleLabel.textColor = UIColor.white.withAlphaComponent(0.6)
+            seperatorView.tintColor = UIColor.white.withAlphaComponent(0.6)
+            seperatorView.image = UIImage(named: "hf_widget_seperator_line")?.withRenderingMode(.alwaysTemplate)
+        }
+
     }
     
     

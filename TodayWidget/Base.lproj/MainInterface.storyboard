@@ -54,6 +54,7 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <connections>
+                                            <outlet property="seperatorView" destination="G9t-Xp-442" id="uyW-60-ka1"/>
                                             <outlet property="titleLabel" destination="Ltp-O9-fDI" id="fnI-Bl-fQE"/>
                                         </connections>
                                     </tableViewCell>
