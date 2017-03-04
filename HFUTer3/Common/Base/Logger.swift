@@ -13,14 +13,13 @@ typealias Logger = BMLogger
 
 class BMLogger {
     static func invoke() {
-        DDTTYLogger.setup(release: .error, debug: .all)
+        DDTTYLogger.setup(release: .all, debug: .all)
         Logger.verbose("verbose Log")
         Logger.debug("debug Log")
         Logger.info("info Log")
         Logger.warning("warning Log")
         Logger.error("error Log")
     }
-    
     
     /// log 等级描述
     /// - Verbose 最基础的消息，比如 api 响应
@@ -61,6 +60,15 @@ class BMLogger {
     static func error(_ message: @autoclosure () -> String, level: DDLogLevel = defaultDebugLevel, context: Int = 0, file: StaticString = #file, function: StaticString = #function, line: UInt = #line, tag: Any? = nil, asynchronous async: Bool = true, ddlog: DDLog = DDLog.sharedInstance) {
         _DDLogMessage(message, level: level, flag: .error, context: context, file: file, function: function, line: line, tag: tag, asynchronous: async, ddlog: ddlog)
     }
+    
+    static func lastLogPath() -> String? {
+        for logger in DDLog.allLoggers where logger is DDFileLogger {
+            if let logger = logger as? DDFileLogger {
+                return logger.currentLogFileInfo.filePath
+            }
+        }
+        return nil
+    }
 }
 
 extension DDTTYLogger {
@@ -78,6 +86,15 @@ extension DDTTYLogger {
         logger?.setXcodeColors()
         logger?.logFormatter = CustomLogFormatter()
         DDLog.add(logger!)
+        
+        let fileLogger = DDFileLogger()
+        fileLogger?.rollingFrequency = 60 * 60 * 24
+        fileLogger?.maximumFileSize = 1024 * 4
+        
+        DDLog.add(fileLogger!)
+        
+        
+        
     }
     
     func setXcodeColors() {

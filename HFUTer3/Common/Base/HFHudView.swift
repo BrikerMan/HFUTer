@@ -17,7 +17,7 @@ class HFHudView: NSObject {
     
     static let shared = HFHudView()
     
-    var dismissTimeInterval = 2.0
+    var dismissTimeInterval = 4.0
     
     fileprivate typealias hud = WSProgressHUD
     

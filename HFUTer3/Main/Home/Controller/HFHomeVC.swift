@@ -18,7 +18,7 @@ class HFHomeVC: HFBasicViewController{
     
     var loadingView: HFLoadingView?
     
-    var viewModel = HFParseVidewModel()
+    var viewModel = HFParseViewModel()
     
     fileprivate var currentWeek = 0
     
@@ -38,6 +38,8 @@ class HFHomeVC: HFBasicViewController{
     
     
     @objc fileprivate func afterUserLogin(_ sender:AnyObject) {
+        viewModel.info = nil
+        Hud.showLoading("正在加载课表")
         loadSchedule()
     }
     
@@ -56,15 +58,15 @@ class HFHomeVC: HFBasicViewController{
     // MARK:- Load Data
     func loadSchedule() {
         let week = currentWeek
-        Hud.showLoading("正在加载课表")
+        
         viewModel.fetchSchedule(for: week) { result, error in
             if let error = error {
-                Hud.showError(error)
+                self.showEduError(error: error)
             } else {
-                Hud.dismiss()
                 self.scheduleView.setupWithCourses(result)
                 self.scheduleView.setupWithWeek(week)
             }
+            Hud.dismiss()
         }
     }
     
@@ -133,6 +135,7 @@ class HFHomeVC: HFBasicViewController{
         
         
         if DataEnv.isLogin {
+            Hud.showLoading("正在加载课表")
             loadSchedule()
         }
         weekSelectView.selectedWeek = currentWeek
@@ -143,13 +146,13 @@ extension HFHomeVC: HFHomeSchudulesViewDelegate {
     func scheduleViewDidStartRefresh() {
         viewModel.refreshSchedule(for: currentWeek) { result, error in
             if let error = error {
-                Hud.showError(error)
+                self.showEduError(error: error)
             } else {
-                runOnMainThread {
-                    self.scheduleView.setupWithCourses(result)
-                    self.scheduleView.collectionView.endRefresh()
-                    self.scheduleView.setupWithWeek(self.currentWeek)
-                }
+                self.scheduleView.setupWithCourses(result)
+                self.scheduleView.setupWithWeek(self.currentWeek)
+            }
+            runOnMainThread {
+                self.scheduleView.collectionView.endRefresh()
             }
         }
     }

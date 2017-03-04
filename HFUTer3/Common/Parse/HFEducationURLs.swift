@@ -17,6 +17,14 @@ class HFEducationURLs {
         return host() + "/pass.asp"
     }
     
+    var mhLogin: String {
+        return "http://ids1.hfut.edu.cn/amserver/UI/Login"
+    }
+    
+    var mhJump: String {
+        return host() + "/StuIndex.asp"
+    }
+    
     var schedule: String {
         return host() + "/student/asp/grkb1.asp"
     }
@@ -27,14 +35,14 @@ class HFEducationURLs {
     
     var school = 0
     
-    let xchost = "http://222.195.8.201"
     let hfhost = "http://bkjw.hfut.edu.cn"
+    let xchost = "http://222.195.8.201"
     
     func host() -> String {
         if school == 0 {
-            return xchost
-        } else {
             return hfhost
+        } else {
+            return xchost
         }
     }
 }
