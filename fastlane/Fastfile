@@ -1,27 +1,78 @@
-# More documentation about how to customize your build
-# can be found here:
-# https://docs.fastlane.tools
-fastlane_version "1.109.0"
+# Customise this file, documentation can be found here:
+# https://github.com/fastlane/fastlane/tree/master/fastlane/docs
+# All available actions: https://docs.fastlane.tools/actions
+# can also be listed using the `fastlane actions` command
 
-# This value helps us track success metrics for Fastfiles
-# we automatically generate. Feel free to remove this line
-# once you get things running smoothly!
-generated_fastfile_id "aa64c567-ffbd-4e87-8f1b-731201deae45"
+# Change the syntax highlighting to Ruby
+# All lines starting with a # are ignored when running `fastlane`
+
+# If you want to automatically update fastlane if a new version is available:
+# update_fastlane
+
+# This is the minimum version number required.
+# Update this, if you use features of a newer version
+fastlane_version "2.18.3"
 
 default_platform :ios
 xcode_select "/Applications/Xcode8.2.app"
 
-# Fastfile actions accept additional configuration, but
+platform :ios do
+  before_all do
+    clear_derived_data
+    # cocoapods
+    # carthage
+  end
 
-# info which you can add here later
-lane :beta do
-  # cocoapods
-  gym(
-    workspace: "HFUTer3.xcworkspace",
-	output_directory: "./fastlane/build",
-	scheme: "HFUTer3"
-  )
+  desc "Runs all the tests"
+  lane :test do
+    scan
+  end
 
-   # testflight(skip_waiting_for_build_processing: true)
-   firim
+  desc "Submit a new Beta Build to Apple TestFlight"
+  desc "This will also make sure the profile is up to date"
+  lane :beta do
+    
+    gym(
+      workspace: "HFUTer3.xcworkspace",
+      output_directory: "./fastlane/build",
+      scheme: "HFUTer3",
+      silent: false,
+      clean: true,
+    ) # Build your app - more options available
+   
+    pilot
+    # testflight(skip_waiting_for_build_processing: true)
+  end
+
+  desc "Deploy a new version to the App Store"
+  lane :release do
+    # match(type: "appstore")
+    # snapshot
+    gym(
+        workspace: "HFUTer3.xcworkspace",
+        output_directory: "./fastlane/build",
+        scheme: "HFUTer3",
+        silent: false,
+        clean: true,
+      ) # Build your app - more options available
+    deliver(force: true)
+    # frameit
+  end
+
+  # You can define as many lanes as you want
+
+  after_all do |lane|
+    # This block is called, only if the executed lane was successful
+
+    # slack(
+    #   message: "Successfully deployed new App Update."
+    # )
+  end
+
+  error do |lane, exception|
+    # slack(
+    #   message: exception.message,
+    #   success: false
+    # )
+  end
 end

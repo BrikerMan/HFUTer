@@ -39,7 +39,11 @@ PODS:
   - GoogleToolboxForMac/Defines (2.1.1)
   - GoogleToolboxForMac/NSData+zlib (2.1.1):
     - GoogleToolboxForMac/Defines (= 2.1.1)
+<<<<<<< HEAD
   - GzipSwift (3.1.4)
+=======
+  - GzipSwift (3.1.2)
+>>>>>>> master
   - HappyDNS (0.3.10)
   - KMPlaceholderTextView (1.3.0)
   - LTMorphingLabel (0.3.0)
@@ -134,7 +138,11 @@ SPEC CHECKSUMS:
   FirebaseCore: 225d40532489835a034b8f4e2c9c87fbf4f615a2
   FirebaseInstanceID: 2d0518b1378fe9d685ef40cbdd63d2fdc1125339
   GoogleToolboxForMac: 8e329f1b599f2512c6b10676d45736bcc2cbbeb0
+<<<<<<< HEAD
   GzipSwift: 11ddb2bf253b1cd7b60bb169da20f62ac4348769
+=======
+  GzipSwift: 86700e6530b3aa5e782ed7107cde2deea6b16688
+>>>>>>> master
   HappyDNS: 06a9fed2796663fd87626dbf02552933265bf059
   KMPlaceholderTextView: 2bbcd19a273648a80a61e1e48f9743a24d8930e3
   LTMorphingLabel: 2777d8d9cb699125f48dfcd95d78bd3d77c87ade
@@ -157,6 +165,10 @@ SPEC CHECKSUMS:
   YYWebImage: 5f7f36aee2ae293f016d418c7d6ba05c4863e928
   ZYCornerRadius: f0af817be7805b5c63d793042ca7a03f81e14069
 
+<<<<<<< HEAD
 PODFILE CHECKSUM: d244d619ccad45c5914b3fe70015716316f3539a
+=======
+PODFILE CHECKSUM: f37caeaf178c9446118ed21f4d8d2dbbcbd24708
+>>>>>>> master
 
 COCOAPODS: 1.2.0

@@ -136,7 +136,7 @@ extension TodayViewController: UITableViewDataSource {
         } else {
             if indexPath.row == 0 {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "CourceDayHeaderCell") as! CourceDayHeaderCell
-                cell.titleLabel.text = DataManager.shared.getHeaderString(indexPath.section == 0)
+                cell.titleLabel.text = DataManager.shared.getHeaderString(cources[indexPath.section].isToday)
                 return cell
             } else {
                 let cell = tableView.dequeueReusableCell(withIdentifier: "CourseTableViewCell")! as! CourseTableViewCell

@@ -17,12 +17,10 @@ class CourseTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         lineView.layer.cornerRadius = 1
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+        if #available(iOSApplicationExtension 10.0, *) { } else {
+            titleLabel.textColor  = UIColor.white
+            detailLabel.textColor = UIColor.white.withAlphaComponent(0.6)
+        }
     }
     
     func blind(_ model:HFCourseModel) {
