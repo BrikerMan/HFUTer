@@ -88,7 +88,8 @@ class HFPullTableView: UITableView {
      初始化的时候有下拉刷新
      */
     fileprivate func initPullTableView() {
-        self.emptyDataSetSource = self
+        self.emptyDataSetSource   = self
+        self.emptyDataSetDelegate = self
     }
     
     func addRefreshView() {
@@ -111,7 +112,16 @@ extension HFPullTableView: DZNEmptyDataSetSource {
     func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
         let title = self.titleForEmptyForm()
         let attributes = [NSFontAttributeName: UIFont.systemFont(ofSize: 20),
-                          NSForegroundColorAttributeName: UIColor(hexString: "#BCBCBC")]
+                          NSForegroundColorAttributeName: UIColor(hexString: "#BCBCBC")!]
         return NSAttributedString(string: title, attributes: attributes)
+    }
+    
+    
+}
+
+
+extension HFPullTableView: DZNEmptyDataSetDelegate {
+    func emptyDataSetShouldAllowScroll(_ scrollView: UIScrollView!) -> Bool {
+        return true
     }
 }

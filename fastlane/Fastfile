@@ -40,8 +40,8 @@ platform :ios do
       clean: true,
     ) # Build your app - more options available
    
-    pilot
-    # testflight(skip_waiting_for_build_processing: true)
+    # pilot
+    testflight(skip_waiting_for_build_processing: true)
   end
 
   desc "Deploy a new version to the App Store"

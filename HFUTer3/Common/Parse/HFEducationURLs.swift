@@ -30,9 +30,9 @@ class HFEducationURLs {
     }
     
     var score: String {
-        return host() + "/api/schedule/uploadScore"
+        return host() + "/student/asp/Select_Success.asp"
     }
-    
+        
     var school = 0
     
     let hfhost = "http://bkjw.hfut.edu.cn"

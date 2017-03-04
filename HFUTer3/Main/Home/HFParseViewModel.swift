@@ -103,33 +103,50 @@ class HFParseViewModel {
         }
     }
     
-    // 刷新课表
+    // 刷新课表数据
     func refreshSchedule(for week: Int, completion: @escaping ((_ models: [CourseDayModel], _ error: String?) -> Void)) {
-        self.fetchUserPassword()
-            .then { Void -> Promise<Void> in
-                // 读取到用户的教务和信息门户密码后~~
-                return self.fetchSchedule(from: .jw)
-            } .then { Void -> Promise<Void> in
-                return self.fetchSchedule(from: .mh)
-            }.then { Void -> Void in
-                completion([],"教务系统和信息门户密码过期，请重新绑定")
-            }.catch { error in
-                if error.isFullfill {
-                    let result = HFCourseModel.readCourses(forWeek: week) ?? []
-                    completion(result, nil)
-                } else {
-                    completion([], error.description)
-                }
+        self.refreshData { (error) in
+            let result = HFCourseModel.readCourses(forWeek: week) ?? []
+            completion(result, error)
         }
     }
     
-//    var grades: 
-//    func fetchGrades() {
-//        
-//    }
+    func fetchGrades(completion: @escaping ((_ models: [HFTermModel], _ error: String?) -> Void)) {
+        if let result = HFTermModel.readModels() {
+            completion(result, nil)
+        } else {
+            self.refreshGrades(completion: completion)
+        }
+    }
+    
+    func refreshGrades(completion: @escaping ((_ models: [HFTermModel], _ error: String?) -> Void)) {
+        self.refreshData { (error) in
+            let result = HFTermModel.readModels() ?? []
+            completion(result, error)
+        }
+    }
+    
+    fileprivate func refreshData(completion: @escaping ((_ error: String?) -> Void)) {
+        self.fetchUserPassword()
+            .then { Void -> Promise<Void> in
+                // 读取到用户的教务和信息门户密码后~~
+                return self.fetchNewData(from: .jw)
+            } .then { Void -> Promise<Void> in
+                return self.fetchNewData(from: .mh)
+            }.then { Void -> Void in
+                completion("教务系统和信息门户密码错误或过期，请重新绑定")
+            }.catch { error in
+                if error.isFullfill {
+                    completion(nil)
+                } else {
+                    completion(error.description)
+                }
+        }
+        
+    }
     
     // 获取服务器缓存的课表
-    func fetchScheduleFromServer() -> Promise<Void> {
+    fileprivate func fetchScheduleFromServer() -> Promise<Void> {
         return Promise<Void> { fullfill, reject in
             HFBaseRequest.fire(api: "/api/schedule/schedule", response: { (json, error) in
                 if let error = error {
@@ -150,7 +167,7 @@ class HFParseViewModel {
     }
     
     /// 获取用户信息
-    func fetchUserPassword() -> Promise<Void> {
+    fileprivate func fetchUserPassword() -> Promise<Void> {
         return Promise<Void> { fullfill, reject in
             if let _ = info {
                 fullfill()
@@ -190,7 +207,7 @@ class HFParseViewModel {
     }
     
     // MARK: - 登录
-    func login(to type: HFParseServerType) -> Promise<Void> {
+    fileprivate func login(to type: HFParseServerType) -> Promise<Void> {
         return Promise<Void> { fulfill, reject in
             var pass : String
             var url  : String
@@ -253,7 +270,7 @@ class HFParseViewModel {
     
     
     // MARK: 从网页获取数据
-    func fetchSchedule(from type: HFParseServerType) -> Promise<Void> {
+    fileprivate func fetchNewData(from type: HFParseServerType) -> Promise<Void> {
         return Promise<Void> { fullfill, reject in
             login(to: type)
                 .then { Void -> Promise<Data> in
@@ -262,7 +279,14 @@ class HFParseViewModel {
                     self.parseData(data: data)
                 }.then { json -> Void in
                     if let array = json["data"].RAW?.jsonToArray() {
-                        PlistManager.dataPlist.saveValues([PlistKey.ScheduleList.rawValue: array])
+                        let key: String
+                        switch self.dataType {
+                        case .schedule:
+                            key = PlistKey.ScheduleList.rawValue
+                        case.grades:
+                            key = PlistKey.GradesList.rawValue
+                        }
+                        PlistManager.dataPlist.saveValues([key: array])
                         Logger.debug("解析数据缓存成功")
                         reject(HFParseError.fullfill)
                     } else {
@@ -278,7 +302,7 @@ class HFParseViewModel {
     
     
     /// 从服务器获取 HTTP 数据
-    func fetchDataFromWeb() -> Promise<Data> {
+    fileprivate func fetchDataFromWeb() -> Promise<Data> {
         let url: String
         switch dataType {
         case .schedule:
@@ -289,6 +313,9 @@ class HFParseViewModel {
         
         return Promise<Data> { fulfill, reject in
             Pita.build(HTTPMethod: .GET, url: url)
+                .onNetworkError({ (error) in
+                    reject(error)
+                })
                 .responseData { (data, response) in
                     if let data = data {
                         Logger.debug("获取数据成功")
@@ -302,7 +329,7 @@ class HFParseViewModel {
     }
     
     /// 上传服务器解析数据
-    func parseData(data: Data) -> Promise<JSONItem> {
+    fileprivate func parseData(data: Data) -> Promise<JSONItem> {
         return Promise<JSONItem> { fulfill, reject in
             let fileName: String
             let url: String
@@ -315,7 +342,7 @@ class HFParseViewModel {
             case.grades:
                 fileName = "score"
                 url      = APIBaseURL + "/api/schedule/uploadScore"
-                param["origin"] = true
+                param["origin"] = "true"
             }
             
             let compressedData: Data = try! data.gzipped()
@@ -349,7 +376,7 @@ class HFParseViewModel {
     }
     
     
-    func parseCookie(_ headers: [AnyHashable: Any]) -> String{
+    fileprivate func parseCookie(_ headers: [AnyHashable: Any]) -> String{
         var cookie = ""
         if let tokenString = headers["Set-Cookie"] as? String {
             for result in tokenString.matchesForRegexInText("(^| )([a-z]|[A-Z])*=(.*?)(;)") {

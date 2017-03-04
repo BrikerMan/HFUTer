@@ -16,9 +16,12 @@ class HFInfoGradesVC: HFBaseViewController {
     
     fileprivate var loadingView: HFLoadingView?
     
+    fileprivate var viewModel = HFParseViewModel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         initUI()
+        viewModel.dataType = .grades
         initData()
         AnalyseManager.CheckGrades.record()
     }
@@ -47,17 +50,31 @@ class HFInfoGradesVC: HFBaseViewController {
     }
     
     fileprivate func initData() {
-        if let result = HFTermModel.readModels() {
-            termList = result
-            tableView.reloadData()
-        } else {
-            loadingView?.show()
-            let request = HFInfoGetScoresRequest()
-            //防止首次登陆时服务器没数据，所以此处需要服务器更新数据
-            request.shouldUpdate = true
-            request.callback = self
-            request.loadData()
+        loadingView?.show()
+        viewModel.fetchGrades { (terms, error) in
+            self.loadingView?.hide()
+            if let error = error {
+                self.showEduError(error: error)
+            } else {
+                self.termList = terms
+                runOnMainThread {
+                    self.tableView.reloadData()
+                }
+            }
         }
+        
+        
+        //        if let result = HFTermModel.readModels() {
+        //            termList = result
+        //            tableView.reloadData()
+        //        } else {
+        //            loadingView?.show()
+        //            let request = HFInfoGetScoresRequest()
+        //            //防止首次登陆时服务器没数据，所以此处需要服务器更新数据
+        //            request.shouldUpdate = true
+        //            request.callback = self
+        //            request.loadData()
+        //        }
     }
 }
 
