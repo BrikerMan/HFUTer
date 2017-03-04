@@ -42,7 +42,7 @@ func application(application: UIApplication, didFinishLaunchingWithOptions launc
 	        }
 	    }
 	}
-  return true
+ 	return true
 }
 ```
 
@@ -76,7 +76,16 @@ SwiftyStoreKit.purchaseProduct("com.musevisions.SwiftyStoreKit.Purchase1", atomi
     case .success(let product):
         print("Purchase Success: \(product.productId)")
     case .error(let error):
-        print("Purchase Failed: \(error)")
+        switch error.code {
+        case .unknown: print("Unknown error. Please contact support")
+        case .clientInvalid: print("Not allowed to make the payment")
+        case .paymentCancelled: break
+        case .paymentInvalid: print("The purchase identifier was invalid")
+        case .paymentNotAllowed: print("The device is not allowed to make the payment")
+        case .storeProductNotAvailable: print("The product is not available in the current storefront")
+        case .cloudServicePermissionDenied: print("Access to cloud service information is not allowed")
+        case .cloudServiceNetworkConnectionFailed: print("Could not connect to the network")
+        }
     }
 }
 ```
@@ -93,7 +102,16 @@ SwiftyStoreKit.purchaseProduct("com.musevisions.SwiftyStoreKit.Purchase1", atomi
         }
         print("Purchase Success: \(product.productId)")
     case .error(let error):
-        print("Purchase Failed: \(error)")
+        switch error.code {
+        case .unknown: print("Unknown error. Please contact support")
+        case .clientInvalid: print("Not allowed to make the payment")
+        case .paymentCancelled: break
+        case .paymentInvalid: print("The purchase identifier was invalid")
+        case .paymentNotAllowed: print("The device is not allowed to make the payment")
+        case .storeProductNotAvailable: print("The product is not available in the current storefront")
+        case .cloudServicePermissionDenied: print("Access to cloud service information is not allowed")
+        case .cloudServiceNetworkConnectionFailed: print("Could not connect to the network")
+        }
     }
 }
 ```
@@ -155,6 +173,8 @@ This is what is [recommended by Apple](https://developer.apple.com/reference/sto
 
 * In cases when you need to make a request to your own server in order to unlock the functionality, you can use a **non-atomic** purchase instead.
 
+* **Note**: SwiftyStoreKit doesn't yet support downloading content hosted by Apple for non-consumable products. See [this feature request](https://github.com/bizz84/SwiftyStoreKit/issues/128).
+
 SwiftyStoreKit provides three operations that can be performed **atomically** or **non-atomically**:
 
 * Making a purchase
@@ -213,7 +233,7 @@ SwiftyStoreKit.verifyReceipt(using: appleValidator, password: "your-shared-secre
         case .notPurchased:
             print("The user has never purchased this product")
         }
-    case .Error(let error):
+    case .error(let error):
         print("Receipt verification failed: \(error)")
     }
 }
@@ -314,6 +334,10 @@ Note that the pre-registered in app purchases in the demo apps are for illustrat
 * [Apple - Offering Subscriptions](https://developer.apple.com/app-store/subscriptions/)
 * [objc.io - Receipt Validation](https://www.objc.io/issues/17-security/receipt-validation/)
 
+I have also written about building SwiftyStoreKit on Medium:
+
+* [How I got 1000 ⭐️ on my GitHub Project](https://medium.com/ios-os-x-development/how-i-got-1000-%EF%B8%8F-on-my-github-project-654d3d394ca6#.1idp27olf)
+* [Maintaining a Growing Open Source Project](https://medium.com/@biz84/maintaining-a-growing-open-source-project-1d385ca84c5#.4cv2g7tdc)
 
 ## Payment flows - implementation Details
 In order to make a purchase, two operations are needed:
@@ -369,7 +393,8 @@ It would be great to showcase apps using SwiftyStoreKit here. Pull requests welc
 * [Arise](http://www.abnehm-app.de/) - Calorie counter
 * [Truth Truth Lie](https://itunes.apple.com/app/id1130832864) - iMessage game, featured by Apple
 * [Tactus Music Player](https://itunes.apple.com/app/id557446352) - Alternative music player app
-* [Drops: Learn Spanish, English & French words fast!](https://itunes.apple.com/app/id939540371) Language learning app
+* [Drops](https://itunes.apple.com/app/id939540371) - Language learning app
+* [Fresh Snow](https://itunes.apple.com/app/id1063000470) - Colorado Ski Report
 
 
 ## License

@@ -13,12 +13,30 @@ let EduURL = HFEducationURLs.shared
 class HFEducationURLs {
     static let shared = HFEducationURLs()
     
+    var jwLogin: String {
+        return host() + "/pass.asp"
+    }
+    
+    var schedule: String {
+        return host() + "/student/asp/grkb1.asp"
+    }
+    
+    var score: String {
+        return host() + "/api/schedule/uploadScore"
+    }
+    
+    var school = 0
+    
     let xchost = "http://222.195.8.201"
     let hfhost = "http://bkjw.hfut.edu.cn"
     
-    let login    = "/pass.asp"
-    let schedule = "/student/asp/grkb1.asp"
-    let score    = "/api/schedule/uploadScore"
+    func host() -> String {
+        if school == 0 {
+            return xchost
+        } else {
+            return hfhost
+        }
+    }
 }
 
 extension String.Encoding {

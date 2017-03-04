@@ -14,11 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-<<<<<<< HEAD
                BlueprintIdentifier = "1DE625554D351E11A16966BF6F1EF270"
-=======
-               BlueprintIdentifier = "E1EEC048DA46A15E6BA888E4E595C310"
->>>>>>> master
                BuildableName = "Pods_HFUTer3.framework"
                BlueprintName = "Pods-HFUTer3"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -49,11 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-<<<<<<< HEAD
             BlueprintIdentifier = "1DE625554D351E11A16966BF6F1EF270"
-=======
-            BlueprintIdentifier = "E1EEC048DA46A15E6BA888E4E595C310"
->>>>>>> master
             BuildableName = "Pods_HFUTer3.framework"
             BlueprintName = "Pods-HFUTer3"
             ReferencedContainer = "container:Pods.xcodeproj">

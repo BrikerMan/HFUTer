@@ -8,6 +8,7 @@
 
 import Foundation
 import YYModel
+import PromiseKit
 
 struct CourseHourModel {
     var name = "course"
@@ -59,6 +60,24 @@ class HFCourseModel: NSObject {
     
     class func saveCourses(_ data: [String:AnyObject]) {
         PlistManager.dataPlist.saveValues(data)
+    }
+    
+    class func save(json: JSONItem) {
+        
+    }
+    
+    class func read(for week: Int) -> Promise<Void> {
+        return Promise<Void> { fullfill, reject in
+            if let
+                dic = PlistManager.dataPlist.getValues(),
+                let list = dic[PlistKey.ScheduleList.rawValue] as? NSArray, list.count >= 7 {
+                Logger.debug(("读取缓存课表成功"))
+                reject(HFParseError.fullfill)
+            } else {
+                Logger.error(("读取缓存课表失败"))
+                fullfill()
+            }
+        }
     }
     
     

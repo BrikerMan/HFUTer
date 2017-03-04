@@ -39,16 +39,12 @@ PODS:
   - GoogleToolboxForMac/Defines (2.1.1)
   - GoogleToolboxForMac/NSData+zlib (2.1.1):
     - GoogleToolboxForMac/Defines (= 2.1.1)
-<<<<<<< HEAD
   - GzipSwift (3.1.4)
-=======
-  - GzipSwift (3.1.2)
->>>>>>> master
   - HappyDNS (0.3.10)
   - KMPlaceholderTextView (1.3.0)
   - LTMorphingLabel (0.3.0)
   - MJRefresh (3.1.12)
-  - NVActivityIndicatorView (3.5)
+  - NVActivityIndicatorView (3.5.1)
   - Pitaya (1.0.0)
   - Qiniu (7.1.5):
     - AFNetworking (~> 3)
@@ -138,16 +134,12 @@ SPEC CHECKSUMS:
   FirebaseCore: 225d40532489835a034b8f4e2c9c87fbf4f615a2
   FirebaseInstanceID: 2d0518b1378fe9d685ef40cbdd63d2fdc1125339
   GoogleToolboxForMac: 8e329f1b599f2512c6b10676d45736bcc2cbbeb0
-<<<<<<< HEAD
   GzipSwift: 11ddb2bf253b1cd7b60bb169da20f62ac4348769
-=======
-  GzipSwift: 86700e6530b3aa5e782ed7107cde2deea6b16688
->>>>>>> master
   HappyDNS: 06a9fed2796663fd87626dbf02552933265bf059
   KMPlaceholderTextView: 2bbcd19a273648a80a61e1e48f9743a24d8930e3
   LTMorphingLabel: 2777d8d9cb699125f48dfcd95d78bd3d77c87ade
   MJRefresh: b96cdb21c4aa75a7b07654311ab2f315c497e806
-  NVActivityIndicatorView: e5252b082f93885f0bfc24c318719b4eaabcd37b
+  NVActivityIndicatorView: 075563b3547445ebcff840e3297ce9dd4a23731f
   Pitaya: 9e6a94903cbce6cdab9ad8b82e88142f4abd770d
   Qiniu: 77a3dba411556a383d72d17e842345a9d4c83252
   Reveal-SDK: 564657bc66c93d2718b1c0121cdebe99d354ddab
@@ -165,10 +157,6 @@ SPEC CHECKSUMS:
   YYWebImage: 5f7f36aee2ae293f016d418c7d6ba05c4863e928
   ZYCornerRadius: f0af817be7805b5c63d793042ca7a03f81e14069
 
-<<<<<<< HEAD
-PODFILE CHECKSUM: d244d619ccad45c5914b3fe70015716316f3539a
-=======
-PODFILE CHECKSUM: f37caeaf178c9446118ed21f4d8d2dbbcbd24708
->>>>>>> master
+PODFILE CHECKSUM: 658b9b2a5d68fb0ea778f4a68f9af736eb609463
 
 COCOAPODS: 1.2.0

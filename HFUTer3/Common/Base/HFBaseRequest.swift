@@ -82,7 +82,6 @@ class HFBaseRequest {
         
         switch requestResponse.result.isSuccess {
         case true:
-            
             if let resultDic = requestResponse.result.value as? [String:AnyObject],
                 let statue = resultDic["statue"] as? Bool {
                 if statue == true {

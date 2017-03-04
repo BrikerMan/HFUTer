@@ -27,14 +27,46 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "HFUTer3/Common/Parse/HFLoginEducationRequest.swift"
-            timestampString = "509720577.623996"
+            filePath = "HFUTer3/Common/Base/HFBaseRequest.swift"
+            timestampString = "510300218.326273"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "38"
-            endingLineNumber = "38"
-            landmarkName = "fetchSchedule()"
+            startingLineNumber = "85"
+            endingLineNumber = "85"
+            landmarkName = "resultHandler(_:response:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "HFUTer3.HFBaseRequest.(resultHandler in _C6BA7A44A9485A0AE52A775239F25577) (AlamofireDomain.DataResponse&lt;Any&gt;, response : Swift.Optional&lt;(Pitaya.JSONND, Swift.Optional&lt;Swift.String&gt;) -&gt; ()&gt;) -&gt; ()"
+                  moduleName = "HFUTer3"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/brikerman/Desktop/HFUTer4/HFUTer3/Common/Base/HFBaseRequest.swift"
+                  timestampString = "510300385.55047"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "85"
+                  endingLineNumber = "85"
+                  offsetFromSymbolStart = "1404">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "HFUTer3.HFBaseRequest.(resultHandler in _C6BA7A44A9485A0AE52A775239F25577) (AlamofireDomain.DataResponse&lt;Any&gt;, response : Swift.Optional&lt;(Pitaya.JSONND, Swift.Optional&lt;Swift.String&gt;) -&gt; ()&gt;) -&gt; ()"
+                  moduleName = "HFUTer3"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/brikerman/Desktop/HFUTer4/HFUTer3/Common/Base/HFBaseRequest.swift"
+                  timestampString = "510300385.552071"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "85"
+                  endingLineNumber = "85"
+                  offsetFromSymbolStart = "1768">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -43,62 +75,46 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "HFUTer3/Common/Parse/HFLoginEducationRequest.swift"
-            timestampString = "509720956.772118"
+            filePath = "HFUTer3/Common/Base/HFBaseRequest.swift"
+            timestampString = "510300220.846413"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "83"
-            endingLineNumber = "83"
-            landmarkName = "login(info:)"
+            startingLineNumber = "100"
+            endingLineNumber = "100"
+            landmarkName = "resultHandler(_:response:)"
             landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "HFUTer3/Common/Parse/HFLoginEducationRequest.swift"
-            timestampString = "509720959.327685"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "40"
-            endingLineNumber = "40"
-            landmarkName = "fetchSchedule()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "HFUTer3/Common/Parse/HFLoginEducationRequest.swift"
-            timestampString = "509720965.179613"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "95"
-            endingLineNumber = "95"
-            landmarkName = "login(info:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "HFUTer3/Common/Parse/HFLoginEducationRequest.swift"
-            timestampString = "509721104.566807"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "86"
-            endingLineNumber = "86"
-            landmarkName = "login(info:)"
-            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "HFUTer3.HFBaseRequest.(resultHandler in _C6BA7A44A9485A0AE52A775239F25577) (AlamofireDomain.DataResponse&lt;Any&gt;, response : Swift.Optional&lt;(Pitaya.JSONND, Swift.Optional&lt;Swift.String&gt;) -&gt; ()&gt;) -&gt; ()"
+                  moduleName = "HFUTer3"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/brikerman/Desktop/HFUTer4/HFUTer3/Common/Base/HFBaseRequest.swift"
+                  timestampString = "510300385.554873"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "100"
+                  endingLineNumber = "100"
+                  offsetFromSymbolStart = "3228">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "HFUTer3.HFBaseRequest.(resultHandler in _C6BA7A44A9485A0AE52A775239F25577) (AlamofireDomain.DataResponse&lt;Any&gt;, response : Swift.Optional&lt;(Pitaya.JSONND, Swift.Optional&lt;Swift.String&gt;) -&gt; ()&gt;) -&gt; ()"
+                  moduleName = "HFUTer3"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/brikerman/Desktop/HFUTer4/HFUTer3/Common/Base/HFBaseRequest.swift"
+                  timestampString = "510300385.55611"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "100"
+                  endingLineNumber = "100"
+                  offsetFromSymbolStart = "3596">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

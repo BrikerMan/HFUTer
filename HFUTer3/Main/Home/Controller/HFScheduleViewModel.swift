@@ -14,7 +14,7 @@ class HFScheduleViewModel {
         if let result = HFCourseModel.readCourses(forWeek: week) {
             completion(result)
         } else {
-            
+  
         }
     }
     

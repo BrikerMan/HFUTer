@@ -23,8 +23,13 @@ extension String {
     // MARK: - JSON处理
     func jsonToArray() -> [AnyObject]? {
         do {
-            let array = try JSONSerialization.jsonObject(with: self.data(using: String.Encoding.utf8)!, options: JSONSerialization.ReadingOptions(rawValue: 0)) as! [AnyObject]
-            return array
+            if let data = self.data(using: String.Encoding.utf8) {
+                let json = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions(rawValue: 0))
+                if let array = json as? [AnyObject] {
+                    return array
+                }
+            }
+            return nil
         }
         catch {
             return nil
@@ -41,36 +46,36 @@ extension String {
         }
     }
     
-//    
-//    // MARK: - 验证
-//    //To check text field or String is blank or not
-//    var isBlank: Bool {
-//        get {
-//            let trimmed = trimmingCharacters(in: CharacterSet.whitespaces)
-//            return trimmed.isEmpty
-//        }
-//    }
-//    
-//    //Validate Email
-//    var isEmail: Bool {
-//        do {
-//            let regex = try NSRegularExpression(pattern: "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$", options: .caseInsensitive)
-//            return regex.firstMatch(in: self, options: NSRegularExpression.MatchingOptions(rawValue: 0), range: NSMakeRange(0, self.characters.count)) != nil
-//        } catch {
-//            return false
-//        }
-//    }
+    //
+    //    // MARK: - 验证
+    //    //To check text field or String is blank or not
+    //    var isBlank: Bool {
+    //        get {
+    //            let trimmed = trimmingCharacters(in: CharacterSet.whitespaces)
+    //            return trimmed.isEmpty
+    //        }
+    //    }
+    //
+    //    //Validate Email
+    //    var isEmail: Bool {
+    //        do {
+    //            let regex = try NSRegularExpression(pattern: "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$", options: .caseInsensitive)
+    //            return regex.firstMatch(in: self, options: NSRegularExpression.MatchingOptions(rawValue: 0), range: NSMakeRange(0, self.characters.count)) != nil
+    //        } catch {
+    //            return false
+    //        }
+    //    }
     
     //validate PhoneNumber
-//    var isPhoneNumber: Bool {
-//        
-//        let charcter  = CharacterSet(charactersIn: "+0123456789").inverted
-//        var filtered:NSString!
-//        let inputString:NSArray = self.components(separatedBy: charcter)
-//        filtered = inputString.componentsJoined(by: "") as NSString!
-//        return  self == filtered
-//        
-//    }
+    //    var isPhoneNumber: Bool {
+    //
+    //        let charcter  = CharacterSet(charactersIn: "+0123456789").inverted
+    //        var filtered:NSString!
+    //        let inputString:NSArray = self.components(separatedBy: charcter)
+    //        filtered = inputString.componentsJoined(by: "") as NSString!
+    //        return  self == filtered
+    //
+    //    }
     
     
     // MARK: - MD5加密
@@ -111,13 +116,13 @@ extension String {
         return "\(hash)"
     }
     
-//    func base64() -> String!{
-//        let plainData = data(using: String.Encoding.utf8)
-//        let base64String = plainData?.base64EncodedString(options: NSData.Base64EncodingOptions(rawValue: 0))
-//        return base64String!
-//    }
+    //    func base64() -> String!{
+    //        let plainData = data(using: String.Encoding.utf8)
+    //        let base64String = plainData?.base64EncodedString(options: NSData.Base64EncodingOptions(rawValue: 0))
+    //        return base64String!
+    //    }
     
-//    // MARK: - 文字截断
+    //    // MARK: - 文字截断
     subscript (r: Range<Int>) -> String? { //Optional String as return value
         get {
             let stringCount = self.characters.count as Int
@@ -130,10 +135,10 @@ extension String {
             let endIndex = self.characters.index(self.startIndex, offsetBy: r.upperBound - r.lowerBound)
             
             return self[startIndex..<endIndex]
-//            [Range(start: startIndex, end: endIndex)]
+            //            [Range(start: startIndex, end: endIndex)]
         }
     }
-//    
+    //
     func matchesForRegexInText(_ regex: String!, text: String!) -> [String] {
         let regex = try! NSRegularExpression(pattern: regex, options: NSRegularExpression.Options(rawValue: 0))
         let nsString = text as NSString

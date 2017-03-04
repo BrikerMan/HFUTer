@@ -18,7 +18,7 @@ class HFHomeVC: HFBasicViewController{
     
     var loadingView: HFLoadingView?
     
-    var viewModel = HFScheduleViewModel()
+    var viewModel = HFParseVidewModel()
     
     fileprivate var currentWeek = 0
     
@@ -34,13 +34,11 @@ class HFHomeVC: HFBasicViewController{
         
         navBarView.backgroundColor = HFTheme.TintColor
         AnalyseManager.OpenSchudule.record()
-        
-        HFEducationRequest.fetchSchedule()
     }
     
     
     @objc fileprivate func afterUserLogin(_ sender:AnyObject) {
-        loadScheduleFromServer()
+        loadSchedule()
     }
     
     @IBAction func onNavWeekSelectButtonPressed(_ sender: AnyObject) {
@@ -58,25 +56,16 @@ class HFHomeVC: HFBasicViewController{
     // MARK:- Load Data
     func loadSchedule() {
         let week = currentWeek
-        viewModel.loadData(week: currentWeek) { (result) in
-            self.scheduleView.setupWithCourses(result)
-            self.scheduleView.setupWithWeek(week)
+        Hud.showLoading("正在加载课表")
+        viewModel.fetchSchedule(for: week) { result, error in
+            if let error = error {
+                Hud.showError(error)
+            } else {
+                Hud.dismiss()
+                self.scheduleView.setupWithCourses(result)
+                self.scheduleView.setupWithWeek(week)
+            }
         }
-    }
-    
-    
-    fileprivate func loadScheduleFromServer() {
-        
-        loadingView = HFLoadingView()
-        containView.addSubview(loadingView!)
-        loadingView?.snp.makeConstraints({ (make) in
-            make.edges.equalTo(containView)
-        })
-        
-        
-        let getScheduleRequest = HFHomeGetCourseListRequest()
-        getScheduleRequest.callback = self
-        getScheduleRequest.loadData()
     }
     
     // MARK: Animations
@@ -94,7 +83,7 @@ class HFHomeVC: HFBasicViewController{
         UIView.animate(withDuration: 0.3, delay: 0, options: UIViewAnimationOptions(), animations: {
             self.view.layoutIfNeeded()
             self.navTitleIconView.transform = CGAffineTransform(rotationAngle: rotate)
-            },completion: nil)
+        },completion: nil)
     }
     
     
@@ -131,7 +120,7 @@ class HFHomeVC: HFBasicViewController{
         NotificationCenter.default.addObserver(self, selector: #selector(HFHomeVC.afterUserLogin(_:)), name: NSNotification.Name(rawValue: HFUserLoginNotification), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(HFHomeVC.reloadSchedules), name: NSNotification.Name(rawValue: HFNotification.SettingScheduleRelatedUpdate.rawValue), object: nil)
         
- 
+        
         currentWeek = DataEnv.currentWeek
         
         if currentWeek == 0 {
@@ -142,7 +131,7 @@ class HFHomeVC: HFBasicViewController{
         navTitleLabel.setNeedsLayout()
         navTitleLabel.layoutIfNeeded()
         
-
+        
         if DataEnv.isLogin {
             loadSchedule()
         }
@@ -152,11 +141,19 @@ class HFHomeVC: HFBasicViewController{
 
 extension HFHomeVC: HFHomeSchudulesViewDelegate {
     func scheduleViewDidStartRefresh() {
-        let getScheduleRequest = HFHomeGetCourseListRequest()
-        getScheduleRequest.isUpdate = true
-        getScheduleRequest.callback = self
-        getScheduleRequest.loadData()
+        viewModel.refreshSchedule(for: currentWeek) { result, error in
+            if let error = error {
+                Hud.showError(error)
+            } else {
+                runOnMainThread {
+                    self.scheduleView.setupWithCourses(result)
+                    self.scheduleView.collectionView.endRefresh()
+                    self.scheduleView.setupWithWeek(self.currentWeek)
+                }
+            }
+        }
     }
+    
 }
 
 extension HFHomeVC: HFHomeScheduleSelectWeekViewDelegate {
@@ -171,20 +168,5 @@ extension HFHomeVC: HFHomeScheduleSelectWeekViewDelegate {
         loadSchedule()
         
         AnalyseManager.ChangeWeeks.record()
-    }
-}
-
-
-extension HFHomeVC: HFBaseAPIManagerCallBack {
-    func managerApiCallBackSuccess(_ manager: HFBaseAPIManager) {
-        loadingView?.hide()
-        HFHomeViewModel().prepareScheuldeModels(dic: manager.resultDic)
-        if let result = HFCourseModel.readCourses(forWeek: currentWeek) {
-            scheduleView.setupWithCourses(result)
-        }
-    }
-    
-    func managerApiCallBackFailed(_ manager: HFBaseAPIManager) {
-        hud.showError(manager.errorInfo)
     }
 }

@@ -26,7 +26,7 @@ import Foundation
 import StoreKit
 
 protocol TransactionController {
-    
+
     /**
      * - param transactions: transactions to process
      * - param paymentQueue: payment queue for finishing transactions
@@ -38,7 +38,7 @@ protocol TransactionController {
 public enum TransactionResult {
     case purchased(product: Product)
     case restored(product: Product)
-    case failed(error: Error)
+    case failed(error: SKError)
 }
 
 public protocol PaymentQueue: class {
@@ -47,22 +47,44 @@ public protocol PaymentQueue: class {
     func remove(_ observer: SKPaymentTransactionObserver)
 
     func add(_ payment: SKPayment)
-    
+
     func restoreCompletedTransactions(withApplicationUsername username: String?)
-    
+
     func finishTransaction(_ transaction: SKPaymentTransaction)
 }
 
 extension SKPaymentQueue: PaymentQueue { }
 
+extension SKPaymentTransaction {
+
+    open override var debugDescription: String {
+        let transactionId = transactionIdentifier ?? "null"
+        return "productId: \(payment.productIdentifier), transactionId: \(transactionId), state: \(transactionState), date: \(transactionDate)"
+    }
+}
+
+extension SKPaymentTransactionState: CustomDebugStringConvertible {
+
+    public var debugDescription: String {
+
+        switch self {
+        case .purchasing: return "purchasing"
+        case .purchased: return "purchased"
+        case .failed: return "failed"
+        case .restored: return "restored"
+        case .deferred: return "deferred"
+        }
+    }
+}
+
 class PaymentQueueController: NSObject, SKPaymentTransactionObserver {
-    
+
     private let paymentsController: PaymentsController
-    
+
     private let restorePurchasesController: RestorePurchasesController
-    
+
     private let completeTransactionsController: CompleteTransactionsController
-    
+
     unowned let paymentQueue: PaymentQueue
 
     deinit {
@@ -70,10 +92,10 @@ class PaymentQueueController: NSObject, SKPaymentTransactionObserver {
     }
 
     init(paymentQueue: PaymentQueue = SKPaymentQueue.default(),
-                paymentsController: PaymentsController = PaymentsController(),
-                restorePurchasesController: RestorePurchasesController = RestorePurchasesController(),
-                completeTransactionsController: CompleteTransactionsController = CompleteTransactionsController()) {
-     
+         paymentsController: PaymentsController = PaymentsController(),
+         restorePurchasesController: RestorePurchasesController = RestorePurchasesController(),
+         completeTransactionsController: CompleteTransactionsController = CompleteTransactionsController()) {
+
         self.paymentQueue = paymentQueue
         self.paymentsController = paymentsController
         self.restorePurchasesController = restorePurchasesController
@@ -81,33 +103,37 @@ class PaymentQueueController: NSObject, SKPaymentTransactionObserver {
         super.init()
         paymentQueue.add(self)
     }
-    
+
     func startPayment(_ payment: Payment) {
-        
+
         let skPayment = SKMutablePayment(product: payment.product)
         skPayment.applicationUsername = payment.applicationUsername
         paymentQueue.add(skPayment)
-        
+
         paymentsController.append(payment)
     }
-    
+
     func restorePurchases(_ restorePurchases: RestorePurchases) {
-        
+
         if restorePurchasesController.restorePurchases != nil {
-            // return .inProgress
             return
         }
-        
+
         paymentQueue.restoreCompletedTransactions(withApplicationUsername: restorePurchases.applicationUsername)
-        
+
         restorePurchasesController.restorePurchases = restorePurchases
     }
-    
+
     func completeTransactions(_ completeTransactions: CompleteTransactions) {
-        
+
+        guard completeTransactionsController.completeTransactions == nil else {
+            print("SwiftyStoreKit.completeTransactions() should only be called once when the app launches. Ignoring this call")
+            return
+        }
+
         completeTransactionsController.completeTransactions = completeTransactions
     }
-    
+
     func finishTransaction(_ transaction: PaymentTransaction) {
         guard let skTransaction = transaction as? SKPaymentTransaction else {
             print("Object is not a SKPaymentTransaction: \(transaction)")
@@ -116,10 +142,9 @@ class PaymentQueueController: NSObject, SKPaymentTransactionObserver {
         paymentQueue.finishTransaction(skTransaction)
     }
 
-    
     // MARK: SKPaymentTransactionObserver
     func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
-        
+
         /*
          * Some notes about how requests are processed by SKPaymentQueue:
          *
@@ -134,7 +159,7 @@ class PaymentQueueController: NSObject, SKPaymentTransactionObserver {
          * A complete transactions handler is require to catch any transactions that are updated when the app is not running.
          * Registering a complete transactions handler when the app launches ensures that any pending transactions can be cleared.
          * If a complete transactions handler is missing, pending transactions can be mis-attributed to any new incoming payments or restore purchases.
-         * 
+         *
          * The order in which transaction updates are processed is:
          * 1. payments (transactionState: .purchased and .failed for matching product identifiers)
          * 2. restore purchases (transactionState: .restored, or restoreCompletedTransactionsFailedWithError, or paymentQueueRestoreCompletedTransactionsFinished)
@@ -142,32 +167,33 @@ class PaymentQueueController: NSObject, SKPaymentTransactionObserver {
          * Any transactions where state == .purchasing are ignored.
          */
         var unhandledTransactions = paymentsController.processTransactions(transactions, on: paymentQueue)
-        
+
         unhandledTransactions = restorePurchasesController.processTransactions(unhandledTransactions, on: paymentQueue)
-        
+
         unhandledTransactions = completeTransactionsController.processTransactions(unhandledTransactions, on: paymentQueue)
-        
+
         if unhandledTransactions.count > 0 {
-            print("unhandledTransactions: \(unhandledTransactions)")
+            let strings = unhandledTransactions.map { $0.debugDescription }.joined(separator: "\n")
+            print("unhandledTransactions:\n\(strings)")
         }
     }
-    
+
     func paymentQueue(_ queue: SKPaymentQueue, removedTransactions transactions: [SKPaymentTransaction]) {
-        
+
     }
-    
+
     func paymentQueue(_ queue: SKPaymentQueue, restoreCompletedTransactionsFailedWithError error: Error) {
-        
+
         restorePurchasesController.restoreCompletedTransactionsFailed(withError: error)
     }
-    
+
     func paymentQueueRestoreCompletedTransactionsFinished(_ queue: SKPaymentQueue) {
 
         restorePurchasesController.restoreCompletedTransactionsFinished()
     }
-    
+
     func paymentQueue(_ queue: SKPaymentQueue, updatedDownloads downloads: [SKDownload]) {
-        
+
     }
 
 }

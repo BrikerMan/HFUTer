@@ -28,7 +28,7 @@ class HFInfoGetScoresRequest: HFBaseAPIManager {
         var modelList:[HFTermModel] = []
         if let jsonString = dic["data"] as? String, let array = jsonString.jsonToArray() {
             for termjson in array {
-                if let term = HFTermModel.initModel(termjson) {
+                if let term = HFTermModel.initModel(termjson as AnyObject) {
                     modelList.append(term)
                 }
             }

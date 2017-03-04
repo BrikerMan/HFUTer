@@ -54,23 +54,16 @@ public struct RetrieveResults {
     public let error: Error?
 }
 
-// Purchase error types
-public enum PurchaseError {
-    case failed(error: Error)
-    case invalidProductId(productId: String)
-    case paymentNotAllowed
-}
-
 // Purchase result
 public enum PurchaseResult {
     case success(product: Product)
-    case error(error: PurchaseError)
+    case error(error: SKError)
 }
 
 // Restore purchase results
 public struct RestoreResults {
     public let restoredProducts: [Product]
-    public let restoreFailedProducts: [(Swift.Error, String?)]
+    public let restoreFailedProducts: [(SKError, String?)]
 }
 
 // MARK: Receipt verification
@@ -144,7 +137,7 @@ public enum ReceiptStatus: Int {
     case testReceipt = 21007
     // This receipt is from the production environment, but it was sent to the test environment for verification. Send it to the production environment instead.
     case productionEnvironment = 21008
-    
+
     var isValid: Bool { return self == .valid}
 }
 
@@ -160,10 +153,10 @@ public enum ReceiptInfoField: String {
     case creation_date
     // The date that the app receipt expires. This key is present only for apps purchased through the Volume Purchase Program.
     case expiration_date
-    
+
     // The receipt for an in-app purchase.
     case in_app
-    
+
     public enum InApp: String {
         // The number of items purchased. This value corresponds to the quantity property of the SKPayment object stored in the transaction’s payment property.
         case quantity

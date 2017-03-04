@@ -13,69 +13,67 @@ import YYText
 
 let Hud = HFHudView.shared
 
-class HFHudView {
+class HFHudView: NSObject {
     
     static let shared = HFHudView()
     
-    var progressInfo = ""
+    var dismissTimeInterval = 2.0
     
-    var progressView = HFHudBackView()
-    
-    fileprivate var progressInfoShowing = false
     fileprivate typealias hud = WSProgressHUD
     
-    init() {
-        SVProgressHUD.setDefaultStyle(SVProgressHUDStyle.dark)
-    }
-    
     func showMassage(_ massage:String) {
-        SVProgressHUD.dismiss()
-        hud.showShimmeringString(massage)
-        delay(seconds: 2) { () -> () in
-            hud.dismiss()
+        runOnMainThread {
+            hud.showShimmeringString(massage)
+            NSObject.cancelPreviousPerformRequests(withTarget: self, selector: #selector(self.dismiss), object: nil)
+            self.perform(#selector(self.dismiss), with: nil, afterDelay: self.dismissTimeInterval)
         }
     }
     
-    func showLoading(_ massage:String){
-        SVProgressHUD.show(withStatus: massage)
+    func showLoading(_ massage:String = "正在处理 ...", masked: Bool = false){
+        runOnMainThread {
+            if masked {
+                hud.show(withStatus: massage, maskType: .gradient)
+            } else {
+                hud.show(withStatus: massage)
+            }
+        }
     }
     
     func showLoadingWithMask(_ massage:String) {
-        SVProgressHUD.dismiss()
-        hud.showShimmeringString(massage, maskType: WSProgressHUDMaskType.black)
+        runOnMainThread {
+            hud.showShimmeringString(massage, maskType: WSProgressHUDMaskType.black)
+        }
+        
     }
     
     func showError(_ massage:String?) {
-        SVProgressHUD.dismiss()
-        hud.showShimmeringString(massage ?? "未知错误")
-        delay(seconds: 2) { () -> () in
+        runOnMainThread {
+            hud.showShimmeringString(massage ?? "未知错误")
+            NSObject.cancelPreviousPerformRequests(withTarget: self, selector: #selector(self.dismiss), object: nil)
+            self.perform(#selector(self.dismiss), with: nil, afterDelay: self.dismissTimeInterval)
+        }
+    }
+    
+    @objc func dismiss() {
+        runOnMainThread {
             hud.dismiss()
         }
     }
     
-    func dismiss() {
-        SVProgressHUD.dismiss()
-        hud.dismiss()
+    func showToastError(_ massage:String?) {
+        runOnMainThread {
+            HFToast.debugInfo(massage ?? "未知错误")
+            NSObject.cancelPreviousPerformRequests(withTarget: self, selector: #selector(self.dismiss), object: nil)
+            self.perform(#selector(self.dismiss), with: nil, afterDelay: self.dismissTimeInterval)
+        }
+        
     }
     
-//    func showPregress(_ add: String) {
-//        if !progressInfoShowing {
-//            let window = UIApplication.shared.keyWindow!
-//            window.addSubview(progressView)
-//            progressView.snp.makeConstraints {
-//                $0.left.equalTo(window.snp.left)
-//                $0.bottom.equalTo(window.snp.bottom).offset(-50)
-//            }
-//            progressInfoShowing = true
-//        }
-//        progressInfo =  progressInfo + "\n" + add 
-//        progressView.update(progressInfo)
-//    }
-//    
-//    func hideProgress() {
-//        progressView.removeFromSuperview()
-//        progressInfoShowing = false
-//    }
+    @objc func toastDismiss() {
+        runOnMainThread {
+            HFToast.toast?.cancel()
+        }
+    }
 }
 
 class HFHudBackView: UIView {
