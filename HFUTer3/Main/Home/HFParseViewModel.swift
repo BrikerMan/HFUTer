@@ -63,20 +63,26 @@ enum HFParseViewModelDataType {
     case grades
 }
 
-///## 课表获取逻辑, 因为只有失败才会下一步，所以 promise 反着用，成功了 reject 失败了 fullfill。获取用户密码除外
-///    1. 读取缓存
-///    2. 读取缓存失败
-///    2. 读取服务器缓存
-///    3. 读取服务器缓存失败
-///    3. 登录教务系统
-///    4. 登录教务系统失败
-///    5. 教务系统获取课表
-///    6. 教务系统获取课表失败
-///    7. 信息门户获登录
-///    8. 信息门户获登录失败
-///    9. 教务系统获取课表
-///    10. 教务系统获取课表失败
-///    11. 提示错误信息
+/*
+  ##课表获取逻辑, 因为只有失败才会下一步，所以 promise 反着用，成功了 reject 失败了 fullfill。获取用户密码除外
+    1. 读取缓存
+    2. 读取缓存失败
+    3. 读取服务器缓存
+    4. 读取服务器缓存失败
+    5. 登录教务系统
+    6. 登录教务系统失败
+    7. 教务系统获取课表
+    8. 教务系统获取课表失败
+    9. 上传服务器并解析成功
+    9. 信息门户获登录
+    10. 信息门户获登录失败
+    11. 教务系统获取课表
+    12. 教务系统获取课表失败
+    13. 上传服务器并解析成功
+    13. 提示错误信息
+
+    其中服务器缓存，教务系统和信息门户，如果前一个获取或者解析失败，则进行下一个请求，成功就返回。如果三个来源都均不能获取，则提示错误信息
+*/
 class HFParseViewModel {
     typealias UserInfo = (sid: String, school: Int, jwpass: String?, mhpass: String?)
     
@@ -306,9 +312,9 @@ class HFParseViewModel {
         let url: String
         switch dataType {
         case .schedule:
-            url      = EduURL.schedule
+            url = EduURL.schedule
         case.grades:
-            url      = EduURL.score
+            url = EduURL.score
         }
         
         return Promise<Data> { fulfill, reject in
@@ -340,13 +346,14 @@ class HFParseViewModel {
                 fileName = "course"
                 url      = APIBaseURL + "/api/schedule/uploadSchedule"
             case.grades:
+                param["origin"] = "true"
                 fileName = "score"
                 url      = APIBaseURL + "/api/schedule/uploadScore"
-                param["origin"] = "true"
             }
             
             let compressedData: Data = try! data.gzipped()
-            let file = File(name: fileName, data: compressedData, type: "html")
+            var file = File(name: fileName, data: compressedData, type: "html")
+            file.nameWithType = Utilities.timeStamp.description.md5() + ".html"
             Logger.debug("正在上传数据到服务器来解析")
             
             

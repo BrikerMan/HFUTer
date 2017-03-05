@@ -14,6 +14,9 @@ class Utilities {
         return "\(timeStamp)".md5() + ".jpg"
     }
     
+    static var timeStamp: Int {
+        return Int(Date().timeIntervalSince1970)
+    }
     
     /**
      关于我的动态 时间展现规则
