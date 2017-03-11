@@ -33,7 +33,7 @@ import Foundation
 */
 public struct File {
     public let name: String
-    public var nameWithType: String
+    public let nameWithType: String
     public let url: URL?
     public let data: Data?
     

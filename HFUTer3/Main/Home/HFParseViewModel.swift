@@ -64,29 +64,29 @@ enum HFParseViewModelDataType {
 }
 
 /*
-  ##课表获取逻辑, 因为只有失败才会下一步，所以 promise 反着用，成功了 reject 失败了 fullfill。获取用户密码除外
-    1. 读取缓存
-    2. 读取缓存失败
-    3. 读取服务器缓存
-    4. 读取服务器缓存失败
-    5. 登录教务系统
-    6. 登录教务系统失败
-    7. 教务系统获取课表
-    8. 教务系统获取课表失败
-    9. 上传服务器并解析成功
-    9. 信息门户获登录
-    10. 信息门户获登录失败
-    11. 教务系统获取课表
-    12. 教务系统获取课表失败
-    13. 上传服务器并解析成功
-    13. 提示错误信息
-
-    其中服务器缓存，教务系统和信息门户，如果前一个获取或者解析失败，则进行下一个请求，成功就返回。如果三个来源都均不能获取，则提示错误信息
-*/
+ ##课表获取逻辑, 因为只有失败才会下一步，所以 promise 反着用，成功了 reject 失败了 fullfill。获取用户密码除外
+ 1. 读取缓存
+ 2. 读取缓存失败
+ 3. 读取服务器缓存
+ 4. 读取服务器缓存失败
+ 5. 登录教务系统
+ 6. 登录教务系统失败
+ 7. 教务系统获取课表
+ 8. 教务系统获取课表失败
+ 9. 上传服务器并解析成功
+ 9. 信息门户获登录
+ 10. 信息门户获登录失败
+ 11. 教务系统获取课表
+ 12. 教务系统获取课表失败
+ 13. 上传服务器并解析成功
+ 13. 提示错误信息
+ 
+ 其中服务器缓存，教务系统和信息门户，如果前一个获取或者解析失败，则进行下一个请求，成功就返回。如果三个来源都均不能获取，则提示错误信息
+ */
 class HFParseViewModel {
     typealias UserInfo = (sid: String, school: Int, jwpass: String?, mhpass: String?)
     
-    var info: UserInfo?
+    static var info: UserInfo?
     /// 数据类型，成绩的话需要修改
     var dataType = HFParseViewModelDataType.schedule
     
@@ -152,7 +152,7 @@ class HFParseViewModel {
     }
     
     // 获取服务器缓存的课表
-    fileprivate func fetchScheduleFromServer() -> Promise<Void> {
+    func fetchScheduleFromServer() -> Promise<Void> {
         return Promise<Void> { fullfill, reject in
             HFBaseRequest.fire(api: "/api/schedule/schedule", response: { (json, error) in
                 if let error = error {
@@ -175,7 +175,7 @@ class HFParseViewModel {
     /// 获取用户信息
     fileprivate func fetchUserPassword() -> Promise<Void> {
         return Promise<Void> { fullfill, reject in
-            if let _ = info {
+            if let _ = HFParseViewModel.info {
                 fullfill()
             } else {
                 Logger.debug("正在从服务器获取用户信息")
@@ -201,7 +201,7 @@ class HFParseViewModel {
                                             Logger.error("从服务器获取用户信息失败，未绑定")
                                             reject(HFParseError.suspend(info: error))
                                         } else {
-                                            self.info = (sid, school, jwpass, mhpass)
+                                            HFParseViewModel.info = (sid, school, jwpass, mhpass)
                                             fullfill()
                                             Logger.debug("获取用户信息成功 | \(sid) \(school) | 教务 \(jwpass ?? "") | 信息门户 \(mhpass ?? "")")
                                         }
@@ -220,10 +220,12 @@ class HFParseViewModel {
             switch type {
             case .jw:
                 url  = EduURL.jwLogin
-                pass = info?.jwpass ?? ""
+                pass = HFParseViewModel.info?.jwpass ?? ""
             case .mh:
                 url  = EduURL.mhLogin
-                pass = info?.mhpass ?? ""
+                pass = HFParseViewModel.info?.mhpass ?? ""
+                // TODO: - remove this
+                pass = "ZYL6297035"
             }
             
             if pass != "" {
@@ -231,9 +233,9 @@ class HFParseViewModel {
                 request.httpMethod = "POST"
                 switch type {
                 case .jw:
-                    request.httpBody = "UserStyle=student&user=\(info!.sid)&password=\(pass)".data(using: .utf8)
+                    request.httpBody = "UserStyle=student&user=\(DataEnv.user!.sid)&password=\(pass)".data(using: .utf8)
                 case .mh:
-                    request.httpBody = "IDToken0=&IDToken1=\(info!.sid)&IDToken2=\(pass)&IDButton=Submit&goto=&encoded=false&inputCode=&gx_charset=UTF-8".data(using: .utf8)
+                    request.httpBody = "IDToken0=&IDToken1=\(DataEnv.user!.sid)&IDToken2=\(pass)&IDButton=Submit&goto=&encoded=false&inputCode=&gx_charset=UTF-8".data(using: .utf8)
                 }
                 
                 request.addValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
@@ -248,8 +250,7 @@ class HFParseViewModel {
                             fulfill()
                         case .mh:
                             // 信息门户跳转教务系统需要拿着用户获取的 cookie 去拉一下数据
-                            let cookie = self.parseCookie(response.allHeaderFields)
-                            Logger.warning(cookie)
+                            //                            let cookie = self.parseCookie(response.allHeaderFields)
                             var req = URLRequest(url: URL(string: "http://bkjw.hfut.edu.cn/StuIndex.asp")!)
                             //                            req.addValue(cookie, forHTTPHeaderField: "Cookie")
                             req.httpMethod = "GET"
@@ -263,7 +264,7 @@ class HFParseViewModel {
                             }
                         }
                     } else {
-                        Logger.error("登录\(type.rawValue)失败 | u=\(self.info!.sid)p=\(pass) respose \(response) | error \(error)")
+                        Logger.error("登录\(type.rawValue)失败 | u=\(DataEnv.user!.sid)p=\(pass) respose \(response) | error \(error)")
                         reject(HFParseError.loginError)
                     }
                 }
@@ -325,7 +326,7 @@ class HFParseViewModel {
                 .responseData { (data, response) in
                     if let data = data {
                         Logger.debug("获取数据成功")
-                        Logger.verbose(String(data: data, encoding: .gb2312) ?? "")
+                        //                        Logger.verbose(String(data: data, encoding: .gb2312) ?? "")
                         fulfill(data)
                     } else {
                         reject(HFParseError.getHtmlFail)
@@ -337,30 +338,28 @@ class HFParseViewModel {
     /// 上传服务器解析数据
     fileprivate func parseData(data: Data) -> Promise<JSONItem> {
         return Promise<JSONItem> { fulfill, reject in
-            let fileName: String
-            let url: String
-            var param = JSON()
+            let fileName : String
+            let url      : String
+            var newData  : Data
             
             switch dataType {
             case .schedule:
                 fileName = "course"
                 url      = APIBaseURL + "/api/schedule/uploadSchedule"
+                newData  = data
             case.grades:
-                param["origin"] = "true"
-                fileName = "score"
-                url      = APIBaseURL + "/api/schedule/uploadScore"
+                fileName  = "score"
+                url       = APIBaseURL + "/api/score/uploadScore"
+                newData  = String(data: data, encoding: .gb2312)?.data(using: .utf8) ?? data
             }
             
-            let compressedData: Data = try! data.gzipped()
-            var file = File(name: fileName, data: compressedData, type: "html")
-            file.nameWithType = Utilities.timeStamp.description.md5() + ".html"
+            let compressedData: Data = try! newData.gzipped()
+            let file = File(name: fileName, data: compressedData, type: "html")
+            
             Logger.debug("正在上传数据到服务器来解析")
-            
-            
             
             Pita.build(HTTPMethod: .POST, url: url)
                 .addFiles([file])
-                .addParams(param)
                 .onNetworkError({ (error) in
                     Logger.error("解析失败 \(error.localizedDescription)")
                     reject(HFParseError.suspend(info: error.localizedDescription))
@@ -374,7 +373,8 @@ class HFParseViewModel {
                         return
                     } else {
                         Logger.error("解析失败 \(json["info"].stringValue)")
-                        Logger.error(String(data: data, encoding: .gb2312) ?? "")
+                        let html = String(data: data, encoding: .gb2312)?.trimmed()
+                        Logger.error(html ?? "")
                         reject(HFParseError.suspend(info: "解析数据失败"))
                         return
                     }

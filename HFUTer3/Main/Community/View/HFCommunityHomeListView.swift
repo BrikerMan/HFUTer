@@ -139,11 +139,18 @@ extension HFCommunityHomeListView: UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(indexPath: indexPath) as FMCommunityLostAndFindCell
             cell.delegate = self
             cell.setupModel(lostModels[indexPath.row], index: indexPath)
+            if indexPath.row == self.lostModels.count - 3 {
+                self.tableView.beginLoadMore()
+            }
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(indexPath: indexPath) as HFCommunityLoveWallListCell
             cell.delegate = self
             cell.setupWithModel(loveModels[indexPath.row], index: indexPath.row)
+            
+            if indexPath.row == self.loveModels.count - 3 {
+                self.tableView.beginLoadMore()
+            }
             return cell
         }
     }

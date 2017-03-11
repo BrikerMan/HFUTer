@@ -13,7 +13,6 @@ class HFInfoGradesVC: HFBaseViewController {
     @IBOutlet weak var tableView: HFPullTableView!
     
     fileprivate var termList: [HFTermModel] = []
-    
     fileprivate var loadingView: HFLoadingView?
     
     fileprivate var viewModel = HFParseViewModel()
@@ -62,52 +61,28 @@ class HFInfoGradesVC: HFBaseViewController {
                 }
             }
         }
-        
-        
-        //        if let result = HFTermModel.readModels() {
-        //            termList = result
-        //            tableView.reloadData()
-        //        } else {
-        //            loadingView?.show()
-        //            let request = HFInfoGetScoresRequest()
-        //            //防止首次登陆时服务器没数据，所以此处需要服务器更新数据
-        //            request.shouldUpdate = true
-        //            request.callback = self
-        //            request.loadData()
-        //        }
     }
 }
 
 extension HFInfoGradesVC: HFPullTableViewPullDelegate {
     func pullTableViewStartRefeshing(_ tableView: HFPullTableView) {
-        let request = HFInfoGetScoresRequest()
-        request.shouldUpdate = true
-        request.callback = self
-        request.loadData()
+        viewModel.refreshGrades { (terms, error) in
+            if let error = error {
+                self.showEduError(error: error)
+            } else {
+                self.termList = terms
+                runOnMainThread {
+                    self.tableView.reloadData()
+                    self.tableView.endRefresh()
+                }
+            }
+        }
     }
     
     func pullTableViewStartLoadingMore(_ tableView: HFPullTableView) {
         
     }
 }
-
-extension HFInfoGradesVC: HFBaseAPIManagerCallBack {
-    func managerApiCallBackSuccess(_ manager: HFBaseAPIManager) {
-        loadingView?.hide()
-        
-        // 首次获取，则从这个接口拉去，并做缓存，显示
-        // 下拉刷新的话，从学校获取，然后缓存，显示
-        termList = HFInfoGetScoresRequest.handleData(manager.resultDic)
-        HFTermModel.saveModels(termList)
-        tableView.reloadData()
-        tableView.endRefresh()
-    }
-    
-    func managerApiCallBackFailed(_ manager: HFBaseAPIManager) {
-        hud.showError(manager.errorInfo)
-    }
-}
-
 
 extension HFInfoGradesVC: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {

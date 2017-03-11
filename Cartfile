@@ -1,3 +1,6 @@
 github "devxoul/Toaster"
 github "bizz84/SwiftyStoreKit"
 github "mxcl/PromiseKit"
+
+github "BrikerMan/Observable-Swift" "HEAD"
+github "BrikerMan/MJRefresh"

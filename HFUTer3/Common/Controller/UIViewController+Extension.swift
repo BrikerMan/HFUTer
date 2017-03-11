@@ -19,7 +19,7 @@ extension UIViewController {
                                                     attributes: [NSParagraphStyleAttributeName: paragraphStyle,NSFontAttributeName : UIFont.systemFont(ofSize: 12)])
         }
         
-        self.showAttAlert(title: title, message: messageText)
+        self.showAttAlert(title: title, message: messageText, actions: actions)
     }
     
     

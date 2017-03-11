@@ -43,7 +43,6 @@ PODS:
   - HappyDNS (0.3.10)
   - KMPlaceholderTextView (1.3.0)
   - LTMorphingLabel (0.3.0)
-  - MJRefresh (3.1.12)
   - NVActivityIndicatorView (3.5.1)
   - Pitaya (1.0.0)
   - Qiniu (7.1.5):
@@ -83,7 +82,6 @@ DEPENDENCIES:
   - GzipSwift
   - KMPlaceholderTextView
   - LTMorphingLabel (from `https://github.com/lexrus/LTMorphingLabel.git`, branch `swift3`)
-  - MJRefresh
   - NVActivityIndicatorView
   - Pitaya (from `https://github.com/johnlui/Pitaya.git`)
   - Qiniu
@@ -138,7 +136,6 @@ SPEC CHECKSUMS:
   HappyDNS: 06a9fed2796663fd87626dbf02552933265bf059
   KMPlaceholderTextView: 2bbcd19a273648a80a61e1e48f9743a24d8930e3
   LTMorphingLabel: 2777d8d9cb699125f48dfcd95d78bd3d77c87ade
-  MJRefresh: b96cdb21c4aa75a7b07654311ab2f315c497e806
   NVActivityIndicatorView: 075563b3547445ebcff840e3297ce9dd4a23731f
   Pitaya: 9e6a94903cbce6cdab9ad8b82e88142f4abd770d
   Qiniu: 77a3dba411556a383d72d17e842345a9d4c83252
@@ -157,6 +154,6 @@ SPEC CHECKSUMS:
   YYWebImage: 5f7f36aee2ae293f016d418c7d6ba05c4863e928
   ZYCornerRadius: f0af817be7805b5c63d793042ca7a03f81e14069
 
-PODFILE CHECKSUM: 658b9b2a5d68fb0ea778f4a68f9af736eb609463
+PODFILE CHECKSUM: 746be7ba82fe63d9a4c77f81c2cca657d73f627e
 
 COCOAPODS: 1.2.0

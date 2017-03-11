@@ -10,7 +10,6 @@ import UIKit
 import Fabric
 import Crashlytics
 import YYWebImage
-import Firebase
 
 let Is_Build_For_App_Store = true
 let Is_TestFlight          = false
@@ -38,38 +37,39 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.makeKeyAndVisible()
         window?.tintColor = HFTheme.TintColor
         
-        if DataEnv.isLogin {
-            var icon1: UIApplicationShortcutIcon?
-            var icon2: UIApplicationShortcutIcon?
-            var icon3: UIApplicationShortcutIcon?
-            
-            if #available(iOS 9.1, *) {
+        if #available(iOS 9.1, *) {
+            if DataEnv.isLogin {
+                var icon1: UIApplicationShortcutIcon?
+                var icon2: UIApplicationShortcutIcon?
+                var icon3: UIApplicationShortcutIcon?
+                
                 icon1 = UIApplicationShortcutIcon(type: .confirmation)
                 icon2 = UIApplicationShortcutIcon(type: .date)
                 icon3 = UIApplicationShortcutIcon(type: .compose)
+                
+                
+                let shortcut1 = UIApplicationShortcutItem(type: "com.eliyar.grade",
+                                                          localizedTitle: "成绩",
+                                                          localizedSubtitle: nil,
+                                                          icon: icon1,
+                                                          userInfo: nil)
+                
+                let shortcut2 = UIApplicationShortcutItem(type: "com.eliyar.calendar",
+                                                          localizedTitle: "校历",
+                                                          localizedSubtitle: nil,
+                                                          icon: icon2,
+                                                          userInfo: nil)
+                
+                let shortcut3 = UIApplicationShortcutItem(type: "com.eliyar.publish_love",
+                                                          localizedTitle: "发布表白",
+                                                          localizedSubtitle: nil,
+                                                          icon: icon3,
+                                                          userInfo: nil)
+                
+                application.shortcutItems = [shortcut1, shortcut2, shortcut3]
+            } else {
+                application.shortcutItems = nil
             }
-            
-            let shortcut1 = UIApplicationShortcutItem(type: "com.eliyar.grade",
-                                                      localizedTitle: "成绩",
-                                                      localizedSubtitle: nil,
-                                                      icon: icon1,
-                                                      userInfo: nil)
-            
-            let shortcut2 = UIApplicationShortcutItem(type: "com.eliyar.calendar",
-                                                      localizedTitle: "校历",
-                                                      localizedSubtitle: nil,
-                                                      icon: icon2,
-                                                      userInfo: nil)
-            
-            let shortcut3 = UIApplicationShortcutItem(type: "com.eliyar.publish_love",
-                                                      localizedTitle: "发布表白",
-                                                      localizedSubtitle: nil,
-                                                      icon: icon3,
-                                                      userInfo: nil)
-            
-            application.shortcutItems = [shortcut1, shortcut2, shortcut3]
-        } else {
-            application.shortcutItems = nil
         }
         return true
     }
@@ -79,6 +79,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         application.cancelAllLocalNotifications()
     }
     
+    @available(iOS 9.0, *)
     func handleShortcut(_ shortcut :UIApplicationShortcutItem ) -> Bool {
         var succeeded = true
         
@@ -86,16 +87,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         case "com.eliyar.grade":
             RootController.selectedIndex = 2
             RootController.infoVC.pushToGrades()
-        
+            
         case "com.eliyar.calendar":
             RootController.selectedIndex = 2
             RootController.infoVC.pushToCalendar()
-        
+            
         case "com.eliyar.publish_love":
             RootController.selectedIndex = 1
             let vc = HFCommunityPostLoveWallVC()
             RootController.infoVC.push(vc)
-
+            
         default:
             succeeded = false
         }
@@ -103,6 +104,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return succeeded
     }
     
+    @available(iOS 9.0, *)
     func application(_ application: UIApplication, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: @escaping (Bool) -> Void) {
         completionHandler(handleShortcut(shortcutItem) )
     }
@@ -151,9 +153,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     
     func prepareThridPart(_ launchOptions: [AnyHashable: Any]?) {
-        JSPatch.start(withAppKey: JSPatchAppKey)
-        JSPatch.sync()
-        
         JPUSHService.register(
             forRemoteNotificationTypes: UIUserNotificationType.badge.rawValue |
                 UIUserNotificationType.sound.rawValue |
@@ -169,7 +168,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         MobClick.start(withConfigure: conf)
         
         Fabric.with([Crashlytics.self])
-        FIRApp.configure()
     }
     
     func handleFristLuacnh() {

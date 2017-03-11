@@ -84,6 +84,7 @@
 		6A3EAAEE1CE0227000809226 /* HFComLoveWallListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A3EAAED1CE0227000809226 /* HFComLoveWallListModel.swift */; };
 		6A3EAAF01CE0263B00809226 /* HFGetCommunityLoveWallListRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A3EAAEF1CE0263B00809226 /* HFGetCommunityLoveWallListRequest.swift */; };
 		6A4101E71D3A06420068FC5B /* DataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A4101E61D3A06420068FC5B /* DataHelper.swift */; };
+		6A61A1921E70EA5400892EA6 /* MJRefresh.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A61A1911E70EA5400892EA6 /* MJRefresh.framework */; };
 		6A6A648C1CC51C6D0049715C /* HFBaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A6A648B1CC51C6D0049715C /* HFBaseTableViewCell.swift */; };
 		6A6A649C1CC51E840049715C /* HFGetCommunityLostAndFindRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A6A649B1CC51E840049715C /* HFGetCommunityLostAndFindRequest.swift */; };
 		6A6A64A01CC521860049715C /* HFBaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A6A649F1CC521860049715C /* HFBaseModel.swift */; };
@@ -187,7 +188,6 @@
 		6AE4A2961D0017D10025BB79 /* HFComLoveWallCommentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AE4A2951D0017D10025BB79 /* HFComLoveWallCommentModel.swift */; };
 		6AE4A2981D0019360025BB79 /* HFGetComLoveWallCommentRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AE4A2971D0019360025BB79 /* HFGetComLoveWallCommentRequest.swift */; };
 		6AE4A29B1D00644A0025BB79 /* HFCommonWriteVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AE4A2991D00644A0025BB79 /* HFCommonWriteVC.swift */; };
-		6AE544411CFF00D400EB3FE7 /* JSPatch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AE544401CFF00D400EB3FE7 /* JSPatch.framework */; };
 		6AE544431CFF01C200EB3FE7 /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AE544421CFF01C200EB3FE7 /* JavaScriptCore.framework */; };
 		6AE544451CFF1CA600EB3FE7 /* HFCommunityPostLoveWallVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AE544441CFF1CA600EB3FE7 /* HFCommunityPostLoveWallVC.swift */; };
 		6AE631AE1D0282EB002C4AEC /* HFTabbarCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AE631AA1D0282EB002C4AEC /* HFTabbarCollectionViewCell.swift */; };
@@ -428,6 +428,7 @@
 		6A3EAAED1CE0227000809226 /* HFComLoveWallListModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFComLoveWallListModel.swift; sourceTree = "<group>"; };
 		6A3EAAEF1CE0263B00809226 /* HFGetCommunityLoveWallListRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFGetCommunityLoveWallListRequest.swift; sourceTree = "<group>"; };
 		6A4101E61D3A06420068FC5B /* DataHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataHelper.swift; sourceTree = "<group>"; };
+		6A61A1911E70EA5400892EA6 /* MJRefresh.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MJRefresh.framework; sourceTree = "<group>"; };
 		6A6A648B1CC51C6D0049715C /* HFBaseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFBaseTableViewCell.swift; sourceTree = "<group>"; };
 		6A6A649B1CC51E840049715C /* HFGetCommunityLostAndFindRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFGetCommunityLostAndFindRequest.swift; sourceTree = "<group>"; };
 		6A6A649F1CC521860049715C /* HFBaseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFBaseModel.swift; sourceTree = "<group>"; };
@@ -541,7 +542,6 @@
 		6AE4A2951D0017D10025BB79 /* HFComLoveWallCommentModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFComLoveWallCommentModel.swift; sourceTree = "<group>"; };
 		6AE4A2971D0019360025BB79 /* HFGetComLoveWallCommentRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFGetComLoveWallCommentRequest.swift; sourceTree = "<group>"; };
 		6AE4A2991D00644A0025BB79 /* HFCommonWriteVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFCommonWriteVC.swift; sourceTree = "<group>"; };
-		6AE544401CFF00D400EB3FE7 /* JSPatch.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = JSPatch.framework; sourceTree = "<group>"; };
 		6AE544421CFF01C200EB3FE7 /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		6AE544441CFF1CA600EB3FE7 /* HFCommunityPostLoveWallVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFCommunityPostLoveWallVC.swift; sourceTree = "<group>"; };
 		6AE631AA1D0282EB002C4AEC /* HFTabbarCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFTabbarCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -715,6 +715,7 @@
 				6AE8D4011E3D9B4B00E44BE3 /* SwiftyStoreKit.framework in Frameworks */,
 				6AFF3DD31D04559E00B575CA /* UIKit.framework in Frameworks */,
 				6AFF3DD11D04559300B575CA /* Foundation.framework in Frameworks */,
+				6A61A1921E70EA5400892EA6 /* MJRefresh.framework in Frameworks */,
 				6AFF3DCF1D04558B00B575CA /* CoreGraphics.framework in Frameworks */,
 				6A9F1EA81E40BC1700FFC39D /* jpush-ios-3.0.1.a in Frameworks */,
 				6AFF3DC91D04557800B575CA /* CoreFoundation.framework in Frameworks */,
@@ -722,7 +723,6 @@
 				6AE544431CFF01C200EB3FE7 /* JavaScriptCore.framework in Frameworks */,
 				6A3E80D21D06DBB300E88445 /* AVOSCloud.framework in Frameworks */,
 				6A0774BD1D06FBE9006D3C2C /* StoreKit.framework in Frameworks */,
-				6AE544411CFF00D400EB3FE7 /* JSPatch.framework in Frameworks */,
 				6A9F1EA71E40BC1700FFC39D /* jcore-ios-1.1.0.a in Frameworks */,
 				ABC177B7B17421ECD3C39761 /* Pods_HFUTer3.framework in Frameworks */,
 			);
@@ -1028,14 +1028,6 @@
 			path = Encryption;
 			sourceTree = "<group>";
 		};
-		6AE5443F1CFF00D400EB3FE7 /* JSPatch */ = {
-			isa = PBXGroup;
-			children = (
-				6AE544401CFF00D400EB3FE7 /* JSPatch.framework */,
-			);
-			path = JSPatch;
-			sourceTree = "<group>";
-		};
 		6AE631A91D0282EB002C4AEC /* Tabbar */ = {
 			isa = PBXGroup;
 			children = (
@@ -1125,6 +1117,7 @@
 		6B23B0A91C97DA4E0089214D /* Ventor */ = {
 			isa = PBXGroup;
 			children = (
+				6A61A1911E70EA5400892EA6 /* MJRefresh.framework */,
 				6AE1F4F31E473209003CFA27 /* PromiseKit.framework */,
 				6AE8D3FC1E3D91DF00E44BE3 /* Toaster.framework */,
 				6AE8D4001E3D9B4B00E44BE3 /* SwiftyStoreKit.framework */,
@@ -1136,7 +1129,6 @@
 				27EF73211DD08C16009E9592 /* Eureka */,
 				6A3E80D01D06DBB300E88445 /* AVOSCloud */,
 				6AFF3DC21D0454DA00B575CA /* JPush */,
-				6AE5443F1CFF00D400EB3FE7 /* JSPatch */,
 				6B61217E1CA2C07900C56FD4 /* STPhotoKit */,
 			);
 			path = Ventor;
@@ -1815,6 +1807,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/Toaster.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SwiftyStoreKit.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/PromiseKit.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/MJRefresh.framework",
 			);
 			name = "Carthage Run Script";
 			outputPaths = (
@@ -2332,7 +2325,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = HFUTer3/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2383,7 +2376,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = HFUTer3/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",

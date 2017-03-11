@@ -44,7 +44,6 @@ class HFTermModel:NSObject {
         return nil
     }
     
-    @available(*, deprecated)
     class func saveModels(_ models: [HFTermModel]) {
         var list:[NSDictionary] = []
         for model in models {
@@ -55,7 +54,6 @@ class HFTermModel:NSObject {
         PlistManager.dataPlist.saveValues(data as [String : AnyObject])
     }
     
-    @available(*, deprecated)
     class func readModels() -> [HFTermModel]? {
         if let dic = PlistManager.dataPlist.getValues(),
             let list = dic[PlistKey.GradesList.rawValue] as? [AnyObject] {

@@ -38,7 +38,7 @@ class HFHomeVC: HFBasicViewController{
     
     
     @objc fileprivate func afterUserLogin(_ sender:AnyObject) {
-        viewModel.info = nil
+        HFParseViewModel.info = nil
         Hud.showLoading("正在加载课表")
         loadSchedule()
     }
@@ -86,6 +86,28 @@ class HFHomeVC: HFBasicViewController{
             self.view.layoutIfNeeded()
             self.navTitleIconView.transform = CGAffineTransform(rotationAngle: rotate)
         },completion: nil)
+    }
+    
+    func loadFromServer(with error1: String) {
+        let cache = UIAlertAction(title: "读取服务器缓存", style: .default) { (action) in
+            Hud.showLoading()
+            self.viewModel.fetchScheduleFromServer()
+                .then { Void -> Void in
+                    Hud.dismiss()
+                    self.showEduError(error: error1)
+            }.catch { error in
+                Hud.dismiss()
+                if error.isFullfill {
+                    self.loadSchedule()
+                } else {
+                    self.showEduError(error: error1)
+                }
+            }
+        }
+        
+        let cancel = UIAlertAction(title: "取消", style: .cancel) { _ in }
+        
+        self.showAlert(title: "获取数据失败", message: "可能是密码错误或者教务系统崩溃，如果此前已经成功获取过信息，可以尝试获取服务器", actions: [cache, cancel] )
     }
     
     
@@ -146,7 +168,7 @@ extension HFHomeVC: HFHomeSchudulesViewDelegate {
     func scheduleViewDidStartRefresh() {
         viewModel.refreshSchedule(for: currentWeek) { result, error in
             if let error = error {
-                self.showEduError(error: error)
+                self.loadFromServer(with: error)
             } else {
                 self.scheduleView.setupWithCourses(result)
                 self.scheduleView.setupWithWeek(self.currentWeek)

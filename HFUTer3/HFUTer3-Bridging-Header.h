@@ -6,8 +6,7 @@
 #import "STPhotoKitController.h"
 #import "UIImagePickerController+ST.h"
 
-/// 热修复
-#import <JSPatch/JSPatch.h>
+///
 #import "JPUSHService.h"
 
 #import <UMMobClick/MobClick.h>

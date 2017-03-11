@@ -38,7 +38,7 @@ class HFCommunityLoveWallDetailVC: HFBaseViewController, XibBasedController {
     }
     
     @objc fileprivate func loadData() {
-//        loadingView.show()
+        loadingView.show()
         commentReqeust = HFGetComLoveWallCommentRequest()
         commentReqeust.callback = self
         commentReqeust.fire(mainModel.id)
@@ -280,7 +280,12 @@ extension HFCommunityLoveWallDetailVC: UITableViewDelegate {
             let label  = UILabel()
             label.text = "评论 \(mainModel.commentCount) 赞 \(mainModel.favoriteCount)"
             label.textColor = HFTheme.DarkTextColor
-            label.font = UIFont.systemFont(ofSize: 14, weight: UIFontWeightMedium)
+            
+            if #available(iOS 8.2, *) {
+                label.font = UIFont.systemFont(ofSize: 14, weight: UIFontWeightMedium)
+            } else {
+                label.font = UIFont.boldSystemFont(ofSize: 14)
+            }
             
             container.addSubview(label)
             label.snp.makeConstraints {
