@@ -88,7 +88,7 @@ extension DDTTYLogger {
         DDLog.add(logger!)
         
         let fileLogger = DDFileLogger()
-        fileLogger?.rollingFrequency = 60 * 60 * 24
+        fileLogger?.rollingFrequency = TimeInterval(60 * 60 * 24)
         fileLogger?.maximumFileSize = 1024 * 4
         
         DDLog.add(fileLogger!)

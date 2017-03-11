@@ -224,8 +224,6 @@ class HFParseViewModel {
             case .mh:
                 url  = EduURL.mhLogin
                 pass = HFParseViewModel.info?.mhpass ?? ""
-                // TODO: - remove this
-                pass = "ZYL6297035"
             }
             
             if pass != "" {
