@@ -49,7 +49,6 @@ extension Error {
     }
 }
 
-
 typealias HFParseScheduleResult = ((_ models: [CourseDayModel], _ error: HFParseError?) -> Void)
 
 enum HFParseServerType: String {
@@ -89,6 +88,8 @@ class HFParseViewModel {
     static var info: UserInfo?
     /// 数据类型，成绩的话需要修改
     var dataType = HFParseViewModelDataType.schedule
+    
+    weak var controller: UIViewController?
     
     // 读取课表
     func fetchSchedule(for week: Int, completion: @escaping ((_ models: [CourseDayModel], _ error: String?) -> Void)) {
@@ -229,11 +230,14 @@ class HFParseViewModel {
             if pass != "" {
                 var request = URLRequest(url: URL(string: url)!)
                 request.httpMethod = "POST"
+                
                 switch type {
                 case .jw:
                     request.httpBody = "UserStyle=student&user=\(DataEnv.user!.sid)&password=\(pass)".data(using: .utf8)
                 case .mh:
                     request.httpBody = "IDToken0=&IDToken1=\(DataEnv.user!.sid)&IDToken2=\(pass)&IDButton=Submit&goto=&encoded=false&inputCode=&gx_charset=UTF-8".data(using: .utf8)
+                    /// 坑死我了，不加 ua 就拿不到数据，必须写错。。。
+                    request.addValue("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3036.0 Safari/537.36", forHTTPHeaderField: "User-Agent:")
                 }
                 
                 request.addValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
@@ -273,7 +277,6 @@ class HFParseViewModel {
         }
     }
     
-    
     // MARK: 从网页获取数据
     fileprivate func fetchNewData(from type: HFParseServerType) -> Promise<Void> {
         return Promise<Void> { fullfill, reject in
@@ -303,8 +306,6 @@ class HFParseViewModel {
             }
         }
     }
-    
-    
     
     /// 从服务器获取 HTTP 数据
     fileprivate func fetchDataFromWeb() -> Promise<Data> {
@@ -390,6 +391,10 @@ class HFParseViewModel {
         }
         return cookie
     }
+    
+    
+    // MARK: - 获取验证码
+//    fileprivate func 
     
 }
 

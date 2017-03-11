@@ -107,7 +107,7 @@ class HFHomeVC: HFBasicViewController{
         
         let cancel = UIAlertAction(title: "取消", style: .cancel) { _ in }
         
-        self.showAlert(title: "获取数据失败", message: "可能是密码错误或者教务系统崩溃，如果此前已经成功获取过信息，可以尝试获取服务器", actions: [cache, cancel] )
+        self.showAlert(title: "获取数据失败", message: "可能是密码错误或者教务系统崩溃，如果此前已经成功获取过信息，可以尝试获取 HFUTer 服务器缓存数据。", actions: [cache, cancel] )
     }
     
     

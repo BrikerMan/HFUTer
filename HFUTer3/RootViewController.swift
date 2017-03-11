@@ -12,10 +12,10 @@ var RootController: RootViewController!
 
 class RootViewController: UITabBarController {
     
-    var homeVC: HFHomeVC!
-    var infoVC: HFInformationVC!
-    var mineVC: HFMineVC!
-    var communityVC: HFCommunityVC!
+    var homeVC      : HFHomeVC!
+    var infoVC      : HFInformationVC!
+    var mineVC      : HFMineVC!
+    var communityVC : HFCommunityVC!
     
     fileprivate var hfTabbar: HFTabbarView!
     
@@ -48,6 +48,7 @@ class RootViewController: UITabBarController {
     
     @objc fileprivate func afterLoginResponse(_ sender:AnyObject) {
         selectedIndex = 0
+        hfTabbar.selectedIndex = 0
     }
     
     @objc fileprivate func afterLogoutResponse(_ sender:AnyObject) {
