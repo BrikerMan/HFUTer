@@ -11,7 +11,7 @@ target 'HFUTer3' do
     pod 'YYImage/WebP'
     pod 'SnapKit'                               ## AutoLayout
     pod 'SVProgressHUD'
-#    pod 'MJRefresh' , :git => 'https://github.com/BrikerMan/MJRefresh.git'
+    #    pod 'MJRefresh' , :git => 'https://github.com/BrikerMan/MJRefresh.git'
     pod 'AIFlatSwitch'                          ## 动态选择button
     pod 'YYText'    , :git => 'https://github.com/BrikerMan/YYText.git'
     pod 'ZYCornerRadius'                        # 优化圆角绘制
@@ -35,6 +35,8 @@ target 'HFUTer3' do
     pod 'YYModel'                           ## Dic or Json -> Model
     pod 'Qiniu'
     pod 'GzipSwift'
+    pod 'FMDB'
+    pod 'AVOSCloud'
     
     # 统计
     pod 'Fabric'
@@ -47,11 +49,6 @@ target 'HFUTer3' do
     
 end
 
-post_install do |installer|
-    installer.pods_project.targets.each do |target|
-        target.build_configurations.each do |config|
-            config.build_settings['SWIFT_VERSION'] = '3.0'
-            config.build_settings['DYLIB_COMPATIBILITY_VERSION'] = ''
-        end
-    end
+target 'TodayWidget' do
+    pod 'FMDB'
 end

@@ -47,7 +47,7 @@ struct CourseDayModel {
 
 class HFCourseModel: NSObject {
     /// 课程名称
-    var name = ""
+    var name  = ""
     /// 地点
     var place = ""
     /// 周数

@@ -290,6 +290,7 @@ class HFParseViewModel {
                         let key: String
                         switch self.dataType {
                         case .schedule:
+                            DBManager.saveSchedules(json["data"])
                             key = PlistKey.ScheduleList.rawValue
                         case.grades:
                             key = PlistKey.GradesList.rawValue

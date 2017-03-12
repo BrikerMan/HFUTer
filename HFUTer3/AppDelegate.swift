@@ -10,6 +10,7 @@ import UIKit
 import Fabric
 import Crashlytics
 import YYWebImage
+import AVOSCloud
 
 let Is_Build_For_App_Store = true
 let Is_TestFlight          = false
@@ -125,10 +126,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let currentInstallation = AVInstallation.current()
         let sid = DataEnv.user?.sid ?? "\(000000)"
         
-        currentInstallation?.setDeviceTokenFrom(deviceToken)
-        currentInstallation?.setObject(sid, forKey: "sid")
-        currentInstallation?.channels = [testflight]
-        currentInstallation?.saveInBackground()
+        currentInstallation.setDeviceTokenFrom(deviceToken)
+        currentInstallation.setObject(sid, forKey: "sid")
+        currentInstallation.channels = [testflight]
+        currentInstallation.saveInBackground()
     }
     
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {

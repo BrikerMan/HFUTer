@@ -11,10 +11,10 @@ import LTMorphingLabel
 
 class HFHomeVC: HFBasicViewController{
     
-    @IBOutlet weak var navBarView: UIView!
-    @IBOutlet weak var containView: UIView!
-    @IBOutlet weak var navTitleLabel: LTMorphingLabel!
-    @IBOutlet weak var navTitleIconView: UIImageView!
+    @IBOutlet weak var navBarView       : UIView!
+    @IBOutlet weak var containView      : UIView!
+    @IBOutlet weak var navTitleLabel    : LTMorphingLabel!
+    @IBOutlet weak var navTitleIconView : UIImageView!
     
     var loadingView: HFLoadingView?
     
@@ -22,8 +22,8 @@ class HFHomeVC: HFBasicViewController{
     
     fileprivate var currentWeek = 0
     
-    fileprivate var scheduleView : HFHomeSchudulesView!
-    fileprivate var weekSelectView: HFHomeScheduleSelectWeekView!
+    fileprivate var scheduleView   : HFHomeSchudulesView!
+    fileprivate var weekSelectView : HFHomeScheduleSelectWeekView!
     
     fileprivate var isSelectWeekViewShowing = false
     

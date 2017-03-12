@@ -8,6 +8,7 @@
 
 import UIKit
 import StoreKit
+import AVOSCloud
 import Crashlytics
 import SwiftyStoreKit
 
@@ -83,7 +84,7 @@ class HFMineDonateVC: HFBaseViewController {
                                                 "userIDString" :  DataEnv.user?.sid ?? ""
                             ])
                     }
-                    item?.save()
+                    item.save()
                 }
                 
                 hud.dismiss()

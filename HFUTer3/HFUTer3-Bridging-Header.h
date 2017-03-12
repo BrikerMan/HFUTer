@@ -10,12 +10,10 @@
 #import "JPUSHService.h"
 
 #import <UMMobClick/MobClick.h>
-#import <AVOSCloud/AVOSCloud.h>
 
 /// YYKit
 #import "YYFPSLabel.h"
 #import "YYLabel+Copyable.h"
-
 
 /// md5 and 加密
 #import <CommonCrypto/CommonCrypto.h>

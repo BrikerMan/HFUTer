@@ -22,8 +22,8 @@ class HFHomeScheduleBodyCell: UICollectionViewCell {
         seperatorHeight.constant = 0.5
         seperatorView.backgroundColor = HFTheme.SeperatorColor
         
+        addSubview(temptextLabel)
         
-        self.addSubview(temptextLabel)
         temptextLabel.font = UIFont.systemFont(ofSize: 12)
         temptextLabel.numberOfLines = 0
         temptextLabel.snp.makeConstraints { (make) -> Void in
@@ -31,7 +31,6 @@ class HFHomeScheduleBodyCell: UICollectionViewCell {
             make.left.equalTo(self.snp.left)
             make.right.equalTo(self.snp.right)
         }
-        // Initialization code
     }
     
     func setupWithModel(_ models: [CourseHourModel] ) {

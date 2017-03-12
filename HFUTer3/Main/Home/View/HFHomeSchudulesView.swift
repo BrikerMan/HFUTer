@@ -145,7 +145,6 @@ extension HFHomeSchudulesView: UICollectionViewDataSource {
                 if !result.isDouble {
                     cell.setupWithModel(result.models)
                 }
-                
             }
             return cell
         }
