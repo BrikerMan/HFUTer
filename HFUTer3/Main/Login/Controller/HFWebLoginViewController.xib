@@ -21,16 +21,15 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aaD-2g-HA3">
-                    <rect key="frame" x="0.0" y="20" width="375" height="607"/>
+                    <rect key="frame" x="0.0" y="20" width="375" height="577"/>
                     <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </webView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="t2J-eL-A8W">
-                    <rect key="frame" x="0.0" y="627" width="375" height="40"/>
+                    <rect key="frame" x="0.0" y="597" width="375" height="70"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HS3-di-HrZ">
-                            <rect key="frame" x="9" y="0.0" width="46" height="40"/>
+                            <rect key="frame" x="9" y="38" width="46" height="30"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="40" id="ch7-Rn-8kF"/>
                                 <constraint firstAttribute="width" constant="46" id="gz3-fK-mzh"/>
                             </constraints>
                             <state key="normal" title="取消"/>
@@ -39,9 +38,8 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YFl-tB-rM0">
-                            <rect key="frame" x="321" y="0.0" width="46" height="40"/>
+                            <rect key="frame" x="321" y="38" width="46" height="30"/>
                             <constraints>
-                                <constraint firstAttribute="height" constant="40" id="I9k-0O-MQB"/>
                                 <constraint firstAttribute="width" constant="46" id="pln-SR-Shd"/>
                             </constraints>
                             <state key="normal" title="完成"/>
@@ -50,42 +48,42 @@
                             </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="登录成功以后请点击完成按钮" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="ZGm-Iw-bTh">
-                            <rect key="frame" x="63" y="11" width="250" height="18"/>
+                            <rect key="frame" x="63" y="44" width="250" height="18"/>
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                             <color key="textColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tjp-sK-ttQ">
+                            <rect key="frame" x="148" y="6" width="80" height="28"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                            <state key="normal" title="设置自动填充"/>
+                            <connections>
+                                <action selector="onAutoFillButtonPressed:" destination="-1" eventType="touchUpInside" id="g8M-qN-Zc3"/>
+                            </connections>
+                        </button>
                     </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" red="0.91764705882352937" green="0.91764705882352937" blue="0.91764705882352937" alpha="1" colorSpace="calibratedRGB"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="40" id="EEb-wu-Usq"/>
-                        <constraint firstItem="HS3-di-HrZ" firstAttribute="centerY" secondItem="t2J-eL-A8W" secondAttribute="centerY" id="HIc-nI-myE"/>
+                        <constraint firstAttribute="height" constant="70" id="EEb-wu-Usq"/>
                         <constraint firstItem="HS3-di-HrZ" firstAttribute="leading" secondItem="t2J-eL-A8W" secondAttribute="leading" constant="9" id="HhQ-rQ-T6a"/>
                         <constraint firstItem="ZGm-Iw-bTh" firstAttribute="leading" secondItem="HS3-di-HrZ" secondAttribute="trailing" constant="8" id="L1R-on-4jU"/>
                         <constraint firstAttribute="trailing" secondItem="YFl-tB-rM0" secondAttribute="trailing" constant="8" id="Mwr-IR-eDo"/>
+                        <constraint firstAttribute="bottom" secondItem="YFl-tB-rM0" secondAttribute="bottom" constant="2" id="TAe-vA-hFt"/>
                         <constraint firstItem="YFl-tB-rM0" firstAttribute="leading" secondItem="ZGm-Iw-bTh" secondAttribute="trailing" constant="8" id="Xg8-th-tfN"/>
-                        <constraint firstItem="ZGm-Iw-bTh" firstAttribute="centerY" secondItem="t2J-eL-A8W" secondAttribute="centerY" id="hQG-A2-pJa"/>
-                        <constraint firstItem="YFl-tB-rM0" firstAttribute="centerY" secondItem="t2J-eL-A8W" secondAttribute="centerY" id="n6o-UA-VfV"/>
+                        <constraint firstAttribute="bottom" secondItem="HS3-di-HrZ" secondAttribute="bottom" constant="2" id="gX1-5i-1y2"/>
+                        <constraint firstItem="tjp-sK-ttQ" firstAttribute="centerX" secondItem="t2J-eL-A8W" secondAttribute="centerX" id="kHD-Sg-Uxk"/>
+                        <constraint firstItem="tjp-sK-ttQ" firstAttribute="top" secondItem="t2J-eL-A8W" secondAttribute="top" constant="6" id="qAb-eJ-rnL"/>
+                        <constraint firstAttribute="bottom" secondItem="ZGm-Iw-bTh" secondAttribute="bottom" constant="8" id="wr2-UP-CR4"/>
                     </constraints>
                 </view>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tjp-sK-ttQ">
-                    <rect key="frame" x="10" y="591" width="80" height="28"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                    <state key="normal" title="设置自动填充"/>
-                    <connections>
-                        <action selector="onAutoFillButtonPressed:" destination="-1" eventType="touchUpInside" id="g8M-qN-Zc3"/>
-                    </connections>
-                </button>
             </subviews>
             <color key="backgroundColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="tjp-sK-ttQ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="10" id="2qw-UF-Ens"/>
                 <constraint firstItem="aaD-2g-HA3" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Fxx-7s-lG2"/>
                 <constraint firstItem="aaD-2g-HA3" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="20" id="RzN-9q-TBj"/>
                 <constraint firstItem="t2J-eL-A8W" firstAttribute="top" secondItem="aaD-2g-HA3" secondAttribute="bottom" id="bI0-Tv-BLj"/>
                 <constraint firstAttribute="bottom" secondItem="t2J-eL-A8W" secondAttribute="bottom" id="dWD-yM-lm6"/>
                 <constraint firstAttribute="trailing" secondItem="aaD-2g-HA3" secondAttribute="trailing" id="f0p-Fl-p1P"/>
-                <constraint firstItem="t2J-eL-A8W" firstAttribute="top" secondItem="tjp-sK-ttQ" secondAttribute="bottom" constant="8" id="iQo-fz-Wsd"/>
                 <constraint firstItem="t2J-eL-A8W" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="r7H-uH-A8p"/>
                 <constraint firstAttribute="trailing" secondItem="t2J-eL-A8W" secondAttribute="trailing" id="tfk-dP-q3Z"/>
             </constraints>
