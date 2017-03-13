@@ -12,7 +12,7 @@
         <!--HomeVC-->
         <scene sceneID="FI7-2G-Zhh">
             <objects>
-                <viewController extendedLayoutIncludesOpaqueBars="YES" automaticallyAdjustsScrollViewInsets="NO" id="lX2-wg-FOF" customClass="HFHomeVC" customModule="HFUTer3" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HFScheduleViewController" extendedLayoutIncludesOpaqueBars="YES" automaticallyAdjustsScrollViewInsets="NO" id="lX2-wg-FOF" customClass="HFHomeVC" customModule="HFUTer3" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="NBm-Ol-Qno"/>
                         <viewControllerLayoutGuide type="bottom" id="SAQ-Xu-GYT"/>

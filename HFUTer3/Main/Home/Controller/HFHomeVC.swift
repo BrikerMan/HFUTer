@@ -31,7 +31,7 @@ class HFHomeVC: HFBasicViewController{
         super.viewDidLoad()
         initUI()
         initData()
-        
+        viewModel.controller = self
         navBarView.backgroundColor = HFTheme.TintColor
         AnalyseManager.OpenSchudule.record()
     }

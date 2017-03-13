@@ -28,21 +28,6 @@ class DatabaseManager {
     
     static let shared = DatabaseManager()
     
-    func saveSchedules(_ json: JSONItem) {
-        var models: [HFScheduleModel] = []
-        
-        for (dayIndex, day) in json.arrayValue.enumerated() {
-            for (hourIndex, hour) in day["dayCourseList"].arrayValue.enumerated() {
-                for cource in hour["courses"].arrayValue {
-                    let model = HFScheduleModel(json: cource, day: dayIndex, hour: hourIndex)
-                    insert(item: model, to: .schedule)
-                }
-            }
-        }
-    }
-    
-    
-    
     var databaseQueue: FMDatabaseQueue!
     
     /**
@@ -84,12 +69,17 @@ class DatabaseManager {
      读取数据
      - returns: 读取model列表
      */
-    func read<T:SQLiteCachable>(from: HFBDTable, type: T.Type) -> [T] {
+    func read<T:SQLiteCachable>(from: HFBDTable, type: T.Type, filter: String?) -> [T] {
         var models: [T] = []
         let db = FMDatabase(path: dbPath)!
         db.open()
         
-        let rs = try! db.executeQuery("SELECT * FROM ORDER \(from.rawValue)", values: [])
+        var sql = "SELECT * FROM \(from.rawValue)"
+        if let filter = filter {
+           sql += " WHERE " + filter
+        }
+        
+        let rs = try! db.executeQuery(sql, values: [])
         while rs.next() {
             models.append(T(row: rs))
         }
@@ -97,6 +87,17 @@ class DatabaseManager {
         return models
     }
     
+    func execute(sql: String) {
+        let db = FMDatabase(path: dbPath)!
+        db.open()
+        do {
+            try db.executeUpdate(sql: sql)
+        } catch {
+            Logger.error("Execute \(sql) error \(error.localizedDescription)")
+        }
+        db.commit()
+        db.close()
+    }
     
     func deleteAll(from: SQLiteCachable) {
         
@@ -116,7 +117,7 @@ class DatabaseManager {
         databaseQueue = FMDatabaseQueue(path: dbPath)
         
         do {
-            try database.executeUpdate("CREATE TABLE \(HFBDTable.schedule.rawValue) (id TEXT PRIMARY KEY UNIQUE, name TEXT, colorName TEXT, isHidden Boolean, isUserAdded Boolean, hour INTEGER, day INTEGER);", values: nil)
+            try database.executeUpdate("CREATE TABLE \(HFBDTable.schedule.rawValue) (id TEXT PRIMARY KEY UNIQUE, name TEXT, colorName TEXT, isHidden Boolean, isUserAdded Boolean, hour INTEGER, day INTEGER, weeks TEXT);", values: nil)
             Logger.debug("created table success \(dbPath)")
         } catch {
             Logger.error("failed: \(error.localizedDescription)")

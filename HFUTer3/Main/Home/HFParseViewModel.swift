@@ -54,6 +54,7 @@ typealias HFParseScheduleResult = ((_ models: [CourseDayModel], _ error: HFParse
 enum HFParseServerType: String {
     case jw = "教务系统"
     case mh = "信息门户"
+    case mhweb = "信息门户网页"
 }
 
 
@@ -138,8 +139,10 @@ class HFParseViewModel {
             .then { Void -> Promise<Void> in
                 // 读取到用户的教务和信息门户密码后~~
                 return self.fetchNewData(from: .jw)
-            } .then { Void -> Promise<Void> in
+            }.then { Void -> Promise<Void> in
                 return self.fetchNewData(from: .mh)
+            }.then { Void -> Promise<Void> in
+                return self.fetchNewData(from: .mhweb)
             }.then { Void -> Void in
                 completion("教务系统和信息门户密码错误或过期，请重新绑定")
             }.catch { error in
@@ -215,66 +218,108 @@ class HFParseViewModel {
     
     // MARK: - 登录
     fileprivate func login(to type: HFParseServerType) -> Promise<Void> {
-        return Promise<Void> { fulfill, reject in
-            var pass : String
-            var url  : String
-            switch type {
-            case .jw:
-                url  = EduURL.jwLogin
-                pass = HFParseViewModel.info?.jwpass ?? ""
-            case .mh:
-                url  = EduURL.mhLogin
-                pass = HFParseViewModel.info?.mhpass ?? ""
-            }
-            
-            if pass != "" {
-                var request = URLRequest(url: URL(string: url)!)
-                request.httpMethod = "POST"
-                
-                switch type {
-                case .jw:
-                    request.httpBody = "UserStyle=student&user=\(DataEnv.user!.sid)&password=\(pass)".data(using: .utf8)
-                case .mh:
-                    request.httpBody = "IDToken0=&IDToken1=\(DataEnv.user!.sid)&IDToken2=\(pass)&IDButton=Submit&goto=&encoded=false&inputCode=&gx_charset=UTF-8".data(using: .utf8)
-                    /// 坑死我了，不加 ua 就拿不到数据，必须写错。。。
-                    request.addValue("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3036.0 Safari/537.36", forHTTPHeaderField: "User-Agent:")
+        if type == .mhweb {
+            return Promise<Void> { fulfill, reject in
+                if HFParseViewModel.info?.school != 0 {
+                    reject(HFParseError.loginError)
+                    return
                 }
-                
-                request.addValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
-                
-                HFBaseSession.fire(request: request, redirect: false) { (data, response, error) in
-                    if let response = response as? HTTPURLResponse, response.statusCode == 302 {
-                        Logger.debug("登录\(type.rawValue)成功")
-                        
-                        switch type {
-                        case .jw:
-                            Logger.debug("登录\(type.rawValue)成功")
-                            fulfill()
-                        case .mh:
-                            // 信息门户跳转教务系统需要拿着用户获取的 cookie 去拉一下数据
-                            //                            let cookie = self.parseCookie(response.allHeaderFields)
-                            var req = URLRequest(url: URL(string: "http://bkjw.hfut.edu.cn/StuIndex.asp")!)
-                            //                            req.addValue(cookie, forHTTPHeaderField: "Cookie")
-                            req.httpMethod = "GET"
-                            HFBaseSession.fire(request: req, redirect: false) { (data, response, error) in
-                                if let response = response as? HTTPURLResponse, response.statusCode == 302 {
-                                    Logger.debug("跳转教务系统成功")
-                                    fulfill()
-                                } else {
-                                    reject(HFParseError.loginError)
-                                }
-                            }
-                        }
+                self.loginWithWeb(completed: { (success) in
+                    if success {
+                        fulfill()
                     } else {
-                        Logger.error("登录\(type.rawValue)失败 | u=\(DataEnv.user!.sid)p=\(pass) respose \(response) | error \(error)")
                         reject(HFParseError.loginError)
                     }
+                })
+            }
+        } else {
+            return Promise<Void> { fulfill, reject in
+                var pass : String
+                var url  : String
+                switch type {
+                case .jw:
+                    url  = EduURL.jwLogin
+                    pass = HFParseViewModel.info?.jwpass ?? ""
+                    
+                case .mh:
+                    url  = EduURL.mhLogin
+                    pass = HFParseViewModel.info?.mhpass ?? ""
+                    
+                default:
+                    pass = ""
+                    url  = ""
+                    break
                 }
-            } else {
-                Logger.error("登录\(type.rawValue)失败 | 未绑定 ")
-                reject(HFParseError.loginError)
+                
+                if pass != "" {
+                    var request = URLRequest(url: URL(string: url)!)
+                    request.httpMethod = "POST"
+                    
+                    switch type {
+                    case .jw:
+                        request.httpBody = "UserStyle=student&user=\(DataEnv.user!.sid)&password=\(pass)".data(using: .utf8)
+                    case .mh:
+                        request.httpBody = "IDToken0=&IDToken1=\(DataEnv.user!.sid)&IDToken2=\(pass)&IDButton=Submit&goto=&encoded=false&inputCode=&gx_charset=UTF-8".data(using: .utf8)
+                        /// 坑死我了，不加 ua 就拿不到数据，必须写错。。。
+                        request.addValue("Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/59.0.3036.0 Safari/537.36", forHTTPHeaderField: "User-Agent:")
+                    default:
+                        break
+                    }
+                    
+                    request.addValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+                    
+                    HFBaseSession.fire(request: request, redirect: false) { (data, response, error) in
+                        if let response = response as? HTTPURLResponse, response.statusCode == 302 {
+                            Logger.debug("登录\(type.rawValue)成功")
+                            
+                            switch type {
+                            case .jw:
+                                Logger.debug("登录\(type.rawValue)成功")
+                                fulfill()
+                            case .mh:
+                                // 信息门户跳转教务系统需要拿着用户获取的 cookie 去拉一下数据
+                                //                            let cookie = self.parseCookie(response.allHeaderFields)
+                                var req = URLRequest(url: URL(string: "http://bkjw.hfut.edu.cn/StuIndex.asp")!)
+                                //                            req.addValue(cookie, forHTTPHeaderField: "Cookie")
+                                req.httpMethod = "GET"
+                                HFBaseSession.fire(request: req, redirect: false) { (data, response, error) in
+                                    if let response = response as? HTTPURLResponse, response.statusCode == 302 {
+                                        Logger.debug("跳转教务系统成功")
+                                        fulfill()
+                                    } else {
+                                        reject(HFParseError.loginError)
+                                    }
+                                }
+                            default:
+                                break
+                            }
+                        } else {
+                            Logger.error("登录\(type.rawValue)失败 | u=\(DataEnv.user!.sid)p=\(pass) respose \(response) | error \(error)")
+                            reject(HFParseError.loginError)
+                        }
+                    }
+                } else {
+                    Logger.error("登录\(type.rawValue)失败 | 未绑定 ")
+                    reject(HFParseError.loginError)
+                }
             }
         }
+    }
+    
+    fileprivate func loginWithWeb(completed: @escaping (_ success: Bool) -> Void) {
+        Hud.dismiss()
+        let alert = UIAlertController(title: nil, message: "由于学校的坑爹问题，登录失败。是否尝试使用 web 信息门户登录?", preferredStyle: .alert)
+        let web = UIAlertAction(title: "web 登录", style: .default) { _ in
+            let vc = HFWebLoginViewController.instantiate()
+            vc.finishedBlock = completed
+            self.controller?.presentVC(vc)
+        }
+        let cancel = UIAlertAction(title: "取消", style: .cancel) { _ in
+            completed(false)
+        }
+        alert.addAction(web)
+        alert.addAction(cancel)
+        controller?.presentVC(alert)
     }
     
     // MARK: 从网页获取数据
@@ -290,7 +335,7 @@ class HFParseViewModel {
                         let key: String
                         switch self.dataType {
                         case .schedule:
-                            DBManager.saveSchedules(json["data"])
+                            HFScheduleModel.handlleSchedules(json["data"])
                             key = PlistKey.ScheduleList.rawValue
                         case.grades:
                             key = PlistKey.GradesList.rawValue
@@ -395,7 +440,7 @@ class HFParseViewModel {
     
     
     // MARK: - 获取验证码
-//    fileprivate func 
+    //    fileprivate func
     
 }
 

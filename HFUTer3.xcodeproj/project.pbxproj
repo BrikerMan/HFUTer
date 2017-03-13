@@ -161,11 +161,16 @@
 		6ABA71C51D092D8200D259F7 /* libicucore.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 6ABA71C41D092D8200D259F7 /* libicucore.tbd */; };
 		6ABD54D61E74EEA200D6197B /* FMDatabaseAdditionsVariadic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ABD54D41E74EEA200D6197B /* FMDatabaseAdditionsVariadic.swift */; };
 		6ABD54D71E74EEA200D6197B /* FMDatabaseVariadic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ABD54D51E74EEA200D6197B /* FMDatabaseVariadic.swift */; };
+		6ABD54D91E754BEA00D6197B /* HFScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ABD54D81E754BEA00D6197B /* HFScheduleViewController.swift */; };
+		6ABD54DB1E754F2B00D6197B /* HFSchudulesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ABD54DA1E754F2B00D6197B /* HFSchudulesView.swift */; };
+		6ABD54DD1E754F3700D6197B /* HFSchudulesView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6ABD54DC1E754F3700D6197B /* HFSchudulesView.xib */; };
+		6ABD54DF1E7554A100D6197B /* HFScheduleDayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ABD54DE1E7554A100D6197B /* HFScheduleDayView.swift */; };
 		6AC4775D1D03C91E00B4B8BA /* HFUserRestPassVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC4775C1D03C91E00B4B8BA /* HFUserRestPassVC.swift */; };
 		6AC477601D03CB3D00B4B8BA /* HFUserRestPassToOriginalVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC4775F1D03CB3D00B4B8BA /* HFUserRestPassToOriginalVC.swift */; };
 		6AC477621D03CE3800B4B8BA /* HFUserRestPassByEmailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC477611D03CE3800B4B8BA /* HFUserRestPassByEmailVC.swift */; };
 		6AC477641D03F31300B4B8BA /* HFInfoPlanDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC477631D03F31300B4B8BA /* HFInfoPlanDetailVC.swift */; };
 		6AC477661D03F92000B4B8BA /* HFInfoGetPlanDetailRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC477651D03F92000B4B8BA /* HFInfoGetPlanDetailRequest.swift */; };
+		6AC7A6AA1E766931002F2100 /* HFWebLoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC7A6A81E766931002F2100 /* HFWebLoginController.swift */; };
 		6AC924901D0A6DD100E1F43F /* HFTableInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC9248E1D0A6DD100E1F43F /* HFTableInfoCell.swift */; };
 		6AC924911D0A6DD100E1F43F /* HFTableInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6AC9248F1D0A6DD100E1F43F /* HFTableInfoCell.xib */; };
 		6ACB1E9F1E3E28AC00B708C7 /* YYFPSLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 6ACB1E9C1E3E28AC00B708C7 /* YYFPSLabel.m */; };
@@ -219,6 +224,8 @@
 		6AF574151E44A1F000FD8234 /* HFMineChooseColorCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6AF574131E44A1F000FD8234 /* HFMineChooseColorCell.xib */; };
 		6AF574171E44AAD300FD8234 /* HFCustumRGBColorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AF574161E44AAD300FD8234 /* HFCustumRGBColorView.swift */; };
 		6AF574191E44AADD00FD8234 /* HFCustumRGBColorView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6AF574181E44AADD00FD8234 /* HFCustumRGBColorView.xib */; };
+		6AF62C971E7678F8009F0FC4 /* HFWebLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AF62C951E7678F8009F0FC4 /* HFWebLoginViewController.swift */; };
+		6AF62C981E7678F8009F0FC4 /* HFWebLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6AF62C961E7678F8009F0FC4 /* HFWebLoginViewController.xib */; };
 		6AFA64D71D05AA27005B05F5 /* HFMineDonateSuccessView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AFA64D61D05AA27005B05F5 /* HFMineDonateSuccessView.swift */; };
 		6AFA64D91D05AA32005B05F5 /* HFMineDonateSuccessView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6AFA64D81D05AA32005B05F5 /* HFMineDonateSuccessView.xib */; };
 		6AFF3DC71D04557100B575CA /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AFF3DC61D04557100B575CA /* CFNetwork.framework */; };
@@ -522,11 +529,16 @@
 		6ABA71C41D092D8200D259F7 /* libicucore.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libicucore.tbd; path = usr/lib/libicucore.tbd; sourceTree = SDKROOT; };
 		6ABD54D41E74EEA200D6197B /* FMDatabaseAdditionsVariadic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FMDatabaseAdditionsVariadic.swift; sourceTree = "<group>"; };
 		6ABD54D51E74EEA200D6197B /* FMDatabaseVariadic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FMDatabaseVariadic.swift; sourceTree = "<group>"; };
+		6ABD54D81E754BEA00D6197B /* HFScheduleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFScheduleViewController.swift; sourceTree = "<group>"; };
+		6ABD54DA1E754F2B00D6197B /* HFSchudulesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFSchudulesView.swift; sourceTree = "<group>"; };
+		6ABD54DC1E754F3700D6197B /* HFSchudulesView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HFSchudulesView.xib; sourceTree = "<group>"; };
+		6ABD54DE1E7554A100D6197B /* HFScheduleDayView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFScheduleDayView.swift; sourceTree = "<group>"; };
 		6AC4775C1D03C91E00B4B8BA /* HFUserRestPassVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFUserRestPassVC.swift; sourceTree = "<group>"; };
 		6AC4775F1D03CB3D00B4B8BA /* HFUserRestPassToOriginalVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFUserRestPassToOriginalVC.swift; sourceTree = "<group>"; };
 		6AC477611D03CE3800B4B8BA /* HFUserRestPassByEmailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFUserRestPassByEmailVC.swift; sourceTree = "<group>"; };
 		6AC477631D03F31300B4B8BA /* HFInfoPlanDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFInfoPlanDetailVC.swift; sourceTree = "<group>"; };
 		6AC477651D03F92000B4B8BA /* HFInfoGetPlanDetailRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFInfoGetPlanDetailRequest.swift; sourceTree = "<group>"; };
+		6AC7A6A81E766931002F2100 /* HFWebLoginController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFWebLoginController.swift; sourceTree = "<group>"; };
 		6AC9248E1D0A6DD100E1F43F /* HFTableInfoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFTableInfoCell.swift; sourceTree = "<group>"; };
 		6AC9248F1D0A6DD100E1F43F /* HFTableInfoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HFTableInfoCell.xib; sourceTree = "<group>"; };
 		6ACB1E9B1E3E28AC00B708C7 /* YYFPSLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYFPSLabel.h; sourceTree = "<group>"; };
@@ -586,6 +598,8 @@
 		6AF574131E44A1F000FD8234 /* HFMineChooseColorCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HFMineChooseColorCell.xib; sourceTree = "<group>"; };
 		6AF574161E44AAD300FD8234 /* HFCustumRGBColorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFCustumRGBColorView.swift; sourceTree = "<group>"; };
 		6AF574181E44AADD00FD8234 /* HFCustumRGBColorView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HFCustumRGBColorView.xib; sourceTree = "<group>"; };
+		6AF62C951E7678F8009F0FC4 /* HFWebLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFWebLoginViewController.swift; sourceTree = "<group>"; };
+		6AF62C961E7678F8009F0FC4 /* HFWebLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HFWebLoginViewController.xib; sourceTree = "<group>"; };
 		6AFA64D61D05AA27005B05F5 /* HFMineDonateSuccessView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFMineDonateSuccessView.swift; sourceTree = "<group>"; };
 		6AFA64D81D05AA32005B05F5 /* HFMineDonateSuccessView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HFMineDonateSuccessView.xib; sourceTree = "<group>"; };
 		6AFF3DC61D04557100B575CA /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
@@ -1320,6 +1334,7 @@
 			isa = PBXGroup;
 			children = (
 				6BA9EB0F1C99720D0017DBC4 /* HFHomeVC.swift */,
+				6ABD54D81E754BEA00D6197B /* HFScheduleViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1335,6 +1350,9 @@
 		6B23B0C81C97DEAE0089214D /* View */ = {
 			isa = PBXGroup;
 			children = (
+				6ABD54DA1E754F2B00D6197B /* HFSchudulesView.swift */,
+				6ABD54DC1E754F3700D6197B /* HFSchudulesView.xib */,
+				6ABD54DE1E7554A100D6197B /* HFScheduleDayView.swift */,
 				6B9B675C1C9CF7D3009B5F68 /* HFHomeSchudulesView.swift */,
 				6B9B675E1C9CF7DE009B5F68 /* HFHomeSchudulesView.xib */,
 				6B9B67601C9CF9C6009B5F68 /* HFHomeScheduleBodyCell.swift */,
@@ -1445,6 +1463,9 @@
 				6AC4775C1D03C91E00B4B8BA /* HFUserRestPassVC.swift */,
 				6AC4775F1D03CB3D00B4B8BA /* HFUserRestPassToOriginalVC.swift */,
 				6AC477611D03CE3800B4B8BA /* HFUserRestPassByEmailVC.swift */,
+				6AC7A6A81E766931002F2100 /* HFWebLoginController.swift */,
+				6AF62C951E7678F8009F0FC4 /* HFWebLoginViewController.swift */,
+				6AF62C961E7678F8009F0FC4 /* HFWebLoginViewController.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1784,6 +1805,7 @@
 				6BA9EAFE1C995DEC0017DBC4 /* Information.storyboard in Resources */,
 				6B23B0DA1C97DECA0089214D /* Login.storyboard in Resources */,
 				6BA9EAFA1C995DCF0017DBC4 /* Home.storyboard in Resources */,
+				6AF62C981E7678F8009F0FC4 /* HFWebLoginViewController.xib in Resources */,
 				6B9B67081C9AB9FF009B5F68 /* HFBaseNavBar.xib in Resources */,
 				6B2BFBA11C9D304A00FFA661 /* HFHomeScheduleHeaderCell.xib in Resources */,
 				6B23B0AE1C97DA4E0089214D /* Assets.xcassets in Resources */,
@@ -1792,6 +1814,7 @@
 				6A0F76E51D0A894B0096A759 /* HFInfoCalendarVC.xib in Resources */,
 				6A264F8D1D02D39000146D03 /* HFMineNotifTableViewCell.xib in Resources */,
 				6B94267E1CA8DFA600C8E85D /* HFChooseTableViewCell.xib in Resources */,
+				6ABD54DD1E754F3700D6197B /* HFSchudulesView.xib in Resources */,
 				6AE4A2901D0009F10025BB79 /* HFCommunityLoveWallDetailVC.xib in Resources */,
 				6A02E2771CF320CB00DC669A /* HFCommunityHomeListView.xib in Resources */,
 				6B23B0AF1C97DA4E0089214D /* LaunchScreen.storyboard in Resources */,
@@ -1969,6 +1992,7 @@
 				6A96F4C51E3E093B00F65859 /* UIImageViewExtensions.swift in Sources */,
 				6A96F4B51E3E093B00F65859 /* FloatingPointExtensions.swift in Sources */,
 				6B2FE0661CA68B6000147BC3 /* HFPullCollectionView.swift in Sources */,
+				6ABD54D91E754BEA00D6197B /* HFScheduleViewController.swift in Sources */,
 				6A2C98C11D6C1AD300BD5182 /* HFInfoRankingVC.swift in Sources */,
 				6AE631BC1D0289E4002C4AEC /* HFMineHeaderTableViewCell.swift in Sources */,
 				6AC477641D03F31300B4B8BA /* HFInfoPlanDetailVC.swift in Sources */,
@@ -2000,6 +2024,7 @@
 				6AE8D3FF1E3D923300E44BE3 /* HFToast.swift in Sources */,
 				6B23B0B11C97DA4E0089214D /* RootViewController.swift in Sources */,
 				6A96F4B11E3E093B00F65859 /* DictionaryExtensions.swift in Sources */,
+				6AF62C971E7678F8009F0FC4 /* HFWebLoginViewController.swift in Sources */,
 				6B9B67571C9BB405009B5F68 /* PlistManager.swift in Sources */,
 				6A6A649C1CC51E840049715C /* HFGetCommunityLostAndFindRequest.swift in Sources */,
 				6AB5B8911CF56429001C6F2F /* HFFormViewController.swift in Sources */,
@@ -2084,6 +2109,7 @@
 				6B9B675B1C9CE3FF009B5F68 /* HFBasicViewController.swift in Sources */,
 				6AE631AE1D0282EB002C4AEC /* HFTabbarCollectionViewCell.swift in Sources */,
 				6A1CEA841D05249F00481D3A /* HFInfoPlanListDetailCell.swift in Sources */,
+				6AC7A6AA1E766931002F2100 /* HFWebLoginController.swift in Sources */,
 				6A0906E31E45F68000EEE3F1 /* HFEducationURLs.swift in Sources */,
 				6ACB1EB31E40331200B708C7 /* Reusable.swift in Sources */,
 				6AE631C21D0289E4002C4AEC /* HFMinePublishLoveWallCell.swift in Sources */,
@@ -2133,6 +2159,7 @@
 				6AE544451CFF1CA600EB3FE7 /* HFCommunityPostLoveWallVC.swift in Sources */,
 				6A1CEA791D05245300481D3A /* HFInfoBookListTableCell.swift in Sources */,
 				6A96F4BA1E3E093B00F65859 /* StringExtensions.swift in Sources */,
+				6ABD54DB1E754F2B00D6197B /* HFSchudulesView.swift in Sources */,
 				6ACB1EB21E40331200B708C7 /* NibOwnerLoadable.swift in Sources */,
 				6A96F4A81E3E093B00F65859 /* BlockTap.swift in Sources */,
 				6BA9EB0E1C9971FB0017DBC4 /* HFMineVC.swift in Sources */,
@@ -2163,6 +2190,7 @@
 				6AE631D21D02B3AF002C4AEC /* HFMineMessageModel.swift in Sources */,
 				6B2188311C9AA4D600D030B3 /* HFLoadingView.swift in Sources */,
 				6B2FE05B1CA65B6D00147BC3 /* HFInfoGradesStaticVC.swift in Sources */,
+				6ABD54DF1E7554A100D6197B /* HFScheduleDayView.swift in Sources */,
 				6AC477601D03CB3D00B4B8BA /* HFUserRestPassToOriginalVC.swift in Sources */,
 				6A1CEA861D05263E00481D3A /* HFInfoPlanListModel.swift in Sources */,
 				6A96F4AE1E3E093B00F65859 /* CGRectExtensions.swift in Sources */,
