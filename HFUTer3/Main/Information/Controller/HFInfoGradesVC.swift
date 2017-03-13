@@ -21,6 +21,7 @@ class HFInfoGradesVC: HFBaseViewController {
         super.viewDidLoad()
         initUI()
         viewModel.dataType = .grades
+        viewModel.controller = self
         initData()
         AnalyseManager.CheckGrades.record()
     }

@@ -221,9 +221,11 @@ class HFParseViewModel {
         if type == .mhweb {
             return Promise<Void> { fulfill, reject in
                 if HFParseViewModel.info?.school != 0 {
+                    Logger.debug("宣城用户，不能用 web 登录")
                     reject(HFParseError.loginError)
                     return
                 }
+                Logger.debug("被坑的用户，开始用 web 登录")
                 self.loginWithWeb(completed: { (success) in
                     if success {
                         fulfill()

@@ -80,6 +80,12 @@ extension HFWebLoginViewController: UIWebViewDelegate {
         let updateUI = "var imgs=document.getElementsByTagName('img');for(var i=0;i<imgs.length;i++){if(imgs[i].id!='captchaImg'){imgs[i].style.display='none';imgs[i].style.width=0}console.log(imgs[i].id)}var tables=document.getElementsByTagName('table');for(var i=0;i<tables.length;i++){tables[i].style.width='auto'}var other=document.getElementsByTagName('place2');for(var i=0;i<other.length;i++){other[i].style.display='none'};"
         webView.stringByEvaluatingJavaScript(from: updateUI)
     }
+    
+    func webView(_ webView: UIWebView, shouldStartLoadWith request: URLRequest, navigationType: UIWebViewNavigationType) -> Bool {
+        
+        print(request)
+        return true
+    }
 }
 
 
