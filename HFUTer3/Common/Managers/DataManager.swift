@@ -77,11 +77,11 @@ class DataManager {
         } else {
             self.isLogin = false
         }
-        token       = PlistManager.userDataPlist.getValues()?["token"] as? String ?? ""
-        allowDonate = PlistManager.settingsPlist.getValues()?["allowDonate"] as? Bool ?? true
+        token        = PlistManager.userDataPlist.getValues()?["token"] as? String ?? ""
+        allowDonate  = PlistManager.settingsPlist.getValues()?["allowDonate"] as? Bool ?? true
         allowDashang = PlistManager.settingsPlist.getValues()?["allowDashang"] as? Bool ?? false
-        currentWeek = DataManager.calculateCurrentWeek()
-        settings = HFSettings()
+        currentWeek  = DataManager.calculateCurrentWeek()
+        settings     = HFSettings()
     }
     
     /**

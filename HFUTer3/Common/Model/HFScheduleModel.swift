@@ -22,6 +22,7 @@ class HFScheduleModel: SQLiteCachable {
     
     var name        : String = ""
     var colorName   : String = ""
+    var place       : String = ""
     
     var isHidden    : Bool    = false
     var isUserAdded : Bool    = false
@@ -39,6 +40,7 @@ class HFScheduleModel: SQLiteCachable {
         self.id        = row.string(forColumn : "id")
         self.name      = row.string(forColumn : "name")
         self.colorName = row.string(forColumn : "colorName")
+        self.place     = row.string(forColumn : "place")
         
         self.isHidden    = row.bool(forColumn : "isHidden")
         self.isUserAdded = row.bool(forColumn : "isUserAdded")
@@ -59,7 +61,9 @@ class HFScheduleModel: SQLiteCachable {
         self.hour = hour
         self.day  = day
         
-        self.name = json["name"].stringValue
+        self.place = json["place"].stringValue
+        self.name  = json["name"].stringValue
+        
         for item in json["week"].arrayValue {
             weeks.append(item.intValue)
         }
