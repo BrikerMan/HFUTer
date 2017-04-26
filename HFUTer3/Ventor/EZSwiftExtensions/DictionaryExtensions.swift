@@ -124,7 +124,7 @@ extension Dictionary {
         }
         return true
     }
-    
+
     /// EZSE: Unserialize JSON string into Dictionary
     public static func constructFromJSON (json: String) -> Dictionary? {
         if let data = (try? JSONSerialization.jsonObject(with: json.data(using: String.Encoding.utf8, allowLossyConversion: true)!, options: JSONSerialization.ReadingOptions.mutableContainers)) as? Dictionary {
@@ -133,7 +133,7 @@ extension Dictionary {
             return nil
         }
     }
-    
+
     /// EZSE: Serialize Dictionary into JSON string
     public func formatJSON() -> String? {
         if let jsonData = try? JSONSerialization.data(withJSONObject: self, options: JSONSerialization.WritingOptions()) {
@@ -162,7 +162,7 @@ extension Dictionary where Value: Equatable {
 }
 
 /// EZSE: Combines the first dictionary with the second and returns single dictionary
-public func += <KeyType, ValueType> (left: inout Dictionary<KeyType, ValueType>, right: Dictionary<KeyType, ValueType>) {
+public func += <KeyType, ValueType> (left: inout [KeyType: ValueType], right: [KeyType: ValueType]) {
     for (k, v) in right {
         left.updateValue(v, forKey: k)
     }

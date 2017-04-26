@@ -119,7 +119,7 @@ extension UIImage {
         self.init(data: data)
     }
 
-    ///EZSE: Returns an empty image
+    ///EZSE: Returns an empty image //TODO: Add to readme
     public class func blankImage() -> UIImage {
         UIGraphicsBeginImageContextWithOptions(CGSize(width: 1, height: 1), false, 0.0)
         let image = UIGraphicsGetImageFromCurrentImageContext()

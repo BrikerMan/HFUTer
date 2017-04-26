@@ -90,6 +90,7 @@
 		6A6A64A31CC521D60049715C /* HFComLostFoundModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A6A64A21CC521D60049715C /* HFComLostFoundModel.swift */; };
 		6A712F561E6AB27400B87FB5 /* HFMineRepostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A712F551E6AB27400B87FB5 /* HFMineRepostViewController.swift */; };
 		6A712F591E6AB50E00B87FB5 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A712F581E6AB50E00B87FB5 /* UIViewController+Extension.swift */; };
+		6A71A59E1EB092E1000D8B12 /* UIEdgeInsets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A71A59D1EB092E1000D8B12 /* UIEdgeInsets.swift */; };
 		6A7988961D6C79900068C6F6 /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A7988951D6C79900068C6F6 /* NotificationCenter.framework */; };
 		6A7988991D6C79900068C6F6 /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7988981D6C79900068C6F6 /* TodayViewController.swift */; };
 		6A79889C1D6C79900068C6F6 /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6A79889A1D6C79900068C6F6 /* MainInterface.storyboard */; };
@@ -454,6 +455,7 @@
 		6A6A64A21CC521D60049715C /* HFComLostFoundModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFComLostFoundModel.swift; sourceTree = "<group>"; };
 		6A712F551E6AB27400B87FB5 /* HFMineRepostViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFMineRepostViewController.swift; sourceTree = "<group>"; };
 		6A712F581E6AB50E00B87FB5 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
+		6A71A59D1EB092E1000D8B12 /* UIEdgeInsets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIEdgeInsets.swift; sourceTree = "<group>"; };
 		6A7988941D6C79900068C6F6 /* TodayWidget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = TodayWidget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		6A7988951D6C79900068C6F6 /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		6A7988981D6C79900068C6F6 /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
@@ -887,6 +889,29 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		6A71A5981EB09087000D8B12 /* Schedule */ = {
+			isa = PBXGroup;
+			children = (
+				6A71A5991EB090A3000D8B12 /* Model */,
+				6A71A59A1EB090A3000D8B12 /* View */,
+			);
+			path = Schedule;
+			sourceTree = "<group>";
+		};
+		6A71A5991EB090A3000D8B12 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		6A71A59A1EB090A3000D8B12 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		6A7988971D6C79900068C6F6 /* TodayWidget */ = {
 			isa = PBXGroup;
 			children = (
@@ -933,6 +958,7 @@
 		6A96F4711E3E093B00F65859 /* EZSwiftExtensions */ = {
 			isa = PBXGroup;
 			children = (
+				6A71A59D1EB092E1000D8B12 /* UIEdgeInsets.swift */,
 				6A96F4721E3E093B00F65859 /* ArrayExtensions.swift */,
 				6A96F4731E3E093B00F65859 /* BlockButton.swift */,
 				6A96F4741E3E093B00F65859 /* BlockLongPress.swift */,
@@ -1322,6 +1348,7 @@
 			children = (
 				6AB967241E6A607D00DA6079 /* HFParseViewModel.swift */,
 				6BA9EAF91C995DCF0017DBC4 /* Home.storyboard */,
+				6A71A5981EB09087000D8B12 /* Schedule */,
 				6B23B0C61C97DEAE0089214D /* Controller */,
 				6B23B0C71C97DEAE0089214D /* Request */,
 				6B23B0C81C97DEAE0089214D /* View */,
@@ -2082,6 +2109,7 @@
 				6B2FE0571CA557A600147BC3 /* HFInfoGradesGpaModel.swift in Sources */,
 				6A06EB121E61AD1700F18981 /* Logger.swift in Sources */,
 				6AE1F4F11E470CAE003CFA27 /* GTMBase64.m in Sources */,
+				6A71A59E1EB092E1000D8B12 /* UIEdgeInsets.swift in Sources */,
 				6B7429C11CA4F4D300F1015E /* HFInfoGetScoresRequest.swift in Sources */,
 				6AC477621D03CE3800B4B8BA /* HFUserRestPassByEmailVC.swift in Sources */,
 				6A96F4AF1E3E093B00F65859 /* CharacterExtensions.swift in Sources */,

@@ -42,7 +42,7 @@ class HFScheduleViewController: UIViewController {
     func showOrHideSelectWeekView() {
         isWeekViewShowing = !isWeekViewShowing
         let offset = isWeekViewShowing ? weekSelectView.height : 0
-        let rotate = isWeekViewShowing ? CGFloat(-M_PI) : 0
+        let rotate = isWeekViewShowing ? CGFloat(-Double.pi) : 0
         
         weekSelectView.snp.updateConstraints { (make) in
             make.bottom.equalTo(navBarView.snp.bottom).offset(offset)

@@ -116,3 +116,9 @@ class HFScheduleModel: SQLiteCachable {
             [id, name, colorName, isHidden, isUserAdded, hour, day, weekStr])
     }
 }
+
+extension HFScheduleModel: CustomStringConvertible {
+    var description: String {
+        return "\(name) - day:\(day)-\(hour) \(weeks)"
+    }
+}

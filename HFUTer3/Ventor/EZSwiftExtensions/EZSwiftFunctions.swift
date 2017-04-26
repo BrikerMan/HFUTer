@@ -7,6 +7,8 @@
 //
 import UIKit
 
+//TODO: others standart video, gif
+
 public struct ez {
     /// EZSE: Returns app's name
     public static var appDisplayName: String? {
@@ -55,7 +57,7 @@ public struct ez {
         return String(cString: machine)
     }
 
-    /// EZSE: Returns true if DEBUG mode is active
+    /// EZSE: Returns true if DEBUG mode is active //TODO: Add to readme
     public static var isDebug: Bool {
     #if DEBUG
         return true
@@ -64,7 +66,7 @@ public struct ez {
     #endif
     }
 
-    /// EZSE: Returns true if RELEAS mode is active
+    /// EZSE: Returns true if RELEASE mode is active //TODO: Add to readme
     public static var isRelease: Bool {
     #if DEBUG
         return false
@@ -73,7 +75,7 @@ public struct ez {
     #endif
     }
 
-    /// EZSE: Returns true if its simulator and not a device
+    /// EZSE: Returns true if its simulator and not a device //TODO: Add to readme
     public static var isSimulator: Bool {
     #if (arch(i386) || arch(x86_64)) && os(iOS)
         return true
@@ -82,7 +84,7 @@ public struct ez {
     #endif
     }
 
-    /// EZSE: Returns true if its on a device and not a simulator
+    /// EZSE: Returns true if its on a device and not a simulator //TODO: Add to readme
     public static var isDevice: Bool {
     #if (arch(i386) || arch(x86_64)) && os(iOS)
         return false
@@ -173,13 +175,13 @@ public struct ez {
 
     #endif
 
-    /// EZSE: Returns the locale country code. An example value might be "ES". 
+    /// EZSE: Returns the locale country code. An example value might be "ES". //TODO: Add to readme
     public static var currentRegion: String? {
         return (Locale.current as NSLocale).object(forKey: NSLocale.Key.countryCode) as? String
     }
 
     /// EZSE: Calls action when a screen shot is taken
-    public static func detectScreenShot(_ action: @escaping () -> ()) {
+    public static func detectScreenShot(_ action: @escaping () -> Void) {
         let mainQueue = OperationQueue.main
         NotificationCenter.default.addObserver(forName: NSNotification.Name.UIApplicationUserDidTakeScreenshot, object: nil, queue: mainQueue) { notification in
             // executes after screenshot
@@ -187,6 +189,7 @@ public struct ez {
         }
     }
 
+    //TODO: Document this, add tests to this
     /// EZSE: Iterates through enum elements, use with (for element in ez.iterateEnum(myEnum))
     /// http://stackoverflow.com/questions/24007461/how-to-enumerate-an-enum-with-string-type
     public static func iterateEnum<T: Hashable>(_: T.Type) -> AnyIterator<T> {
@@ -200,30 +203,32 @@ public struct ez {
     }
 
     // MARK: - Dispatch
+
     /// EZSE: Runs the function after x seconds
-    public static func dispatchDelay(_ second: Double, closure:@escaping ()->()) {
+    public static func dispatchDelay(_ second: Double, closure:@escaping () -> Void) {
         DispatchQueue.main.asyncAfter(
             deadline: DispatchTime.now() + Double(Int64(second * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC), execute: closure)
     }
 
     /// EZSE: Runs function after x seconds
-    public static func runThisAfterDelay(seconds: Double, after: @escaping () -> ()) {
+    public static func runThisAfterDelay(seconds: Double, after: @escaping () -> Void) {
         runThisAfterDelay(seconds: seconds, queue: DispatchQueue.main, after: after)
     }
 
+    //TODO: Make this easier
     /// EZSE: Runs function after x seconds with dispatch_queue, use this syntax: dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0)
-    public static func runThisAfterDelay(seconds: Double, queue: DispatchQueue, after: @escaping ()->()) {
+    public static func runThisAfterDelay(seconds: Double, queue: DispatchQueue, after: @escaping () -> Void) {
         let time = DispatchTime.now() + Double(Int64(seconds * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
         queue.asyncAfter(deadline: time, execute: after)
     }
 
     /// EZSE: Submits a block for asynchronous execution on the main queue
-    public static func runThisInMainThread(_ block: @escaping ()->()) {
+    public static func runThisInMainThread(_ block: @escaping () -> Void) {
         DispatchQueue.main.async(execute: block)
     }
 
     /// EZSE: Runs in Default priority queue
-    public static func runThisInBackground(_ block: @escaping () -> ()) {
+    public static func runThisInBackground(_ block: @escaping () -> Void) {
         DispatchQueue.global(qos: .default).async(execute: block)
     }
 

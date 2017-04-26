@@ -22,7 +22,7 @@ extension UIImageView {
         if image != nil {
             scaleImageFrameToWidth(width: scaleToWidth)
         } else {
-            assertionFailure("EZSwiftExtensions Error: The imageName: '\(imageName)' is invalid!!")
+            assertionFailure("EZSwiftExtensions Error: The imageName: '\(imageName)' is invalid!!!")
         }
     }
 
@@ -68,7 +68,7 @@ extension UIImageView {
         self.clipsToBounds = true
         self.layer.cornerRadius = self.frame.size.width / 2
     }
-    
+
     /// EZSE: Initializes an UIImage from URL and adds into current ImageView
     public func image(url: String) {
         ez.requestImage(url, success: { (image) -> Void in
@@ -79,13 +79,13 @@ extension UIImageView {
             }
         })
     }
-    
+
     /// EZSE: Initializes an UIImage from URL and adds into current ImageView with placeholder
     public func image(url: String, placeholder: UIImage) {
         self.image = placeholder
         image(url: url)
     }
-    
+
     /// EZSE: Initializes an UIImage from URL and adds into current ImageView with placeholder
     public func image(url: String, placeholderNamed: String) {
         if let image = UIImage(named: placeholderNamed) {
@@ -95,8 +95,8 @@ extension UIImageView {
         }
     }
 
-    //MARK: Deprecated 1.8
-    
+    // MARK: Deprecated 1.8
+
     /// EZSwiftExtensions
     @available(*, deprecated: 1.8, renamed: "image(url:)")
     public func imageWithUrl(url: String) {

@@ -63,6 +63,7 @@ class HFHomeVC: HFBasicViewController{
             if let error = error {
                 self.showEduError(error: error)
             } else {
+                Logger.debug(result.description)
                 self.scheduleView.setupWithCourses(result)
                 self.scheduleView.setupWithWeek(week)
             }

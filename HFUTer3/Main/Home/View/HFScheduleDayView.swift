@@ -25,5 +25,4 @@ class HFScheduleDayView: UIView {
     func load(models: [HFScheduleModel]) {
         
     }
-
 }

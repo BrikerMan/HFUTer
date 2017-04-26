@@ -10,8 +10,8 @@
 import Foundation
 
 public extension NSDictionary {
-    
-    //MARK: - Deprecated 1.8
+
+    // MARK: - Deprecated 1.8
 
     /// EZSE: Unserialize JSON string into NSDictionary
     @available(*, deprecated: 1.8)

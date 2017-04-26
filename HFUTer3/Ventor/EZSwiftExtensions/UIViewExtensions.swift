@@ -36,6 +36,7 @@ extension UIView {
         }
     }
 
+    //TODO: Add pics to readme
     /// EZSwiftExtensions, resizes this view so it fits the largest subview
     public func resizeToFitSubviews() {
         var width: CGFloat = 0
@@ -174,7 +175,7 @@ extension UIView {
     public var centerY: CGFloat {
         get {
             return self.center.y
-        } set (value) {
+        } set(value) {
             self.center.y = value
         }
     }
@@ -208,7 +209,7 @@ extension UIView {
         return self.bottom + offset
     }
 
-    
+    //TODO: Add to readme
     /// EZSwiftExtensions
     public func alignRight(_ offset: CGFloat) -> CGFloat {
         return self.w - offset
@@ -314,7 +315,7 @@ extension UIView {
         self.layer.cornerRadius = radius
         self.layer.masksToBounds = true
     }
-    
+    //TODO: add this to readme
     /// EZSwiftExtensions
     public func addShadow(offset: CGSize, radius: CGFloat, color: UIColor, opacity: Float, cornerRadius: CGFloat? = nil) {
         self.layer.shadowOffset = offset
@@ -338,6 +339,7 @@ extension UIView {
         addBorderUtility(x: 0, y: 0, width: frame.width, height: size, color: color)
     }
 
+    //TODO: add to readme
     /// EZSwiftExtensions
     public func addBorderTopWithPadding(size: CGFloat, color: UIColor, padding: CGFloat) {
         addBorderUtility(x: padding, y: 0, width: frame.width - padding*2, height: size, color: color)
@@ -365,7 +367,7 @@ extension UIView {
         border.frame = CGRect(x: x, y: y, width: width, height: height)
         layer.addSublayer(border)
     }
-    
+    //TODO: add this to readme
     /// EZSwiftExtensions
     public func drawCircle(fillColor: UIColor, strokeColor: UIColor, strokeWidth: CGFloat) {
         let path = UIBezierPath(roundedRect: CGRect(x: 0, y: 0, width: self.w, height: self.w), cornerRadius: self.w/2)
@@ -376,7 +378,7 @@ extension UIView {
         shapeLayer.lineWidth = strokeWidth
         self.layer.addSublayer(shapeLayer)
     }
-    
+    //TODO: add this to readme
     /// EZSwiftExtensions
     public func drawStroke(width: CGFloat, color: UIColor) {
         let path = UIBezierPath(roundedRect: CGRect(x: 0, y: 0, width: self.w, height: self.w), cornerRadius: self.w/2)
@@ -393,6 +395,7 @@ private let UIViewAnimationDuration: TimeInterval = 1
 private let UIViewAnimationSpringDamping: CGFloat = 0.5
 private let UIViewAnimationSpringVelocity: CGFloat = 0.5
 
+//TODO: add this to readme
 // MARK: Animation Extensions
 extension UIView {
     /// EZSwiftExtensions
@@ -448,6 +451,7 @@ extension UIView {
     }
 }
 
+//TODO: add this to readme
 // MARK: Render Extensions
 extension UIView {
     /// EZSwiftExtensions
@@ -472,7 +476,7 @@ extension UIView {
     }
 
     /// EZSwiftExtensions - Make sure you use  "[weak self] (gesture) in" if you are using the keyword self inside the closure or there might be a memory leak
-    public func addTapGesture(tapNumber: Int = 1, action: ((UITapGestureRecognizer) -> ())?) {
+    public func addTapGesture(tapNumber: Int = 1, action: ((UITapGestureRecognizer) -> Void)?) {
         let tap = BlockTap(tapCount: tapNumber, fingerCount: 1, action: action)
         addGestureRecognizer(tap)
         isUserInteractionEnabled = true
@@ -494,7 +498,7 @@ extension UIView {
     }
 
     /// EZSwiftExtensions - Make sure you use  "[weak self] (gesture) in" if you are using the keyword self inside the closure or there might be a memory leak
-    public func addSwipeGesture(direction: UISwipeGestureRecognizerDirection, numberOfTouches: Int = 1, action: ((UISwipeGestureRecognizer) -> ())?) {
+    public func addSwipeGesture(direction: UISwipeGestureRecognizerDirection, numberOfTouches: Int = 1, action: ((UISwipeGestureRecognizer) -> Void)?) {
         let swipe = BlockSwipe(direction: direction, fingerCount: numberOfTouches, action: action)
         addGestureRecognizer(swipe)
         isUserInteractionEnabled = true
@@ -508,7 +512,7 @@ extension UIView {
     }
 
     /// EZSwiftExtensions - Make sure you use  "[weak self] (gesture) in" if you are using the keyword self inside the closure or there might be a memory leak
-    public func addPanGesture(action: ((UIPanGestureRecognizer) -> ())?) {
+    public func addPanGesture(action: ((UIPanGestureRecognizer) -> Void)?) {
         let pan = BlockPan(action: action)
         addGestureRecognizer(pan)
         isUserInteractionEnabled = true
@@ -528,7 +532,7 @@ extension UIView {
     #if os(iOS)
 
     /// EZSwiftExtensions - Make sure you use  "[weak self] (gesture) in" if you are using the keyword self inside the closure or there might be a memory leak
-    public func addPinchGesture(action: ((UIPinchGestureRecognizer) -> ())?) {
+    public func addPinchGesture(action: ((UIPinchGestureRecognizer) -> Void)?) {
         let pinch = BlockPinch(action: action)
         addGestureRecognizer(pinch)
         isUserInteractionEnabled = true
@@ -544,13 +548,14 @@ extension UIView {
     }
 
     /// EZSwiftExtensions - Make sure you use  "[weak self] (gesture) in" if you are using the keyword self inside the closure or there might be a memory leak
-    public func addLongPressGesture(action: ((UILongPressGestureRecognizer) -> ())?) {
+    public func addLongPressGesture(action: ((UILongPressGestureRecognizer) -> Void)?) {
         let longPress = BlockLongPress(action: action)
         addGestureRecognizer(longPress)
         isUserInteractionEnabled = true
     }
 }
 
+//TODO: add to readme
 extension UIView {
     /// EZSwiftExtensions [UIRectCorner.TopLeft, UIRectCorner.TopRight]
     public func roundCorners(_ corners: UIRectCorner, radius: CGFloat) {
@@ -583,7 +588,7 @@ extension UIView {
 }
 
 extension UIView {
-    ///EZSE: Loops until it finds the top root view.
+    ///EZSE: Loops until it finds the top root view. //TODO: Add to readme
     func rootView() -> UIView {
         guard let parentView = superview else {
             return self
@@ -592,29 +597,25 @@ extension UIView {
     }
 }
 
-//MARK: Fade Extensions
+// MARK: Fade Extensions
 
 private let UIViewDefaultFadeDuration: TimeInterval = 0.4
 
 extension UIView {
     ///EZSE: Fade in with duration, delay and completion block.
-    public func fadeIn(_ duration:TimeInterval? = UIViewDefaultFadeDuration, delay _delay:TimeInterval? = 0.0, completion: ((Bool) -> Void)? = nil) {
-        UIView.animate(withDuration: duration ?? UIViewDefaultFadeDuration, delay: _delay ?? 0.0, options: UIViewAnimationOptions(rawValue: UInt(0)), animations: {
-            self.alpha = 1.0
-        }, completion:completion)
+    public func fadeIn(_ duration: TimeInterval? = UIViewDefaultFadeDuration, delay: TimeInterval? = 0.0, completion: ((Bool) -> Void)? = nil) {
+        fadeTo(1.0, duration: duration, delay: delay, completion: completion)
     }
-    
+
     /// EZSwiftExtensions
-    public func fadeOut(_ duration:TimeInterval? = UIViewDefaultFadeDuration, delay _delay:TimeInterval? = 0.0, completion:((Bool) -> Void)? = nil) {
-        UIView.animate(withDuration: duration ?? UIViewDefaultFadeDuration, delay: _delay ?? 0.0, options: UIViewAnimationOptions(rawValue: UInt(0)), animations: {
-            self.alpha = 0.0
-        }, completion:completion)
+    public func fadeOut(_ duration: TimeInterval? = UIViewDefaultFadeDuration, delay: TimeInterval? = 0.0, completion: ((Bool) -> Void)? = nil) {
+        fadeTo(0.0, duration: duration, delay: delay, completion: completion)
     }
-    
+
     /// Fade to specific value	 with duration, delay and completion block.
-    public func fadeTo(_ value:CGFloat, duration _duration:TimeInterval? = UIViewDefaultFadeDuration, delay _delay:TimeInterval? = 0.0, completion:((Bool) -> Void)? = nil) {
-        UIView.animate(withDuration: _duration ?? UIViewDefaultFadeDuration, delay: _delay ?? UIViewDefaultFadeDuration, options: UIViewAnimationOptions(rawValue: UInt(0)), animations: {
+    public func fadeTo(_ value: CGFloat, duration: TimeInterval? = UIViewDefaultFadeDuration, delay: TimeInterval? = 0.0, completion: ((Bool) -> Void)? = nil) {
+        UIView.animate(withDuration: duration ?? UIViewDefaultFadeDuration, delay: delay ?? UIViewDefaultFadeDuration, options: .curveEaseInOut, animations: {
             self.alpha = value
-        }, completion:completion)
+        }, completion: completion)
     }
 }

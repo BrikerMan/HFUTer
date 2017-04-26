@@ -163,7 +163,9 @@ class HFParseViewModel {
                     Logger.error("获取服务器缓存失败 | \(error)")
                     fullfill()
                 } else {
+                    print(json["data"])
                     if let array = json["data"].string?.jsonToArray() {
+                        
                         PlistManager.dataPlist.saveValues([PlistKey.ScheduleList.rawValue: array])
                         Logger.debug("获取服务器缓存成功")
                         reject(HFParseError.fullfill)
@@ -296,7 +298,7 @@ class HFParseViewModel {
                                 break
                             }
                         } else {
-                            Logger.error("登录\(type.rawValue)失败 | u=\(DataEnv.user!.sid)p=\(pass) respose \(response) | error \(error)")
+                            Logger.error("登录\(type.rawValue)失败 | u=\(DataEnv.user!.sid)p=\(pass) respose \(response?.description ?? "") | error \(error?.localizedDescription ?? "")")
                             reject(HFParseError.loginError)
                         }
                     }
@@ -373,7 +375,6 @@ class HFParseViewModel {
                 .responseData { (data, response) in
                     if let data = data {
                         Logger.debug("获取数据成功")
-                        //                        Logger.verbose(String(data: data, encoding: .gb2312) ?? "")
                         fulfill(data)
                     } else {
                         reject(HFParseError.getHtmlFail)

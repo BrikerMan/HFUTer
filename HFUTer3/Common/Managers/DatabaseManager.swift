@@ -115,7 +115,7 @@ class DatabaseManager {
         }
         
         databaseQueue = FMDatabaseQueue(path: dbPath)
-        
+        Logger.info("DB Path \(dbPath)")
         do {
             try database.executeUpdate("CREATE TABLE \(HFBDTable.schedule.rawValue) (id TEXT PRIMARY KEY UNIQUE, name TEXT, colorName TEXT, isHidden Boolean, isUserAdded Boolean, hour INTEGER, day INTEGER, weeks TEXT);", values: nil)
             Logger.debug("created table success \(dbPath)")
