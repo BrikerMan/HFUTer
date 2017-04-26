@@ -68,10 +68,6 @@ class HFCourseModel: NSObject {
     
     class func read(for week: Int) -> Promise<Void> {
         return Promise<Void> { fullfill, reject in
-//            if let
-//                dic = PlistManager.dataPlist.getValues(),
-//                let list = dic[PlistKey.ScheduleList.rawValue] as? NSArray, list.count >= 7 {
-            
             if DBManager.count(from: HFBDTable.schedule) > 0 {
                 Logger.debug(("读取缓存课表成功"))
                 reject(HFParseError.fullfill)

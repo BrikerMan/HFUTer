@@ -22,7 +22,7 @@ class HFHomeVC: HFBasicViewController{
     
     fileprivate var currentWeek = 0
     
-//    fileprivate var scheduleView   : HFHomeSchudulesView!
+    fileprivate var scheduleView   : HFScheduleView!
 //    fileprivate var weekSelectView : HFHomeScheduleSelectWeekView!
     
     fileprivate var isSelectWeekViewShowing = false
@@ -57,12 +57,13 @@ class HFHomeVC: HFBasicViewController{
     
     // MARK:- Load Data
     func loadSchedule() {
-        let week = currentWeek
+        let week = 10
         
         viewModel.fetchSchedule(for: week) { result, error in
             if let error = error {
                 self.showEduError(error: error)
             } else {
+                self.scheduleView.setup(with: result)
                 Logger.debug(result.description)
             }
             Hud.dismiss()
@@ -115,14 +116,14 @@ class HFHomeVC: HFBasicViewController{
     fileprivate func initUI() {
         navTitleLabel.morphingEffect = LTMorphingEffect.evaporate
         
-//        scheduleView = HFHomeSchudulesView()
+        scheduleView = HFScheduleView()
 //        scheduleView.delegate = self
-//        view.addSubview(scheduleView)
-//        
-//        scheduleView.snp.makeConstraints { (make) in
-//            make.edges.equalTo(containView)
-//        }
-//        
+        view.addSubview(scheduleView)
+        
+        scheduleView.snp.makeConstraints { (make) in
+            make.edges.equalTo(containView)
+        }
+//
 //        weekSelectView = HFHomeScheduleSelectWeekView()
 //        weekSelectView.delegate = self
 //        

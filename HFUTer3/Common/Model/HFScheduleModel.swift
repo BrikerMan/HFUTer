@@ -76,7 +76,7 @@ class HFScheduleModel: SQLiteCachable {
         if week != 0 {
             let formatter = NumberFormatter()
             formatter.minimumIntegerDigits = 2
-            filter = "weeks LIKE '%\(formatter.string(from: 2)!)%'"
+            filter = "weeks LIKE '%\(formatter.string(for: week)!)%'"
         }
         let cources = DBManager.read(from: .schedule, type: HFScheduleModel.self, filter: filter)
         return cources

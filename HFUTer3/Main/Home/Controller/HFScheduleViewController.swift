@@ -32,7 +32,7 @@ class HFScheduleViewController: UIViewController {
     
     
     fileprivate func loadSchedules() {
-        let days = HFScheduleModel.read(for: 1)
+//        let days = HFScheduleModel.read(for: 1)
 //        scheduleView.reload(days: days)
     }
     
