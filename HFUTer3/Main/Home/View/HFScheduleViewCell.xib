@@ -22,23 +22,23 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZNt-U3-8b5">
-                    <rect key="frame" x="0.0" y="0.0" width="132" height="142"/>
+                    <rect key="frame" x="2" y="2" width="128" height="138"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="马克思主义基本原理概论马克思主义基本原理概论" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="YAR-mE-Tc6">
-                            <rect key="frame" x="5" y="23.5" width="122" height="43"/>
+                            <rect key="frame" x="5" y="23.5" width="118" height="43"/>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5XA-Ru-Z2S" userLabel="middle-seperator">
-                            <rect key="frame" x="0.0" y="70.5" width="132" height="1"/>
+                            <rect key="frame" x="0.0" y="68.5" width="128" height="1"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="1" id="lbR-vj-WFW"/>
                             </constraints>
                         </view>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="位置" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="NdB-Bh-cdC">
-                            <rect key="frame" x="5" y="76.5" width="122" height="14.5"/>
+                            <rect key="frame" x="5" y="74.5" width="118" height="14.5"/>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                             <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
@@ -51,7 +51,7 @@
                         <constraint firstAttribute="trailing" secondItem="5XA-Ru-Z2S" secondAttribute="trailing" id="98H-PY-egz"/>
                         <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="NdB-Bh-cdC" secondAttribute="bottom" constant="5" id="ERc-Gz-cXG"/>
                         <constraint firstItem="5XA-Ru-Z2S" firstAttribute="centerY" secondItem="ZNt-U3-8b5" secondAttribute="centerY" id="FPf-4V-mi0"/>
-                        <constraint firstItem="5XA-Ru-Z2S" firstAttribute="top" secondItem="YAR-mE-Tc6" secondAttribute="bottom" constant="4" id="HCe-oH-mVE"/>
+                        <constraint firstItem="5XA-Ru-Z2S" firstAttribute="top" secondItem="YAR-mE-Tc6" secondAttribute="bottom" constant="2" id="HCe-oH-mVE"/>
                         <constraint firstAttribute="trailing" secondItem="YAR-mE-Tc6" secondAttribute="trailing" constant="5" id="VCU-im-ggj"/>
                         <constraint firstItem="NdB-Bh-cdC" firstAttribute="leading" secondItem="ZNt-U3-8b5" secondAttribute="leading" constant="5" id="WtW-H2-8Xi"/>
                         <constraint firstItem="NdB-Bh-cdC" firstAttribute="top" secondItem="5XA-Ru-Z2S" secondAttribute="bottom" constant="5" id="XB7-4E-9WL"/>
@@ -63,10 +63,10 @@
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="ZNt-U3-8b5" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Ohc-ne-EdT"/>
-                <constraint firstAttribute="bottom" secondItem="ZNt-U3-8b5" secondAttribute="bottom" id="TXV-rU-eIb"/>
-                <constraint firstAttribute="trailing" secondItem="ZNt-U3-8b5" secondAttribute="trailing" id="cUH-ap-Sm0"/>
-                <constraint firstItem="ZNt-U3-8b5" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="fLb-xU-NDV"/>
+                <constraint firstItem="ZNt-U3-8b5" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="2" id="Ohc-ne-EdT"/>
+                <constraint firstAttribute="bottom" secondItem="ZNt-U3-8b5" secondAttribute="bottom" constant="2" id="TXV-rU-eIb"/>
+                <constraint firstAttribute="trailing" secondItem="ZNt-U3-8b5" secondAttribute="trailing" constant="2" id="cUH-ap-Sm0"/>
+                <constraint firstItem="ZNt-U3-8b5" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="2" id="fLb-xU-NDV"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="-88" y="-209"/>

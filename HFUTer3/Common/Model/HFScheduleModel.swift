@@ -67,6 +67,8 @@ class HFScheduleModel: SQLiteCachable {
         for item in json["week"].arrayValue {
             weeks.append(item.intValue)
         }
+        
+        colorName = HFTheme.getColor(for: name).name
     }
     
     

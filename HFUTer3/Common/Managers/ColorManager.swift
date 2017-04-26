@@ -44,6 +44,9 @@ class ColorManager {
     /// 内容部分背景色
     let WhiteBackColor = UIColor(hexString: "#ffffff")!
     
+    
+    let SeperatorHeight = 1 / ScreenScale
+    
     // Flat Colors
     let flatColors: [HFFlatColor] = [
         HFFlatColor(name:"Sunset Orange",color:UIColor(hexString: "#FF5B57")!),
@@ -68,16 +71,9 @@ class ColorManager {
     ]
     
     /// [课程名:颜色] - 用于为同一个课程获取同一个颜色
-    var colorsForCourse:[String:String] = [:] {
-        didSet {
-            PlistManager.settingsPlist.saveValues(["colorsForCourse":colorsForCourse])
-        }
-    }
+    var colorsForCourse:[String: HFFlatColor] = [:]
     
     init() {
-        let setting = PlistManager.settingsPlist.getValues()
-        colorsForCourse = setting?["colorsForCourse"] as? [String:String] ?? [:]
-        
         tintName = PlistManager.settingsPlist.getValues()?["主体颜色"] as? String ?? "Sunset Orange"
         TintColor = getColor(with: tintName)
     }
@@ -116,18 +112,13 @@ class ColorManager {
     /**
      为课程名返回已保存的字典中的颜色，如果没有保存，则随机产生一个返回，并保存至字典
      */
-    func getColorForCourses(withName name:String) -> UIColor {
-        var color = UIColor(hexString: "#468294")!
-        if let colorName = colorsForCourse[name] {
-            for flat in flatColors where flat.name == colorName {
-                color = flat.color
-            }
+    func getColor(for name: String) -> HFFlatColor {
+        if let color = colorsForCourse[name] {
+            return color
         } else {
-            let flat = getRandomColor()
-            colorsForCourse[name] = flat.name
-            color = flat.color
+            let color = getRandomColor()
+            colorsForCourse[name] = color
+            return color
         }
-        
-        return color
     }
 }

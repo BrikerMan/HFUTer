@@ -57,7 +57,7 @@ class HFHomeVC: HFBasicViewController{
     
     // MARK:- Load Data
     func loadSchedule() {
-        let week = 10
+        let week = 0
         
         viewModel.fetchSchedule(for: week) { result, error in
             if let error = error {

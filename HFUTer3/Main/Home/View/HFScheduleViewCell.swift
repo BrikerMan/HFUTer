@@ -17,6 +17,12 @@ class HFScheduleViewCell: HFXibView {
     
     var models: [HFCourceViewModel] = []
     
+    
+    override func initFromXib() {
+        super.initFromXib()
+        backView.layer.cornerRadius = 2
+    }
+    
     func setup(model: HFCourceViewModel) {
         models = []
         models.append(model)
@@ -31,6 +37,8 @@ class HFScheduleViewCell: HFXibView {
     func updateUI() {
         nameLabel.text = models.map { $0.name }.joined(separator: " / ")
         placeLabel.text = models.map { $0.place }.joined(separator: " / ")
-        backView.backgroundColor = HFTheme.getRandomColor().color
+        if let colorName = models.first?.cources.first?.colorName {
+            backView.backgroundColor = HFTheme.getColor(with: colorName)
+        }
     }
 }
