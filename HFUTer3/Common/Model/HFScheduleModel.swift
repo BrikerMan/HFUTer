@@ -104,8 +104,8 @@ class HFScheduleModel: SQLiteCachable {
         
         let week = weeks.map{ formatter.string(for: $0)! }
         let weekStr = week.joined(separator: ",")
-        return ("INSERT OR REPLACE INTO \(tableName) (id, name, colorName, isHidden, isUserAdded, hour, day, weeks) values (?, ?, ?, ?, ?, ?, ?, ?);",
-            [id, name, colorName, isHidden, isUserAdded, hour, day, weekStr])
+        return ("INSERT OR REPLACE INTO \(tableName) (id, name, colorName, isHidden, isUserAdded, hour, day, place, weeks) values (?, ?, ?, ?, ?, ?, ?, ?, ?);",
+            [id, name, colorName, isHidden, isUserAdded, hour, day, place , weekStr])
     }
 }
 

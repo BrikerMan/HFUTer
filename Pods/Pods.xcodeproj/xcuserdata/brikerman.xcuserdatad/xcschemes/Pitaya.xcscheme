@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'D1AF468F29E86A9627ACAC186C27DBEF'
+               BlueprintIdentifier = '1864115143ACE42C504724AB9A64B29C'
                BlueprintName = 'Pitaya'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'Pitaya.framework'>

@@ -163,8 +163,12 @@ class HFParseViewModel {
                     Logger.error("获取服务器缓存失败 | \(error)")
                     fullfill()
                 } else {
-                    print(json["data"])
                     if let array = json["data"].string?.jsonToArray() {
+                        var data = json["data"]
+                        if let str = json["data"].string {
+                            data = JSONItem(string: str)
+                        }
+                        HFScheduleModel.handlleSchedules(data)
                         PlistManager.dataPlist.saveValues([PlistKey.ScheduleList.rawValue: array])
                         Logger.debug("获取服务器缓存成功")
                         reject(HFParseError.fullfill)
