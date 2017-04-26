@@ -71,7 +71,7 @@ class HFScheduleModel: SQLiteCachable {
     
     
     
-    static func read(for week: Int) -> [[HFScheduleModel]] {
+    static func read(for week: Int) -> [HFScheduleModel] {
         var filter: String?
         if week != 0 {
             let formatter = NumberFormatter()
@@ -79,15 +79,7 @@ class HFScheduleModel: SQLiteCachable {
             filter = "weeks LIKE '%\(formatter.string(from: 2)!)%'"
         }
         let cources = DBManager.read(from: .schedule, type: HFScheduleModel.self, filter: filter)
-        
-        var days = Array(repeating: [HFScheduleModel](), count: 7)
-        
-        for c in cources {
-            days[c.day].append(c)
-        }
-        
-        
-        return days
+        return cources
     }
     
     

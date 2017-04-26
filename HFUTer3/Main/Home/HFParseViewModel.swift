@@ -93,7 +93,7 @@ class HFParseViewModel {
     weak var controller: UIViewController?
     
     // 读取课表
-    func fetchSchedule(for week: Int, completion: @escaping ((_ models: [CourseDayModel], _ error: String?) -> Void)) {
+    func fetchSchedule(for week: Int, completion: @escaping ((_ models: [HFScheduleModel], _ error: String?) -> Void)) {
         // 成功失败颠倒
         HFCourseModel.read(for: week)
             .then { Void -> Promise<Void> in
@@ -103,7 +103,7 @@ class HFParseViewModel {
                 self.refreshSchedule(for: week, completion: completion)
             }.catch { error in
                 if error.isFullfill {
-                    let result = HFCourseModel.readCourses(forWeek: week) ?? []
+                    let result = HFScheduleModel.read(for: week)
                     completion(result, nil)
                 } else {
                     completion([], error.description)
@@ -112,9 +112,9 @@ class HFParseViewModel {
     }
     
     // 刷新课表数据
-    func refreshSchedule(for week: Int, completion: @escaping ((_ models: [CourseDayModel], _ error: String?) -> Void)) {
+    func refreshSchedule(for week: Int, completion: @escaping ((_ models: [HFScheduleModel], _ error: String?) -> Void)) {
         self.refreshData { (error) in
-            let result = HFCourseModel.readCourses(forWeek: week) ?? []
+            let result = HFScheduleModel.read(for: week)
             completion(result, error)
         }
     }
@@ -165,7 +165,6 @@ class HFParseViewModel {
                 } else {
                     print(json["data"])
                     if let array = json["data"].string?.jsonToArray() {
-                        
                         PlistManager.dataPlist.saveValues([PlistKey.ScheduleList.rawValue: array])
                         Logger.debug("获取服务器缓存成功")
                         reject(HFParseError.fullfill)
