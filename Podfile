@@ -11,7 +11,7 @@ target 'HFUTer3' do
     pod 'YYImage/WebP'
     pod 'SnapKit'                               ## AutoLayout
     pod 'SVProgressHUD'
-    #    pod 'MJRefresh' , :git => 'https://github.com/BrikerMan/MJRefresh.git'
+    pod 'MJRefresh' , :git => 'https://github.com/BrikerMan/MJRefresh.git'
     pod 'AIFlatSwitch'                          ## 动态选择button
     pod 'YYText'    , :git => 'https://github.com/BrikerMan/YYText.git'
     pod 'ZYCornerRadius'                        # 优化圆角绘制

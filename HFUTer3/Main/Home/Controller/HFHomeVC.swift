@@ -74,7 +74,7 @@ class HFHomeVC: HFBasicViewController{
     func showOrHideSelectWeekView() {
         isSelectWeekViewShowing = !isSelectWeekViewShowing
         let offset = isSelectWeekViewShowing ? weekSelectView.height : 0
-        let rotate = isSelectWeekViewShowing ? CGFloat(-M_PI) : 0
+        let rotate = isSelectWeekViewShowing ? CGFloat(-Double.pi) : 0
         
         weekSelectView.snp.updateConstraints { (make) in
             make.bottom.equalTo(navBarView.snp.bottom).offset(offset)

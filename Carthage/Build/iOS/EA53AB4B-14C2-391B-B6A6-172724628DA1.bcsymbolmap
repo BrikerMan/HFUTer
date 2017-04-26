@@ -1,0 +1,401 @@
+BCSymbolMap Version: 2.0
+-[MJRefreshGifHeader gifView]
+-[MJRefreshGifHeader stateImages]
+-[MJRefreshGifHeader stateDurations]
+-[MJRefreshGifHeader setImages:duration:forState:]
+-[MJRefreshGifHeader setImages:forState:]
+-[MJRefreshGifHeader setPullingPercent:]
+-[MJRefreshGifHeader placeSubviews]
+-[MJRefreshGifHeader setState:]
+-[MJRefreshGifHeader setStateImages:]
+-[MJRefreshGifHeader setStateDurations:]
+-[MJRefreshGifHeader .cxx_destruct]
+_OBJC_IVAR_$_MJRefreshGifHeader._gifView
+_OBJC_IVAR_$_MJRefreshGifHeader._stateImages
+_OBJC_IVAR_$_MJRefreshGifHeader._stateDurations
+Apple LLVM version 8.1.0 (clang-802.0.42)
+/Users/brikerman/Desktop/Projects/HFUTer/HFUTer4/Carthage/Checkouts/MJRefresh/MJRefresh/Custom/Header/MJRefreshGifHeader.m
+/Users/brikerman/Desktop/Projects/HFUTer/HFUTer4/Carthage/Checkouts/MJRefresh
++[MJRefreshHeader headerWithRefreshingBlock:]
++[MJRefreshHeader headerWithRefreshingTarget:refreshingAction:]
+-[MJRefreshHeader prepare]
+-[MJRefreshHeader placeSubviews]
+-[MJRefreshHeader scrollViewContentOffsetDidChange:]
+-[MJRefreshHeader setState:]
+___28-[MJRefreshHeader setState:]_block_invoke
+___copy_helper_block_
+___destroy_helper_block_
+___28-[MJRefreshHeader setState:]_block_invoke.67
+___copy_helper_block_.68
+___destroy_helper_block_.69
+___28-[MJRefreshHeader setState:]_block_invoke.74
+___copy_helper_block_.77
+___destroy_helper_block_.78
+___28-[MJRefreshHeader setState:]_block_invoke.80
+___copy_helper_block_.83
+___destroy_helper_block_.84
+-[MJRefreshHeader drawRect:]
+-[MJRefreshHeader endRefreshing]
+___32-[MJRefreshHeader endRefreshing]_block_invoke
+___copy_helper_block_.95
+___destroy_helper_block_.96
+-[MJRefreshHeader lastUpdatedTime]
+-[MJRefreshHeader lastUpdatedTimeKey]
+-[MJRefreshHeader setLastUpdatedTimeKey:]
+-[MJRefreshHeader ignoredScrollViewContentInsetTop]
+-[MJRefreshHeader setIgnoredScrollViewContentInsetTop:]
+-[MJRefreshHeader insetTDelta]
+-[MJRefreshHeader setInsetTDelta:]
+-[MJRefreshHeader .cxx_destruct]
+___block_descriptor_tmp
+___block_descriptor_tmp.71
+___block_descriptor_tmp.79
+___block_descriptor_tmp.85
+___block_descriptor_tmp.97
+_OBJC_IVAR_$_MJRefreshHeader._lastUpdatedTimeKey
+_OBJC_IVAR_$_MJRefreshHeader._ignoredScrollViewContentInsetTop
+_OBJC_IVAR_$_MJRefreshHeader._insetTDelta
+/Users/brikerman/Desktop/Projects/HFUTer/HFUTer4/Carthage/Checkouts/MJRefresh/MJRefresh/Base/MJRefreshHeader.m
+/Users/brikerman/Desktop/Projects/HFUTer/HFUTer4/Carthage/Checkouts/MJRefresh/MJRefresh/Base/MJRefreshHeader.h
+__destroy_helper_block_
+__copy_helper_block_
+__32-[MJRefreshHeader endRefreshing]_block_invoke
+__28-[MJRefreshHeader setState:]_block_invoke.80
+__28-[MJRefreshHeader setState:]_block_invoke.74
+__28-[MJRefreshHeader setState:]_block_invoke.67
+__28-[MJRefreshHeader setState:]_block_invoke
+-[MJRefreshBackStateFooter stateTitles]
+-[MJRefreshBackStateFooter stateLabel]
+-[MJRefreshBackStateFooter setTitle:forState:]
+-[MJRefreshBackStateFooter titleForState:]
+-[MJRefreshBackStateFooter prepare]
+-[MJRefreshBackStateFooter placeSubviews]
+-[MJRefreshBackStateFooter setState:]
+-[MJRefreshBackStateFooter setStateTitles:]
+-[MJRefreshBackStateFooter .cxx_destruct]
+_OBJC_IVAR_$_MJRefreshBackStateFooter._stateTitles
+_OBJC_IVAR_$_MJRefreshBackStateFooter._stateLabel
+/Users/brikerman/Desktop/Projects/HFUTer/HFUTer4/Carthage/Checkouts/MJRefresh/MJRefresh/Custom/Footer/Back/MJRefreshBackStateFooter.m
+-[MJRefreshNormalHeader arrowView]
+-[MJRefreshNormalHeader loadingView]
+-[MJRefreshNormalHeader setActivityIndicatorViewStyle:]
+-[MJRefreshNormalHeader prepare]
+-[MJRefreshNormalHeader stringWidth:]
+-[MJRefreshNormalHeader placeSubviews]
+-[MJRefreshNormalHeader setState:]
+___34-[MJRefreshNormalHeader setState:]_block_invoke
+___34-[MJRefreshNormalHeader setState:]_block_invoke.86
+___copy_helper_block_.91
+___destroy_helper_block_.92
+___34-[MJRefreshNormalHeader setState:]_block_invoke.97
+___copy_helper_block_.98
+___destroy_helper_block_.99
+___34-[MJRefreshNormalHeader setState:]_block_invoke.103
+___copy_helper_block_.104
+___destroy_helper_block_.105
+-[MJRefreshNormalHeader activityIndicatorViewStyle]
+-[MJRefreshNormalHeader setLoadingView:]
+-[MJRefreshNormalHeader .cxx_destruct]
+_OBJC_IVAR_$_MJRefreshNormalHeader._arrowView
+_OBJC_IVAR_$_MJRefreshNormalHeader._loadingView
+_OBJC_IVAR_$_MJRefreshNormalHeader._activityIndicatorViewStyle
+___block_descriptor_tmp.94
+___block_descriptor_tmp.100
+___block_descriptor_tmp.106
+/Users/brikerman/Desktop/Projects/HFUTer/HFUTer4/Carthage/Checkouts/MJRefresh/MJRefresh/Custom/Header/MJRefreshNormalHeader.m
+/Users/brikerman/Desktop/Projects/HFUTer/HFUTer4/Carthage/Checkouts/MJRefresh/MJRefresh/Custom/Header/MJRefreshNormalHeader.h
+__34-[MJRefreshNormalHeader setState:]_block_invoke.103
+__34-[MJRefreshNormalHeader setState:]_block_invoke.97
+__34-[MJRefreshNormalHeader setState:]_block_invoke.86
+__34-[MJRefreshNormalHeader setState:]_block_invoke
+CGPointMake
+/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.3.sdk/System/Library/Frameworks/CoreGraphics.framework/Headers/CGGeometry.h
+CGSizeMake
+-[MJRefreshAutoGifFooter gifView]
+-[MJRefreshAutoGifFooter stateImages]
+-[MJRefreshAutoGifFooter stateDurations]
+-[MJRefreshAutoGifFooter setImages:duration:forState:]
+-[MJRefreshAutoGifFooter setImages:forState:]
+-[MJRefreshAutoGifFooter placeSubviews]
+-[MJRefreshAutoGifFooter setState:]
+-[MJRefreshAutoGifFooter setStateImages:]
+-[MJRefreshAutoGifFooter setStateDurations:]
+-[MJRefreshAutoGifFooter .cxx_destruct]
+_OBJC_IVAR_$_MJRefreshAutoGifFooter._gifView
+_OBJC_IVAR_$_MJRefreshAutoGifFooter._stateImages
+_OBJC_IVAR_$_MJRefreshAutoGifFooter._stateDurations
+/Users/brikerman/Desktop/Projects/HFUTer/HFUTer4/Carthage/Checkouts/MJRefresh/MJRefresh/Custom/Footer/Auto/MJRefreshAutoGifFooter.m
+-[MJRefreshBackFooter willMoveToSuperview:]
+-[MJRefreshBackFooter scrollViewContentOffsetDidChange:]
+-[MJRefreshBackFooter scrollViewContentSizeDidChange:]
+-[MJRefreshBackFooter setState:]
+___32-[MJRefreshBackFooter setState:]_block_invoke
+___32-[MJRefreshBackFooter setState:]_block_invoke.43
+___copy_helper_block_.44
+___destroy_helper_block_.45
+___32-[MJRefreshBackFooter setState:]_block_invoke.60
+___copy_helper_block_.63
+___destroy_helper_block_.64
+___32-[MJRefreshBackFooter setState:]_block_invoke.66
+___copy_helper_block_.69
+___destroy_helper_block_.70
+-[MJRefreshBackFooter endRefreshing]
+___36-[MJRefreshBackFooter endRefreshing]_block_invoke
+___copy_helper_block_.79
+___destroy_helper_block_.80
+-[MJRefreshBackFooter noticeNoMoreData]
+___39-[MJRefreshBackFooter noticeNoMoreData]_block_invoke
+___copy_helper_block_.84
+___destroy_helper_block_.85
+-[MJRefreshBackFooter heightForContentBreakView]
+-[MJRefreshBackFooter happenOffsetY]
+-[MJRefreshBackFooter lastRefreshCount]
+-[MJRefreshBackFooter setLastRefreshCount:]
+-[MJRefreshBackFooter lastBottomDelta]
+-[MJRefreshBackFooter setLastBottomDelta:]
+___block_descriptor_tmp.47
+___block_descriptor_tmp.65
+___block_descriptor_tmp.81
+___block_descriptor_tmp.86
+_OBJC_IVAR_$_MJRefreshBackFooter._lastRefreshCount
+_OBJC_IVAR_$_MJRefreshBackFooter._lastBottomDelta
+/Users/brikerman/Desktop/Projects/HFUTer/HFUTer4/Carthage/Checkouts/MJRefresh/MJRefresh/Base/MJRefreshBackFooter.m
+__39-[MJRefreshBackFooter noticeNoMoreData]_block_invoke
+__36-[MJRefreshBackFooter endRefreshing]_block_invoke
+__32-[MJRefreshBackFooter setState:]_block_invoke.66
+__32-[MJRefreshBackFooter setState:]_block_invoke.60
+__32-[MJRefreshBackFooter setState:]_block_invoke.43
+__32-[MJRefreshBackFooter setState:]_block_invoke
++[MJRefreshFooter footerWithRefreshingBlock:]
++[MJRefreshFooter footerWithRefreshingTarget:refreshingAction:]
+-[MJRefreshFooter prepare]
+-[MJRefreshFooter willMoveToSuperview:]
+___39-[MJRefreshFooter willMoveToSuperview:]_block_invoke
+-[MJRefreshFooter endRefreshingWithNoMoreData]
+-[MJRefreshFooter noticeNoMoreData]
+-[MJRefreshFooter resetNoMoreData]
+-[MJRefreshFooter ignoredScrollViewContentInsetBottom]
+-[MJRefreshFooter setIgnoredScrollViewContentInsetBottom:]
+-[MJRefreshFooter isAutomaticallyHidden]
+-[MJRefreshFooter setAutomaticallyHidden:]
+_OBJC_IVAR_$_MJRefreshFooter._ignoredScrollViewContentInsetBottom
+_OBJC_IVAR_$_MJRefreshFooter._automaticallyHidden
+/Users/brikerman/Desktop/Projects/HFUTer/HFUTer4/Carthage/Checkouts/MJRefresh/MJRefresh/Base/MJRefreshFooter.m
+/Users/brikerman/Desktop/Projects/HFUTer/HFUTer4/Carthage/Checkouts/MJRefresh/MJRefresh/Base/MJRefreshFooter.h
+__39-[MJRefreshFooter willMoveToSuperview:]_block_invoke
+-[MJRefreshBackGifFooter gifView]
+-[MJRefreshBackGifFooter stateImages]
+-[MJRefreshBackGifFooter stateDurations]
+-[MJRefreshBackGifFooter setImages:duration:forState:]
+-[MJRefreshBackGifFooter setImages:forState:]
+-[MJRefreshBackGifFooter setPullingPercent:]
+-[MJRefreshBackGifFooter placeSubviews]
+-[MJRefreshBackGifFooter setState:]
+-[MJRefreshBackGifFooter setStateImages:]
+-[MJRefreshBackGifFooter setStateDurations:]
+-[MJRefreshBackGifFooter .cxx_destruct]
+_OBJC_IVAR_$_MJRefreshBackGifFooter._gifView
+_OBJC_IVAR_$_MJRefreshBackGifFooter._stateImages
+_OBJC_IVAR_$_MJRefreshBackGifFooter._stateDurations
+/Users/brikerman/Desktop/Projects/HFUTer/HFUTer4/Carthage/Checkouts/MJRefresh/MJRefresh/Custom/Footer/Back/MJRefreshBackGifFooter.m
+-[MJRefreshBackNormalFooter arrowView]
+-[MJRefreshBackNormalFooter loadingView]
+-[MJRefreshBackNormalFooter setActivityIndicatorViewStyle:]
+-[MJRefreshBackNormalFooter prepare]
+-[MJRefreshBackNormalFooter placeSubviews]
+-[MJRefreshBackNormalFooter setState:]
+___38-[MJRefreshBackNormalFooter setState:]_block_invoke
+___38-[MJRefreshBackNormalFooter setState:]_block_invoke.65
+___copy_helper_block_.70
+___destroy_helper_block_.71
+___38-[MJRefreshBackNormalFooter setState:]_block_invoke.76
+___38-[MJRefreshBackNormalFooter setState:]_block_invoke.82
+-[MJRefreshBackNormalFooter activityIndicatorViewStyle]
+-[MJRefreshBackNormalFooter setLoadingView:]
+-[MJRefreshBackNormalFooter .cxx_destruct]
+_OBJC_IVAR_$_MJRefreshBackNormalFooter._arrowView
+_OBJC_IVAR_$_MJRefreshBackNormalFooter._loadingView
+_OBJC_IVAR_$_MJRefreshBackNormalFooter._activityIndicatorViewStyle
+___block_descriptor_tmp.73
+/Users/brikerman/Desktop/Projects/HFUTer/HFUTer4/Carthage/Checkouts/MJRefresh/MJRefresh/Custom/Footer/Back/MJRefreshBackNormalFooter.m
+/Users/brikerman/Desktop/Projects/HFUTer/HFUTer4/Carthage/Checkouts/MJRefresh/MJRefresh/Custom/Footer/Back/MJRefreshBackNormalFooter.h
+__38-[MJRefreshBackNormalFooter setState:]_block_invoke.82
+__38-[MJRefreshBackNormalFooter setState:]_block_invoke.76
+__38-[MJRefreshBackNormalFooter setState:]_block_invoke.65
+__38-[MJRefreshBackNormalFooter setState:]_block_invoke
+-[MJRefreshStateHeader stateTitles]
+-[MJRefreshStateHeader stateLabel]
+-[MJRefreshStateHeader lastUpdatedTimeLabel]
+-[MJRefreshStateHeader setTitle:forState:]
+-[MJRefreshStateHeader currentCalendar]
+-[MJRefreshStateHeader setLastUpdatedTimeKey:]
+-[MJRefreshStateHeader prepare]
+-[MJRefreshStateHeader placeSubviews]
+-[MJRefreshStateHeader setState:]
+-[MJRefreshStateHeader lastUpdatedTimeText]
+-[MJRefreshStateHeader setLastUpdatedTimeText:]
+-[MJRefreshStateHeader setStateTitles:]
+-[MJRefreshStateHeader .cxx_destruct]
+_OBJC_IVAR_$_MJRefreshStateHeader._stateTitles
+_OBJC_IVAR_$_MJRefreshStateHeader._stateLabel
+_OBJC_IVAR_$_MJRefreshStateHeader._lastUpdatedTimeLabel
+_OBJC_IVAR_$_MJRefreshStateHeader._lastUpdatedTimeText
+/Users/brikerman/Desktop/Projects/HFUTer/HFUTer4/Carthage/Checkouts/MJRefresh/MJRefresh/Custom/Header/MJRefreshStateHeader.m
+/Users/brikerman/Desktop/Projects/HFUTer/HFUTer4/Carthage/Checkouts/MJRefresh/MJRefresh/Custom/Header/MJRefreshStateHeader.h
++[NSObject(MJRefresh) exchangeInstanceMethod1:method2:]
++[NSObject(MJRefresh) exchangeClassMethod1:method2:]
+-[UIScrollView(MJRefresh) setMj_header:]
+-[UIScrollView(MJRefresh) mj_header]
+-[UIScrollView(MJRefresh) setMj_footer:]
+-[UIScrollView(MJRefresh) mj_footer]
+-[UIScrollView(MJRefresh) setFooter:]
+-[UIScrollView(MJRefresh) footer]
+-[UIScrollView(MJRefresh) setHeader:]
+-[UIScrollView(MJRefresh) header]
+-[UIScrollView(MJRefresh) mj_totalDataCount]
+-[UIScrollView(MJRefresh) setMj_reloadDataBlock:]
+-[UIScrollView(MJRefresh) mj_reloadDataBlock]
+-[UIScrollView(MJRefresh) executeReloadDataBlock]
++[UITableView(MJRefresh) load]
+-[UITableView(MJRefresh) mj_reloadData]
++[UICollectionView(MJRefresh) load]
+-[UICollectionView(MJRefresh) mj_reloadData]
+_MJRefreshHeaderKey
+_MJRefreshFooterKey
+_MJRefreshReloadDataBlockKey
+/Users/brikerman/Desktop/Projects/HFUTer/HFUTer4/Carthage/Checkouts/MJRefresh/MJRefresh/UIScrollView+MJRefresh.m
+-[MJRefreshAutoStateFooter stateTitles]
+-[MJRefreshAutoStateFooter stateLabel]
+-[MJRefreshAutoStateFooter setTitle:forState:]
+-[MJRefreshAutoStateFooter stateLabelClick]
+-[MJRefreshAutoStateFooter prepare]
+-[MJRefreshAutoStateFooter placeSubviews]
+-[MJRefreshAutoStateFooter setState:]
+-[MJRefreshAutoStateFooter isRefreshingTitleHidden]
+-[MJRefreshAutoStateFooter setRefreshingTitleHidden:]
+-[MJRefreshAutoStateFooter setStateTitles:]
+-[MJRefreshAutoStateFooter .cxx_destruct]
+_OBJC_IVAR_$_MJRefreshAutoStateFooter._stateTitles
+_OBJC_IVAR_$_MJRefreshAutoStateFooter._stateLabel
+_OBJC_IVAR_$_MJRefreshAutoStateFooter._refreshingTitleHidden
+/Users/brikerman/Desktop/Projects/HFUTer/HFUTer4/Carthage/Checkouts/MJRefresh/MJRefresh/Custom/Footer/Auto/MJRefreshAutoStateFooter.m
+/Users/brikerman/Desktop/Projects/HFUTer/HFUTer4/Carthage/Checkouts/MJRefresh/MJRefresh/Custom/Footer/Auto/MJRefreshAutoStateFooter.h
+-[MJRefreshAutoFooter willMoveToSuperview:]
+-[MJRefreshAutoFooter setAppearencePercentTriggerAutoRefresh:]
+-[MJRefreshAutoFooter appearencePercentTriggerAutoRefresh]
+-[MJRefreshAutoFooter prepare]
+-[MJRefreshAutoFooter scrollViewContentSizeDidChange:]
+-[MJRefreshAutoFooter scrollViewContentOffsetDidChange:]
+-[MJRefreshAutoFooter scrollViewPanStateDidChange:]
+-[MJRefreshAutoFooter setState:]
+___32-[MJRefreshAutoFooter setState:]_block_invoke
+-[MJRefreshAutoFooter setHidden:]
+-[MJRefreshAutoFooter isAutomaticallyRefresh]
+-[MJRefreshAutoFooter setAutomaticallyRefresh:]
+-[MJRefreshAutoFooter triggerAutomaticallyRefreshPercent]
+-[MJRefreshAutoFooter setTriggerAutomaticallyRefreshPercent:]
+_OBJC_IVAR_$_MJRefreshAutoFooter._automaticallyRefresh
+_OBJC_IVAR_$_MJRefreshAutoFooter._triggerAutomaticallyRefreshPercent
+/Users/brikerman/Desktop/Projects/HFUTer/HFUTer4/Carthage/Checkouts/MJRefresh/MJRefresh/Base/MJRefreshAutoFooter.m
+/Users/brikerman/Desktop/Projects/HFUTer/HFUTer4/Carthage/Checkouts/MJRefresh/MJRefresh/Base/MJRefreshAutoFooter.h
+__32-[MJRefreshAutoFooter setState:]_block_invoke
+-[UIView(MJExtension) setMj_x:]
+-[UIView(MJExtension) mj_x]
+-[UIView(MJExtension) setMj_y:]
+-[UIView(MJExtension) mj_y]
+-[UIView(MJExtension) setMj_w:]
+-[UIView(MJExtension) mj_w]
+-[UIView(MJExtension) setMj_h:]
+-[UIView(MJExtension) mj_h]
+-[UIView(MJExtension) setMj_size:]
+-[UIView(MJExtension) mj_size]
+-[UIView(MJExtension) setMj_origin:]
+-[UIView(MJExtension) mj_origin]
+/Users/brikerman/Desktop/Projects/HFUTer/HFUTer4/Carthage/Checkouts/MJRefresh/MJRefresh/UIView+MJExtension.m
+-[UIScrollView(MJExtension) setMj_insetT:]
+-[UIScrollView(MJExtension) mj_insetT]
+-[UIScrollView(MJExtension) setMj_insetB:]
+-[UIScrollView(MJExtension) mj_insetB]
+-[UIScrollView(MJExtension) setMj_insetL:]
+-[UIScrollView(MJExtension) mj_insetL]
+-[UIScrollView(MJExtension) setMj_insetR:]
+-[UIScrollView(MJExtension) mj_insetR]
+-[UIScrollView(MJExtension) setMj_offsetX:]
+-[UIScrollView(MJExtension) mj_offsetX]
+-[UIScrollView(MJExtension) setMj_offsetY:]
+-[UIScrollView(MJExtension) mj_offsetY]
+-[UIScrollView(MJExtension) setMj_contentW:]
+-[UIScrollView(MJExtension) mj_contentW]
+-[UIScrollView(MJExtension) setMj_contentH:]
+-[UIScrollView(MJExtension) mj_contentH]
+/Users/brikerman/Desktop/Projects/HFUTer/HFUTer4/Carthage/Checkouts/MJRefresh/MJRefresh/UIScrollView+MJExtension.m
+-[MJRefreshAutoNormalFooter loadingView]
+-[MJRefreshAutoNormalFooter setActivityIndicatorViewStyle:]
+-[MJRefreshAutoNormalFooter prepare]
+-[MJRefreshAutoNormalFooter placeSubviews]
+-[MJRefreshAutoNormalFooter setState:]
+-[MJRefreshAutoNormalFooter activityIndicatorViewStyle]
+-[MJRefreshAutoNormalFooter setLoadingView:]
+-[MJRefreshAutoNormalFooter .cxx_destruct]
+_OBJC_IVAR_$_MJRefreshAutoNormalFooter._loadingView
+_OBJC_IVAR_$_MJRefreshAutoNormalFooter._activityIndicatorViewStyle
+/Users/brikerman/Desktop/Projects/HFUTer/HFUTer4/Carthage/Checkouts/MJRefresh/MJRefresh/Custom/Footer/Auto/MJRefreshAutoNormalFooter.m
+/Users/brikerman/Desktop/Projects/HFUTer/HFUTer4/Carthage/Checkouts/MJRefresh/MJRefresh/Custom/Footer/Auto/MJRefreshAutoNormalFooter.h
+-[MJRefreshComponent initWithFrame:]
+-[MJRefreshComponent prepare]
+-[MJRefreshComponent layoutSubviews]
+-[MJRefreshComponent placeSubviews]
+-[MJRefreshComponent willMoveToSuperview:]
+-[MJRefreshComponent drawRect:]
+-[MJRefreshComponent addObservers]
+-[MJRefreshComponent removeObservers]
+-[MJRefreshComponent observeValueForKeyPath:ofObject:change:context:]
+-[MJRefreshComponent scrollViewContentOffsetDidChange:]
+-[MJRefreshComponent scrollViewContentSizeDidChange:]
+-[MJRefreshComponent scrollViewPanStateDidChange:]
+-[MJRefreshComponent setRefreshingTarget:refreshingAction:]
+-[MJRefreshComponent localizedStringForKey:]
+-[MJRefreshComponent localizedStringForKey:withDefault:]
+-[MJRefreshComponent beginRefreshing]
+___37-[MJRefreshComponent beginRefreshing]_block_invoke
+-[MJRefreshComponent endRefreshing]
+-[MJRefreshComponent isRefreshing]
+-[MJRefreshComponent setAutoChangeAlpha:]
+-[MJRefreshComponent isAutoChangeAlpha]
+-[MJRefreshComponent setAutomaticallyChangeAlpha:]
+-[MJRefreshComponent setPullingPercent:]
+-[MJRefreshComponent executeRefreshingCallback]
+___47-[MJRefreshComponent executeRefreshingCallback]_block_invoke
+___copy_helper_block_.113
+___destroy_helper_block_.114
+-[MJRefreshComponent refreshingBlock]
+-[MJRefreshComponent setRefreshingBlock:]
+-[MJRefreshComponent refreshingTarget]
+-[MJRefreshComponent setRefreshingTarget:]
+-[MJRefreshComponent refreshingAction]
+-[MJRefreshComponent setRefreshingAction:]
+-[MJRefreshComponent state]
+-[MJRefreshComponent setState:]
+-[MJRefreshComponent scrollViewOriginalInset]
+-[MJRefreshComponent scrollView]
+-[MJRefreshComponent pullingPercent]
+-[MJRefreshComponent isAutomaticallyChangeAlpha]
+-[MJRefreshComponent pan]
+-[MJRefreshComponent setPan:]
+-[MJRefreshComponent .cxx_destruct]
++[UILabel(MJRefresh) mj_label]
+_localizedStringForKey:withDefault:.bundle
+_OBJC_IVAR_$_MJRefreshComponent._automaticallyChangeAlpha
+_OBJC_IVAR_$_MJRefreshComponent._pullingPercent
+___block_descriptor_tmp.115
+_OBJC_IVAR_$_MJRefreshComponent._refreshingBlock
+_OBJC_IVAR_$_MJRefreshComponent._refreshingTarget
+_OBJC_IVAR_$_MJRefreshComponent._refreshingAction
+_OBJC_IVAR_$_MJRefreshComponent._state
+_OBJC_IVAR_$_MJRefreshComponent._pan
+/Users/brikerman/Desktop/Projects/HFUTer/HFUTer4/Carthage/Checkouts/MJRefresh/MJRefresh/Base/MJRefreshComponent.m
+/Users/brikerman/Desktop/Projects/HFUTer/HFUTer4/Carthage/Checkouts/MJRefresh/MJRefresh/Base/MJRefreshComponent.h
+__47-[MJRefreshComponent executeRefreshingCallback]_block_invoke
+__37-[MJRefreshComponent beginRefreshing]_block_invoke
+/Users/brikerman/Desktop/Projects/HFUTer/HFUTer4/Carthage/Checkouts/MJRefresh/MJRefresh/MJRefreshConst.m
+/Volumes/ramdisk/DerivedData/MJRefreshExample-diosuylpqgjvegbdsqtmltrzkzct/Build/Intermediates/MJRefreshExample.build/Release-iphoneos/MJRefresh.build/DerivedSources/MJRefresh_vers.c

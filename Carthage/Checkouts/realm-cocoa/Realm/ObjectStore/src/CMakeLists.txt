@@ -9,6 +9,7 @@ set(SOURCES
     schema.cpp
     shared_realm.cpp
     thread_safe_reference.cpp
+    binding_callback_thread_observer.cpp
     impl/collection_change_builder.cpp
     impl/collection_notifier.cpp
     impl/list_notifier.cpp
@@ -19,7 +20,8 @@ set(SOURCES
     impl/weak_realm_notifier.cpp
     parser/parser.cpp
     parser/query_builder.cpp
-    util/format.cpp)
+    util/format.cpp
+    util/uuid.cpp)
 
 set(HEADERS
     collection_notifications.hpp
@@ -35,6 +37,7 @@ set(HEADERS
     schema.hpp
     shared_realm.hpp
     thread_safe_reference.hpp
+    binding_callback_thread_observer.hpp
 
     impl/apple/external_commit_helper.hpp
     impl/apple/keychain_helper.hpp
@@ -60,11 +63,13 @@ set(HEADERS
     util/uv/event_loop_signal.hpp
 
     util/aligned_union.hpp
+    util/any.hpp
     util/atomic_shared_ptr.hpp
     util/compiler.hpp
     util/event_loop_signal.hpp
     util/format.hpp
-    util/time.hpp)
+    util/time.hpp
+    util/uuid.hpp)
 
 if(APPLE)
     list(APPEND SOURCES impl/apple/external_commit_helper.cpp impl/apple/keychain_helper.cpp)
@@ -95,6 +100,7 @@ if(REALM_ENABLE_SYNC)
     list(APPEND HEADERS
         sync/sync_config.hpp
         sync/sync_manager.hpp
+        sync/sync_permission.hpp
         sync/sync_session.hpp
         sync/sync_user.hpp
         sync/impl/sync_client.hpp
@@ -102,6 +108,7 @@ if(REALM_ENABLE_SYNC)
         sync/impl/sync_metadata.hpp)
     list(APPEND SOURCES
         sync/sync_manager.cpp
+        sync/sync_permission.cpp
         sync/sync_session.cpp
         sync/sync_user.cpp
         sync/impl/sync_file.cpp

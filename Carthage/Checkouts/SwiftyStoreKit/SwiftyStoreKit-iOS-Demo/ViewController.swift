@@ -97,11 +97,9 @@ class ViewController: UIViewController {
         SwiftyStoreKit.restorePurchases(atomically: true) { results in
             NetworkActivityIndicatorManager.networkOperationFinished()
 
-            for product in results.restoredProducts {
+            for product in results.restoredProducts where product.needsFinishTransaction {
                 // Deliver content from server, then:
-                if product.needsFinishTransaction {
-                    SwiftyStoreKit.finishTransaction(product.transaction)
-                }
+                SwiftyStoreKit.finishTransaction(product.transaction)
             }
             self.showAlert(self.alertForRestorePurchases(results))
         }
@@ -178,9 +176,11 @@ class ViewController: UIViewController {
         }
     }
 
+#if os(iOS)
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }
+#endif
 }
 
 // MARK: User facing alerts
@@ -194,7 +194,7 @@ extension ViewController {
     }
 
     func showAlert(_ alert: UIAlertController) {
-        guard let _ = self.presentedViewController else {
+        guard self.presentedViewController != nil else {
             self.present(alert, animated: true, completion: nil)
             return
         }
@@ -213,6 +213,7 @@ extension ViewController {
         }
     }
 
+    // swiftlint:disable cyclomatic_complexity
     func alertForPurchaseResult(_ result: PurchaseResult) -> UIAlertController? {
         switch result {
         case .success(let product):
@@ -236,6 +237,8 @@ extension ViewController {
                 return alertWithTitle("Purchase failed", message: "Access to cloud service information is not allowed")
             case .cloudServiceNetworkConnectionFailed: // the device could not connect to the nework
                 return alertWithTitle("Purchase failed", message: "Could not connect to the network")
+            case .cloudServiceRevoked: // user has revoked permission to use this cloud service
+                return alertWithTitle("Purchase failed", message: "Could service was revoked")
             }
         }
     }
@@ -274,12 +277,12 @@ extension ViewController {
     func alertForVerifySubscription(_ result: VerifySubscriptionResult) -> UIAlertController {
 
         switch result {
-        case .purchased(let expiresDate):
-            print("Product is valid until \(expiresDate)")
-            return alertWithTitle("Product is purchased", message: "Product is valid until \(expiresDate)")
-        case .expired(let expiresDate):
-            print("Product is expired since \(expiresDate)")
-            return alertWithTitle("Product expired", message: "Product is expired since \(expiresDate)")
+        case .purchased(let expiryDate):
+            print("Product is valid until \(expiryDate)")
+            return alertWithTitle("Product is purchased", message: "Product is valid until \(expiryDate)")
+        case .expired(let expiryDate):
+            print("Product is expired since \(expiryDate)")
+            return alertWithTitle("Product expired", message: "Product is expired since \(expiryDate)")
         case .notPurchased:
             print("This product has never been purchased")
             return alertWithTitle("Not purchased", message: "This product has never been purchased")

@@ -1,0 +1,10 @@
+framework module Observable {
+  umbrella header "Observable.h"
+
+  export *
+  module * { export * }
+}
+
+module Observable.Swift {
+    header "Observable-Swift.h"
+}

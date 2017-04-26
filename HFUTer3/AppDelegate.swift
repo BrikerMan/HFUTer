@@ -163,6 +163,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         JPUSHService.setup(withOption: launchOptions, appKey: JPushAppKey, channel: "App Store", apsForProduction: Is_Build_For_App_Store)
         
         AVOSCloud.setApplicationId(LeanCLoudAppID, clientKey: LeanCLoudAppKey)
+        AVOSCloud.setLogLevel(AVLogLevelWarning)
         
         let conf = UMAnalyticsConfig()
         conf.appKey = UmengKey
@@ -183,4 +184,3 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
 }
-

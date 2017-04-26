@@ -1,6 +1,5 @@
 github "BrikerMan/MJRefresh" "3.1.5"
 github "BrikerMan/Observable-Swift" "bfe72dd07edaac75542fcf2729460141224c0c93"
-github "mxcl/PromiseKit" "4.1.8"
-github "bizz84/SwiftyStoreKit" "0.8.3"
+github "mxcl/PromiseKit" "4.2.0"
+github "bizz84/SwiftyStoreKit" "0.8.6"
 github "devxoul/Toaster" "2.0.3"
-github "realm/realm-cocoa" "v2.4.3"

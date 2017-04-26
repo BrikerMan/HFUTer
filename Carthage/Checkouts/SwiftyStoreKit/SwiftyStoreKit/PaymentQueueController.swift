@@ -59,7 +59,7 @@ extension SKPaymentTransaction {
 
     open override var debugDescription: String {
         let transactionId = transactionIdentifier ?? "null"
-        return "productId: \(payment.productIdentifier), transactionId: \(transactionId), state: \(transactionState), date: \(transactionDate)"
+        return "productId: \(payment.productIdentifier), transactionId: \(transactionId), state: \(transactionState), date: \(String(describing: transactionDate))"
     }
 }
 
@@ -153,7 +153,7 @@ class PaymentQueueController: NSObject, SKPaymentTransactionObserver {
          * Restore purchases requests don't require user interaction and can jump ahead of the queue.
          * SKPaymentQueue rejects multiple restore purchases calls.
          * Having one payment queue observer for each request causes extra processing
-         * Failed translations only ever belong to queued payment request.
+         * Failed transactions only ever belong to queued payment requests.
          * restoreCompletedTransactionsFailedWithError is always called when a restore purchases request fails.
          * paymentQueueRestoreCompletedTransactionsFinished is always called following 0 or more update transactions when a restore purchases request succeeds.
          * A complete transactions handler is require to catch any transactions that are updated when the app is not running.
@@ -172,6 +172,7 @@ class PaymentQueueController: NSObject, SKPaymentTransactionObserver {
 
         unhandledTransactions = completeTransactionsController.processTransactions(unhandledTransactions, on: paymentQueue)
 
+        unhandledTransactions = unhandledTransactions.filter { $0.transactionState != .purchasing }
         if unhandledTransactions.count > 0 {
             let strings = unhandledTransactions.map { $0.debugDescription }.joined(separator: "\n")
             print("unhandledTransactions:\n\(strings)")

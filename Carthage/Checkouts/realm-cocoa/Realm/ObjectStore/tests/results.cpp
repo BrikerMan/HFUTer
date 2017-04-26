@@ -33,6 +33,7 @@
 #include <realm/group_shared.hpp>
 #include <realm/link_view.hpp>
 #include <realm/query_engine.hpp>
+#include <realm/query_expression.hpp>
 
 #if REALM_ENABLE_SYNC
 #include "sync/sync_manager.hpp"
@@ -40,17 +41,6 @@
 #endif
 
 using namespace realm;
-
-class joining_thread {
-public:
-    template<typename... Args>
-    joining_thread(Args&&... args) : m_thread(std::forward<Args>(args)...) { }
-    ~joining_thread() { if (m_thread.joinable()) m_thread.join(); }
-    void join() { m_thread.join(); }
-
-private:
-    std::thread m_thread;
-};
 
 TEST_CASE("notifications: async delivery") {
     _impl::RealmCoordinator::assert_no_open_realms();
@@ -127,7 +117,7 @@ TEST_CASE("notifications: async delivery") {
 
         SECTION("refresh() blocks due to initial results not being ready") {
             REQUIRE(notification_calls == 0);
-            joining_thread thread([&] {
+            JoiningThread thread([&] {
                 std::this_thread::sleep_for(std::chrono::microseconds(5000));
                 coordinator->on_change();
             });
@@ -137,7 +127,7 @@ TEST_CASE("notifications: async delivery") {
 
         SECTION("begin_transaction() blocks due to initial results not being ready") {
             REQUIRE(notification_calls == 0);
-            joining_thread thread([&] {
+            JoiningThread thread([&] {
                 std::this_thread::sleep_for(std::chrono::microseconds(5000));
                 coordinator->on_change();
             });
@@ -184,6 +174,14 @@ TEST_CASE("notifications: async delivery") {
                 REQUIRE(notification_calls == 1);
                 r->cancel_transaction();
             }
+        }
+
+        SECTION("is delivered by notify() even if there are later versions") {
+            REQUIRE(notification_calls == 0);
+            coordinator->on_change();
+            make_remote_change();
+            r->notify();
+            REQUIRE(notification_calls == 1);
         }
     }
 
@@ -328,7 +326,7 @@ TEST_CASE("notifications: async delivery") {
 
         SECTION("refresh() blocks") {
             REQUIRE(notification_calls == 1);
-            joining_thread thread([&] {
+            JoiningThread thread([&] {
                 std::this_thread::sleep_for(std::chrono::microseconds(5000));
                 coordinator->on_change();
             });
@@ -337,7 +335,7 @@ TEST_CASE("notifications: async delivery") {
         }
 
         SECTION("refresh() advances to the first version with notifiers ready that is at least a recent as the newest at the time it is called") {
-            joining_thread thread([&] {
+            JoiningThread thread([&] {
                 std::this_thread::sleep_for(std::chrono::microseconds(5000));
                 make_remote_change();
                 coordinator->on_change();
@@ -359,7 +357,7 @@ TEST_CASE("notifications: async delivery") {
 
         SECTION("begin_transaction() blocks") {
             REQUIRE(notification_calls == 1);
-            joining_thread thread([&] {
+            JoiningThread thread([&] {
                 std::this_thread::sleep_for(std::chrono::microseconds(5000));
                 coordinator->on_change();
             });
@@ -409,7 +407,7 @@ TEST_CASE("notifications: async delivery") {
 
         SECTION("refresh() blocks") {
             REQUIRE(notification_calls == 1);
-            joining_thread thread([&] {
+            JoiningThread thread([&] {
                 std::this_thread::sleep_for(std::chrono::microseconds(5000));
                 coordinator->on_change();
             });
@@ -419,7 +417,7 @@ TEST_CASE("notifications: async delivery") {
 
         SECTION("begin_transaction() blocks") {
             REQUIRE(notification_calls == 1);
-            joining_thread thread([&] {
+            JoiningThread thread([&] {
                 std::this_thread::sleep_for(std::chrono::microseconds(5000));
                 coordinator->on_change();
             });
@@ -845,6 +843,27 @@ TEST_CASE("notifications: skip") {
         advance_and_notify(*r);
         REQUIRE(calls1 == 2);
     }
+
+    SECTION("removing skipped notifier before it gets the chance to run") {
+        advance_and_notify(*r);
+        REQUIRE(calls1 == 1);
+
+        // Set the skip version
+        make_local_change(token1);
+        // Advance the file to a version after the skip version
+        make_remote_change();
+        REQUIRE(calls1 == 1);
+
+        // Remove the skipped notifier and add an entirely new notifier, so that
+        // notifications need to run but the skip logic shouldn't be used
+        token1 = {};
+        results = {};
+        Results results2(r, table->where());
+        auto token2 = add_callback(results2, calls1, changes1);
+
+        advance_and_notify(*r);
+        REQUIRE(calls1 == 2);
+    }
 }
 
 #if REALM_PLATFORM_APPLE
@@ -1042,7 +1061,16 @@ TEST_CASE("notifications: sync") {
         // Start the server and wait for the Realm to be uploaded so that sync
         // makes some writes to the Realm and bumps the version
         server.start();
-        SyncManager::shared().get_session(config.path, *config.sync_config)->wait_for_upload_completion_blocking();
+        std::condition_variable cv;
+        std::mutex wait_mutex;
+        std::atomic<bool> wait_flag(false);
+        SyncManager::shared().get_session(config.path, *config.sync_config)->wait_for_upload_completion([&](auto) {
+            wait_flag = true;
+            cv.notify_one();
+        });
+        std::unique_lock<std::mutex> lock(wait_mutex);
+        cv.wait(lock, [&]() { return wait_flag == true; });
+
         // Make sure that the notifications still get delivered rather than
         // waiting forever due to that we don't get a commit notification from
         // the commits sync makes to store the upload progress
@@ -2037,6 +2065,22 @@ TEST_CASE("results: snapshots") {
         Results results(r, q.find_all());
         auto snapshot = results.snapshot();
         CHECK_THROWS(snapshot.add_notification_callback([](CollectionChangeSet, std::exception_ptr) {}));
+    }
+
+    SECTION("accessors should return none for detached row") {
+        auto table = r->read_group().get_table("class_object");
+        write([=] {
+            table->add_empty_row();
+        });
+        Results results(r, *table);
+        auto snapshot = results.snapshot();
+        write([=] {;
+            table->clear();
+        });
+
+        REQUIRE_FALSE(snapshot.get(0).is_attached());
+        REQUIRE_FALSE(snapshot.first()->is_attached());
+        REQUIRE_FALSE(snapshot.last()->is_attached());
     }
 }
 

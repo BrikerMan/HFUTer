@@ -37,6 +37,18 @@ static const std::string s_test_token = "eyJpZGVudGl0eSI6InRlc3QiLCAiYWNjZXNzIjo
 
 #endif
 
+class JoiningThread {
+public:
+    template<typename... Args>
+    JoiningThread(Args&&... args) : m_thread(std::forward<Args>(args)...) { }
+    ~JoiningThread() { if (m_thread.joinable()) m_thread.join(); }
+    void join() { m_thread.join(); }
+
+private:
+    std::thread m_thread;
+};
+
+
 struct TestFile : realm::Realm::Config {
     TestFile();
     ~TestFile();
@@ -74,6 +86,7 @@ public:
     ~SyncServer();
 
     void start();
+    void stop();
 
     std::string url_for_realm(realm::StringData realm_name) const;
     std::string base_url() const { return m_url; }
@@ -86,7 +99,7 @@ private:
 
 struct SyncTestFile : TestFile {
     SyncTestFile(const realm::SyncConfig&);
-    SyncTestFile(SyncServer& server);
+    SyncTestFile(SyncServer& server, std::string name="");
 };
 
 #endif // REALM_ENABLE_SYNC

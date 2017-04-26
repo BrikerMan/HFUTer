@@ -7,6 +7,7 @@ set(HEADERS
 )
 
 set(SOURCES
+    any.cpp
     collection_change_indices.cpp
     thread_safe_reference.cpp
     index_set.cpp
@@ -20,6 +21,7 @@ set(SOURCES
     results.cpp
     schema.cpp
     transaction_log_parsing.cpp
+    uuid.cpp
     util/event_loop.cpp
     util/test_file.cpp
 )
@@ -28,11 +30,14 @@ set(SOURCES
 if(REALM_ENABLE_SYNC)
     list(APPEND HEADERS
         sync/sync_test_utils.hpp
+        sync/session/session_util.hpp
     )
     list(APPEND SOURCES 
         sync/file.cpp
         sync/metadata.cpp
-        sync/session.cpp
+        sync/session/session.cpp
+        sync/session/progress_notifications.cpp
+        sync/session/wait_for_completion.cpp
         sync/sync_manager.cpp
         sync/sync_test_utils.cpp
         sync/user.cpp

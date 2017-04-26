@@ -4,4 +4,3 @@ github "mxcl/PromiseKit"
 
 github "BrikerMan/Observable-Swift" "HEAD"
 github "BrikerMan/MJRefresh"
-github "realm/realm-cocoa"

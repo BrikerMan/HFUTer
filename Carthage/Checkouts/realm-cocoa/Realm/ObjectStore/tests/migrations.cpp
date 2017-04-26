@@ -28,27 +28,15 @@
 #include <realm/descriptor.hpp>
 #include <realm/group.hpp>
 #include <realm/table.hpp>
+#include <realm/util/scope_exit.hpp>
+
+#ifdef _WIN32
+#include <Windows.h>
+#endif
 
 using namespace realm;
 
-#define VERIFY_SCHEMA(r) do { \
-    for (auto&& object_schema : (r).schema()) { \
-        auto table = ObjectStore::table_for_object_type((r).read_group(), object_schema.name); \
-        REQUIRE(table); \
-        CAPTURE(object_schema.name) \
-        std::string primary_key = ObjectStore::get_primary_key_for_object((r).read_group(), object_schema.name); \
-        REQUIRE(primary_key == object_schema.primary_key); \
-        for (auto&& prop : object_schema.persisted_properties) { \
-            size_t col = table->get_column_index(prop.name); \
-            CAPTURE(prop.name) \
-            REQUIRE(col != npos); \
-            REQUIRE(col == prop.table_column); \
-            REQUIRE(table->get_column_type(col) == static_cast<int>(prop.type)); \
-            REQUIRE(table->has_search_index(col) == prop.requires_index()); \
-            REQUIRE(prop.is_primary == (prop.name == primary_key)); \
-        } \
-    } \
-} while (0)
+#define VERIFY_SCHEMA(r) verify_schema((r), __LINE__)
 
 #define REQUIRE_UPDATE_SUCCEEDS(r, s, version) do { \
     REQUIRE_NOTHROW((r).update_schema(s, version)); \
@@ -69,6 +57,27 @@ using namespace realm;
 } while (0)
 
 namespace {
+void verify_schema(Realm& r, int line)
+{
+    CAPTURE(line);
+    for (auto&& object_schema : r.schema()) {
+        auto table = ObjectStore::table_for_object_type(r.read_group(), object_schema.name);
+        REQUIRE(table);
+        CAPTURE(object_schema.name)
+        std::string primary_key = ObjectStore::get_primary_key_for_object(r.read_group(), object_schema.name);
+        REQUIRE(primary_key == object_schema.primary_key);
+        for (auto&& prop : object_schema.persisted_properties) {
+            size_t col = table->get_column_index(prop.name);
+            CAPTURE(prop.name)
+            REQUIRE(col != npos);
+            REQUIRE(col == prop.table_column);
+            REQUIRE(table->get_column_type(col) == static_cast<int>(prop.type));
+            REQUIRE(table->has_search_index(col) == prop.requires_index());
+            REQUIRE(prop.is_primary == (prop.name == primary_key));
+        }
+    }
+}
+
 // Helper functions for modifying Schema objects, mostly for the sake of making
 // it clear what exactly is different about the 2+ schema objects used in
 // various tests
@@ -859,6 +868,23 @@ TEST_CASE("migration: ReadOnly") {
             }
         }
 
+        SECTION("extra tables") {
+            auto realm = realm_with_schema({
+                {"object", {
+                    {"value", PropertyType::Int, "", "", false, false, false},
+                }},
+                {"object 2", {
+                    {"value", PropertyType::Int, "", "", false, false, false},
+                }},
+            });
+            Schema schema = {
+                {"object", {
+                    {"value", PropertyType::Int, "", "", false, false, false},
+                }},
+            };
+            REQUIRE_NOTHROW(realm->update_schema(schema));
+        }
+
         SECTION("missing tables") {
             auto realm = realm_with_schema({
                 {"object", {
@@ -884,10 +910,25 @@ TEST_CASE("migration: ReadOnly") {
             REQUIRE(object_schema->persisted_properties.size() == 1);
             REQUIRE(object_schema->persisted_properties[0].table_column == size_t(-1));
         }
+
+        SECTION("extra columns in table") {
+            auto realm = realm_with_schema({
+                {"object", {
+                    {"value", PropertyType::Int, "", "", false, false, false},
+                    {"value 2", PropertyType::Int, "", "", false, false, false},
+                }},
+            });
+            Schema schema = {
+                {"object", {
+                    {"value", PropertyType::Int, "", "", false, false, false},
+                }},
+            };
+            REQUIRE_NOTHROW(realm->update_schema(schema));
+        }
     }
 
     SECTION("disallowed mismatches") {
-        SECTION("add column") {
+        SECTION("missing columns in table") {
             auto realm = realm_with_schema({
                 {"object", {
                     {"value", PropertyType::Int, "", "", false, false, false},
@@ -927,24 +968,55 @@ TEST_CASE("migration: ResetFile") {
         }},
     };
 
+// To verify that the file has actually be deleted and recreated, on
+// non-Windows we need to hold an open file handle to the old file to force
+// using a new inode, but on Windows we *can't*
+#ifdef _WIN32
+    auto get_fileid = [&] {
+        // this is wrong for non-ascii but it's what core does
+        std::wstring ws(config.path.begin(), config.path.end());
+        HANDLE handle = CreateFile2(ws.c_str(), GENERIC_READ,
+                                    FILE_SHARE_READ | FILE_SHARE_WRITE, OPEN_EXISTING,
+                                    nullptr);
+        REQUIRE(handle != INVALID_HANDLE_VALUE);
+        auto close = util::make_scope_exit([=]() noexcept { CloseHandle(handle); });
+
+        BY_HANDLE_FILE_INFORMATION info{};
+        REQUIRE(GetFileInformationByHandle(handle, &info));
+        return (DWORDLONG)info.nFileIndexHigh + (DWORDLONG)info.nFileIndexLow;
+    };
+#else
+    auto get_fileid = [&] {
+        util::File::UniqueID id;
+        util::File::get_unique_id(config.path, id);
+        return id.inode;
+    };
+    File holder(config.path, File::mode_Write);
+#endif
+
     {
         auto realm = Realm::get_shared_realm(config);
+        auto ino = get_fileid();
         realm->update_schema(schema);
+        REQUIRE(ino == get_fileid());
         realm->begin_transaction();
         ObjectStore::table_for_object_type(realm->read_group(), "object")->add_empty_row();
         realm->commit_transaction();
     }
     auto realm = Realm::get_shared_realm(config);
+    auto ino = get_fileid();
 
     SECTION("file is reset when schema version increases") {
         realm->update_schema(schema, 1);
         REQUIRE(ObjectStore::table_for_object_type(realm->read_group(), "object")->size() == 0);
+        REQUIRE(ino != get_fileid());
     }
 
     SECTION("file is reset when an existing table is modified") {
         realm->update_schema(add_property(schema, "object",
                                           {"value 2", PropertyType::Int, "", "", false, false, false}));
         REQUIRE(ObjectStore::table_for_object_type(realm->read_group(), "object")->size() == 0);
+        REQUIRE(ino != get_fileid());
     }
 
     SECTION("file is not reset when adding a new table") {
@@ -953,6 +1025,7 @@ TEST_CASE("migration: ResetFile") {
         }}));
         REQUIRE(ObjectStore::table_for_object_type(realm->read_group(), "object")->size() == 1);
         REQUIRE(realm->schema().size() == 3);
+        REQUIRE(ino == get_fileid());
     }
 
     SECTION("file is not reset when removing a table") {
@@ -960,32 +1033,36 @@ TEST_CASE("migration: ResetFile") {
         REQUIRE(ObjectStore::table_for_object_type(realm->read_group(), "object")->size() == 1);
         REQUIRE(ObjectStore::table_for_object_type(realm->read_group(), "object 2"));
         REQUIRE(realm->schema().size() == 1);
+        REQUIRE(ino == get_fileid());
     }
 
     SECTION("file is not reset when adding an index") {
         realm->update_schema(set_indexed(schema, "object", "value", true));
         REQUIRE(ObjectStore::table_for_object_type(realm->read_group(), "object")->size() == 1);
+        REQUIRE(ino == get_fileid());
     }
 
     SECTION("file is not reset when removing an index") {
         realm->update_schema(set_indexed(schema, "object", "value", true));
         realm->update_schema(schema);
         REQUIRE(ObjectStore::table_for_object_type(realm->read_group(), "object")->size() == 1);
+        REQUIRE(ino == get_fileid());
     }
 }
 
 TEST_CASE("migration: Additive") {
-    InMemoryTestFile config;
-    config.schema_mode = SchemaMode::Additive;
-    config.cache = false;
-    auto realm = Realm::get_shared_realm(config);
-
     Schema schema = {
         {"object", {
             {"value", PropertyType::Int, "", "", false, true, false},
             {"value 2", PropertyType::Int, "", "", false, false, true},
         }},
     };
+
+    TestFile config;
+    config.schema_mode = SchemaMode::Additive;
+    config.cache = false;
+    config.schema = schema;
+    auto realm = Realm::get_shared_realm(config);
     realm->update_schema(schema);
 
     SECTION("can add new properties to existing tables") {
@@ -1129,9 +1206,112 @@ TEST_CASE("migration: Additive") {
         REQUIRE(realm->schema().find("object")->persisted_properties[0].table_column == 1);
         REQUIRE(realm->schema().find("object")->persisted_properties[1].table_column == 2);
 
+        // Gets the schema from the RealmCoordinator
         auto realm3 = Realm::get_shared_realm(config);
         REQUIRE(realm3->schema().find("object")->persisted_properties[0].table_column == 1);
         REQUIRE(realm3->schema().find("object")->persisted_properties[1].table_column == 2);
+
+        // Close and re-open the file entirely so that the coordinator is recreated
+        realm.reset();
+        realm2.reset();
+        realm3.reset();
+
+        realm = Realm::get_shared_realm(config);
+        REQUIRE(realm->schema() == schema);
+        REQUIRE(realm->schema().find("object")->persisted_properties[0].table_column == 1);
+        REQUIRE(realm->schema().find("object")->persisted_properties[1].table_column == 2);
+    }
+
+    SECTION("can have different subsets of columns in different Realm instances") {
+        auto config2 = config;
+        config2.schema = add_property(schema, "object",
+                                      {"value 3", PropertyType::Int, "", "", false, false, false});
+        auto config3 = config;
+        config3.schema = remove_property(schema, "object", "value 2");
+
+        auto config4 = config;
+        config4.schema = util::none;
+
+        auto realm2 = Realm::get_shared_realm(config2);
+        auto realm3 = Realm::get_shared_realm(config3);
+        REQUIRE(realm->schema().find("object")->persisted_properties.size() == 2);
+        REQUIRE(realm2->schema().find("object")->persisted_properties.size() == 3);
+        REQUIRE(realm3->schema().find("object")->persisted_properties.size() == 1);
+
+        realm->refresh();
+        realm2->refresh();
+        REQUIRE(realm->schema().find("object")->persisted_properties.size() == 2);
+        REQUIRE(realm2->schema().find("object")->persisted_properties.size() == 3);
+
+        // No schema specified; should see all of them
+        auto realm4 = Realm::get_shared_realm(config4);
+        REQUIRE(realm4->schema().find("object")->persisted_properties.size() == 3);
+    }
+
+    SECTION("updating a schema to include already-present column") {
+        auto config2 = config;
+        config2.schema = add_property(schema, "object",
+                                      {"value 3", PropertyType::Int, "", "", false, false, false});
+        auto realm2 = Realm::get_shared_realm(config2);
+
+        REQUIRE_NOTHROW(realm->update_schema(*config2.schema));
+        REQUIRE(realm->schema().find("object")->persisted_properties.size() == 3);
+        auto& properties = realm->schema().find("object")->persisted_properties;
+        REQUIRE(properties[0].table_column == 0);
+        REQUIRE(properties[1].table_column == 1);
+        REQUIRE(properties[2].table_column == 2);
+    }
+
+    SECTION("increasing schema version without modifying schema properly leaves the schema untouched") {
+        TestFile config1;
+        config1.schema = schema;
+        config1.schema_mode = SchemaMode::Additive;
+        config1.schema_version = 0;
+
+        auto realm1 = Realm::get_shared_realm(config1);
+        REQUIRE(realm1->schema().size() == 1);
+        Schema schema1 = realm1->schema();
+        realm1->close();
+
+        auto config2 = config1;
+        config2.schema_version = 1;
+        auto realm2 = Realm::get_shared_realm(config2);
+        REQUIRE(realm2->schema() == schema1);
+    }
+
+    SECTION("invalid schema update leaves the schema untouched") {
+        auto config2 = config;
+        config2.schema = add_property(schema, "object", {"value 3", PropertyType::Int});
+        auto realm2 = Realm::get_shared_realm(config2);
+
+        REQUIRE_THROWS(realm->update_schema(add_property(schema, "object", {"value 3", PropertyType::Float})));
+        REQUIRE(realm->schema().find("object")->persisted_properties.size() == 2);
+    }
+
+    SECTION("update_schema() does not begin a write transaction when extra columns are present") {
+        realm->begin_transaction();
+
+        auto realm2 = Realm::get_shared_realm(config);
+        // will deadlock if it tries to start a write transaction
+        realm2->update_schema(remove_property(schema, "object", "value"));
+    }
+
+    SECTION("update_schema() does not begin a write transaction when indexes are changed without bumping schema version") {
+        realm->begin_transaction();
+
+        auto realm2 = Realm::get_shared_realm(config);
+        // will deadlock if it tries to start a write transaction
+        realm->update_schema(set_indexed(schema, "object", "value 2", true));
+    }
+
+    SECTION("update_schema() does not begin a write transaction for invalid schema changes") {
+        realm->begin_transaction();
+
+        auto realm2 = Realm::get_shared_realm(config);
+        auto new_schema = add_property(remove_property(schema, "object", "value"),
+                                       "object", {"value", PropertyType::Float});
+        // will deadlock if it tries to start a write transaction
+        REQUIRE_THROWS(realm2->update_schema(new_schema));
     }
 }
 
@@ -1272,5 +1452,14 @@ TEST_CASE("migration: Manual") {
         REQUIRE(realm->schema_version() == 1);
         REQUIRE_THROWS(realm->update_schema(schema, 0, [](SharedRealm, SharedRealm, Schema&){}));
         REQUIRE(realm->schema_version() == 1);
+    }
+
+    SECTION("update_schema() does not begin a write transaction when schema version is unchanged") {
+        realm->begin_transaction();
+
+        auto realm2 = Realm::get_shared_realm(config);
+        // will deadlock if it tries to start a write transaction
+        REQUIRE_NOTHROW(realm2->update_schema(schema));
+        REQUIRE_THROWS(realm2->update_schema(remove_property(schema, "object", "value")));
     }
 }
