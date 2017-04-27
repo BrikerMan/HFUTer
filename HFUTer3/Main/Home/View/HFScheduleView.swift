@@ -7,17 +7,22 @@
 //
 
 import UIKit
+import MJRefresh
 import SnapKit
 
 fileprivate class kSchedule {
     static var day = 5
-    static let cellWidth  = (ScreenWidth - 30) / 5
-    static let cellHeight = (ScreenHeight - 64 - 49) / 11
+    static var cellWidth  = (ScreenWidth - 30) / CGFloat(kSchedule.day)
+    static var cellHeight = (ScreenHeight - 64 - 49) / 11
     
     static let leftWidth: CGFloat = 30
     static let topHeight: CGFloat = 40
     
     static let dayNamesList = ["","周一","周二","周三","周四","周五","周六","周日"]
+}
+
+protocol HFScheduleViewDelegate: class {
+    func scheduleViewDidStartRefresh()
 }
 
 class HFScheduleView: HFView {
@@ -32,6 +37,8 @@ class HFScheduleView: HFView {
     
     var schedules: [HFScheduleModel] = []
     
+    var delegate: HFScheduleViewDelegate?
+    
     override func initSetup() {
         setupBaseViews()
         
@@ -40,9 +47,14 @@ class HFScheduleView: HFView {
         
         DataEnv.settings.weekendSchedule.asObservable().subscribe(onNext: { [weak self] (element) in
             kSchedule.day = element ? 7 : 5
+            kSchedule.cellWidth  = (ScreenWidth - 30) / CGFloat(kSchedule.day)
             self?.setupTopView()
             self?.setup(with: self?.schedules ?? [])
         }).addDisposableTo(disposeBag)
+        
+        scrollView.mj_header = MJRefreshNormalHeader(refreshingBlock: { [weak self] in
+            self?.delegate?.scheduleViewDidStartRefresh()
+        })
     }
     
     func setup(with schedules: [HFScheduleModel]) {
@@ -140,8 +152,6 @@ class HFScheduleView: HFView {
             }
         }
     }
-    
-
     
     fileprivate func drawScheduleView(viewModels: [HFCourceViewModel]) {
         scheduleCells.removeAll()

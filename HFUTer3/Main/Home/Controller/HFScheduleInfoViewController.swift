@@ -90,6 +90,15 @@ class HFScheduleInfoViewController: HFFormViewController {
     }
     
     @objc fileprivate func onSegmentChanged() {
+        form.setValues(["name": "", "place": ""])
+        if let model = currentModel {
+            newModel.name  = model.name
+            newModel.place = model.place
+            newModel.weeks = model.cources.first?.weeks ?? []
+            newModel.colorName = model.color
+            newModel.duration = model.duration
+            newModel.hour = model.start
+        }
         updateValue()
     }
     

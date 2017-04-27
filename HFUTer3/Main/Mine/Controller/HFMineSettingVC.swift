@@ -20,6 +20,7 @@ class HFMineSettingVC: HFFormViewController {
                 $0.value =  DataEnv.settings.weekendSchedule.value
                 }.onChange({ (row) in
                     DataEnv.settings.weekendSchedule.value = row.value!
+                    DataEnv.settings.save()
                     if DataEnv.settings.weekendSchedule.value {
                         AnalyseManager.OpenWeekendSchudule.record()
                     } else {
@@ -32,6 +33,7 @@ class HFMineSettingVC: HFFormViewController {
                 $0.value =  DataEnv.settings.scheduleRoundStyle.value
                 }.onChange({ (row) in
                     DataEnv.settings.scheduleRoundStyle.value = row.value!
+                    DataEnv.settings.save()
                 })
             
             +++ Section()

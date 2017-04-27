@@ -67,8 +67,10 @@ class HFHomeVC: HFBasicViewController{
             if let error = error {
                 self.showEduError(error: error)
             } else {
-                self.scheduleView.setup(with: result)
-                Logger.debug(result.description)
+                runOnMainThread {
+                    self.scheduleView.setup(with: result)
+                    self.scheduleView.scrollView.mj_header.endRefreshing()
+                }
             }
             Hud.dismiss()
         }
@@ -121,7 +123,7 @@ class HFHomeVC: HFBasicViewController{
         navTitleLabel.morphingEffect = LTMorphingEffect.evaporate
         
         scheduleView = HFScheduleView()
-//        scheduleView.delegate = self
+        scheduleView.delegate = self
         view.addSubview(scheduleView)
         
         scheduleView.snp.makeConstraints { (make) in
@@ -168,23 +170,32 @@ class HFHomeVC: HFBasicViewController{
     }
 }
 
-//extension HFHomeVC: HFHomeSchudulesViewDelegate {
-//    func scheduleViewDidStartRefresh() {
-//        viewModel.refreshSchedule(for: currentWeek) { result, error in
-//            if let error = error {
-//                self.loadFromServer(with: error)
-//            } else {
-//                self.scheduleView.setupWithCourses(result)
-//                self.scheduleView.setupWithWeek(self.currentWeek)
-//            }
-//            runOnMainThread {
-//                self.scheduleView.collectionView.endRefresh()
-//            }
-//        }
-//    }
-//    
-//}
-//
+extension HFHomeVC: HFScheduleViewDelegate {
+    func scheduleViewDidStartRefresh() {
+        let cache = UIAlertAction(title: "继续", style: .default) { (action) in
+            self.viewModel.refreshSchedule(for: self.currentWeek) { result, error in
+                if let error = error {
+                    self.loadFromServer(with: error)
+                } else {
+                    runOnMainThread {
+                        self.scheduleView.setup(with: result)
+                        self.scheduleView.scrollView.mj_header.endRefreshing()
+                    }
+                }
+            }
+        }
+        
+        let cancel = UIAlertAction(title: "取消", style: .cancel) { _ in
+            runOnMainThread {
+                self.scheduleView.scrollView.mj_header.endRefreshing()
+            }
+        }
+        
+        self.showAlert(title: "", message: "刷新课表将会导致对于【从服务器获取的课程】进行的自定义操作丢失，本地新增课程不受影响。", actions: [cache, cancel] )
+    }
+    
+}
+
 
 extension HFHomeVC: HFHomeScheduleSelectWeekViewDelegate {
     func selectWeekViewDidSelectedOnWeek(weekIndex index: Int) {

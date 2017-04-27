@@ -25,7 +25,7 @@ protocol SQLiteCachable {
 
 
 class DatabaseManager {
-    let dbPath = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.eliyar.biz.hfuter")!.appendingPathComponent("db.sqlite").path
+    let dbPath = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.eliyar.biz.hfuter")!.appendingPathComponent("data.sqlite").path
     
     static let shared = DatabaseManager()
     

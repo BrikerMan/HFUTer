@@ -54,10 +54,11 @@ class HFCourceViewModel: CustomStringConvertible {
             cource.name        = model.name
             cource.place       = model.place
             cource.colorName   = model.colorName
-            
+            cource.day         = model.day
             cource.weeks       = model.weeks
-            cource.isUserAdded = true
             cource.hour        = model.hour + i
+            cource.isUserAdded = true
+            
             DBManager.insert(item: cource, to: .schedule)
         }
     }

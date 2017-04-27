@@ -177,11 +177,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let key = "isFirstLaunchFor\(ez.appBuild ?? "0000")"
         let isFirstLaunch = UserDefaults.standard.object(forKey: key) as? Bool ?? true
         if isFirstLaunch {
-            UserDefaults.standard.set(false, forKey: key)
-            
-            let cache = YYWebImageManager.shared().cache
-            cache?.memoryCache.removeAllObjects()
-            cache?.diskCache.removeAllObjects()
+//            UserDefaults.standard.set(false, forKey: key)
+//            
+//            let cache = YYWebImageManager.shared().cache
+//            cache?.memoryCache.removeAllObjects()
+//            cache?.diskCache.removeAllObjects()
         }
     }
 }
