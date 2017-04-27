@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES" initialViewController="lX2-wg-FOF">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES" initialViewController="lX2-wg-FOF">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -55,16 +55,29 @@
                                             <constraint firstAttribute="height" constant="10" id="bI3-hY-MbV"/>
                                         </constraints>
                                     </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1dC-oY-TUx">
+                                        <rect key="frame" x="330" y="22" width="40" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="40" id="Lnc-8p-VJ9"/>
+                                            <constraint firstAttribute="height" constant="40" id="owc-6d-Rd3"/>
+                                        </constraints>
+                                        <state key="normal" image="hf_community_publish_plus_icon"/>
+                                        <connections>
+                                            <action selector="onAddScheduleButtonPressed:" destination="lX2-wg-FOF" eventType="touchUpInside" id="npN-Bp-UAB"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="0.35686274509999999" blue="0.3411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="9Fh-de-I30" firstAttribute="leading" secondItem="le6-eL-oFa" secondAttribute="trailing" constant="6" id="6lQ-wa-rm8"/>
+                                    <constraint firstItem="1dC-oY-TUx" firstAttribute="centerY" secondItem="uVs-c3-YSu" secondAttribute="centerY" constant="10" id="6rF-fI-njR"/>
                                     <constraint firstItem="le6-eL-oFa" firstAttribute="centerX" secondItem="uVs-c3-YSu" secondAttribute="centerX" constant="-8" id="JTA-ss-gu2"/>
                                     <constraint firstItem="le6-eL-oFa" firstAttribute="centerY" secondItem="uVs-c3-YSu" secondAttribute="centerY" constant="10" id="KID-ke-Tfq"/>
                                     <constraint firstItem="dm9-Eq-DBx" firstAttribute="centerX" secondItem="uVs-c3-YSu" secondAttribute="centerX" id="VCZ-eE-KbW"/>
                                     <constraint firstItem="dm9-Eq-DBx" firstAttribute="centerY" secondItem="uVs-c3-YSu" secondAttribute="centerY" constant="10" id="aBd-Cs-6YP"/>
                                     <constraint firstItem="9Fh-de-I30" firstAttribute="centerY" secondItem="le6-eL-oFa" secondAttribute="centerY" id="dFV-SY-lTj"/>
                                     <constraint firstAttribute="height" constant="64" id="sW2-f5-PaU"/>
+                                    <constraint firstAttribute="trailing" secondItem="1dC-oY-TUx" secondAttribute="trailing" constant="5" id="zvS-zU-ytt"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Umf-gG-cUJ">
@@ -96,6 +109,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="hf_community_publish_plus_icon" width="20" height="20"/>
         <image name="hf_nav_home_arrow_icon" width="15" height="15"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

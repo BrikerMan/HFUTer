@@ -9,8 +9,8 @@
 import Foundation
 import Pitaya
 
-typealias JSONItem = JSONND
 typealias PitaHTTPMethod = HTTPMethod
+typealias JSON = [String: Any]
 
 class HFAPIRequest {
     var manager: HFAPIRequestManager!
@@ -33,13 +33,14 @@ class HFAPIRequestManager {
     var param: JSON = JSON()
     
     init(api: String, method: PitaHTTPMethod, param: JSON = JSON()) {
+        self.api    = api
         self.method = method
         self.param  = param
     }
     
     func response(callback: ((_ json: JSONItem, _ error: String?, _ isNetError: Bool) -> Void)?) {
-        let url = APIBaseURL + api 
-        log.infoLog("| FLBaseRequest | fire request @ \(api) | params: \n \(param)")
+        let url = APIBaseURL + "/" + api
+//        log.infoLog("| FLBaseRequest | fire request @ \(api) | params: \n \(param)")
         
         Pita.build(HTTPMethod: .POST, url: url)
             .addParams(param)
@@ -48,11 +49,10 @@ class HFAPIRequestManager {
                 callback?(JSONND(),error.localizedDescription, true)
             })
             .responseJSON { (json, response) in
-                print(json)
-                if json["status"].intValue == 200 {
+                if json["statue"].intValue == 1 {
                     callback?(json["data"], nil, false)
                 } else {
-                    callback?(JSONND(),json["error_msg"].string ?? "服务器为返回错误信息", false)
+                    callback?(JSONND(),json["error_msg"].string ?? "服务器未返回错误信息", false)
                 }
         }
     }

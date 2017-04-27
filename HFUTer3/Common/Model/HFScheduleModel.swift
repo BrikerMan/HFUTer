@@ -8,6 +8,7 @@
 
 import Foundation
 import FMDB
+import PromiseKit
 
 /*
  {
@@ -18,6 +19,7 @@ import FMDB
  */
 
 class HFScheduleModel: SQLiteCachable {
+    
     var id = UUID().uuidString
     
     var name        : String = ""
@@ -29,6 +31,8 @@ class HFScheduleModel: SQLiteCachable {
     
     var hour  = 0
     var day   = 0
+    
+    var duration = 0
     
     var weeks = [Int]()
     
@@ -67,27 +71,34 @@ class HFScheduleModel: SQLiteCachable {
         for item in json["week"].arrayValue {
             weeks.append(item.intValue)
         }
+        
+        colorName = HFTheme.getColor(for: name).name
     }
     
+    /**
+     检查是否已保存
+     */
+    static func check() -> Promise<Void> {
+        return Promise<Void> { fullfill, reject in
+            if DBManager.count(from: HFBDTable.schedule) > 0 {
+                Logger.debug(("读取缓存课表成功"))
+                reject(HFParseError.fullfill)
+            } else {
+                Logger.error(("读取缓存课表失败"))
+                fullfill()
+            }
+        }
+    }
     
-    
-    static func read(for week: Int) -> [[HFScheduleModel]] {
+    static func read(for week: Int) -> [HFScheduleModel] {
         var filter: String?
         if week != 0 {
             let formatter = NumberFormatter()
             formatter.minimumIntegerDigits = 2
-            filter = "weeks LIKE '%\(formatter.string(from: 2)!)%'"
+            filter = "weeks LIKE '%\(formatter.string(for: week)!)%'"
         }
         let cources = DBManager.read(from: .schedule, type: HFScheduleModel.self, filter: filter)
-        
-        var days = Array(repeating: [HFScheduleModel](), count: 7)
-        
-        for c in cources {
-            days[c.day].append(c)
-        }
-        
-        
-        return days
+        return cources
     }
     
     
@@ -112,8 +123,8 @@ class HFScheduleModel: SQLiteCachable {
         
         let week = weeks.map{ formatter.string(for: $0)! }
         let weekStr = week.joined(separator: ",")
-        return ("INSERT OR REPLACE INTO \(tableName) (id, name, colorName, isHidden, isUserAdded, hour, day, weeks) values (?, ?, ?, ?, ?, ?, ?, ?);",
-            [id, name, colorName, isHidden, isUserAdded, hour, day, weekStr])
+        return ("INSERT OR REPLACE INTO \(tableName) (id, name, colorName, isHidden, isUserAdded, hour, day, place, weeks) values (?, ?, ?, ?, ?, ?, ?, ?, ?);",
+            [id, name, colorName, isHidden, isUserAdded, hour, day, place , weekStr])
     }
 }
 

@@ -15,6 +15,7 @@ enum HFBDTable: String {
     case schedule
 }
 
+typealias BoolBlock = (Bool)->Void
 
 protocol SQLiteCachable {
     var id: String { get }
@@ -24,7 +25,7 @@ protocol SQLiteCachable {
 
 
 class DatabaseManager {
-    let dbPath = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.eliyar.biz.hfuter")!.appendingPathComponent("db.sqlite").path
+    let dbPath = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.eliyar.biz.hfuter")!.appendingPathComponent("data.sqlite").path
     
     static let shared = DatabaseManager()
     
@@ -36,15 +37,17 @@ class DatabaseManager {
      - parameter item: item model
      - parameter to:   target table type
      */
-    func insert<T:SQLiteCachable>(item: T, to: HFBDTable) {
+    func insert<T:SQLiteCachable>(item: T, to: HFBDTable, completion: BoolBlock? = nil) {
         let statement = item.insertSQLStatement(tableName: to.rawValue)
         databaseQueue.inTransaction { db, rollback in
             do {
                 try db?.executeUpdate(statement.sql, values: statement.values)
                 Logger.debug("\(item) inserted to \(to.rawValue) table")
+                completion?(true)
             } catch {
                 rollback?.pointee = true
                 Logger.error(error.localizedDescription)
+                completion?(false)
             }
         }
     }
@@ -54,29 +57,29 @@ class DatabaseManager {
      - parameter piandaoId: 频道ID
      */
     func delete(id: [String], from: HFBDTable) {
-        let db = FMDatabase(path: dbPath)!
-        db.open()
-        do {
-            try db.executeUpdate(sql: "DELETE from \(from.rawValue) where id in (\(id.joined(separator: ",")));")
-        } catch {
-            Logger.error("DELETE from \(from.rawValue) where id in (\(id));  error \(error.localizedDescription)")
+        let statement =  "DELETE from \(from.rawValue) where id in ('\(id.joined(separator: "','"))');"
+        databaseQueue.inTransaction { db, rollback in
+            do {
+                try db?.executeUpdate(statement, values: [])
+                Logger.debug("executed | \(statement)")
+            } catch {
+                Logger.error("DELETE from \(from.rawValue) where id in (\(id.joined(separator: ","))); failed \(error.localizedDescription)")
+            }
         }
-        db.commit()
-        db.close()
     }
     
     /**
      读取数据
      - returns: 读取model列表
      */
-    func read<T:SQLiteCachable>(from: HFBDTable, type: T.Type, filter: String?) -> [T] {
+    func read<T:SQLiteCachable>(from: HFBDTable, type: T.Type, filter: String? = nil) -> [T] {
         var models: [T] = []
         let db = FMDatabase(path: dbPath)!
         db.open()
         
         var sql = "SELECT * FROM \(from.rawValue)"
         if let filter = filter {
-           sql += " WHERE " + filter
+            sql += " WHERE " + filter
         }
         
         let rs = try! db.executeQuery(sql, values: [])
@@ -85,6 +88,25 @@ class DatabaseManager {
         }
         db.close()
         return models
+    }
+    
+    func count(from: HFBDTable, filter: String? = nil) -> Int {
+        let db = FMDatabase(path: dbPath)!
+        db.open()
+        
+        var sql = "Select COUNT(*) as count from \(from.rawValue)"
+        if let filter = filter {
+            sql += " WHERE " + filter
+        }
+        
+        var count = 0
+        if let rs = try? db.executeQuery(sql, values: []) {
+            while rs.next() {
+                count = Int(rs.int(forColumn: "count"))
+            }
+        }
+        db.close()
+        return count
     }
     
     func execute(sql: String) {
@@ -117,7 +139,7 @@ class DatabaseManager {
         databaseQueue = FMDatabaseQueue(path: dbPath)
         Logger.info("DB Path \(dbPath)")
         do {
-            try database.executeUpdate("CREATE TABLE \(HFBDTable.schedule.rawValue) (id TEXT PRIMARY KEY UNIQUE, name TEXT, colorName TEXT, isHidden Boolean, isUserAdded Boolean, hour INTEGER, day INTEGER, weeks TEXT);", values: nil)
+            try database.executeUpdate("CREATE TABLE \(HFBDTable.schedule.rawValue) (id TEXT PRIMARY KEY UNIQUE, name TEXT, colorName TEXT, isHidden Boolean, isUserAdded Boolean, hour INTEGER, day INTEGER, place TEXT, weeks TEXT);", values: nil)
             Logger.debug("created table success \(dbPath)")
         } catch {
             Logger.error("failed: \(error.localizedDescription)")

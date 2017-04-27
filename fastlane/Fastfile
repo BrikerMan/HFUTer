@@ -14,7 +14,7 @@
 fastlane_version "2.18.3"
 
 default_platform :ios
-# xcode_select "/Applications/Xcode8.2.app"
+xcode_select "/Applications/Xcode_signed.app"
 
 platform :ios do
   before_all do
@@ -42,6 +42,7 @@ platform :ios do
    
     # pilot
     testflight(skip_waiting_for_build_processing: true)
+    upload_symbols
   end
 
   desc "Deploy a new version to the App Store"
@@ -59,7 +60,12 @@ platform :ios do
     # frameit
   end
 
-  # You can define as many lanes as you want
+  lane :upload_symbols do
+    upload_symbols_to_crashlytics(
+      dsym_path: "./fastlane/build/HFUTer3.app.dSYM.zip",
+      api_token: "30c973b0d55a48d385f1d11539cfde51f70bc573"
+    )
+  end
 
   after_all do |lane|
     # This block is called, only if the executed lane was successful

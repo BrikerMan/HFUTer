@@ -28,20 +28,20 @@ class HFInfoBookListTableCell: UITableViewCell {
     }
     
     func setupCellWithStruct(_ model:HFInfoBookModel,isLast:Bool){
-        nameLabel.text = model.name
-        codeLabel.text = model.code
-        authorLabel.text = model.author
-        startDateLabel.text = model.startDate
+        nameLabel.text       = model.name
+        codeLabel.text       = model.code
+        authorLabel.text     = model.author
+        startDateLabel.text  = model.startDate
         returnDateLabel.text = model.returnDate
         renewCountLabel.text = model.renewCount
-        locationLabel.text = model.location
+        locationLabel.text   = model.location
         
-        codeLabel.textColor = ColorManager.shared.GreyTextColor
-        authorLabel.textColor = ColorManager.shared.GreyTextColor
-        startDateLabel.textColor = ColorManager.shared.GreyTextColor
-        returnDateLabel.textColor = ColorManager.shared.GreyTextColor
-        renewCountLabel.textColor = ColorManager.shared.GreyTextColor
-        locationLabel.textColor = ColorManager.shared.GreyTextColor
+        codeLabel.textColor       = HFTheme.GreyTextColor
+        authorLabel.textColor     = HFTheme.GreyTextColor
+        startDateLabel.textColor  = HFTheme.GreyTextColor
+        returnDateLabel.textColor = HFTheme.GreyTextColor
+        renewCountLabel.textColor = HFTheme.GreyTextColor
+        locationLabel.textColor   = HFTheme.GreyTextColor
         
         if isLast {
             seperatorLeftConsraint.constant = 0

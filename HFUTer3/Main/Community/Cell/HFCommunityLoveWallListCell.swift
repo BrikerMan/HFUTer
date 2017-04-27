@@ -9,6 +9,7 @@
 import UIKit
 import YYText
 import YYWebImage
+import RxSwift
 
 protocol HFCommunityLoveWallListCellDelegate: class {
     func cellDidPressOnLike(_ index:Int)
@@ -20,6 +21,8 @@ class HFCommunityLoveWallListCell: UITableViewCell, NibReusable {
     
     var index: Int = 0
     var model: HFComLoveWallListModel!
+    
+    var disposeBag = DisposeBag()
     
     @IBOutlet weak var avatarView: HFImageView!
     @IBOutlet weak var usernameLabel: UILabel!
@@ -36,7 +39,7 @@ class HFCommunityLoveWallListCell: UITableViewCell, NibReusable {
     var bigImageView = HFImageView(frame: CGRect.zero)
     
     @IBAction func onLikeButtonPressed(_ sender: AnyObject) {
-        if model.favorite { return }
+        if model.favorite.value { return }
         delegate?.cellDidPressOnLike(self.index)
     }
     
@@ -51,6 +54,12 @@ class HFCommunityLoveWallListCell: UITableViewCell, NibReusable {
         bigImageView.contentMode = .scaleToFill
     }
     
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        disposeBag = DisposeBag()
+    }
+    
     func setupWithModel(_ model: HFComLoveWallListModel, index: Int, isDetail: Bool = false) {
         self.index = index
         self.model = model
@@ -58,7 +67,7 @@ class HFCommunityLoveWallListCell: UITableViewCell, NibReusable {
         // AutolAyout 处理补分
         avatarView.loadAvatar(avatar: model.image)
         if model.name.isBlank {
-            usernameLabel.text = "匿名"
+            usernameLabel.text = "匿名同学"
         } else {
             usernameLabel.text = model.name
         }
@@ -85,8 +94,10 @@ class HFCommunityLoveWallListCell: UITableViewCell, NibReusable {
                 commentCountLabel.text = "  评论"
             }
             
-            let image = model.favorite ? "fm_community_love_wall_like_fill" : "fm_community_love_wall_like"
-            likeImageView.image = UIImage(named: image)
+            model.favorite.asObservable().subscribe(onNext: { [weak self] (element) in
+                let image = element ? "fm_community_love_wall_like_fill" : "fm_community_love_wall_like"
+                self?.likeImageView.image = UIImage(named: image)
+            }).addDisposableTo(disposeBag)
             
             bottomViewHeight.constant = 30
             containerBottom.constant  = 4
@@ -110,21 +121,14 @@ class HFCommunityLoveWallListCell: UITableViewCell, NibReusable {
         
         
         if let _ = model.cImage {
-            var frame = CGRect(x: 53,
-                               y: model.listLayout!.textBoundingSize.height + 54 + 8,
-                               w: 200,
-                               h: 190)
-            if isDetail {
-                frame = CGRect(x: 10,
+            let frame = CGRect(x: 10,
                                y: model.detailLayout!.textBoundingSize.height + 54 + 8,
                                w: ScreenWidth - 20,
                                h: ScreenWidth - 20)
-            }
             
             bigImageView.frame = frame
             
             loadCover(for: model, finished: { (image) in
-                
                 var size = CGSize(width: 100, height: 190)
                 let imagesize  = model.cImageSize ?? image?.size ?? self.bigImageView.size
                 
@@ -143,6 +147,7 @@ class HFCommunityLoveWallListCell: UITableViewCell, NibReusable {
                                                  h: size.height)
             })
         } else {
+            bigImageView.yy_cancelCurrentImageRequest()
             bigImageView.frame = CGRect.zero
         }
     }
@@ -158,18 +163,6 @@ class HFCommunityLoveWallListCell: UITableViewCell, NibReusable {
                 model.cImageSize = image?.size
                 finished?(image)
             })
-            
-//            bigImageView.yy_setImage(with: url,
-//                                     placeholder: placeHolder,
-//                                     options: [.progressiveBlur, .showNetworkActivity],
-//                                     progress: nil,
-//                                     transform: { (image, url) -> UIImage? in
-//                                        return image
-////                                        return image.yy_image(byRoundCornerRadius: 4 * ScreenScale)
-//            }) { (image, url, cacheType, stage, error) in
-//                model.cImageSize = image?.size
-//                finished?(image)
-//            }
         }
     }
     
@@ -208,7 +201,7 @@ class HFCommunityLoveWallListCell: UITableViewCell, NibReusable {
             container.truncationType = YYTextTruncationType.end
             container.truncationToken = NSAttributedString(string: " ...", attributes: [
                 NSFontAttributeName             : UIFont.systemFont(ofSize: 14),
-                NSForegroundColorAttributeName  : UIColor(hexString: "#3d9cdd")!
+                NSForegroundColorAttributeName  : UIColor(hexString: "#3d9cdd")
                 ])
         }
         let layout = YYTextLayout(container: container, text: attText)!

@@ -11,12 +11,7 @@ import Pitaya
 import PromiseKit
 import Gzip
 
-enum HFParseError: Error {
-    case fullfill
-    case loginError
-    case getHtmlFail
-    case suspend(info: String)
-}
+
 
 extension Error {
     var description: String {
@@ -49,7 +44,6 @@ extension Error {
     }
 }
 
-typealias HFParseScheduleResult = ((_ models: [CourseDayModel], _ error: HFParseError?) -> Void)
 
 enum HFParseServerType: String {
     case jw = "教务系统"
@@ -93,9 +87,9 @@ class HFParseViewModel {
     weak var controller: UIViewController?
     
     // 读取课表
-    func fetchSchedule(for week: Int, completion: @escaping ((_ models: [CourseDayModel], _ error: String?) -> Void)) {
+    func fetchSchedule(for week: Int, completion: @escaping ((_ models: [HFScheduleModel], _ error: String?) -> Void)) {
         // 成功失败颠倒
-        HFCourseModel.read(for: week)
+        HFScheduleModel.check()
             .then { Void -> Promise<Void> in
                 return self.fetchScheduleFromServer()
             }.then { Void -> Void in
@@ -103,7 +97,7 @@ class HFParseViewModel {
                 self.refreshSchedule(for: week, completion: completion)
             }.catch { error in
                 if error.isFullfill {
-                    let result = HFCourseModel.readCourses(forWeek: week) ?? []
+                    let result = HFScheduleModel.read(for: week)
                     completion(result, nil)
                 } else {
                     completion([], error.description)
@@ -112,9 +106,9 @@ class HFParseViewModel {
     }
     
     // 刷新课表数据
-    func refreshSchedule(for week: Int, completion: @escaping ((_ models: [CourseDayModel], _ error: String?) -> Void)) {
+    func refreshSchedule(for week: Int, completion: @escaping ((_ models: [HFScheduleModel], _ error: String?) -> Void)) {
         self.refreshData { (error) in
-            let result = HFCourseModel.readCourses(forWeek: week) ?? []
+            let result = HFScheduleModel.read(for: week)
             completion(result, error)
         }
     }
@@ -163,10 +157,12 @@ class HFParseViewModel {
                     Logger.error("获取服务器缓存失败 | \(error)")
                     fullfill()
                 } else {
-                    print(json["data"])
-                    if let array = json["data"].string?.jsonToArray() {
-                        
-                        PlistManager.dataPlist.saveValues([PlistKey.ScheduleList.rawValue: array])
+                    if let _ = json["data"].string?.jsonToArray() {
+                        var data = json["data"]
+                        if let str = json["data"].string {
+                            data = JSONItem(string: str)
+                        }
+                        HFScheduleModel.handlleSchedules(data)
                         Logger.debug("获取服务器缓存成功")
                         reject(HFParseError.fullfill)
                     } else {
@@ -336,15 +332,13 @@ class HFParseViewModel {
                     self.parseData(data: data)
                 }.then { json -> Void in
                     if let array = json["data"].RAW?.jsonToArray() {
-                        let key: String
                         switch self.dataType {
                         case .schedule:
                             HFScheduleModel.handlleSchedules(json["data"])
-                            key = PlistKey.ScheduleList.rawValue
                         case.grades:
-                            key = PlistKey.GradesList.rawValue
+                            PlistManager.dataPlist.saveValues([PlistKey.GradesList.rawValue: array])
                         }
-                        PlistManager.dataPlist.saveValues([key: array])
+                        
                         Logger.debug("解析数据缓存成功")
                         reject(HFParseError.fullfill)
                     } else {

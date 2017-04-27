@@ -11,7 +11,7 @@ import NotificationCenter
 
 struct CourseListType {
     var isToday: Bool
-    var cources: [HFCourseModel]
+    var cources: [HFCourceViewModel]
     
 }
 

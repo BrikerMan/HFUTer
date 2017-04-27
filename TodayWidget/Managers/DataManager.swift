@@ -51,18 +51,16 @@ class DataManager {
         return weekDay
     }
     
-    func getTodayCorse() -> [HFCourseModel] {
+    func getTodayCorse() -> [HFCourceViewModel] {
         return getCource(true)
     }
     
-    func getTomoorCourse() -> [HFCourseModel] {
+    func getTomoorCourse() -> [HFCourceViewModel] {
         return getCource(false)
     }
 
     
-    fileprivate func getCource(_ today: Bool) -> [HFCourseModel] {
-        
-        var hours = [HFCourseModel]()
+    fileprivate func getCource(_ today: Bool) -> [HFCourceViewModel] {
         var week = calculateCurrentWeek()
         
         var day = getDayOfWeek()
@@ -75,19 +73,8 @@ class DataManager {
             }
         }
         
-        if let dayModels = HFCourseModel.readCourses(forWeek: week)?[day] {
-            if dayModels.hours.count > 9 {
-                for (index,hour) in [0,2,4,6,8].enumerated() {
-                    let hour = dayModels.hours[hour]
-                    if !hour.models.isEmpty {
-                        let model = hour.models.first!
-                        model.hourNum = index
-                        hours.append(model)
-                    }
-                }
-            }
-        }
-        
-        return hours
+        let models = HFScheduleModel.read(for: week).filter({ $0.day == day })
+        let group = HFCourceViewModel.group(schedules: models)
+        return group.sorted(by: { $0.start < $1.start })
     }
 }

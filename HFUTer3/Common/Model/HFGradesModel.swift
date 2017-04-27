@@ -22,6 +22,7 @@ class HFGradesModel:NSObject {
     var isSelected = false
 }
 
+
 class HFTermModel:NSObject {
     var term = ""
     var scoreList:[HFGradesModel] = []

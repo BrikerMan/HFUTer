@@ -12,9 +12,6 @@ import Crashlytics
 import YYWebImage
 import AVOSCloud
 
-let Is_Build_For_App_Store = true
-let Is_TestFlight          = false
-
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
@@ -77,6 +74,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func applicationWillEnterForeground(_ application: UIApplication) {
         application.applicationIconBadgeNumber = 0
+        JPUSHService.resetBadge()
         application.cancelAllLocalNotifications()
     }
     
@@ -176,11 +174,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let key = "isFirstLaunchFor\(ez.appBuild ?? "0000")"
         let isFirstLaunch = UserDefaults.standard.object(forKey: key) as? Bool ?? true
         if isFirstLaunch {
-            UserDefaults.standard.set(false, forKey: key)
-            
-            let cache = YYWebImageManager.shared().cache
-            cache?.memoryCache.removeAllObjects()
-            cache?.diskCache.removeAllObjects()
+//            UserDefaults.standard.set(false, forKey: key)
+//            
+//            let cache = YYWebImageManager.shared().cache
+//            cache?.memoryCache.removeAllObjects()
+//            cache?.diskCache.removeAllObjects()
         }
     }
 }

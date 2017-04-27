@@ -12,6 +12,9 @@ import UIKit
 ////////////////////////////////////////////////////////////////////////
 //Base Data
 
+let Is_Build_For_App_Store = true
+let Is_TestFlight          = false
+
 let HFLogLevel      = 0
 
 let ServerInfoFile  = "https://coding.net/u/Haidy/p/HfuterSettings/git/raw/master/host"
@@ -62,8 +65,9 @@ enum PlistKey:String {
 }
 
 enum HFSettingPlistKey: String {
-    case Settings               = "SettingsList"
-    case ShowWeekendSchedule    = "ShowWeekendSchedule"
+    case settings           = "SettingsList"
+    case weekendSchedule    = "weekendSchedule"
+    case scheduleRoundStyle = "scheduleRoundStyle"
 }
 
 ////////////////////////////////////////////////////////////////////////
@@ -78,14 +82,11 @@ let SeperatorHeight = 1 / UIScreen.main.scale
 ////////////////////////////////////////////////////////////////////////
 //Managers
 
-let HFTheme         = ColorManager.shared
-let hud             = HFHudView.shared
+
 let DataEnv         = DataManager.shared
-let log             = FMLogTool.shared
-let PlistManager    = PlistManagerTool.shared
 
 typealias HFRequestParam = [String: Any]
-typealias JSON = [String: Any]
+
 
 ////////////////////////////////////////////////////////////////////////
 //Notification
@@ -98,7 +99,7 @@ enum HFNotification: String {
     
     case LoveWallModelUpdate = "LoveWallModelUpdateNotification"
     
-    case SettingScheduleRelatedUpdate = "HFSettingScheduleRelatedSetttingUpdateNotification"
+    case scheduleUpdated    = "scheduleUpdated"
     
     case ReceiveRemoteNotif = "ReceiveRemoteNotifNotification"
     case RemoveBundge       = "RemoveBundgeNotification"
@@ -160,4 +161,9 @@ enum HFMineSegue:String {
     
     // 我的消息
     case PushMyMessageVC        = "HFMineSeguePushMyMessageVC"
+}
+
+
+class k {
+    static let dayNames = ["周一","周二","周三","周四","周五","周六","周日"]
 }

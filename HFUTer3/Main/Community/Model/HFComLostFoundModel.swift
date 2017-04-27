@@ -9,13 +9,13 @@
 import Foundation
 
 class HFComLostFoundModel: HFBaseModel {
-    var name    = ""
-    var content = ""
-    var id      = ""
-    var sid     = ""
-    var time    = ""
-    var image   = ""
-    var pic     = [String]()
+    var name     = ""
+    var content  = ""
+    var id       = ""
+    var sid      = ""
+    var time     = ""
+    var image    = ""
+    var pic      = [String]()
     var date_int = 0
     var place    = ""
     var thing    = ""

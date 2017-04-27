@@ -47,7 +47,7 @@ class HFCommunityLoveWallDetailVC: HFBaseViewController, XibBasedController {
     }
     
     fileprivate func updateLikeView() {
-        let image = mainModel.favorite ? "fm_community_love_wall_like_fill" : "fm_community_love_wall_like"
+        let image = mainModel.favorite.value ? "fm_community_love_wall_like_fill" : "fm_community_love_wall_like"
         likeImageView.image = UIImage(named: image)
     }
     
@@ -62,7 +62,7 @@ class HFCommunityLoveWallDetailVC: HFBaseViewController, XibBasedController {
     }
     
     @IBAction func onLikeButtonPressed(_ sender: AnyObject) {
-        if mainModel.favorite {
+        if mainModel.favorite.value {
             return
         }
         hud.showLoading("正在处理")
@@ -70,7 +70,7 @@ class HFCommunityLoveWallDetailVC: HFBaseViewController, XibBasedController {
                            method: HFBaseAPIRequestMethod.POST,
                            params: ["id":mainModel.id],
                            succesBlock: { (request, resultDic) in
-                            self.mainModel.favorite = true
+                            self.mainModel.favorite.value = true
                             self.mainModel.favoriteCount += 1
                             self.updateLikeView()
                             runOnMainThread {
@@ -131,10 +131,10 @@ class HFCommunityLoveWallDetailVC: HFBaseViewController, XibBasedController {
         tableView.pullDelegate = self
         self.automaticallyAdjustsScrollViewInsets = false
         
-//        self.view.addSubview(loadingView)
-//        loadingView.snp.makeConstraints { (make) in
-//            make.edges.equalTo(UIEdgeInsetsMake(64, 0, 0, 0))
-//        }
+        self.view.addSubview(loadingView)
+        loadingView.snp.makeConstraints { (make) in
+            make.edges.equalTo(UIEdgeInsetsMake(64, 0, 0, 0))
+        }
     }
 }
 

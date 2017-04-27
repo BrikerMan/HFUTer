@@ -35,6 +35,8 @@ class HFCommunityHomeListView: HFXibView {
         }
     }
     
+    var isHot = false
+    
     var lostModels:[HFComLostFoundModel]    = []
     var loveModels:[HFComLoveWallListModel] = []
     
@@ -43,7 +45,7 @@ class HFCommunityHomeListView: HFXibView {
     override func initFromXib() {
         super.initFromXib()
         tableView.registerReusableCell(FMCommunityLostAndFindCell.self)
-        tableView.registerReusableCell(HFCommunityLoveWallListCell.self)
+        tableView.registerReusableCell(HFComunityListLoveWallCell.self)
         tableView.addLoadMoreView()
         tableView.backgroundColor = HFTheme.BlackAreaColor
         tableView.pullDelegate = self
@@ -144,13 +146,14 @@ extension HFCommunityHomeListView: UITableViewDataSource {
             }
             return cell
         } else {
-            let cell = tableView.dequeueReusableCell(indexPath: indexPath) as HFCommunityLoveWallListCell
+            let cell = tableView.dequeueReusableCell(indexPath: indexPath) as HFComunityListLoveWallCell
             cell.delegate = self
             cell.setupWithModel(loveModels[indexPath.row], index: indexPath.row)
             
             if indexPath.row == self.loveModels.count - 3 {
                 self.tableView.beginLoadMore()
             }
+            self.tableView.shouldStartPrefetch(at: indexPath, dataCount: loveModels.count)
             return cell
         }
     }
@@ -184,7 +187,7 @@ extension HFCommunityHomeListView: UITableViewDelegate {
                 }
             })
         } else {
-            return HFCommunityLoveWallListCell.height(model: loveModels[indexPath.row])
+            return HFComunityListLoveWallCell.cacheLayout(loveModels[indexPath.row])
         }
     }
 }

@@ -99,10 +99,10 @@ extension DDTTYLogger {
     
     func setXcodeColors() {
         self.colorsEnabled = true
-        self.setForegroundColor(UIColor(hexString: "#DB2C38")!, backgroundColor: nil, for: .error)
-        self.setForegroundColor(UIColor(hexString: "#C67C48")!, backgroundColor: nil, for: .warning)
-        self.setForegroundColor(UIColor(hexString: "#41B645")!, backgroundColor: nil, for: .info)
-        self.setForegroundColor(UIColor(hexString: "#00A0BE")!, backgroundColor: nil, for: .debug)
+        self.setForegroundColor(UIColor(hexString: "#DB2C38"), backgroundColor: nil, for: .error)
+        self.setForegroundColor(UIColor(hexString: "#C67C48"), backgroundColor: nil, for: .warning)
+        self.setForegroundColor(UIColor(hexString: "#41B645"), backgroundColor: nil, for: .info)
+        self.setForegroundColor(UIColor(hexString: "#00A0BE"), backgroundColor: nil, for: .debug)
     }
 }
 
