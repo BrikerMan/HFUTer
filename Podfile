@@ -2,7 +2,6 @@ source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '8.0'
 
 
-
 target 'HFUTer3' do
     inhibit_all_warnings!
     use_frameworks!
@@ -16,8 +15,8 @@ target 'HFUTer3' do
     pod 'AIFlatSwitch'                          ## 动态选择button
     pod 'YYText'    , :git => 'https://github.com/BrikerMan/YYText.git'
     pod 'ZYCornerRadius'                        # 优化圆角绘制
-    
-    
+#    pod 'Kingfisher'
+
     
     # TableView
     pod 'UITableView+FDTemplateLayoutCell_Bell' ##优化UITableViewCell高度计算

@@ -10,15 +10,18 @@ import UIKit
 
 class HFCommunityVC: HFBasicViewController {
     
-    var lostAndFindRequest: HFGetCommunityLostAndFindRequest!
-    var loveWallRequest   : HFGetCommunityLoveWallListRequest!
-    
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var segmentController: UISegmentedControl!
     @IBOutlet weak var topView: UIView!
     
-    fileprivate var lostfindView: HFCommunityHomeListView!
+    
     fileprivate var loveWallView: HFCommunityHomeListView!
+    fileprivate var loveWallHotView: HFCommunityHomeListView!
+    fileprivate var lostfindView: HFCommunityHomeListView!
+    
+    fileprivate var loveWallNewViewModel = HFCommunityLoveViewModel()
+    fileprivate var loveWallHotViewModel = HFCommunityLoveViewModel()
+    fileprivate var lostfindViewModel    = HFCommunityLostViewModel()
     
     fileprivate var isLostAndFound      = false
     fileprivate var isActionListShowing = false
@@ -39,7 +42,7 @@ class HFCommunityVC: HFBasicViewController {
     @IBAction func onSegmentControlleralueChanged(_ sender: UISegmentedControl) {
         let rect = CGRect(x: ScreenWidth * CGFloat(sender.selectedSegmentIndex), y: 0, width: ScreenWidth, height: ScreenHeight)
         scrollView.scrollRectToVisible(rect, animated: false)
-        isLostAndFound = sender.selectedSegmentIndex == 1
+        isLostAndFound = sender.selectedSegmentIndex == 2
     }
     
     @IBAction fileprivate func onActionButtonPressed() {
@@ -61,8 +64,8 @@ class HFCommunityVC: HFBasicViewController {
         let model = self.loveWallView.loveModels[index]
         HFBaseRequest.fire("/api/confession/favorite", method: HFBaseAPIRequestMethod.POST, params: ["id":model.id], succesBlock: { (request, resultDic) in
             model.favoriteCount += 1
-            model.favorite = true
-            self.loveWallView.tableView.reloadData()
+            model.favorite.value = true
+//            self.loveWallView.tableView.reloadData()
             hud.dismiss()
             NotificationCenter.default.post(name: Notification.Name(rawValue: HFNotification.LoveWallModelUpdate.rawValue), object: nil)
         }) { (request, error) in
@@ -74,13 +77,19 @@ class HFCommunityVC: HFBasicViewController {
         topView.backgroundColor = HFTheme.TintColor
         
         
+        loveWallView = HFCommunityHomeListView()
+        loveWallView.delegate = self
+        scrollView.addSubview(loveWallView)
+        
+        loveWallHotView = HFCommunityHomeListView()
+        loveWallHotView.isHot = true
+        loveWallHotView.delegate = self
+        scrollView.addSubview(loveWallHotView)
+        
         lostfindView = HFCommunityHomeListView()
         lostfindView.delegate = self
         scrollView.addSubview(lostfindView)
         
-        loveWallView = HFCommunityHomeListView()
-        loveWallView.delegate = self
-        scrollView.addSubview(loveWallView)
         
         loveWallView.snp.makeConstraints { (make) in
             make.left.top.bottom.equalTo(scrollView)
@@ -88,24 +97,39 @@ class HFCommunityVC: HFBasicViewController {
             make.height.equalTo(ScreenHeight-64-49)
         }
         
+        loveWallHotView.snp.makeConstraints { (make) in
+            make.top.bottom.equalTo(scrollView)
+            make.left.equalTo(loveWallView.snp.right)
+            make.width.equalTo(ScreenWidth)
+            make.height.equalTo(ScreenHeight-64-49)
+        }
+        
         lostfindView.snp.makeConstraints { (make) in
             make.top.bottom.right.equalTo(scrollView)
-            make.left.equalTo(loveWallView.snp.right)
+            make.left.equalTo(loveWallHotView.snp.right)
             make.width.equalTo(ScreenWidth)
             make.height.equalTo(ScreenHeight-64-49)
         }
     }
     
     fileprivate func initData() {
-        lostAndFindRequest = HFGetCommunityLostAndFindRequest()
-        lostAndFindRequest.callback = self
+        loveWallNewViewModel.type = .loveWall
+        loveWallNewViewModel.loadFirstPage { [weak self] (models) in
+            self?.loveWallView.loveModels.removeAll()
+            self?.loveWallView.setupWithLoveModel(models)
+        }
         
+        loveWallHotViewModel.type = .loveWallHot
+        loveWallHotViewModel.loadFirstPage { [weak self] (models) in
+            self?.loveWallHotView.loveModels.removeAll()
+            self?.loveWallHotView.setupWithLoveModel(models)
+        }
         
-        loveWallRequest = HFGetCommunityLoveWallListRequest()
-        loveWallRequest.callback = self
-        loveWallRequest.loadData()
+        lostfindViewModel.loadFirstPage { [weak self] (model) in
+            self?.lostfindView.lostModels.removeAll()
+            self?.lostfindView.setupWithLostModel(model)
+        }
     }
-    
 }
 
 extension HFCommunityVC: HFCommunityHomeListViewDelegate {
@@ -122,56 +146,55 @@ extension HFCommunityVC: HFCommunityHomeListViewDelegate {
     
     func listViewDidSelectedAtIndex(_ listView: HFCommunityHomeListView, index: Int) {
         if listView.style == .lostFind {
-
+            
         } else {
             let vc = HFCommunityLoveWallDetailVC(nibName: "HFCommunityLoveWallDetailVC", bundle: nil)
-            vc.mainModel = loveWallView.loveModels[index]
+            if segmentController.selectedSegmentIndex == 0 {
+                vc.mainModel = loveWallView.loveModels[index]
+            } else {
+                vc.mainModel = loveWallHotView.loveModels[index]
+            }
             self.push(vc)
         }
     }
     
     func listViewTableViewStartRefeshing(_ listView: HFCommunityHomeListView) {
         if listView.style == .lostFind {
-            lostAndFindRequest.page = 0
-            lostAndFindRequest.loadData()
+            lostfindViewModel.loadFirstPage { [weak self] (model) in
+                self?.lostfindView.lostModels.removeAll()
+                self?.lostfindView.setupWithLostModel(model)
+            }
         } else {
-            loveWallRequest.page = 0
-            loveWallRequest.loadData()
+            if listView.isHot {
+                loveWallHotViewModel.loadFirstPage { [weak self] (models) in
+                    self?.loveWallHotView.loveModels.removeAll()
+                    self?.loveWallHotView.setupWithLoveModel(models)
+                }
+            } else {
+                loveWallNewViewModel.loadFirstPage { [weak self] (models) in
+                    self?.loveWallView.loveModels.removeAll()
+                    self?.loveWallView.setupWithLoveModel(models)
+                }
+            }
         }
+        
     }
     
     func listViewTableViewStartLoadingMore(_ listView: HFCommunityHomeListView) {
         if listView.style == .lostFind {
-            lostAndFindRequest.loadNextPage()
+            lostfindViewModel.loadNextPage { [weak self] (model) in
+                self?.lostfindView.setupWithLostModel(model)
+            }
         } else {
-            loveWallRequest.loadNextPage()
-        }
-    }
-}
-
-extension HFCommunityVC: HFBaseAPIManagerCallBack {
-    func managerApiCallBackFailed(_ manager: HFBaseAPIManager) {
-        print(manager.errorInfo)
-        
-    }
-    
-    func managerApiCallBackSuccess(_ manager: HFBaseAPIManager) {
-        
-        if let manager = manager as? HFGetCommunityLostAndFindRequest {
-            let result =  HFGetCommunityLostAndFindRequest.handleData(manager.resultDic)
-            if manager.page == 0 {
-                lostfindView.lostModels.removeAll()
+            if listView.isHot {
+                loveWallHotViewModel.loadNextPage { [weak self] (models) in
+                    self?.loveWallHotView.setupWithLoveModel(models)
+                }
+            } else {
+                loveWallNewViewModel.loadNextPage { [weak self] (models) in
+                    self?.loveWallView.setupWithLoveModel(models)
+                }
             }
-            
-            lostfindView.setupWithLostModel(result)
-        }
-        
-        if let manager = manager as? HFGetCommunityLoveWallListRequest {
-            let result =  HFGetCommunityLoveWallListRequest.handleData(manager.resultDic)
-            if manager.page == 0 {
-                loveWallView.loveModels.removeAll()
-            }
-            loveWallView.setupWithLoveModel(result)
         }
     }
 }

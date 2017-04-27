@@ -260,6 +260,10 @@
 		6AE1F4EE1E470CAE003CFA27 /* Base64Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AE1F4E41E470CAE003CFA27 /* Base64Util.m */; };
 		6AE1F4EF1E470CAE003CFA27 /* DESEncryption.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AE1F4E61E470CAE003CFA27 /* DESEncryption.m */; };
 		6AE1F4F11E470CAE003CFA27 /* GTMBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AE1F4EA1E470CAE003CFA27 /* GTMBase64.m */; };
+		6AE3F7181EB1F54F00D2D30B /* HFComunityListLoveWallCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AE3F7161EB1F54F00D2D30B /* HFComunityListLoveWallCell.swift */; };
+		6AE3F7191EB1F54F00D2D30B /* HFComunityListLoveWallCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6AE3F7171EB1F54F00D2D30B /* HFComunityListLoveWallCell.xib */; };
+		6AE3F71B1EB203B500D2D30B /* HFCommunityHomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AE3F71A1EB203B500D2D30B /* HFCommunityHomeViewModel.swift */; };
+		6AE3F71D1EB2129C00D2D30B /* HFCommunityLostViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AE3F71C1EB2129C00D2D30B /* HFCommunityLostViewModel.swift */; };
 		6AE4A28F1D0009F10025BB79 /* HFCommunityLoveWallDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AE4A28D1D0009F10025BB79 /* HFCommunityLoveWallDetailVC.swift */; };
 		6AE4A2901D0009F10025BB79 /* HFCommunityLoveWallDetailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6AE4A28E1D0009F10025BB79 /* HFCommunityLoveWallDetailVC.xib */; };
 		6AE4A2961D0017D10025BB79 /* HFComLoveWallCommentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AE4A2951D0017D10025BB79 /* HFComLoveWallCommentModel.swift */; };
@@ -629,6 +633,10 @@
 		6AE1F4E91E470CAE003CFA27 /* GTMBase64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMBase64.h; sourceTree = "<group>"; };
 		6AE1F4EA1E470CAE003CFA27 /* GTMBase64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTMBase64.m; sourceTree = "<group>"; };
 		6AE1F4EB1E470CAE003CFA27 /* GTMDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMDefines.h; sourceTree = "<group>"; };
+		6AE3F7161EB1F54F00D2D30B /* HFComunityListLoveWallCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFComunityListLoveWallCell.swift; sourceTree = "<group>"; };
+		6AE3F7171EB1F54F00D2D30B /* HFComunityListLoveWallCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HFComunityListLoveWallCell.xib; sourceTree = "<group>"; };
+		6AE3F71A1EB203B500D2D30B /* HFCommunityHomeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HFCommunityHomeViewModel.swift; path = HFUTer3/Main/Community/Cell/HFCommunityHomeViewModel.swift; sourceTree = SOURCE_ROOT; };
+		6AE3F71C1EB2129C00D2D30B /* HFCommunityLostViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HFCommunityLostViewModel.swift; path = HFUTer3/Main/Community/Cell/HFCommunityLostViewModel.swift; sourceTree = SOURCE_ROOT; };
 		6AE4A28D1D0009F10025BB79 /* HFCommunityLoveWallDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFCommunityLoveWallDetailVC.swift; sourceTree = "<group>"; };
 		6AE4A28E1D0009F10025BB79 /* HFCommunityLoveWallDetailVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HFCommunityLoveWallDetailVC.xib; sourceTree = "<group>"; };
 		6AE4A2951D0017D10025BB79 /* HFComLoveWallCommentModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFComLoveWallCommentModel.swift; sourceTree = "<group>"; };
@@ -865,6 +873,8 @@
 				6A02E2681CF320CB00DC669A /* FMCommunityLoveWellCell.xib */,
 				6A96F46D1E3DFE1600F65859 /* HFCommunityLoveWallListCell.swift */,
 				6A96F46E1E3DFE1600F65859 /* HFCommunityLoveWallListCell.xib */,
+				6AE3F7161EB1F54F00D2D30B /* HFComunityListLoveWallCell.swift */,
+				6AE3F7171EB1F54F00D2D30B /* HFComunityListLoveWallCell.xib */,
 				6ACB1EB61E403D8F00B708C7 /* HFCommunityLoveDetailCommentCell.swift */,
 				6ACB1EB71E403D8F00B708C7 /* HFCommunityLoveDetailCommentCell.xib */,
 			);
@@ -1396,6 +1406,8 @@
 		6B23B0C41C97DEAE0089214D /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				6AE3F71A1EB203B500D2D30B /* HFCommunityHomeViewModel.swift */,
+				6AE3F71C1EB2129C00D2D30B /* HFCommunityLostViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -1880,6 +1892,7 @@
 				6BA9EB021C995E190017DBC4 /* Mine.storyboard in Resources */,
 				6A7D828B1EB16C9400D6A65C /* HFHomeScheduleSelectWeekView.xib in Resources */,
 				6A96F4701E3DFE1600F65859 /* HFCommunityLoveWallListCell.xib in Resources */,
+				6AE3F7191EB1F54F00D2D30B /* HFComunityListLoveWallCell.xib in Resources */,
 				6AF574151E44A1F000FD8234 /* HFMineChooseColorCell.xib in Resources */,
 				6A02E2741CF320CB00DC669A /* FMCommunityActionListView.xib in Resources */,
 			);
@@ -2107,6 +2120,7 @@
 				6AE631C01D0289E4002C4AEC /* HFMineListTableViewCell.swift in Sources */,
 				6B94267D1CA8DFA600C8E85D /* HFChooseTableViewCell.swift in Sources */,
 				6A96F4C11E3E093B00F65859 /* UIColorExtensions.swift in Sources */,
+				6AE3F7181EB1F54F00D2D30B /* HFComunityListLoveWallCell.swift in Sources */,
 				6B89D9251C99530A0030DD7D /* HFUserSetEmailVC.swift in Sources */,
 				6AF574171E44AAD300FD8234 /* HFCustumRGBColorView.swift in Sources */,
 				6A0F76E41D0A894B0096A759 /* HFInfoCalendarVC.swift in Sources */,
@@ -2175,6 +2189,7 @@
 				6ACB1E9F1E3E28AC00B708C7 /* YYFPSLabel.m in Sources */,
 				6A1CEA7E1D05245300481D3A /* HFInfoPlanInfoTableViewCell.swift in Sources */,
 				6A96F4B21E3E093B00F65859 /* DoubleExtensions.swift in Sources */,
+				6AE3F71D1EB2129C00D2D30B /* HFCommunityLostViewModel.swift in Sources */,
 				6AE631C91D02AE93002C4AEC /* HFMineMessageListView.swift in Sources */,
 				6B6121921CA2C2F200C56FD4 /* UIView+ST.m in Sources */,
 				6AE4A2961D0017D10025BB79 /* HFComLoveWallCommentModel.swift in Sources */,
@@ -2214,6 +2229,7 @@
 				6AE631BF1D0289E4002C4AEC /* HFMineListActionTableViewCell.swift in Sources */,
 				6B2FE0571CA557A600147BC3 /* HFInfoGradesGpaModel.swift in Sources */,
 				6A7D828E1EB16C9400D6A65C /* HFScheduleView.swift in Sources */,
+				6AE3F71B1EB203B500D2D30B /* HFCommunityHomeViewModel.swift in Sources */,
 				6A7D828D1EB16C9400D6A65C /* HFScheduleTopView.swift in Sources */,
 				6A06EB121E61AD1700F18981 /* Logger.swift in Sources */,
 				6AE1F4F11E470CAE003CFA27 /* GTMBase64.m in Sources */,

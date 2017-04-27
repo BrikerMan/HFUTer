@@ -85,6 +85,18 @@ class HFPullTableView: UITableView {
     }
     
     /**
+     自动判断并且开始加载更多数据
+     
+     - parameter indexPath: 当前cell index
+     - parameter dataCount: 总数据数量
+     */
+    func shouldStartPrefetch(at indexPath: IndexPath, dataCount: Int) {
+        if indexPath.row == dataCount - 4 && self.mj_footer != nil {
+            self.beginLoadMore()
+        }
+    }
+    
+    /**
      初始化的时候有下拉刷新
      */
     fileprivate func initPullTableView() {

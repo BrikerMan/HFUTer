@@ -8,13 +8,14 @@
 
 import Foundation
 import YYText
+import RxSwift
 
 class HFComLoveWallListModel: HFBaseModel {
     var commentCount    = 0
     var content         = ""
     var date            = 0
-    var date_int         = 0
-    var favorite        = false
+    var date_int        = 0
+    var favorite        = Variable(false)
     var favoriteCount   = 0
     var id              = 0
     var image           = ""
@@ -31,4 +32,6 @@ class HFComLoveWallListModel: HFBaseModel {
     
     var listLayout   : YYTextLayout?
     var detailLayout : YYTextLayout? /// 详情页文字布局
+    
+    var layout: JSON?
 }

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RxSwift
 
 protocol FMCommunityLoveWellCellDelegate: class {
     func cellDidPressOnLike(_ index:Int)
@@ -16,6 +17,8 @@ class FMCommunityLoveWellCell: UITableViewCell, NibReusable {
     
     weak var delegate:FMCommunityLoveWellCellDelegate?
 
+    var disposeBag = DisposeBag()
+    
     var index: Int = 0
     var model: HFComLoveWallListModel!
     
@@ -48,9 +51,15 @@ class FMCommunityLoveWellCell: UITableViewCell, NibReusable {
         seperator2Height.constant = SeperatorHeight
         seperator1Height.constant = SeperatorHeight
     }
+    
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        disposeBag = DisposeBag()
+    }
 
     @IBAction func onLikeButtonPressed(_ sender: AnyObject) {
-        if model.favorite { return }
+        if model.favorite.value { return }
         delegate?.cellDidPressOnLike(self.index)
     }
     
@@ -84,9 +93,11 @@ class FMCommunityLoveWellCell: UITableViewCell, NibReusable {
             nameLabel.textColor = UIColor(hexString: "#9b59b6")
         }
         
+        model.favorite.asObservable().subscribe(onNext: { [weak self] (element) in
+            let image = element ? "fm_community_love_wall_like_fill" : "fm_community_love_wall_like"
+            self?.likeImageView.image = UIImage(named: image)
+        }).addDisposableTo(disposeBag)
         
-        let image = model.favorite ? "fm_community_love_wall_like_fill" : "fm_community_love_wall_like"
-        likeImageView.image = UIImage(named: image)
         prepareUIForImage(model.cImage)
 
     }

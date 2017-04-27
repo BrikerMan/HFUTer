@@ -24,8 +24,6 @@ class HFBaseModel: NSObject {
         }
     }
     
-    
-    
     func toDic() -> [String:AnyObject] {
         return self.yy_modelToJSONObject() as! [String:AnyObject]
     }
