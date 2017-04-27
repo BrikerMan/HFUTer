@@ -35,6 +35,55 @@
 		6A02E2761CF320CB00DC669A /* HFCommunityHomeListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A02E26C1CF320CB00DC669A /* HFCommunityHomeListView.swift */; };
 		6A02E2771CF320CB00DC669A /* HFCommunityHomeListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6A02E26D1CF320CB00DC669A /* HFCommunityHomeListView.xib */; };
 		6A02E27A1CF3366D00DC669A /* HFCommunityPostLostAndFoundVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A02E2781CF3366D00DC669A /* HFCommunityPostLostAndFoundVC.swift */; };
+		6A03DD4F1EB1B572003BC348 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ADD02511E73FD9E0024B22C /* DatabaseManager.swift */; };
+		6A03DD501EB1B582003BC348 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A06EB111E61AD1700F18981 /* Logger.swift */; };
+		6A03DD511EB1B5F5003BC348 /* UIEdgeInsets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A71A59D1EB092E1000D8B12 /* UIEdgeInsets.swift */; };
+		6A03DD521EB1B5F5003BC348 /* ArrayExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A96F4721E3E093B00F65859 /* ArrayExtensions.swift */; };
+		6A03DD531EB1B5F5003BC348 /* BlockButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A96F4731E3E093B00F65859 /* BlockButton.swift */; };
+		6A03DD541EB1B5F5003BC348 /* BlockLongPress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A96F4741E3E093B00F65859 /* BlockLongPress.swift */; };
+		6A03DD551EB1B5F5003BC348 /* BlockPan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A96F4751E3E093B00F65859 /* BlockPan.swift */; };
+		6A03DD561EB1B5F5003BC348 /* BlockPinch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A96F4761E3E093B00F65859 /* BlockPinch.swift */; };
+		6A03DD571EB1B5F5003BC348 /* BlockSwipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A96F4771E3E093B00F65859 /* BlockSwipe.swift */; };
+		6A03DD581EB1B5F5003BC348 /* BlockTap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A96F4781E3E093B00F65859 /* BlockTap.swift */; };
+		6A03DD591EB1B5F5003BC348 /* BlockWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A96F4791E3E093B00F65859 /* BlockWebView.swift */; };
+		6A03DD5A1EB1B5F5003BC348 /* BoolExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A96F47A1E3E093B00F65859 /* BoolExtensions.swift */; };
+		6A03DD5B1EB1B5F5003BC348 /* BundleExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A96F47B1E3E093B00F65859 /* BundleExtensions.swift */; };
+		6A03DD5C1EB1B5F5003BC348 /* CGFloatExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A96F47C1E3E093B00F65859 /* CGFloatExtensions.swift */; };
+		6A03DD5D1EB1B5F5003BC348 /* CGPointExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A96F47D1E3E093B00F65859 /* CGPointExtensions.swift */; };
+		6A03DD5E1EB1B5F5003BC348 /* CGRectExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A96F47E1E3E093B00F65859 /* CGRectExtensions.swift */; };
+		6A03DD5F1EB1B5F5003BC348 /* CharacterExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A96F47F1E3E093B00F65859 /* CharacterExtensions.swift */; };
+		6A03DD601EB1B5F5003BC348 /* DateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A96F4801E3E093B00F65859 /* DateExtensions.swift */; };
+		6A03DD611EB1B5F5003BC348 /* DictionaryExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A96F4811E3E093B00F65859 /* DictionaryExtensions.swift */; };
+		6A03DD621EB1B5F5003BC348 /* DoubleExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A96F4821E3E093B00F65859 /* DoubleExtensions.swift */; };
+		6A03DD631EB1B5F5003BC348 /* ErrorTypeExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A96F4831E3E093B00F65859 /* ErrorTypeExtensions.swift */; };
+		6A03DD651EB1B5F5003BC348 /* FloatingPointExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A96F4851E3E093B00F65859 /* FloatingPointExtensions.swift */; };
+		6A03DD661EB1B5F5003BC348 /* IntExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A96F4861E3E093B00F65859 /* IntExtensions.swift */; };
+		6A03DD671EB1B5F5003BC348 /* NSAttributedStringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A96F4871E3E093B00F65859 /* NSAttributedStringExtensions.swift */; };
+		6A03DD681EB1B5F5003BC348 /* NSDictionaryExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A96F4881E3E093B00F65859 /* NSDictionaryExtensions.swift */; };
+		6A03DD691EB1B5F5003BC348 /* NSObjectExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A96F4891E3E093B00F65859 /* NSObjectExtensions.swift */; };
+		6A03DD6A1EB1B5F5003BC348 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A96F48A1E3E093B00F65859 /* StringExtensions.swift */; };
+		6A03DD6B1EB1B5F5003BC348 /* TimerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A96F48B1E3E093B00F65859 /* TimerExtensions.swift */; };
+		6A03DD6E1EB1B5F5003BC348 /* UIBarButtonItemExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A96F48E1E3E093B00F65859 /* UIBarButtonItemExtensions.swift */; };
+		6A03DD6F1EB1B5F5003BC348 /* UIButtonExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A96F48F1E3E093B00F65859 /* UIButtonExtensions.swift */; };
+		6A03DD701EB1B5F5003BC348 /* UIColoredView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A96F4901E3E093B00F65859 /* UIColoredView.swift */; };
+		6A03DD711EB1B5F5003BC348 /* UIColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A96F4911E3E093B00F65859 /* UIColorExtensions.swift */; };
+		6A03DD721EB1B5F5003BC348 /* UIDeviceExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A96F4921E3E093B00F65859 /* UIDeviceExtensions.swift */; };
+		6A03DD731EB1B5F5003BC348 /* UIFontExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A96F4931E3E093B00F65859 /* UIFontExtensions.swift */; };
+		6A03DD741EB1B5F5003BC348 /* UIImageExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A96F4941E3E093B00F65859 /* UIImageExtensions.swift */; };
+		6A03DD761EB1B5F5003BC348 /* UILabelExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A96F4961E3E093B00F65859 /* UILabelExtensions.swift */; };
+		6A03DD771EB1B5F5003BC348 /* UISliderExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A96F4971E3E093B00F65859 /* UISliderExtensions.swift */; };
+		6A03DD781EB1B5F5003BC348 /* UIStoryboardExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A96F4981E3E093B00F65859 /* UIStoryboardExtensions.swift */; };
+		6A03DD791EB1B5F5003BC348 /* UISwitchExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A96F4991E3E093B00F65859 /* UISwitchExtensions.swift */; };
+		6A03DD7A1EB1B5F5003BC348 /* UITextFieldExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A96F49A1E3E093B00F65859 /* UITextFieldExtensions.swift */; };
+		6A03DD7B1EB1B5F5003BC348 /* UITextViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A96F49B1E3E093B00F65859 /* UITextViewExtensions.swift */; };
+		6A03DD7C1EB1B5F5003BC348 /* UIUserInterfaceSizeClassExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A96F49C1E3E093B00F65859 /* UIUserInterfaceSizeClassExtensions.swift */; };
+		6A03DD7D1EB1B5F5003BC348 /* UIViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A96F49D1E3E093B00F65859 /* UIViewControllerExtensions.swift */; };
+		6A03DD7E1EB1B5F5003BC348 /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A96F49E1E3E093B00F65859 /* UIViewExtensions.swift */; };
+		6A03DD7F1EB1B5F5003BC348 /* UIWindowExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A96F49F1E3E093B00F65859 /* UIWindowExtensions.swift */; };
+		6A03DD801EB1B5F5003BC348 /* URLExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A96F4A01E3E093B00F65859 /* URLExtensions.swift */; };
+		6A03DD811EB1B5F5003BC348 /* UserDefaultsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A96F4A11E3E093B00F65859 /* UserDefaultsExtension.swift */; };
+		6A03DD821EB1B6A9003BC348 /* FMDatabaseAdditionsVariadic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ABD54D41E74EEA200D6197B /* FMDatabaseAdditionsVariadic.swift */; };
+		6A03DD831EB1B6A9003BC348 /* FMDatabaseVariadic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ABD54D51E74EEA200D6197B /* FMDatabaseVariadic.swift */; };
 		6A06EB0E1E61A41700F18981 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6A06EB0D1E61A41700F18981 /* GoogleService-Info.plist */; };
 		6A06EB121E61AD1700F18981 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A06EB111E61AD1700F18981 /* Logger.swift */; };
 		6A0774BD1D06FBE9006D3C2C /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A0774BC1D06FBE9006D3C2C /* StoreKit.framework */; };
@@ -79,11 +128,14 @@
 		6A2C98C31D6C20AC00BD5182 /* HFInfoRankingHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A2C98C21D6C20AC00BD5182 /* HFInfoRankingHeaderCell.swift */; };
 		6A338F121D04375600A40C98 /* HFHelpInfoWebVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A338F101D04375600A40C98 /* HFHelpInfoWebVC.swift */; };
 		6A338F131D04375600A40C98 /* HFHelpInfoWebVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6A338F111D04375600A40C98 /* HFHelpInfoWebVC.xib */; };
+		6A3581A61EB17534006EFEAA /* HFScheduleInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A3581A51EB17534006EFEAA /* HFScheduleInfoViewController.swift */; };
+		6A3581A81EB17551006EFEAA /* HFCourceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A3581A71EB17551006EFEAA /* HFCourceViewModel.swift */; };
 		6A3E6F101E407DE7001FA3E3 /* YYLabel+Copyable.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A3E6F0F1E407DE7001FA3E3 /* YYLabel+Copyable.m */; };
 		6A3E6F131E408B96001FA3E3 /* HFAPIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A3E6F121E408B96001FA3E3 /* HFAPIRequest.swift */; };
 		6A3EAAEE1CE0227000809226 /* HFComLoveWallListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A3EAAED1CE0227000809226 /* HFComLoveWallListModel.swift */; };
 		6A3EAAF01CE0263B00809226 /* HFGetCommunityLoveWallListRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A3EAAEF1CE0263B00809226 /* HFGetCommunityLoveWallListRequest.swift */; };
 		6A4101E71D3A06420068FC5B /* DataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A4101E61D3A06420068FC5B /* DataHelper.swift */; };
+		6A44FB6E1EB18FBD008EDA68 /* HFScheduleWeekChoostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A44FB6D1EB18FBD008EDA68 /* HFScheduleWeekChoostViewController.swift */; };
 		6A61A1921E70EA5400892EA6 /* MJRefresh.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A61A1911E70EA5400892EA6 /* MJRefresh.framework */; };
 		6A6A648C1CC51C6D0049715C /* HFBaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A6A648B1CC51C6D0049715C /* HFBaseTableViewCell.swift */; };
 		6A6A649C1CC51E840049715C /* HFGetCommunityLostAndFindRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A6A649B1CC51E840049715C /* HFGetCommunityLostAndFindRequest.swift */; };
@@ -172,7 +224,6 @@
 		6ABA71C51D092D8200D259F7 /* libicucore.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 6ABA71C41D092D8200D259F7 /* libicucore.tbd */; };
 		6ABD54D61E74EEA200D6197B /* FMDatabaseAdditionsVariadic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ABD54D41E74EEA200D6197B /* FMDatabaseAdditionsVariadic.swift */; };
 		6ABD54D71E74EEA200D6197B /* FMDatabaseVariadic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ABD54D51E74EEA200D6197B /* FMDatabaseVariadic.swift */; };
-		6ABD54D91E754BEA00D6197B /* HFScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ABD54D81E754BEA00D6197B /* HFScheduleViewController.swift */; };
 		6AC4775D1D03C91E00B4B8BA /* HFUserRestPassVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC4775C1D03C91E00B4B8BA /* HFUserRestPassVC.swift */; };
 		6AC477601D03CB3D00B4B8BA /* HFUserRestPassToOriginalVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC4775F1D03CB3D00B4B8BA /* HFUserRestPassToOriginalVC.swift */; };
 		6AC477621D03CE3800B4B8BA /* HFUserRestPassByEmailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC477611D03CE3800B4B8BA /* HFUserRestPassByEmailVC.swift */; };
@@ -193,6 +244,10 @@
 		6ACB1EB81E403D8F00B708C7 /* HFCommunityLoveDetailCommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ACB1EB61E403D8F00B708C7 /* HFCommunityLoveDetailCommentCell.swift */; };
 		6ACB1EB91E403D8F00B708C7 /* HFCommunityLoveDetailCommentCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6ACB1EB71E403D8F00B708C7 /* HFCommunityLoveDetailCommentCell.xib */; };
 		6ACB1EBB1E4044DC00B708C7 /* UIView-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ACB1EBA1E4044DC00B708C7 /* UIView-Extensions.swift */; };
+		6ADA6E841EB17CB90006E4FD /* HFScheduleTimePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ADA6E831EB17CB90006E4FD /* HFScheduleTimePicker.swift */; };
+		6ADA6E861EB17CD50006E4FD /* HFScheduleTimePicker.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6ADA6E851EB17CD50006E4FD /* HFScheduleTimePicker.xib */; };
+		6ADA6E921EB184BD0006E4FD /* HFEurekaInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ADA6E901EB184BD0006E4FD /* HFEurekaInfoCell.swift */; };
+		6ADA6E931EB184BD0006E4FD /* HFEurekaInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6ADA6E911EB184BD0006E4FD /* HFEurekaInfoCell.xib */; };
 		6ADD02501E73FB9D0024B22C /* HFScheduleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ADD024F1E73FB9D0024B22C /* HFScheduleModel.swift */; };
 		6ADD02521E73FD9E0024B22C /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ADD02511E73FD9E0024B22C /* DatabaseManager.swift */; };
 		6AE1F4EE1E470CAE003CFA27 /* Base64Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AE1F4E41E470CAE003CFA27 /* Base64Util.m */; };
@@ -320,7 +375,6 @@
 		6BA9EB0E1C9971FB0017DBC4 /* HFMineVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BA9EB0D1C9971FB0017DBC4 /* HFMineVC.swift */; };
 		6BA9EB101C99720D0017DBC4 /* HFHomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BA9EB0F1C99720D0017DBC4 /* HFHomeVC.swift */; };
 		6BA9EB121C9982480017DBC4 /* HFHomeGetCourseListRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BA9EB111C9982480017DBC4 /* HFHomeGetCourseListRequest.swift */; };
-		6BA9EB141C9987530017DBC4 /* HFHomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BA9EB131C9987530017DBC4 /* HFHomeViewModel.swift */; };
 		6BB4F7B01CA276FD005D7903 /* HFImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BB4F7AF1CA276FD005D7903 /* HFImageView.swift */; };
 		6BC674A11C993305005C4462 /* HFUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BC674A01C993305005C4462 /* HFUserModel.swift */; };
 		6BC674A31C9934A6005C4462 /* HFUserLoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BC674A21C9934A6005C4462 /* HFUserLoginViewModel.swift */; };
@@ -435,12 +489,15 @@
 		6A2C98C21D6C20AC00BD5182 /* HFInfoRankingHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFInfoRankingHeaderCell.swift; sourceTree = "<group>"; };
 		6A338F101D04375600A40C98 /* HFHelpInfoWebVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFHelpInfoWebVC.swift; sourceTree = "<group>"; };
 		6A338F111D04375600A40C98 /* HFHelpInfoWebVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HFHelpInfoWebVC.xib; sourceTree = "<group>"; };
+		6A3581A51EB17534006EFEAA /* HFScheduleInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFScheduleInfoViewController.swift; sourceTree = "<group>"; wrapsLines = 0; };
+		6A3581A71EB17551006EFEAA /* HFCourceViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFCourceViewModel.swift; sourceTree = "<group>"; };
 		6A3E6F0F1E407DE7001FA3E3 /* YYLabel+Copyable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "YYLabel+Copyable.m"; sourceTree = "<group>"; };
 		6A3E6F111E407DFA001FA3E3 /* YYLabel+Copyable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "YYLabel+Copyable.h"; sourceTree = "<group>"; };
 		6A3E6F121E408B96001FA3E3 /* HFAPIRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFAPIRequest.swift; sourceTree = "<group>"; };
 		6A3EAAED1CE0227000809226 /* HFComLoveWallListModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFComLoveWallListModel.swift; sourceTree = "<group>"; };
 		6A3EAAEF1CE0263B00809226 /* HFGetCommunityLoveWallListRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFGetCommunityLoveWallListRequest.swift; sourceTree = "<group>"; };
 		6A4101E61D3A06420068FC5B /* DataHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataHelper.swift; sourceTree = "<group>"; };
+		6A44FB6D1EB18FBD008EDA68 /* HFScheduleWeekChoostViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFScheduleWeekChoostViewController.swift; sourceTree = "<group>"; };
 		6A61A1911E70EA5400892EA6 /* MJRefresh.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MJRefresh.framework; sourceTree = "<group>"; };
 		6A6A648B1CC51C6D0049715C /* HFBaseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFBaseTableViewCell.swift; sourceTree = "<group>"; };
 		6A6A649B1CC51E840049715C /* HFGetCommunityLostAndFindRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFGetCommunityLostAndFindRequest.swift; sourceTree = "<group>"; };
@@ -533,7 +590,6 @@
 		6ABA71C41D092D8200D259F7 /* libicucore.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libicucore.tbd; path = usr/lib/libicucore.tbd; sourceTree = SDKROOT; };
 		6ABD54D41E74EEA200D6197B /* FMDatabaseAdditionsVariadic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FMDatabaseAdditionsVariadic.swift; sourceTree = "<group>"; };
 		6ABD54D51E74EEA200D6197B /* FMDatabaseVariadic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FMDatabaseVariadic.swift; sourceTree = "<group>"; };
-		6ABD54D81E754BEA00D6197B /* HFScheduleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFScheduleViewController.swift; sourceTree = "<group>"; };
 		6AC4775C1D03C91E00B4B8BA /* HFUserRestPassVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFUserRestPassVC.swift; sourceTree = "<group>"; };
 		6AC4775F1D03CB3D00B4B8BA /* HFUserRestPassToOriginalVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFUserRestPassToOriginalVC.swift; sourceTree = "<group>"; };
 		6AC477611D03CE3800B4B8BA /* HFUserRestPassByEmailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFUserRestPassByEmailVC.swift; sourceTree = "<group>"; };
@@ -556,6 +612,10 @@
 		6ACB1EB61E403D8F00B708C7 /* HFCommunityLoveDetailCommentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFCommunityLoveDetailCommentCell.swift; sourceTree = "<group>"; };
 		6ACB1EB71E403D8F00B708C7 /* HFCommunityLoveDetailCommentCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HFCommunityLoveDetailCommentCell.xib; sourceTree = "<group>"; };
 		6ACB1EBA1E4044DC00B708C7 /* UIView-Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView-Extensions.swift"; sourceTree = "<group>"; };
+		6ADA6E831EB17CB90006E4FD /* HFScheduleTimePicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFScheduleTimePicker.swift; sourceTree = "<group>"; };
+		6ADA6E851EB17CD50006E4FD /* HFScheduleTimePicker.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HFScheduleTimePicker.xib; sourceTree = "<group>"; };
+		6ADA6E901EB184BD0006E4FD /* HFEurekaInfoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFEurekaInfoCell.swift; sourceTree = "<group>"; };
+		6ADA6E911EB184BD0006E4FD /* HFEurekaInfoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HFEurekaInfoCell.xib; sourceTree = "<group>"; };
 		6ADD024F1E73FB9D0024B22C /* HFScheduleModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFScheduleModel.swift; sourceTree = "<group>"; };
 		6ADD02511E73FD9E0024B22C /* DatabaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		6AE1F4E31E470CAE003CFA27 /* Base64Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Base64Util.h; sourceTree = "<group>"; };
@@ -697,7 +757,6 @@
 		6BA9EB0D1C9971FB0017DBC4 /* HFMineVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFMineVC.swift; sourceTree = "<group>"; };
 		6BA9EB0F1C99720D0017DBC4 /* HFHomeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFHomeVC.swift; sourceTree = "<group>"; };
 		6BA9EB111C9982480017DBC4 /* HFHomeGetCourseListRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFHomeGetCourseListRequest.swift; sourceTree = "<group>"; };
-		6BA9EB131C9987530017DBC4 /* HFHomeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFHomeViewModel.swift; sourceTree = "<group>"; };
 		6BB4F7AF1CA276FD005D7903 /* HFImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFImageView.swift; sourceTree = "<group>"; };
 		6BC674A01C993305005C4462 /* HFUserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFUserModel.swift; sourceTree = "<group>"; };
 		6BC674A21C9934A6005C4462 /* HFUserLoginViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFUserLoginViewModel.swift; sourceTree = "<group>"; };
@@ -943,6 +1002,8 @@
 				6A7D82831EB16C9400D6A65C /* HFScheduleLeftView.swift */,
 				6A7D82841EB16C9400D6A65C /* HFScheduleTopView.swift */,
 				6A7D82851EB16C9400D6A65C /* HFScheduleView.swift */,
+				6ADA6E831EB17CB90006E4FD /* HFScheduleTimePicker.swift */,
+				6ADA6E851EB17CD50006E4FD /* HFScheduleTimePicker.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1338,13 +1399,13 @@
 		6B23B0C51C97DEAE0089214D /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				6AB967241E6A607D00DA6079 /* HFParseViewModel.swift */,
 				6BA9EAF91C995DCF0017DBC4 /* Home.storyboard */,
+				6AB967241E6A607D00DA6079 /* HFParseViewModel.swift */,
+				6A3581A71EB17551006EFEAA /* HFCourceViewModel.swift */,
 				6B23B0C61C97DEAE0089214D /* Controller */,
 				6A7D827B1EB16C9400D6A65C /* Cell */,
 				6A7D82801EB16C9400D6A65C /* View */,
 				6B23B0C71C97DEAE0089214D /* Request */,
-				6B23B0C91C97DEAE0089214D /* ViewModel */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -1353,7 +1414,8 @@
 			isa = PBXGroup;
 			children = (
 				6BA9EB0F1C99720D0017DBC4 /* HFHomeVC.swift */,
-				6ABD54D81E754BEA00D6197B /* HFScheduleViewController.swift */,
+				6A3581A51EB17534006EFEAA /* HFScheduleInfoViewController.swift */,
+				6A44FB6D1EB18FBD008EDA68 /* HFScheduleWeekChoostViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1364,14 +1426,6 @@
 				6BA9EB111C9982480017DBC4 /* HFHomeGetCourseListRequest.swift */,
 			);
 			path = Request;
-			sourceTree = "<group>";
-		};
-		6B23B0C91C97DEAE0089214D /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				6BA9EB131C9987530017DBC4 /* HFHomeViewModel.swift */,
-			);
-			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		6B23B0CA1C97DEAE0089214D /* Information */ = {
@@ -1549,6 +1603,8 @@
 				6AE4A2991D00644A0025BB79 /* HFCommonWriteVC.swift */,
 				6A338F101D04375600A40C98 /* HFHelpInfoWebVC.swift */,
 				6A338F111D04375600A40C98 /* HFHelpInfoWebVC.xib */,
+				6ADA6E901EB184BD0006E4FD /* HFEurekaInfoCell.swift */,
+				6ADA6E911EB184BD0006E4FD /* HFEurekaInfoCell.xib */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -1789,6 +1845,7 @@
 				6A1CEA821D05245300481D3A /* HFInfoGradesChargeTableHeaderView.xib in Resources */,
 				6AE631CB1D02AE9C002C4AEC /* HFMineMessageListView.xib in Resources */,
 				6A7D82891EB16C9400D6A65C /* HFScheduleViewCell.xib in Resources */,
+				6ADA6E861EB17CD50006E4FD /* HFScheduleTimePicker.xib in Resources */,
 				6AE631B11D0282EB002C4AEC /* HFTabbarView.xib in Resources */,
 				6AF574111E44A13B00FD8234 /* HFMineChooseThemeViewController.xib in Resources */,
 				6AF574191E44AADD00FD8234 /* HFCustumRGBColorView.xib in Resources */,
@@ -1800,6 +1857,7 @@
 				6BA9EAFE1C995DEC0017DBC4 /* Information.storyboard in Resources */,
 				6B23B0DA1C97DECA0089214D /* Login.storyboard in Resources */,
 				6BA9EAFA1C995DCF0017DBC4 /* Home.storyboard in Resources */,
+				6ADA6E931EB184BD0006E4FD /* HFEurekaInfoCell.xib in Resources */,
 				6AF62C981E7678F8009F0FC4 /* HFWebLoginViewController.xib in Resources */,
 				6B9B67081C9AB9FF009B5F68 /* HFBaseNavBar.xib in Resources */,
 				6B23B0AE1C97DA4E0089214D /* Assets.xcassets in Resources */,
@@ -1955,14 +2013,63 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6A03DD571EB1B5F5003BC348 /* BlockSwipe.swift in Sources */,
+				6A03DD721EB1B5F5003BC348 /* UIDeviceExtensions.swift in Sources */,
+				6A03DD5E1EB1B5F5003BC348 /* CGRectExtensions.swift in Sources */,
+				6A03DD611EB1B5F5003BC348 /* DictionaryExtensions.swift in Sources */,
 				6A7988BF1D6D528C0068C6F6 /* HFCourseModel.swift in Sources */,
+				6A03DD621EB1B5F5003BC348 /* DoubleExtensions.swift in Sources */,
+				6A03DD591EB1B5F5003BC348 /* BlockWebView.swift in Sources */,
+				6A03DD741EB1B5F5003BC348 /* UIImageExtensions.swift in Sources */,
+				6A03DD7C1EB1B5F5003BC348 /* UIUserInterfaceSizeClassExtensions.swift in Sources */,
 				6A7988BB1D6D528C0068C6F6 /* CourseTableViewCell.swift in Sources */,
+				6A03DD7D1EB1B5F5003BC348 /* UIViewControllerExtensions.swift in Sources */,
+				6A03DD811EB1B5F5003BC348 /* UserDefaultsExtension.swift in Sources */,
+				6A03DD631EB1B5F5003BC348 /* ErrorTypeExtensions.swift in Sources */,
 				6A80F1C21DC5B03400712030 /* CourceDayHeaderCell.swift in Sources */,
+				6A03DD661EB1B5F5003BC348 /* IntExtensions.swift in Sources */,
+				6A03DD681EB1B5F5003BC348 /* NSDictionaryExtensions.swift in Sources */,
+				6A03DD7F1EB1B5F5003BC348 /* UIWindowExtensions.swift in Sources */,
+				6A03DD691EB1B5F5003BC348 /* NSObjectExtensions.swift in Sources */,
+				6A03DD6A1EB1B5F5003BC348 /* StringExtensions.swift in Sources */,
+				6A03DD531EB1B5F5003BC348 /* BlockButton.swift in Sources */,
+				6A03DD781EB1B5F5003BC348 /* UIStoryboardExtensions.swift in Sources */,
+				6A03DD581EB1B5F5003BC348 /* BlockTap.swift in Sources */,
+				6A03DD731EB1B5F5003BC348 /* UIFontExtensions.swift in Sources */,
+				6A03DD831EB1B6A9003BC348 /* FMDatabaseVariadic.swift in Sources */,
+				6A03DD791EB1B5F5003BC348 /* UISwitchExtensions.swift in Sources */,
+				6A03DD771EB1B5F5003BC348 /* UISliderExtensions.swift in Sources */,
+				6A03DD5A1EB1B5F5003BC348 /* BoolExtensions.swift in Sources */,
+				6A03DD5B1EB1B5F5003BC348 /* BundleExtensions.swift in Sources */,
+				6A03DD5D1EB1B5F5003BC348 /* CGPointExtensions.swift in Sources */,
+				6A03DD801EB1B5F5003BC348 /* URLExtensions.swift in Sources */,
+				6A03DD5F1EB1B5F5003BC348 /* CharacterExtensions.swift in Sources */,
 				6A7988BE1D6D528C0068C6F6 /* DataManager.swift in Sources */,
 				6A7988BC1D6D528C0068C6F6 /* NoCourceTableViewCell.swift in Sources */,
+				6A03DD6E1EB1B5F5003BC348 /* UIBarButtonItemExtensions.swift in Sources */,
+				6A03DD501EB1B582003BC348 /* Logger.swift in Sources */,
+				6A03DD671EB1B5F5003BC348 /* NSAttributedStringExtensions.swift in Sources */,
+				6A03DD701EB1B5F5003BC348 /* UIColoredView.swift in Sources */,
+				6A03DD761EB1B5F5003BC348 /* UILabelExtensions.swift in Sources */,
 				6A7988991D6C79900068C6F6 /* TodayViewController.swift in Sources */,
+				6A03DD7A1EB1B5F5003BC348 /* UITextFieldExtensions.swift in Sources */,
+				6A03DD7B1EB1B5F5003BC348 /* UITextViewExtensions.swift in Sources */,
+				6A03DD561EB1B5F5003BC348 /* BlockPinch.swift in Sources */,
+				6A03DD521EB1B5F5003BC348 /* ArrayExtensions.swift in Sources */,
 				6A7988BD1D6D528C0068C6F6 /* ColorManager.swift in Sources */,
+				6A03DD551EB1B5F5003BC348 /* BlockPan.swift in Sources */,
 				6A0B967D1E61382000D472EA /* CourceMoreTableViewCell.swift in Sources */,
+				6A03DD541EB1B5F5003BC348 /* BlockLongPress.swift in Sources */,
+				6A03DD511EB1B5F5003BC348 /* UIEdgeInsets.swift in Sources */,
+				6A03DD711EB1B5F5003BC348 /* UIColorExtensions.swift in Sources */,
+				6A03DD5C1EB1B5F5003BC348 /* CGFloatExtensions.swift in Sources */,
+				6A03DD7E1EB1B5F5003BC348 /* UIViewExtensions.swift in Sources */,
+				6A03DD821EB1B6A9003BC348 /* FMDatabaseAdditionsVariadic.swift in Sources */,
+				6A03DD651EB1B5F5003BC348 /* FloatingPointExtensions.swift in Sources */,
+				6A03DD4F1EB1B572003BC348 /* DatabaseManager.swift in Sources */,
+				6A03DD6F1EB1B5F5003BC348 /* UIButtonExtensions.swift in Sources */,
+				6A03DD601EB1B5F5003BC348 /* DateExtensions.swift in Sources */,
+				6A03DD6B1EB1B5F5003BC348 /* TimerExtensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2015,7 +2122,6 @@
 				6A96F4C51E3E093B00F65859 /* UIImageViewExtensions.swift in Sources */,
 				6A96F4B51E3E093B00F65859 /* FloatingPointExtensions.swift in Sources */,
 				6B2FE0661CA68B6000147BC3 /* HFPullCollectionView.swift in Sources */,
-				6ABD54D91E754BEA00D6197B /* HFScheduleViewController.swift in Sources */,
 				6A2C98C11D6C1AD300BD5182 /* HFInfoRankingVC.swift in Sources */,
 				6AE631BC1D0289E4002C4AEC /* HFMineHeaderTableViewCell.swift in Sources */,
 				6AC477641D03F31300B4B8BA /* HFInfoPlanDetailVC.swift in Sources */,
@@ -2062,6 +2168,7 @@
 				6ACB1E9F1E3E28AC00B708C7 /* YYFPSLabel.m in Sources */,
 				6A1CEA7E1D05245300481D3A /* HFInfoPlanInfoTableViewCell.swift in Sources */,
 				6A96F4B21E3E093B00F65859 /* DoubleExtensions.swift in Sources */,
+				6A3581A81EB17551006EFEAA /* HFCourceViewModel.swift in Sources */,
 				6AE631C91D02AE93002C4AEC /* HFMineMessageListView.swift in Sources */,
 				6B6121921CA2C2F200C56FD4 /* UIView+ST.m in Sources */,
 				6AE4A2961D0017D10025BB79 /* HFComLoveWallCommentModel.swift in Sources */,
@@ -2078,7 +2185,6 @@
 				6A96F4AB1E3E093B00F65859 /* BundleExtensions.swift in Sources */,
 				6A96F4A41E3E093B00F65859 /* BlockLongPress.swift in Sources */,
 				6A1CEA801D05245300481D3A /* HFInformationCollectionCell.swift in Sources */,
-				6BA9EB141C9987530017DBC4 /* HFHomeViewModel.swift in Sources */,
 				27EF73251DD08C3F009E9592 /* ImageRow.swift in Sources */,
 				6A712F561E6AB27400B87FB5 /* HFMineRepostViewController.swift in Sources */,
 				6A96F46F1E3DFE1600F65859 /* HFCommunityLoveWallListCell.swift in Sources */,
@@ -2172,6 +2278,7 @@
 				6AE4A28F1D0009F10025BB79 /* HFCommunityLoveWallDetailVC.swift in Sources */,
 				6A1CEA7C1D05245300481D3A /* HFInfoGradesListTableViewCell.swift in Sources */,
 				6A1CEA771D05245300481D3A /* HFInfoAcademicClassDetailTableCell.swift in Sources */,
+				6A44FB6E1EB18FBD008EDA68 /* HFScheduleWeekChoostViewController.swift in Sources */,
 				6A1CEA7F1D05245300481D3A /* HFInfoPlanTypeTableViewCell.swift in Sources */,
 				6BA9EB0A1C9971DA0017DBC4 /* HFInformationVC.swift in Sources */,
 				6A96F4B81E3E093B00F65859 /* NSDictionaryExtensions.swift in Sources */,
@@ -2179,6 +2286,7 @@
 				6ACB1EBB1E4044DC00B708C7 /* UIView-Extensions.swift in Sources */,
 				6B6121911CA2C2F200C56FD4 /* UIImage+ST.m in Sources */,
 				6AE544451CFF1CA600EB3FE7 /* HFCommunityPostLoveWallVC.swift in Sources */,
+				6A3581A61EB17534006EFEAA /* HFScheduleInfoViewController.swift in Sources */,
 				6A1CEA791D05245300481D3A /* HFInfoBookListTableCell.swift in Sources */,
 				6A96F4BA1E3E093B00F65859 /* StringExtensions.swift in Sources */,
 				6ACB1EB21E40331200B708C7 /* NibOwnerLoadable.swift in Sources */,
@@ -2197,7 +2305,9 @@
 				6B94268C1CA965E300C8E85D /* HFMineSettingVC.swift in Sources */,
 				6A96F4CB1E3E093B00F65859 /* UITextViewExtensions.swift in Sources */,
 				6A96F4C41E3E093B00F65859 /* UIImageExtensions.swift in Sources */,
+				6ADA6E841EB17CB90006E4FD /* HFScheduleTimePicker.swift in Sources */,
 				6AF574141E44A1F000FD8234 /* HFMineChooseColorCell.swift in Sources */,
+				6ADA6E921EB184BD0006E4FD /* HFEurekaInfoCell.swift in Sources */,
 				6A96F4C91E3E093B00F65859 /* UISwitchExtensions.swift in Sources */,
 				6B6121791CA2AA5A00C56FD4 /* HFTextFieldAlertController.swift in Sources */,
 				6AE631C11D0289E4002C4AEC /* HFMinePublishLostFindCell.swift in Sources */,

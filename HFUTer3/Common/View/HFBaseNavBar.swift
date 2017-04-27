@@ -61,6 +61,13 @@ class HFBaseNavBar: HFXibView {
         navRightButtonImage.image   = button.image()
     }
     
+    func showNavRightButton(with title: String) {
+        navRightButton.isHidden       = false
+        navRightButton.tintColor      = UIColor.white
+        navRightButton.setTitle(title, for: .normal)
+        navRightButtonImage.isHidden  = true
+    }
+    
     func setNavTitle(_ title:String) {
         navTitleLabel.text = title
     }

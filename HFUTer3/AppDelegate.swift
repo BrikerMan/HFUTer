@@ -77,6 +77,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func applicationWillEnterForeground(_ application: UIApplication) {
         application.applicationIconBadgeNumber = 0
+        JPUSHService.resetBadge()
         application.cancelAllLocalNotifications()
     }
     

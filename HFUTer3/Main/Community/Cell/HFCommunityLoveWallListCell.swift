@@ -208,7 +208,7 @@ class HFCommunityLoveWallListCell: UITableViewCell, NibReusable {
             container.truncationType = YYTextTruncationType.end
             container.truncationToken = NSAttributedString(string: " ...", attributes: [
                 NSFontAttributeName             : UIFont.systemFont(ofSize: 14),
-                NSForegroundColorAttributeName  : UIColor(hexString: "#3d9cdd")!
+                NSForegroundColorAttributeName  : UIColor(hexString: "#3d9cdd")
                 ])
         }
         let layout = YYTextLayout(container: container, text: attText)!

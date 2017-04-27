@@ -62,8 +62,9 @@ enum PlistKey:String {
 }
 
 enum HFSettingPlistKey: String {
-    case Settings               = "SettingsList"
-    case ShowWeekendSchedule    = "ShowWeekendSchedule"
+    case settings           = "SettingsList"
+    case weekendSchedule    = "weekendSchedule"
+    case scheduleRoundStyle = "scheduleRoundStyle"
 }
 
 ////////////////////////////////////////////////////////////////////////
@@ -78,7 +79,6 @@ let SeperatorHeight = 1 / UIScreen.main.scale
 ////////////////////////////////////////////////////////////////////////
 //Managers
 
-let HFTheme         = ColorManager.shared
 let hud             = HFHudView.shared
 let DataEnv         = DataManager.shared
 let log             = FMLogTool.shared
@@ -98,7 +98,7 @@ enum HFNotification: String {
     
     case LoveWallModelUpdate = "LoveWallModelUpdateNotification"
     
-    case SettingScheduleRelatedUpdate = "HFSettingScheduleRelatedSetttingUpdateNotification"
+    case scheduleUpdated    = "scheduleUpdated"
     
     case ReceiveRemoteNotif = "ReceiveRemoteNotifNotification"
     case RemoveBundge       = "RemoveBundgeNotification"
@@ -160,4 +160,9 @@ enum HFMineSegue:String {
     
     // 我的消息
     case PushMyMessageVC        = "HFMineSeguePushMyMessageVC"
+}
+
+
+class k {
+    static let dayNames = ["周一","周二","周三","周四","周五","周六","周日"]
 }

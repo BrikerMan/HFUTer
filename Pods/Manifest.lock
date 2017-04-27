@@ -38,6 +38,7 @@ PODS:
     - AFNetworking (~> 3)
     - HappyDNS (~> 0.3)
   - Reveal-SDK (8)
+  - RxSwift (3.4.0)
   - Shimmer (1.0.2)
   - SnapKit (3.2.0)
   - SVProgressHUD (2.1.2)
@@ -76,6 +77,7 @@ DEPENDENCIES:
   - Pitaya (from `https://github.com/johnlui/Pitaya.git`)
   - Qiniu
   - Reveal-SDK
+  - RxSwift (~> 3.0)
   - SnapKit
   - SVProgressHUD
   - SwipeBack
@@ -127,6 +129,7 @@ SPEC CHECKSUMS:
   Pitaya: 9e6a94903cbce6cdab9ad8b82e88142f4abd770d
   Qiniu: 77a3dba411556a383d72d17e842345a9d4c83252
   Reveal-SDK: 43be4e662864e937960d0d04d005135e29c4e53b
+  RxSwift: 3789a1af753002a14edecdb698a2424624296a9c
   Shimmer: c5374be1c2b0c9e292fb05b339a513cf291cac86
   SnapKit: 1ca44df72cfa543218d177cb8aab029d10d86ea7
   SVProgressHUD: c404a55d78acbeb7ebb78b76d3faf986475a6994
@@ -141,6 +144,6 @@ SPEC CHECKSUMS:
   YYWebImage: 5f7f36aee2ae293f016d418c7d6ba05c4863e928
   ZYCornerRadius: f0af817be7805b5c63d793042ca7a03f81e14069
 
-PODFILE CHECKSUM: a86672e61add4a59e271ea6d7bd50c5763917707
+PODFILE CHECKSUM: 840fb26deda131099341953ae19774fe158aaf5f
 
 COCOAPODS: 1.2.1

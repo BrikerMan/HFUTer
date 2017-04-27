@@ -10,7 +10,7 @@ import UIKit
 import SnapKit
 
 fileprivate class kSchedule {
-    static let day = 5
+    static var day = 5
     static let cellWidth  = (ScreenWidth - 30) / 5
     static let cellHeight = (ScreenHeight - 64 - 49) / 11
     
@@ -30,7 +30,28 @@ class HFScheduleView: HFView {
     var scheduleCells : [String: HFScheduleViewCell] = [:]
     var topViewCells  : [HFScheduleTopView] = []
     
+    var schedules: [HFScheduleModel] = []
+    
     override func initSetup() {
+        setupBaseViews()
+        
+        setupLeftViews()
+        setupContentView()
+        
+        DataEnv.settings.weekendSchedule.asObservable().subscribe(onNext: { [weak self] (element) in
+            kSchedule.day = element ? 7 : 5
+            self?.setupTopView()
+            self?.setup(with: self?.schedules ?? [])
+        }).addDisposableTo(disposeBag)
+    }
+    
+    func setup(with schedules: [HFScheduleModel]) {
+        self.schedules = schedules
+        let viewModels = group(schedules: schedules)
+        drawScheduleView(viewModels: viewModels)
+    }
+    
+    fileprivate func setupBaseViews() {
         addSubview(scrollView)
         scrollView.snp.makeConstraints {
             $0.edges.equalTo(self)
@@ -63,13 +84,9 @@ class HFScheduleView: HFView {
         topView.backgroundColor    = HFTheme.BlackAreaColor
         leftView.backgroundColor   = HFTheme.BlackAreaColor
         containerView.backgroundColor = UIColor.white
-        
-        setupTopView()
-        setupLeftViews()
-        setupContentView()
     }
     
-    func setupTopView() {
+    fileprivate func setupTopView() {
         topViewCells.removeAll()
         topView.removeSubviews()
         
@@ -95,7 +112,7 @@ class HFScheduleView: HFView {
         }
     }
     
-    func setupLeftViews() {
+    fileprivate func setupLeftViews() {
         for i in 0..<11 {
             let cell = HFScheduleLeftView()
             cell.titleLabel.text = "\(i+1)"
@@ -110,7 +127,7 @@ class HFScheduleView: HFView {
         }
     }
     
-    func setupContentView() {
+    fileprivate func setupContentView() {
         let cellHeight = (ScreenHeight - 64 - 49) / 11
         for i in 1..<11 {
             let seperator = UIImageView(image: UIImage(named: "hf_widget_seperator_line"))
@@ -124,12 +141,9 @@ class HFScheduleView: HFView {
         }
     }
     
-    func setup(with schedules: [HFScheduleModel]) {
-        let viewModels = group(schedules: schedules)
-        drawScheduleView(viewModels: viewModels)
-    }
+
     
-    func drawScheduleView(viewModels: [HFCourceViewModel]) {
+    fileprivate func drawScheduleView(viewModels: [HFCourceViewModel]) {
         scheduleCells.removeAll()
         containerView.removeSubviews()
         
@@ -153,7 +167,7 @@ class HFScheduleView: HFView {
     }
     
     
-    func group(schedules: [HFScheduleModel]) -> [HFCourceViewModel] {
+    fileprivate func group(schedules: [HFScheduleModel]) -> [HFCourceViewModel] {
         var dayList = Array<[HFScheduleModel]>(repeating: [], count: 7)
         for s in schedules {
             dayList[s.day].append(s)
@@ -173,14 +187,10 @@ class HFScheduleView: HFView {
                 if index > 0 {
                     if item.name == sortedArray[index - 1].name {
                         result.last?.cources.append(item)
-//                        print("同课程")
-                        //        } else if item.hour == sortedArray[index - 1].hour {
-                        //            print("不同课程重叠")
                     } else {
                         let model = HFCourceViewModel()
                         model.cources.append(item)
                         result.append(model)
-//                        print("不重叠")
                     }
                 } else {
                     let model = HFCourceViewModel()
@@ -190,33 +200,5 @@ class HFScheduleView: HFView {
             }
         }
         return result
-    }
-}
-
-class HFCourceViewModel: CustomStringConvertible {
-    var cources: [HFScheduleModel] = []
-    
-    var name: String {
-        return cources.first?.name ?? ""
-    }
-    
-    var place: String {
-        return cources.first?.place ?? ""
-    }
-    
-    var day: Int {
-        return cources.first?.day ?? 0
-    }
-    
-    var start: Int {
-        return cources.first?.hour ?? 0
-    }
-    
-    var duration: Int {
-        return cources.count
-    }
-    
-    var description: String {
-        return "\(cources) \(start) - \(start + duration - 1)"
     }
 }

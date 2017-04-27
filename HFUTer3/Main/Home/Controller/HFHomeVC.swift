@@ -36,6 +36,10 @@ class HFHomeVC: HFBasicViewController{
         AnalyseManager.OpenSchudule.record()
     }
     
+    @IBAction func onAddScheduleButtonPressed(_ sender: Any) {
+        let vc = HFScheduleInfoViewController()
+        self.push(vc)
+    }
     
     @objc fileprivate func afterUserLogin(_ sender:AnyObject) {
         HFParseViewModel.info = nil
@@ -48,7 +52,7 @@ class HFHomeVC: HFBasicViewController{
     }
     
     @objc fileprivate func reloadSchedules() {
-//        scheduleView.reloadData()
+        loadSchedule()
     }
     
     override func updateTintColor() {
@@ -142,7 +146,7 @@ class HFHomeVC: HFBasicViewController{
     
     fileprivate func initData() {
         NotificationCenter.default.addObserver(self, selector: #selector(HFHomeVC.afterUserLogin(_:)), name: NSNotification.Name(rawValue: HFUserLoginNotification), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(HFHomeVC.reloadSchedules), name: NSNotification.Name(rawValue: HFNotification.SettingScheduleRelatedUpdate.rawValue), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(HFHomeVC.reloadSchedules), name: HFNotification.scheduleUpdated.get(), object: nil)
         
         
         currentWeek = DataEnv.currentWeek

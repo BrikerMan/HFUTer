@@ -112,7 +112,7 @@ extension HFPullTableView: DZNEmptyDataSetSource {
     func title(forEmptyDataSet scrollView: UIScrollView!) -> NSAttributedString! {
         let title = self.titleForEmptyForm()
         let attributes = [NSFontAttributeName: UIFont.systemFont(ofSize: 20),
-                          NSForegroundColorAttributeName: UIColor(hexString: "#BCBCBC")!]
+                          NSForegroundColorAttributeName: UIColor(hexString: "#BCBCBC")]
         return NSAttributedString(string: title, attributes: attributes)
     }
     

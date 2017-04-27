@@ -80,8 +80,7 @@ class ColorManager {
 }
 
 
-import UIKit
-
+/**
 // MARK: - UIColor
 // MARK: - UIColor
 extension UIColor {
@@ -167,3 +166,4 @@ extension UIColor {
         self.init(hexString: hexString as String , alpha: alpha)
     }
 }
+*/

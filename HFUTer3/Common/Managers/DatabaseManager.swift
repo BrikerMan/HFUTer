@@ -15,6 +15,7 @@ enum HFBDTable: String {
     case schedule
 }
 
+typealias BoolBlock = (Bool)->Void
 
 protocol SQLiteCachable {
     var id: String { get }
@@ -36,15 +37,17 @@ class DatabaseManager {
      - parameter item: item model
      - parameter to:   target table type
      */
-    func insert<T:SQLiteCachable>(item: T, to: HFBDTable) {
+    func insert<T:SQLiteCachable>(item: T, to: HFBDTable, completion: BoolBlock? = nil) {
         let statement = item.insertSQLStatement(tableName: to.rawValue)
         databaseQueue.inTransaction { db, rollback in
             do {
                 try db?.executeUpdate(statement.sql, values: statement.values)
                 Logger.debug("\(item) inserted to \(to.rawValue) table")
+                completion?(true)
             } catch {
                 rollback?.pointee = true
                 Logger.error(error.localizedDescription)
+                completion?(false)
             }
         }
     }
@@ -91,7 +94,7 @@ class DatabaseManager {
         let db = FMDatabase(path: dbPath)!
         db.open()
         
-        var sql = "Select COUNT(*) from \(from.rawValue)"
+        var sql = "Select COUNT(*) as count from \(from.rawValue)"
         if let filter = filter {
             sql += " WHERE " + filter
         }
@@ -99,7 +102,7 @@ class DatabaseManager {
         var count = 0
         if let rs = try? db.executeQuery(sql, values: []) {
             while rs.next() {
-                count = Int(rs.int(forColumn: "Count"))
+                count = Int(rs.int(forColumn: "count"))
             }
         }
         db.close()

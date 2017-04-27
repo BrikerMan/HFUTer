@@ -10,6 +10,7 @@ import Foundation
 import YYModel
 import PromiseKit
 
+@available(*, deprecated)
 struct CourseHourModel {
     var name = "course"
     var models:[HFCourseModel]
@@ -22,6 +23,8 @@ struct CourseHourModel {
 }
 
 extension CourseHourModel: Equatable {}
+
+@available(*, deprecated)
 func ==(lhs: CourseHourModel, rhs: CourseHourModel) -> Bool {
     if lhs.models.count == rhs.models.count {
         var allSame = true
@@ -35,6 +38,7 @@ func ==(lhs: CourseHourModel, rhs: CourseHourModel) -> Bool {
     return false
 }
 
+@available(*, deprecated)
 struct CourseDayModel {
     var name  = "CourseDay"
     var hours : [CourseHourModel]
@@ -45,6 +49,7 @@ struct CourseDayModel {
     }
 }
 
+@available(*, deprecated)
 class HFCourseModel: NSObject {
     /// 课程名称
     var name  = ""

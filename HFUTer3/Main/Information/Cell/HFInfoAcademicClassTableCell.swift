@@ -29,9 +29,9 @@ class HFInfoAcademicClassTableCell:UITableViewCell {
     func setupCellWithStruct(_ model:HFAcademicClassListModel,isLast:Bool){
         nameLabel.text = model.name
         codeLabel.text = model.code
-        codeLabel.textColor = ColorManager.shared.GreyTextColor
+        codeLabel.textColor = HFTheme.GreyTextColor
         classCodeLabel.text = model.classCode
-        classCodeLabel.textColor = ColorManager.shared.GreyTextColor
+        classCodeLabel.textColor = HFTheme.GreyTextColor
         
         if isLast {
             seperatorLeftConsraint.constant = 0

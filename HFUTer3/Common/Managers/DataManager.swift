@@ -8,23 +8,31 @@
 
 import Foundation
 import AlamofireDomain
+import RxSwift
 import Pitaya
 
 struct HFSettings {
-    var shouldShowWeekEndClass:Bool
+    var weekendSchedule    : Variable<Bool>
+    var scheduleRoundStyle : Variable<Bool>
     
     init() {
         let data = PlistManager.settingsPlist.getValues()
-        let settings = data?[HFSettingPlistKey.Settings.rawValue] as? JSON
-        self.shouldShowWeekEndClass = settings?[HFSettingPlistKey.ShowWeekendSchedule.rawValue] as? Bool ?? false
+        let settings = data?[HFSettingPlistKey.settings.rawValue] as? JSON
+        
+        let weekEnd = settings?[HFSettingPlistKey.weekendSchedule.rawValue] as? Bool ?? false
+        let round   = settings?[HFSettingPlistKey.scheduleRoundStyle.rawValue] as? Bool ?? false
+        
+        weekendSchedule    = Variable(weekEnd)
+        scheduleRoundStyle = Variable(round)
     }
     
     func save() {
         let settings = [
-            HFSettingPlistKey.ShowWeekendSchedule.rawValue : shouldShowWeekEndClass
+            HFSettingPlistKey.weekendSchedule.rawValue    : weekendSchedule.value,
+            HFSettingPlistKey.scheduleRoundStyle.rawValue : scheduleRoundStyle.value
         ]
-        let data = [ HFSettingPlistKey.Settings.rawValue : settings]
-        PlistManager.settingsPlist.saveValues(data as [String : AnyObject])
+        let data = [ HFSettingPlistKey.settings.rawValue : settings]
+        PlistManager.settingsPlist.saveValues(data)
     }
 }
 

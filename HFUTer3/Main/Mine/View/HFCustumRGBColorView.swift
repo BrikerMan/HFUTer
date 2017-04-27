@@ -15,7 +15,6 @@ class HFCustumRGBColorView: HFXibView {
     @IBOutlet weak var rSlider: UISlider!
     @IBOutlet weak var gSlider: UISlider!
     @IBOutlet weak var bSlider: UISlider!
-   
     
     var color: (r: Int, g: Int, b: Int) = (0,0,0) {
         didSet {

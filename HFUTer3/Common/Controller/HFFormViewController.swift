@@ -60,6 +60,13 @@ class HFFormViewController: FormViewController, UIGestureRecognizerDelegate {
             cell.titleLabel!.textColor  = row.isDisabled ? HFTheme.GreyTextColor : HFTheme.DarkTextColor
         }
         
+        HFEurekaInfoRow.defaultCellUpdate = { cell, row in
+            cell.titleLabel.textColor = HFTheme.DarkTextColor
+            cell.titleLabel.font      = UIFont.systemFont(ofSize : 14)
+            cell.infoLabel.font       = UIFont.systemFont(ofSize : 14)
+            cell.infoLabel.textColor  = row.isDisabled ? HFTheme.GreyTextColor : HFTheme.DarkTextColor
+        }
+
         
         PasswordRow.defaultCellUpdate = { cell, row in
             cell.textField.textColor    = HFTheme.GreyTextColor
@@ -114,6 +121,10 @@ class HFFormViewController: FormViewController, UIGestureRecognizerDelegate {
             cell.textLabel?.font             = UIFont.systemFont(ofSize: 14)
         }
         
+        CheckRow.defaultCellUpdate = { cell,row in
+            cell.textLabel?.textColor        = HFTheme.DarkTextColor
+            cell.textLabel?.font             = UIFont.systemFont(ofSize: 14)
+        }
         
         ButtonRow.defaultCellUpdate = { cell,row in
             cell.textLabel?.font             = UIFont.systemFont(ofSize: 14)

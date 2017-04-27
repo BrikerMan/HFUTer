@@ -7,9 +7,12 @@
 //
 
 import UIKit
+import RxSwift
 
 class HFXibView: UIView {
     var view:UIView?
+    
+    var disposeBag = DisposeBag()
     
     //MARK:- 生命周期
     override init(frame: CGRect) {
@@ -39,6 +42,7 @@ class HFXibView: UIView {
 
 class HFView: UIView {
     var view:UIView?
+    var disposeBag = DisposeBag()
     
     //MARK:- 生命周期
     override init(frame: CGRect) {
