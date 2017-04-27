@@ -12,9 +12,6 @@ import Crashlytics
 import YYWebImage
 import AVOSCloud
 
-let Is_Build_For_App_Store = true
-let Is_TestFlight          = false
-
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     

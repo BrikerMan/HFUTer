@@ -30,8 +30,20 @@ class RootViewController: UITabBarController {
         
         NotificationCenter.default.addObserver(self, selector: #selector(RootViewController.afterLoginResponse(_:)), name: NSNotification.Name(rawValue: HFNotification.UserLogin.rawValue), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(RootViewController.afterLogoutResponse(_:)), name: NSNotification.Name(rawValue: HFNotification.UserLogout.rawValue), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(self.onReceiveRemoteNotif), name: NSNotification.Name(rawValue: HFNotification.ReceiveRemoteNotif.rawValue), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(self.onClearBandge), name: NSNotification.Name(rawValue: HFNotification.RemoveBundge.rawValue), object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(self.onReceiveRemoteNotif),
+                                               name: NSNotification.Name(rawValue: HFNotification.ReceiveRemoteNotif.rawValue),
+                                               object: nil)
+        
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(self.onClearBandge),
+                                               name: NSNotification.Name(rawValue: HFNotification.RemoveBundge.rawValue),
+                                               object: nil)
+        
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(onTintChanegd),
+                                               name: .tintColorUpdated,
+                                               object: nil)
        
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(onHaveNewSystemNotif(sendet:)),
@@ -53,6 +65,10 @@ class RootViewController: UITabBarController {
     
     @objc fileprivate func afterLogoutResponse(_ sender:AnyObject) {
         showLoginVC(true)
+    }
+    
+    @objc fileprivate func onTintChanegd() {
+        UIApplication.shared.keyWindow?.tintColor = HFTheme.TintColor
     }
     
     @objc fileprivate func onReceiveRemoteNotif() {

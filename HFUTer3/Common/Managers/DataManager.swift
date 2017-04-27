@@ -161,7 +161,8 @@ class DataManager {
             let access = tokenString.matchesForRegexInText("access_token=\\w*;", text: tokenString).first,
             let refresh = tokenString.matchesForRegexInText("refresh_token=\\w*;", text: tokenString).first {
             DataEnv.token = access + refresh
-            log.debugLog("刷新Token成功", params: [access + refresh])
+            
+//            log.debugLog("刷新Token成功", params: [access + refresh])
             DataEnv.hasUpdateToken = true
         }
         

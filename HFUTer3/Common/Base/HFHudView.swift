@@ -12,6 +12,7 @@ import SVProgressHUD
 import YYText
 
 let Hud = HFHudView.shared
+let hud             = HFHudView.shared
 
 class HFHudView: NSObject {
     

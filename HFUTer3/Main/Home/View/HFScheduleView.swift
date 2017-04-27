@@ -59,7 +59,7 @@ class HFScheduleView: HFView {
     
     func setup(with schedules: [HFScheduleModel]) {
         self.schedules = schedules
-        let viewModels = group(schedules: schedules)
+        let viewModels = HFCourceViewModel.group(schedules: schedules)
         drawScheduleView(viewModels: viewModels)
     }
     
@@ -174,41 +174,5 @@ class HFScheduleView: HFView {
                 scheduleCells["\(model.day)-\(model.start)"] = cell
             }
         }
-    }
-    
-    
-    fileprivate func group(schedules: [HFScheduleModel]) -> [HFCourceViewModel] {
-        var dayList = Array<[HFScheduleModel]>(repeating: [], count: 7)
-        for s in schedules {
-            dayList[s.day].append(s)
-        }
-        
-        var result: [HFCourceViewModel] = []
-        
-        for day in dayList {
-            let sortedArray = day.sorted { (lts, rhs) -> Bool in
-                if lts.name == rhs.name {
-                    return lts.hour < rhs.hour
-                }
-                
-                return lts.name > rhs.name
-            }
-            for (index, item) in sortedArray.enumerated() {
-                if index > 0 {
-                    if item.name == sortedArray[index - 1].name {
-                        result.last?.cources.append(item)
-                    } else {
-                        let model = HFCourceViewModel()
-                        model.cources.append(item)
-                        result.append(model)
-                    }
-                } else {
-                    let model = HFCourceViewModel()
-                    model.cources.append(item)
-                    result.append(model)
-                }
-            }
-        }
-        return result
     }
 }

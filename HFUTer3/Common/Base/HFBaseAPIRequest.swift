@@ -103,7 +103,7 @@ class HFBaseAPIManager {
         
         let headers:[String:String] = ["Cookie":DataEnv.token]
         
-        log.infoLog("Send Request With Param - url : \(subURL)", params: [paramsDic], withFuncName: false)
+//        log.infoLog("Send Request With Param - url : \(subURL)", params: [paramsDic], withFuncName: false)
         
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
         
@@ -116,8 +116,8 @@ class HFBaseAPIManager {
                 UIApplication.shared.isNetworkActivityIndicatorVisible = false
                 self.spendTime = NSDate().timeIntervalSince(self.startTime!)
                 
-                log.infoLog("Received Response", params: [response], withFuncName: false)
-                
+//                log.infoLog("Received Response", params: [response], withFuncName: false)
+//                
                 // 若有token返回，则刷新token
                 if let headers = response.response?.allHeaderFields {
                     DataEnv.saveToken(headers)
@@ -154,13 +154,11 @@ class HFBaseAPIManager {
     
     deinit {
         if let _ = startTime {
-            let logStr = String(stringInterpolation:String(describing: self.self), " is released, time spend on this request:\(spendTime) seconds"
-            )
-            log.debugLog(logStr, params: [], withFuncName: false)
+//            let logStr = String(stringInterpolation:String(describing: self.self), " is released, time spend on this request:\(spendTime) seconds")
+//            log.debugLog(logStr, params: [], withFuncName: false)
         } else {
-            let logStr = String(stringInterpolation:String(describing: self.self), " is released without sending request"
-            )
-            log.debugLog(logStr, params: [], withFuncName: false)
+//            let logStr = String(stringInterpolation:String(describing: self.self), " is released without sending request")
+//            log.debugLog(logStr, params: [], withFuncName: false)
         }
     }
 }

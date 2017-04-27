@@ -38,14 +38,14 @@ class HFUpdateCookieRequest {
             if let username = DataEnv.user?.sid, let password = DataEnv.user?.password {
                 
                 if password == "" {
-                    log.errorLog("没有保存用户名密码啊喂", params:[] )
+//                    log.errorLog("没有保存用户名密码啊喂", params:[] )
                     failed?("")
                     return
                 }
                 
                 let params: JSON = ["sid":username, "pwd": password.md5()]
                 let url =  APIBaseURL + "/api/user/login"
-                log.infoLog("******更新Token请求******", params: [params])
+//                log.infoLog("******更新Token请求******", params: [params])
                 AlamofireDomain.request(url, method: HTTPMethod.post, parameters: params, encoding: URLEncoding.default, headers: nil)
                     .responseJSON { response in
                         switch response.result.isSuccess {
@@ -60,26 +60,26 @@ class HFUpdateCookieRequest {
                                 } else {
                                     let errorInfo = resultDic["info"] as? String  ?? ""
                                     failed?(errorInfo)
-                                    log.errorLog(errorInfo)
+//                                    log.errorLog(errorInfo)
                                 }
                             } else {
                                 let errorInfo = "数据格式错误啊喂"
                                 failed?(errorInfo)
-                                log.errorLog(errorInfo, params: [response.request?.allHTTPHeaderFields ?? "",response.response?.allHeaderFields ?? "",response.result.value ?? ""])
+//                                log.errorLog(errorInfo, params: [response.request?.allHTTPHeaderFields ?? "",response.response?.allHeaderFields ?? "",response.result.value ?? ""])
                             }
                         case false:
                             if let resultDic = response.result.value as? [String:AnyObject], let error = resultDic["info"] as? String {
                                 failed?(error)
-                                log.errorLog(error, params: [response.request?.allHTTPHeaderFields ?? "",response.response?.allHeaderFields ?? "",response.result.value ?? ""])
+//                                log.errorLog(error, params: [response.request?.allHTTPHeaderFields ?? "",response.response?.allHeaderFields ?? "",response.result.value ?? ""])
                             } else {
                                 let errorInfo = "数据格式错误啊喂"
                                 failed?(errorInfo)
-                                log.errorLog(errorInfo, params: [response.request?.allHTTPHeaderFields ?? "",response.response?.allHeaderFields ?? "",response.result.value ?? ""])
+//                                log.errorLog(errorInfo, params: [response.request?.allHTTPHeaderFields ?? "",response.response?.allHeaderFields ?? "",response.result.value ?? ""])
                             }
                         }
                 }
             } else {
-                log.errorLog("没有保存用户名密码啊喂", params:[] )
+//                log.errorLog("没有保存用户名密码啊喂", params:[] )
                 failed?("")
             }
         } else {

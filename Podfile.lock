@@ -34,6 +34,17 @@ PODS:
   - LTMorphingLabel (0.3.0)
   - NVActivityIndicatorView (3.6.1)
   - Pitaya (1.0.0)
+  - PromiseKit (4.2.0):
+    - PromiseKit/Foundation (= 4.2.0)
+    - PromiseKit/QuartzCore (= 4.2.0)
+    - PromiseKit/UIKit (= 4.2.0)
+  - PromiseKit/CorePromise (4.2.0)
+  - PromiseKit/Foundation (4.2.0):
+    - PromiseKit/CorePromise
+  - PromiseKit/QuartzCore (4.2.0):
+    - PromiseKit/CorePromise
+  - PromiseKit/UIKit (4.2.0):
+    - PromiseKit/CorePromise
   - Qiniu (7.1.5):
     - AFNetworking (~> 3)
     - HappyDNS (~> 0.3)
@@ -75,6 +86,7 @@ DEPENDENCIES:
   - LTMorphingLabel (from `https://github.com/lexrus/LTMorphingLabel.git`, branch `swift3`)
   - NVActivityIndicatorView
   - Pitaya (from `https://github.com/johnlui/Pitaya.git`)
+  - PromiseKit
   - Qiniu
   - Reveal-SDK
   - RxSwift (~> 3.0)
@@ -127,6 +139,7 @@ SPEC CHECKSUMS:
   LTMorphingLabel: 2777d8d9cb699125f48dfcd95d78bd3d77c87ade
   NVActivityIndicatorView: 9f52a7f84bf5c6a798722c450fe3c198e01c56ed
   Pitaya: 9e6a94903cbce6cdab9ad8b82e88142f4abd770d
+  PromiseKit: 08dfb783c161ddcd95b7912421f14c5113fd8318
   Qiniu: 77a3dba411556a383d72d17e842345a9d4c83252
   Reveal-SDK: 43be4e662864e937960d0d04d005135e29c4e53b
   RxSwift: 3789a1af753002a14edecdb698a2424624296a9c
@@ -144,6 +157,6 @@ SPEC CHECKSUMS:
   YYWebImage: 5f7f36aee2ae293f016d418c7d6ba05c4863e928
   ZYCornerRadius: f0af817be7805b5c63d793042ca7a03f81e14069
 
-PODFILE CHECKSUM: 840fb26deda131099341953ae19774fe158aaf5f
+PODFILE CHECKSUM: a047804645f61c634a99233ce42b6014f1d707c1
 
 COCOAPODS: 1.2.1

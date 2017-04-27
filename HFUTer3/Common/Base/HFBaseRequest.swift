@@ -57,7 +57,7 @@ class HFBaseRequest {
             requestMethod = HTTPMethod.post
         }
         
-        log.infoLog("Send \(method.rawValue) Request - url : \(api)", params: [params], withFuncName: false)
+//        log.infoLog("Send \(method.rawValue) Request - url : \(api)", params: [params], withFuncName: false)
         
         AlamofireDomain.request(APIBaseURL + api, method: requestMethod, parameters: params, encoding: URLEncoding.default, headers: headers)
             .responseJSON { result in
@@ -71,7 +71,7 @@ class HFBaseRequest {
     fileprivate func resultHandler(_ requestResponse: DataResponse<Any>,
                                    response:((_ response: JSONItem, _ error:String?)->Void)?) {
         UIApplication.shared.isNetworkActivityIndicatorVisible = false
-        log.infoLog("Received Response", params: [requestResponse], withFuncName: false)
+//        log.infoLog("Received Response", params: [requestResponse], withFuncName: false)
         
         // 若有token返回，则刷新token
         if let headers = requestResponse.response?.allHeaderFields {
@@ -185,7 +185,7 @@ class HFBaseRequest {
             requestMethod = HTTPMethod.post
         }
         
-        log.infoLog("Send \(method.rawValue) Request - url : \(apiURL)", params: [params], withFuncName: false)
+//        log.infoLog("Send \(method.rawValue) Request - url : \(apiURL)", params: [params], withFuncName: false)
         
         AlamofireDomain.request(APIBaseURL + apiURL, method: requestMethod, parameters: params, encoding: URLEncoding.default, headers: headers)
             .responseJSON { response in
@@ -220,7 +220,7 @@ class HFBaseRequest {
                                    failBlock:((_ request: HFBaseRequest, _ error:String?)->Void)?) {
         UIApplication.shared.isNetworkActivityIndicatorVisible = false
         
-        log.infoLog("Received Response", params: [response], withFuncName: false)
+//        log.infoLog("Received Response", params: [response], withFuncName: false)
         
         // 若有token返回，则刷新token
         if let headers = response.response?.allHeaderFields {

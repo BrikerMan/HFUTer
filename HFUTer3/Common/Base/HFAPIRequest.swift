@@ -9,8 +9,8 @@
 import Foundation
 import Pitaya
 
-typealias JSONItem = JSONND
 typealias PitaHTTPMethod = HTTPMethod
+typealias JSON = [String: Any]
 
 class HFAPIRequest {
     var manager: HFAPIRequestManager!
@@ -38,8 +38,8 @@ class HFAPIRequestManager {
     }
     
     func response(callback: ((_ json: JSONItem, _ error: String?, _ isNetError: Bool) -> Void)?) {
-        let url = APIBaseURL + api 
-        log.infoLog("| FLBaseRequest | fire request @ \(api) | params: \n \(param)")
+        let url = APIBaseURL + api
+//        log.infoLog("| FLBaseRequest | fire request @ \(api) | params: \n \(param)")
         
         Pita.build(HTTPMethod: .POST, url: url)
             .addParams(param)

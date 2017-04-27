@@ -65,8 +65,8 @@ class HFScheduleInfoViewController: HFFormViewController {
     
     override func onNavRightButtonPressed() {
         if newModel.name != "", newModel.place != "", newModel.weeks != [], newModel.duration != 0  {
+            Hud.showLoading("正在保存")
             if let model = currentModel {
-                Hud.showLoading("正在保存")
                 if model.isUserAdded {
                     model.cleanUP()
                     HFCourceViewModel.create(model: newModel)

@@ -37,53 +37,5 @@
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "HFUTer3/Main/Home/View/HFScheduleView.swift"
-            timestampString = "514969662.914521"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "52"
-            endingLineNumber = "52"
-            landmarkName = "initSetup()"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "HFUTer3.HFScheduleView.(initSetup () -&gt; ()).(closure #1)"
-                  moduleName = "HFUTer3"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/brikerman/Desktop/Projects/HFUTer/HFUTer4/HFUTer3/Main/Home/View/HFScheduleView.swift"
-                  timestampString = "514969664.060071"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "52"
-                  endingLineNumber = "52"
-                  offsetFromSymbolStart = "252">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "HFUTer3.HFScheduleView.(initSetup () -&gt; ()).(closure #1).(implicit closure #1)"
-                  moduleName = "HFUTer3"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/brikerman/Desktop/Projects/HFUTer/HFUTer4/HFUTer3/Main/Home/View/HFScheduleView.swift"
-                  timestampString = "514969664.061549"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "52"
-                  endingLineNumber = "52"
-                  offsetFromSymbolStart = "16">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

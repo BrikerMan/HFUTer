@@ -18,16 +18,7 @@ class HFScheduleTimePicker: HFXibView {
     @IBAction func onDoneButtonPressed(_ sender: Any) {
         
         
-        let duration = pickerView.selectedRow(inComponent: 2) - pickerView.selectedRow(inComponent: 1) + 1
-        if duration < 1 {
-            Hud.showError("请选择正确时间")
-            return
-        }
-        finishedBlock?(
-            pickerView.selectedRow(inComponent: 0),
-            pickerView.selectedRow(inComponent: 1),
-            duration
-        )
+
         tappedBack()
     }
     
@@ -43,6 +34,18 @@ class HFScheduleTimePicker: HFXibView {
 
     
     func tappedBack() {
+        let duration = pickerView.selectedRow(inComponent: 2) - pickerView.selectedRow(inComponent: 1) + 1
+        if duration < 1 {
+            Hud.showError("请选择正确时间")
+            return
+        }
+        
+        finishedBlock?(
+            pickerView.selectedRow(inComponent: 0),
+            pickerView.selectedRow(inComponent: 1),
+            duration
+        )
+        
         UIView.animate(withDuration: 0.25, animations: {
             self.backgroundColor = UIColor.black.withAlphaComponent(0)
             self.bottomConstraint.constant = -250

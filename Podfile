@@ -41,6 +41,7 @@ target 'HFUTer3' do
     pod 'GzipSwift'
     pod 'FMDB'
     pod 'AVOSCloud'
+    pod 'PromiseKit'
     
     # 统计
     pod 'Fabric'
@@ -56,6 +57,8 @@ end
 target 'TodayWidget' do
     inhibit_all_warnings!
     use_frameworks!
+    pod 'Pitaya', :git => 'https://github.com/johnlui/Pitaya.git'
+    pod 'PromiseKit'
     pod 'FMDB'
     pod 'CocoaLumberjack/Swift'
 end

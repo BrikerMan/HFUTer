@@ -95,6 +95,16 @@
 		6A128E1B1CF5CADB000185C3 /* HFCommunityContactVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A128E1A1CF5CADB000185C3 /* HFCommunityContactVC.swift */; };
 		6A128E1D1CF5CD68000185C3 /* HFCommunityUserPublishedLostVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A128E1C1CF5CD68000185C3 /* HFCommunityUserPublishedLostVC.swift */; };
 		6A128E211CF69247000185C3 /* HFBaseRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A128E201CF69247000185C3 /* HFBaseRequest.swift */; };
+		6A12AD2E1EB1DE4400242BD2 /* HFScheduleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ADD024F1E73FB9D0024B22C /* HFScheduleModel.swift */; };
+		6A12AD301EB1DEF500242BD2 /* Macros.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B23B0BE1C97DD770089214D /* Macros.swift */; };
+		6A12AD381EB1E01600242BD2 /* ColorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A12AD361EB1E01600242BD2 /* ColorManager.swift */; };
+		6A12AD391EB1E01600242BD2 /* PlistManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A12AD371EB1E01600242BD2 /* PlistManager.swift */; };
+		6A12AD3B1EB1E02C00242BD2 /* SharedMacros.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A12AD3A1EB1E02C00242BD2 /* SharedMacros.swift */; };
+		6A12AD3C1EB1E03900242BD2 /* ColorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A12AD361EB1E01600242BD2 /* ColorManager.swift */; };
+		6A12AD3D1EB1E03C00242BD2 /* SharedMacros.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A12AD3A1EB1E02C00242BD2 /* SharedMacros.swift */; };
+		6A12AD3E1EB1E03E00242BD2 /* PlistManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A12AD371EB1E01600242BD2 /* PlistManager.swift */; };
+		6A12AD401EB1E33100242BD2 /* HFCourceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A12AD3F1EB1E33100242BD2 /* HFCourceViewModel.swift */; };
+		6A12AD411EB1E38200242BD2 /* HFCourceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A12AD3F1EB1E33100242BD2 /* HFCourceViewModel.swift */; };
 		6A1CEA5E1D04924800481D3A /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A1CEA5D1D04924800481D3A /* MobileCoreServices.framework */; };
 		6A1CEA601D04925500481D3A /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A1CEA5F1D04925500481D3A /* CoreLocation.framework */; };
 		6A1CEA771D05245300481D3A /* HFInfoAcademicClassDetailTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A1CEA6A1D05245300481D3A /* HFInfoAcademicClassDetailTableCell.swift */; };
@@ -129,7 +139,6 @@
 		6A338F121D04375600A40C98 /* HFHelpInfoWebVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A338F101D04375600A40C98 /* HFHelpInfoWebVC.swift */; };
 		6A338F131D04375600A40C98 /* HFHelpInfoWebVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6A338F111D04375600A40C98 /* HFHelpInfoWebVC.xib */; };
 		6A3581A61EB17534006EFEAA /* HFScheduleInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A3581A51EB17534006EFEAA /* HFScheduleInfoViewController.swift */; };
-		6A3581A81EB17551006EFEAA /* HFCourceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A3581A71EB17551006EFEAA /* HFCourceViewModel.swift */; };
 		6A3E6F101E407DE7001FA3E3 /* YYLabel+Copyable.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A3E6F0F1E407DE7001FA3E3 /* YYLabel+Copyable.m */; };
 		6A3E6F131E408B96001FA3E3 /* HFAPIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A3E6F121E408B96001FA3E3 /* HFAPIRequest.swift */; };
 		6A3EAAEE1CE0227000809226 /* HFComLoveWallListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A3EAAED1CE0227000809226 /* HFComLoveWallListModel.swift */; };
@@ -150,9 +159,7 @@
 		6A7988A01D6C79900068C6F6 /* TodayWidget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 6A7988941D6C79900068C6F6 /* TodayWidget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		6A7988BB1D6D528C0068C6F6 /* CourseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7988B41D6D528C0068C6F6 /* CourseTableViewCell.swift */; };
 		6A7988BC1D6D528C0068C6F6 /* NoCourceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7988B51D6D528C0068C6F6 /* NoCourceTableViewCell.swift */; };
-		6A7988BD1D6D528C0068C6F6 /* ColorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7988B71D6D528C0068C6F6 /* ColorManager.swift */; };
 		6A7988BE1D6D528C0068C6F6 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7988B81D6D528C0068C6F6 /* DataManager.swift */; };
-		6A7988BF1D6D528C0068C6F6 /* HFCourseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7988BA1D6D528C0068C6F6 /* HFCourseModel.swift */; };
 		6A7D82861EB16C9400D6A65C /* HFHomeScheduleSelectWeekViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7D827C1EB16C9400D6A65C /* HFHomeScheduleSelectWeekViewCell.swift */; };
 		6A7D82871EB16C9400D6A65C /* HFHomeScheduleSelectWeekViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6A7D827D1EB16C9400D6A65C /* HFHomeScheduleSelectWeekViewCell.xib */; };
 		6A7D82881EB16C9400D6A65C /* HFScheduleViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7D827E1EB16C9400D6A65C /* HFScheduleViewCell.swift */; };
@@ -253,7 +260,6 @@
 		6AE1F4EE1E470CAE003CFA27 /* Base64Util.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AE1F4E41E470CAE003CFA27 /* Base64Util.m */; };
 		6AE1F4EF1E470CAE003CFA27 /* DESEncryption.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AE1F4E61E470CAE003CFA27 /* DESEncryption.m */; };
 		6AE1F4F11E470CAE003CFA27 /* GTMBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = 6AE1F4EA1E470CAE003CFA27 /* GTMBase64.m */; };
-		6AE1F4F41E473209003CFA27 /* PromiseKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AE1F4F31E473209003CFA27 /* PromiseKit.framework */; };
 		6AE4A28F1D0009F10025BB79 /* HFCommunityLoveWallDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AE4A28D1D0009F10025BB79 /* HFCommunityLoveWallDetailVC.swift */; };
 		6AE4A2901D0009F10025BB79 /* HFCommunityLoveWallDetailVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6AE4A28E1D0009F10025BB79 /* HFCommunityLoveWallDetailVC.xib */; };
 		6AE4A2961D0017D10025BB79 /* HFComLoveWallCommentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AE4A2951D0017D10025BB79 /* HFComLoveWallCommentModel.swift */; };
@@ -306,7 +312,6 @@
 		6B23B0AE1C97DA4E0089214D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6B23B0A71C97DA4E0089214D /* Assets.xcassets */; };
 		6B23B0AF1C97DA4E0089214D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B23B0A81C97DA4E0089214D /* LaunchScreen.storyboard */; };
 		6B23B0B11C97DA4E0089214D /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B23B0AD1C97DA4E0089214D /* RootViewController.swift */; };
-		6B23B0BA1C97DB780089214D /* ColorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B23B0B91C97DB780089214D /* ColorManager.swift */; };
 		6B23B0BF1C97DD770089214D /* Macros.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B23B0BE1C97DD770089214D /* Macros.swift */; };
 		6B23B0DA1C97DECA0089214D /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B23B0D91C97DECA0089214D /* Login.storyboard */; };
 		6B23B0DC1C97E0BC0089214D /* HFBasicButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B23B0DB1C97E0BC0089214D /* HFBasicButton.swift */; };
@@ -361,8 +366,6 @@
 		6B9B67041C9AB964009B5F68 /* HFBaseNavBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B9B67031C9AB964009B5F68 /* HFBaseNavBar.swift */; };
 		6B9B67061C9AB9A7009B5F68 /* HFXibView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B9B67051C9AB9A7009B5F68 /* HFXibView.swift */; };
 		6B9B67081C9AB9FF009B5F68 /* HFBaseNavBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B9B67071C9AB9FF009B5F68 /* HFBaseNavBar.xib */; };
-		6B9B670A1C9ADDA1009B5F68 /* HFCourseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B9B67091C9ADDA1009B5F68 /* HFCourseModel.swift */; };
-		6B9B67571C9BB405009B5F68 /* PlistManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B9B67561C9BB405009B5F68 /* PlistManager.swift */; };
 		6B9B67591C9C0916009B5F68 /* HFUserInfoUpdateRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B9B67581C9C0916009B5F68 /* HFUserInfoUpdateRequest.swift */; };
 		6B9B675B1C9CE3FF009B5F68 /* HFBasicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B9B675A1C9CE3FF009B5F68 /* HFBasicViewController.swift */; };
 		6BA9EAFA1C995DCF0017DBC4 /* Home.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6BA9EAF91C995DCF0017DBC4 /* Home.storyboard */; };
@@ -456,6 +459,10 @@
 		6A128E1A1CF5CADB000185C3 /* HFCommunityContactVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFCommunityContactVC.swift; sourceTree = "<group>"; };
 		6A128E1C1CF5CD68000185C3 /* HFCommunityUserPublishedLostVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFCommunityUserPublishedLostVC.swift; sourceTree = "<group>"; };
 		6A128E201CF69247000185C3 /* HFBaseRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFBaseRequest.swift; sourceTree = "<group>"; };
+		6A12AD361EB1E01600242BD2 /* ColorManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorManager.swift; sourceTree = "<group>"; };
+		6A12AD371EB1E01600242BD2 /* PlistManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlistManager.swift; sourceTree = "<group>"; };
+		6A12AD3A1EB1E02C00242BD2 /* SharedMacros.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharedMacros.swift; sourceTree = "<group>"; };
+		6A12AD3F1EB1E33100242BD2 /* HFCourceViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFCourceViewModel.swift; sourceTree = "<group>"; };
 		6A1CEA5D1D04924800481D3A /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		6A1CEA5F1D04925500481D3A /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		6A1CEA6A1D05245300481D3A /* HFInfoAcademicClassDetailTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFInfoAcademicClassDetailTableCell.swift; sourceTree = "<group>"; };
@@ -490,7 +497,6 @@
 		6A338F101D04375600A40C98 /* HFHelpInfoWebVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFHelpInfoWebVC.swift; sourceTree = "<group>"; };
 		6A338F111D04375600A40C98 /* HFHelpInfoWebVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HFHelpInfoWebVC.xib; sourceTree = "<group>"; };
 		6A3581A51EB17534006EFEAA /* HFScheduleInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFScheduleInfoViewController.swift; sourceTree = "<group>"; wrapsLines = 0; };
-		6A3581A71EB17551006EFEAA /* HFCourceViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFCourceViewModel.swift; sourceTree = "<group>"; };
 		6A3E6F0F1E407DE7001FA3E3 /* YYLabel+Copyable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "YYLabel+Copyable.m"; sourceTree = "<group>"; };
 		6A3E6F111E407DFA001FA3E3 /* YYLabel+Copyable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "YYLabel+Copyable.h"; sourceTree = "<group>"; };
 		6A3E6F121E408B96001FA3E3 /* HFAPIRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFAPIRequest.swift; sourceTree = "<group>"; };
@@ -515,9 +521,7 @@
 		6A7988AA1D6D324D0068C6F6 /* HFUTer3.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = HFUTer3.entitlements; sourceTree = "<group>"; };
 		6A7988B41D6D528C0068C6F6 /* CourseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourseTableViewCell.swift; sourceTree = "<group>"; };
 		6A7988B51D6D528C0068C6F6 /* NoCourceTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoCourceTableViewCell.swift; sourceTree = "<group>"; };
-		6A7988B71D6D528C0068C6F6 /* ColorManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorManager.swift; sourceTree = "<group>"; };
 		6A7988B81D6D528C0068C6F6 /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
-		6A7988BA1D6D528C0068C6F6 /* HFCourseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFCourseModel.swift; sourceTree = "<group>"; };
 		6A7D827C1EB16C9400D6A65C /* HFHomeScheduleSelectWeekViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFHomeScheduleSelectWeekViewCell.swift; sourceTree = "<group>"; };
 		6A7D827D1EB16C9400D6A65C /* HFHomeScheduleSelectWeekViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HFHomeScheduleSelectWeekViewCell.xib; sourceTree = "<group>"; };
 		6A7D827E1EB16C9400D6A65C /* HFScheduleViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFScheduleViewCell.swift; sourceTree = "<group>"; };
@@ -625,7 +629,6 @@
 		6AE1F4E91E470CAE003CFA27 /* GTMBase64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMBase64.h; sourceTree = "<group>"; };
 		6AE1F4EA1E470CAE003CFA27 /* GTMBase64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTMBase64.m; sourceTree = "<group>"; };
 		6AE1F4EB1E470CAE003CFA27 /* GTMDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMDefines.h; sourceTree = "<group>"; };
-		6AE1F4F31E473209003CFA27 /* PromiseKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = PromiseKit.framework; sourceTree = "<group>"; };
 		6AE4A28D1D0009F10025BB79 /* HFCommunityLoveWallDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFCommunityLoveWallDetailVC.swift; sourceTree = "<group>"; };
 		6AE4A28E1D0009F10025BB79 /* HFCommunityLoveWallDetailVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HFCommunityLoveWallDetailVC.xib; sourceTree = "<group>"; };
 		6AE4A2951D0017D10025BB79 /* HFComLoveWallCommentModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFComLoveWallCommentModel.swift; sourceTree = "<group>"; };
@@ -680,7 +683,6 @@
 		6B23B0AC1C97DA4E0089214D /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../Info.plist; sourceTree = "<group>"; };
 		6B23B0AD1C97DA4E0089214D /* RootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		6B23B0B21C97DA670089214D /* HFUTer3-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "HFUTer3-Bridging-Header.h"; path = "../HFUTer3-Bridging-Header.h"; sourceTree = "<group>"; };
-		6B23B0B91C97DB780089214D /* ColorManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorManager.swift; sourceTree = "<group>"; };
 		6B23B0BE1C97DD770089214D /* Macros.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Macros.swift; sourceTree = "<group>"; };
 		6B23B0D91C97DECA0089214D /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		6B23B0DB1C97E0BC0089214D /* HFBasicButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFBasicButton.swift; sourceTree = "<group>"; };
@@ -743,8 +745,6 @@
 		6B9B67031C9AB964009B5F68 /* HFBaseNavBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFBaseNavBar.swift; sourceTree = "<group>"; };
 		6B9B67051C9AB9A7009B5F68 /* HFXibView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFXibView.swift; sourceTree = "<group>"; };
 		6B9B67071C9AB9FF009B5F68 /* HFBaseNavBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HFBaseNavBar.xib; sourceTree = "<group>"; };
-		6B9B67091C9ADDA1009B5F68 /* HFCourseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFCourseModel.swift; sourceTree = "<group>"; };
-		6B9B67561C9BB405009B5F68 /* PlistManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlistManager.swift; sourceTree = "<group>"; };
 		6B9B67581C9C0916009B5F68 /* HFUserInfoUpdateRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFUserInfoUpdateRequest.swift; sourceTree = "<group>"; };
 		6B9B675A1C9CE3FF009B5F68 /* HFBasicViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFBasicViewController.swift; sourceTree = "<group>"; };
 		6BA9EAF91C995DCF0017DBC4 /* Home.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Home.storyboard; sourceTree = "<group>"; };
@@ -787,7 +787,6 @@
 				6A1CEA601D04925500481D3A /* CoreLocation.framework in Frameworks */,
 				6AFF3DCB1D04557D00B575CA /* CoreTelephony.framework in Frameworks */,
 				6AE8D3FD1E3D91DF00E44BE3 /* Toaster.framework in Frameworks */,
-				6AE1F4F41E473209003CFA27 /* PromiseKit.framework in Frameworks */,
 				6A1CEA5E1D04924800481D3A /* MobileCoreServices.framework in Frameworks */,
 				6AFF3DCD1D04558400B575CA /* SystemConfiguration.framework in Frameworks */,
 				6AFF3DD71D0455B300B575CA /* libz.tbd in Frameworks */,
@@ -891,6 +890,16 @@
 			path = Parse;
 			sourceTree = "<group>";
 		};
+		6A12AD351EB1E01600242BD2 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				6A12AD3A1EB1E02C00242BD2 /* SharedMacros.swift */,
+				6A12AD361EB1E01600242BD2 /* ColorManager.swift */,
+				6A12AD371EB1E01600242BD2 /* PlistManager.swift */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
 		6A1CEA691D05245300481D3A /* Cell */ = {
 			isa = PBXGroup;
 			children = (
@@ -969,7 +978,6 @@
 		6A7988B61D6D528C0068C6F6 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
-				6A7988B71D6D528C0068C6F6 /* ColorManager.swift */,
 				6A7988B81D6D528C0068C6F6 /* DataManager.swift */,
 			);
 			path = Managers;
@@ -978,7 +986,6 @@
 		6A7988B91D6D528C0068C6F6 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				6A7988BA1D6D528C0068C6F6 /* HFCourseModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1236,7 +1243,6 @@
 			children = (
 				6ABD54D21E74EEA200D6197B /* FMDB */,
 				6A61A1911E70EA5400892EA6 /* MJRefresh.framework */,
-				6AE1F4F31E473209003CFA27 /* PromiseKit.framework */,
 				6AE8D3FC1E3D91DF00E44BE3 /* Toaster.framework */,
 				6AE8D4001E3D9B4B00E44BE3 /* SwiftyStoreKit.framework */,
 				6AE1F4E21E470CAE003CFA27 /* Encryption */,
@@ -1296,9 +1302,7 @@
 		6B23B0B61C97DB630089214D /* Managers */ = {
 			isa = PBXGroup;
 			children = (
-				6B23B0B91C97DB780089214D /* ColorManager.swift */,
 				6BA9EB031C9967C60017DBC4 /* DataManager.swift */,
-				6B9B67561C9BB405009B5F68 /* PlistManager.swift */,
 				6A8C851B1D3607EC00CF1C5D /* AnalyseManager.swift */,
 				6A4101E61D3A06420068FC5B /* DataHelper.swift */,
 				6ADD02511E73FD9E0024B22C /* DatabaseManager.swift */,
@@ -1310,7 +1314,7 @@
 			isa = PBXGroup;
 			children = (
 				6BC674A01C993305005C4462 /* HFUserModel.swift */,
-				6B9B67091C9ADDA1009B5F68 /* HFCourseModel.swift */,
+				6A12AD3F1EB1E33100242BD2 /* HFCourceViewModel.swift */,
 				6ADD024F1E73FB9D0024B22C /* HFScheduleModel.swift */,
 				6B2BFBAE1C9D56B500FFA661 /* HFGradesModel.swift */,
 				277AB7711CA0EF3400F84FB1 /* HFAcademicClassListModel.swift */,
@@ -1401,7 +1405,6 @@
 			children = (
 				6BA9EAF91C995DCF0017DBC4 /* Home.storyboard */,
 				6AB967241E6A607D00DA6079 /* HFParseViewModel.swift */,
-				6A3581A71EB17551006EFEAA /* HFCourceViewModel.swift */,
 				6B23B0C61C97DEAE0089214D /* Controller */,
 				6A7D827B1EB16C9400D6A65C /* Cell */,
 				6A7D82801EB16C9400D6A65C /* View */,
@@ -1649,6 +1652,7 @@
 				6A7988AA1D6D324D0068C6F6 /* HFUTer3.entitlements */,
 				6B5C146E1C86EACB00A08941 /* AppDelegate.swift */,
 				6B23B0AD1C97DA4E0089214D /* RootViewController.swift */,
+				6A12AD351EB1E01600242BD2 /* Shared */,
 				6B23B0AA1C97DA4E0089214D /* Common */,
 				6B23B0AB1C97DA4E0089214D /* Main */,
 				6B23B0A61C97DA4E0089214D /* Resource */,
@@ -1906,7 +1910,6 @@
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/Toaster.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SwiftyStoreKit.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/PromiseKit.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/MJRefresh.framework",
 			);
 			name = "Carthage Run Script";
@@ -2017,7 +2020,7 @@
 				6A03DD721EB1B5F5003BC348 /* UIDeviceExtensions.swift in Sources */,
 				6A03DD5E1EB1B5F5003BC348 /* CGRectExtensions.swift in Sources */,
 				6A03DD611EB1B5F5003BC348 /* DictionaryExtensions.swift in Sources */,
-				6A7988BF1D6D528C0068C6F6 /* HFCourseModel.swift in Sources */,
+				6A12AD3D1EB1E03C00242BD2 /* SharedMacros.swift in Sources */,
 				6A03DD621EB1B5F5003BC348 /* DoubleExtensions.swift in Sources */,
 				6A03DD591EB1B5F5003BC348 /* BlockWebView.swift in Sources */,
 				6A03DD741EB1B5F5003BC348 /* UIImageExtensions.swift in Sources */,
@@ -2029,6 +2032,7 @@
 				6A80F1C21DC5B03400712030 /* CourceDayHeaderCell.swift in Sources */,
 				6A03DD661EB1B5F5003BC348 /* IntExtensions.swift in Sources */,
 				6A03DD681EB1B5F5003BC348 /* NSDictionaryExtensions.swift in Sources */,
+				6A12AD2E1EB1DE4400242BD2 /* HFScheduleModel.swift in Sources */,
 				6A03DD7F1EB1B5F5003BC348 /* UIWindowExtensions.swift in Sources */,
 				6A03DD691EB1B5F5003BC348 /* NSObjectExtensions.swift in Sources */,
 				6A03DD6A1EB1B5F5003BC348 /* StringExtensions.swift in Sources */,
@@ -2036,11 +2040,13 @@
 				6A03DD781EB1B5F5003BC348 /* UIStoryboardExtensions.swift in Sources */,
 				6A03DD581EB1B5F5003BC348 /* BlockTap.swift in Sources */,
 				6A03DD731EB1B5F5003BC348 /* UIFontExtensions.swift in Sources */,
+				6A12AD411EB1E38200242BD2 /* HFCourceViewModel.swift in Sources */,
 				6A03DD831EB1B6A9003BC348 /* FMDatabaseVariadic.swift in Sources */,
 				6A03DD791EB1B5F5003BC348 /* UISwitchExtensions.swift in Sources */,
 				6A03DD771EB1B5F5003BC348 /* UISliderExtensions.swift in Sources */,
 				6A03DD5A1EB1B5F5003BC348 /* BoolExtensions.swift in Sources */,
 				6A03DD5B1EB1B5F5003BC348 /* BundleExtensions.swift in Sources */,
+				6A12AD3E1EB1E03E00242BD2 /* PlistManager.swift in Sources */,
 				6A03DD5D1EB1B5F5003BC348 /* CGPointExtensions.swift in Sources */,
 				6A03DD801EB1B5F5003BC348 /* URLExtensions.swift in Sources */,
 				6A03DD5F1EB1B5F5003BC348 /* CharacterExtensions.swift in Sources */,
@@ -2048,6 +2054,7 @@
 				6A7988BC1D6D528C0068C6F6 /* NoCourceTableViewCell.swift in Sources */,
 				6A03DD6E1EB1B5F5003BC348 /* UIBarButtonItemExtensions.swift in Sources */,
 				6A03DD501EB1B582003BC348 /* Logger.swift in Sources */,
+				6A12AD301EB1DEF500242BD2 /* Macros.swift in Sources */,
 				6A03DD671EB1B5F5003BC348 /* NSAttributedStringExtensions.swift in Sources */,
 				6A03DD701EB1B5F5003BC348 /* UIColoredView.swift in Sources */,
 				6A03DD761EB1B5F5003BC348 /* UILabelExtensions.swift in Sources */,
@@ -2056,12 +2063,12 @@
 				6A03DD7B1EB1B5F5003BC348 /* UITextViewExtensions.swift in Sources */,
 				6A03DD561EB1B5F5003BC348 /* BlockPinch.swift in Sources */,
 				6A03DD521EB1B5F5003BC348 /* ArrayExtensions.swift in Sources */,
-				6A7988BD1D6D528C0068C6F6 /* ColorManager.swift in Sources */,
 				6A03DD551EB1B5F5003BC348 /* BlockPan.swift in Sources */,
 				6A0B967D1E61382000D472EA /* CourceMoreTableViewCell.swift in Sources */,
 				6A03DD541EB1B5F5003BC348 /* BlockLongPress.swift in Sources */,
 				6A03DD511EB1B5F5003BC348 /* UIEdgeInsets.swift in Sources */,
 				6A03DD711EB1B5F5003BC348 /* UIColorExtensions.swift in Sources */,
+				6A12AD3C1EB1E03900242BD2 /* ColorManager.swift in Sources */,
 				6A03DD5C1EB1B5F5003BC348 /* CGFloatExtensions.swift in Sources */,
 				6A03DD7E1EB1B5F5003BC348 /* UIViewExtensions.swift in Sources */,
 				6A03DD821EB1B6A9003BC348 /* FMDatabaseAdditionsVariadic.swift in Sources */,
@@ -2116,6 +2123,7 @@
 				6A96F4A91E3E093B00F65859 /* BlockWebView.swift in Sources */,
 				6B89D9061C993DDF0030DD7D /* UIColor-Extensions.swift in Sources */,
 				6A2576901D0568EA00A47A76 /* HFCommunityContactLosterVC.swift in Sources */,
+				6A12AD381EB1E01600242BD2 /* ColorManager.swift in Sources */,
 				6AE631CF1D02B119002C4AEC /* HFGetMineMessageRequest.swift in Sources */,
 				27B191331D01CEE5004F57C7 /* HFMinePublishVC.swift in Sources */,
 				6A96F4BC1E3E093B00F65859 /* UIAlertControllerExtensions.swift in Sources */,
@@ -2125,7 +2133,7 @@
 				6A2C98C11D6C1AD300BD5182 /* HFInfoRankingVC.swift in Sources */,
 				6AE631BC1D0289E4002C4AEC /* HFMineHeaderTableViewCell.swift in Sources */,
 				6AC477641D03F31300B4B8BA /* HFInfoPlanDetailVC.swift in Sources */,
-				6B23B0BA1C97DB780089214D /* ColorManager.swift in Sources */,
+				6A12AD401EB1E33100242BD2 /* HFCourceViewModel.swift in Sources */,
 				6B23B0BF1C97DD770089214D /* Macros.swift in Sources */,
 				6B9426801CA8E19E00C8E85D /* HFInfoPlanListVC.swift in Sources */,
 				6AFF3DDB1D04797100B575CA /* HFMineDonateCell.swift in Sources */,
@@ -2154,7 +2162,6 @@
 				6A96F4B11E3E093B00F65859 /* DictionaryExtensions.swift in Sources */,
 				6A7D828A1EB16C9400D6A65C /* HFHomeScheduleSelectWeekView.swift in Sources */,
 				6AF62C971E7678F8009F0FC4 /* HFWebLoginViewController.swift in Sources */,
-				6B9B67571C9BB405009B5F68 /* PlistManager.swift in Sources */,
 				6A6A649C1CC51E840049715C /* HFGetCommunityLostAndFindRequest.swift in Sources */,
 				6AB5B8911CF56429001C6F2F /* HFFormViewController.swift in Sources */,
 				27949D3C1CC48AB400495206 /* HFInfoGetEmptyClassroomsListRequest.swift in Sources */,
@@ -2168,7 +2175,6 @@
 				6ACB1E9F1E3E28AC00B708C7 /* YYFPSLabel.m in Sources */,
 				6A1CEA7E1D05245300481D3A /* HFInfoPlanInfoTableViewCell.swift in Sources */,
 				6A96F4B21E3E093B00F65859 /* DoubleExtensions.swift in Sources */,
-				6A3581A81EB17551006EFEAA /* HFCourceViewModel.swift in Sources */,
 				6AE631C91D02AE93002C4AEC /* HFMineMessageListView.swift in Sources */,
 				6B6121921CA2C2F200C56FD4 /* UIView+ST.m in Sources */,
 				6AE4A2961D0017D10025BB79 /* HFComLoveWallCommentModel.swift in Sources */,
@@ -2272,6 +2278,7 @@
 				6A2C98BF1D6C0E1F00BD5182 /* HFMineChangePasswordVC.swift in Sources */,
 				6B2FE06C1CA69D6F00147BC3 /* HFInfoChargeModel.swift in Sources */,
 				6A7D82881EB16C9400D6A65C /* HFScheduleViewCell.swift in Sources */,
+				6A12AD3B1EB1E02C00242BD2 /* SharedMacros.swift in Sources */,
 				6A3EAAEE1CE0227000809226 /* HFComLoveWallListModel.swift in Sources */,
 				6B23B0DC1C97E0BC0089214D /* HFBasicButton.swift in Sources */,
 				6B9B67021C9AB5EC009B5F68 /* FadeAnimator.swift in Sources */,
@@ -2285,6 +2292,7 @@
 				6A02E2701CF320CB00DC669A /* FMCommunityLostAndFindCell.swift in Sources */,
 				6ACB1EBB1E4044DC00B708C7 /* UIView-Extensions.swift in Sources */,
 				6B6121911CA2C2F200C56FD4 /* UIImage+ST.m in Sources */,
+				6A12AD391EB1E01600242BD2 /* PlistManager.swift in Sources */,
 				6AE544451CFF1CA600EB3FE7 /* HFCommunityPostLoveWallVC.swift in Sources */,
 				6A3581A61EB17534006EFEAA /* HFScheduleInfoViewController.swift in Sources */,
 				6A1CEA791D05245300481D3A /* HFInfoBookListTableCell.swift in Sources */,
@@ -2313,7 +2321,6 @@
 				6AE631C11D0289E4002C4AEC /* HFMinePublishLostFindCell.swift in Sources */,
 				6B41DDC81CA3E51100B19803 /* HFInfoAcademicViewModel.swift in Sources */,
 				6A96F4B01E3E093B00F65859 /* DateExtensions.swift in Sources */,
-				6B9B670A1C9ADDA1009B5F68 /* HFCourseModel.swift in Sources */,
 				6BB4F7B01CA276FD005D7903 /* HFImageView.swift in Sources */,
 				6A96F4B71E3E093B00F65859 /* NSAttributedStringExtensions.swift in Sources */,
 				6A128E1D1CF5CD68000185C3 /* HFCommunityUserPublishedLostVC.swift in Sources */,

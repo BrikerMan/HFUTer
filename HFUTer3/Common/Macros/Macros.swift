@@ -12,6 +12,9 @@ import UIKit
 ////////////////////////////////////////////////////////////////////////
 //Base Data
 
+let Is_Build_For_App_Store = true
+let Is_TestFlight          = false
+
 let HFLogLevel      = 0
 
 let ServerInfoFile  = "https://coding.net/u/Haidy/p/HfuterSettings/git/raw/master/host"
@@ -79,13 +82,11 @@ let SeperatorHeight = 1 / UIScreen.main.scale
 ////////////////////////////////////////////////////////////////////////
 //Managers
 
-let hud             = HFHudView.shared
+
 let DataEnv         = DataManager.shared
-let log             = FMLogTool.shared
-let PlistManager    = PlistManagerTool.shared
 
 typealias HFRequestParam = [String: Any]
-typealias JSON = [String: Any]
+
 
 ////////////////////////////////////////////////////////////////////////
 //Notification

@@ -19,6 +19,7 @@ import PromiseKit
  */
 
 class HFScheduleModel: SQLiteCachable {
+    
     var id = UUID().uuidString
     
     var name        : String = ""

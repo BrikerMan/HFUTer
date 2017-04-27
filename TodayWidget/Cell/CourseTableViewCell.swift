@@ -23,23 +23,14 @@ class CourseTableViewCell: UITableViewCell {
         }
     }
     
-    func blind(_ model:HFCourseModel) {
-        lineView.backgroundColor = ColorManager.shared.getColorForCourses(withName: model.name)
+    func blind(_ model:HFCourceViewModel) {
+        lineView.backgroundColor = ColorManager.shared.getColor(with: model.color)
         titleLabel.text = model.name
         var hour = ""
-        switch model.hourNum {
-        case 0:
-            hour = "1 - 2 节"
-        case 1:
-            hour = "3 - 4 节"
-        case 2:
-            hour = "5 - 6 节"
-        case 3:
-            hour = "7 - 8 节"
-        case 3:
-            hour = "9 - 11 节"
-        default:
-            break
+        if model.duration == 1 {
+            hour = "\(model.start + 1) 节"
+        } else {
+            hour = "\(model.start + 1) - \(model.start + model.duration) 节"
         }
         
         detailLabel.text = hour + "  " + model.place

@@ -11,12 +11,7 @@ import Pitaya
 import PromiseKit
 import Gzip
 
-enum HFParseError: Error {
-    case fullfill
-    case loginError
-    case getHtmlFail
-    case suspend(info: String)
-}
+
 
 extension Error {
     var description: String {
@@ -162,13 +157,12 @@ class HFParseViewModel {
                     Logger.error("获取服务器缓存失败 | \(error)")
                     fullfill()
                 } else {
-                    if let array = json["data"].string?.jsonToArray() {
+                    if let _ = json["data"].string?.jsonToArray() {
                         var data = json["data"]
                         if let str = json["data"].string {
                             data = JSONItem(string: str)
                         }
                         HFScheduleModel.handlleSchedules(data)
-                        PlistManager.dataPlist.saveValues([PlistKey.ScheduleList.rawValue: array])
                         Logger.debug("获取服务器缓存成功")
                         reject(HFParseError.fullfill)
                     } else {
@@ -338,15 +332,13 @@ class HFParseViewModel {
                     self.parseData(data: data)
                 }.then { json -> Void in
                     if let array = json["data"].RAW?.jsonToArray() {
-                        let key: String
                         switch self.dataType {
                         case .schedule:
                             HFScheduleModel.handlleSchedules(json["data"])
-                            key = PlistKey.ScheduleList.rawValue
                         case.grades:
-                            key = PlistKey.GradesList.rawValue
+                            PlistManager.dataPlist.saveValues([PlistKey.GradesList.rawValue: array])
                         }
-                        PlistManager.dataPlist.saveValues([key: array])
+                        
                         Logger.debug("解析数据缓存成功")
                         reject(HFParseError.fullfill)
                     } else {
