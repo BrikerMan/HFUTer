@@ -67,7 +67,7 @@ class HFCommunityLoveWallListCell: UITableViewCell, NibReusable {
         // AutolAyout 处理补分
         avatarView.loadAvatar(avatar: model.image)
         if model.name.isBlank {
-            usernameLabel.text = "匿名"
+            usernameLabel.text = "匿名同学"
         } else {
             usernameLabel.text = model.name
         }
