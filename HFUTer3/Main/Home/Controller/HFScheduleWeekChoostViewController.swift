@@ -13,11 +13,31 @@ class HFScheduleWeekChoostViewController: HFFormViewController {
 
     var selected: [Int] = []
     
+    var completion: (([Int])->Void)?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
         update()
         navTitle = "选择课程周"
+        nav?.showNavRightButton(with: "确定")
+    }
+    
+    override func onNavRightButtonPressed() {
+        var result = [Int]()
+        let value = form.values()
+        for i in 1...24 {
+            if let check = value["\(i)"] as? Bool, check {
+                result.append(i)
+            }
+        }
+        
+        if result.isEmpty {
+            Hud.showError("至少选择一周")
+            return
+        }
+        self.completion?(result)
+        self.pop()
     }
 
 

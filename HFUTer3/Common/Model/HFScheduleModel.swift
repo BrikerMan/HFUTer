@@ -8,6 +8,7 @@
 
 import Foundation
 import FMDB
+import PromiseKit
 
 /*
  {
@@ -29,6 +30,8 @@ class HFScheduleModel: SQLiteCachable {
     
     var hour  = 0
     var day   = 0
+    
+    var duration = 0
     
     var weeks = [Int]()
     

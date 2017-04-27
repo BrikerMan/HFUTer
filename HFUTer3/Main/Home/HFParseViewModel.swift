@@ -49,7 +49,6 @@ extension Error {
     }
 }
 
-typealias HFParseScheduleResult = ((_ models: [CourseDayModel], _ error: HFParseError?) -> Void)
 
 enum HFParseServerType: String {
     case jw = "教务系统"
@@ -95,7 +94,7 @@ class HFParseViewModel {
     // 读取课表
     func fetchSchedule(for week: Int, completion: @escaping ((_ models: [HFScheduleModel], _ error: String?) -> Void)) {
         // 成功失败颠倒
-        HFCourseModel.read(for: week)
+        HFScheduleModel.check()
             .then { Void -> Promise<Void> in
                 return self.fetchScheduleFromServer()
             }.then { Void -> Void in

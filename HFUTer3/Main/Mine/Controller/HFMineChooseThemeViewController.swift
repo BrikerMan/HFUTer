@@ -15,6 +15,8 @@ class HFMineChooseThemeViewController: HFBaseViewController, XibBasedController 
     
     var allowCustom = true
     
+    var selectedColor = HFTheme.tintName
+    
     var selectedBlock: ((_ color: String) -> Void)?
     
     override func viewDidLoad() {
@@ -50,7 +52,7 @@ extension HFMineChooseThemeViewController: UITableViewDataSource {
             cell.titleLabel.text           = HFTheme.flatColors[indexPath.row].name
             cell.colorView.backgroundColor = HFTheme.flatColors[indexPath.row].color
         }
-        cell.accessoryType = HFTheme.tintName == HFTheme.flatColors[indexPath.row].name ? .checkmark : .none
+        cell.accessoryType = selectedColor == HFTheme.flatColors[indexPath.row].name ? .checkmark : .none
         return cell
     }
 }

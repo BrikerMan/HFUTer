@@ -23,7 +23,7 @@ class HFScheduleInfoViewController: HFFormViewController {
         }
     }
     
-    var cacheData = JSON()
+    var newModel = HFScheduleModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,41 +48,46 @@ class HFScheduleInfoViewController: HFFormViewController {
             }
         }
         
+        if let model = currentModel {
+            newModel.name  = model.name
+            newModel.place = model.place
+            newModel.weeks = model.cources.first?.weeks ?? []
+            newModel.colorName = model.color
+            newModel.duration = model.duration
+            newModel.hour = model.start
+        } else {
+            navTitle = "创建新课程"
+        }
         updateValue()
-        
         nav?.showNavRightButton(with: "保存")
     }
     
     
     override func onNavRightButtonPressed() {
-        
-        var json: [String: Any?] = form.values()
-        
-        if
-            let name = json["name"] as? String,
-            let place = json["place"] as? String,
-            let color = json["color"] as? String,
-            name != "", place != "" {
+        if newModel.name != "", newModel.place != "", newModel.weeks != [], newModel.duration != 0  {
             if let model = currentModel {
                 Hud.showLoading("正在保存")
-                model.update(name: name, color: color, place: place, completion: { (_) in
-                   
-                })
+                if model.isUserAdded {
+                    model.cleanUP()
+                    HFCourceViewModel.create(model: newModel)
+                } else {
+                    model.update(name: newModel.name, color: newModel.colorName, place: newModel.place, weeks: newModel.weeks)
+                }
                 
-                delay(seconds: 1, completion: { 
-                    runOnMainThread {
-                        Hud.showMassage("保存成功")
-                        NotificationCenter.default.post(name: HFNotification.scheduleUpdated.get(), object: nil)
-                        self.pop()
-                    }
-                })
             } else {
-                
+                HFCourceViewModel.create(model: newModel)
             }
+            delay(seconds: 1, completion: {
+                runOnMainThread {
+                    Hud.showMassage("保存成功")
+                    NotificationCenter.default.post(name: HFNotification.scheduleUpdated.get(), object: nil)
+                    self.pop()
+                }
+            })
         } else {
             Hud.showError("请填写完整")
         }
-}
+    }
     
     @objc fileprivate func onSegmentChanged() {
         updateValue()
@@ -111,7 +116,12 @@ class HFScheduleInfoViewController: HFFormViewController {
                         }
                         picker.setup(day: model.day, hour: model.start, duration: model.duration)
                     }
-                    
+                    picker.finishedBlock = { [weak self] (day, hour, duration) in
+                        self?.newModel.day      = day
+                        self?.newModel.hour     = hour
+                        self?.newModel.duration = duration
+                        self?.updateValue()
+                    }
                     picker.add(to: self.view)
                 })
             
@@ -127,49 +137,75 @@ class HFScheduleInfoViewController: HFFormViewController {
                     }
                     
                     let vc = HFScheduleWeekChoostViewController()
-                    vc.selected = self.currentModel?.cources.first?.weeks ?? []
+                    vc.selected =  self.newModel.weeks
+                    vc.completion = { [weak self]  week in
+                        self?.newModel.weeks = week
+                        self?.updateValue()
+                    }
                     self.push(vc)
                 })
             
             +++ Section()
             <<< HFEurekaInfoRow("color") {
                 $0.title = "背景色"
+                $0.value = "Sunset Orange"
                 $0.isColor = true
                 }.onCellSelection({ (cell, row) in
                     row.deselect()
                     let vc = HFMineChooseThemeViewController.instantiate()
                     vc.allowCustom = false
+                    vc.selectedColor = row.value ?? "Sunset Orange"
                     vc.selectedBlock = { [weak self] color in
-                        self?.form.setValues(["color": color])
-                        runOnMainThread {
-                            self?.tableView?.reloadData()
-                        }
+                        self?.newModel.colorName = color
+                        self?.updateValue()
                     }
                     self.push(vc)
                 })
+        
+        if !models.isEmpty {
+            form +++ Section()
+                <<< ButtonRow("delete"){
+                    $0.title = "删除"
+                    }.onCellSelection({ (_, _) in
+                        self.currentModel?.cleanUP()
+                        Hud.showLoading()
+                        delay(seconds: 1, completion: {
+                            Hud.dismiss()
+                            NotificationCenter.default.post(name: HFNotification.scheduleUpdated.get(), object: nil)
+                            self.pop()
+                        })
+                    })
+        }
+        
     }
     
     func updateValue() {
-        if let model = currentModel {
-            let week = model.cources.first?.weeks ?? []
-            
-            var values: [String: Any] = [
-                "name"  : model.name,
-                "place" : model.place,
-                "week"  : week.map { $0.description }.joined(separator: ","),
-                "color" : model.color
-            ]
-            
-            if model.duration == 1 {
-                values["date"] = "\(k.dayNames[model.day]) \(model.start) 节"
+        let json = form.values()
+        
+        if let name = json["name"] as? String, name != "" {
+            newModel.name = name
+        }
+        
+        if let place = json["place"] as? String, place != "" {
+            newModel.place = place
+        }
+        
+        var values: [String: Any] = [
+            "name"  : newModel.name,
+            "place" : newModel.place,
+            "week"  : newModel.weeks.map { $0.description }.joined(separator: ","),
+            "color" : newModel.colorName
+        ]
+        
+        if newModel.duration != 0 {
+            if newModel.duration == 1 {
+                values["date"] = "\(k.dayNames[newModel.day]) \(newModel.hour + 1) 节"
             } else {
-                values["date"] = "\(k.dayNames[model.day]) \(model.start) - \(model.start + model.duration - 1) 节"
-            }
-            
-            form.setValues(values)
-            runOnMainThread {
-                self.tableView?.reloadData()
+                values["date"] = "\(k.dayNames[newModel.day]) \(newModel.hour + 1) - \(newModel.hour + newModel.duration) 节"
             }
         }
-    }
+        form.setValues(values)
+        runOnMainThread {
+            self.tableView?.reloadData()
+        }    }
 }

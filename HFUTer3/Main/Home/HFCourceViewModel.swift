@@ -43,31 +43,33 @@ class HFCourceViewModel: CustomStringConvertible {
         return "\(cources) \(start) - \(start + duration - 1)"
     }
     
-    func create(name: String, place: String, day: Int, start: Int, duration: Int, week: [Int], color: String, completion: @escaping BoolBlock) {
+    func cleanUP() {
         DBManager.delete(id: self.cources.map({ $0.id}), from: .schedule)
-        
-        for i in 0..<duration {
+    }
+    
+    static func create(model: HFScheduleModel) {
+        for i in 0..<model.duration {
             let cource = HFScheduleModel()
             
-            cource.name        = name
-            cource.place       = place
-            cource.colorName   = color
+            cource.name        = model.name
+            cource.place       = model.place
+            cource.colorName   = model.colorName
             
-            cource.weeks       = week
+            cource.weeks       = model.weeks
             cource.isUserAdded = true
-            cource.hour        = start + i
+            cource.hour        = model.hour + i
             DBManager.insert(item: cource, to: .schedule)
         }
     }
     
-    func update(name: String, color: String, place: String, completion: @escaping BoolBlock) {
-        
+    func update(name: String, color: String, place: String, weeks: [Int]) {
         let models = DBManager.read(from: .schedule, type: HFScheduleModel.self, filter: "name = '\(self.name)'")
         for cource in models {
-            cource.name        = name
-            cource.place       = place
-            cource.colorName   = color
-            DBManager.insert(item: cource, to: .schedule, completion: completion)
+            cource.name      = name
+            cource.place     = place
+            cource.colorName = color
+            cource.weeks     = weeks
+            DBManager.insert(item: cource, to: .schedule)
         }
     }
 }

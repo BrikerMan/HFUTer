@@ -16,11 +16,19 @@ class HFScheduleTimePicker: HFXibView {
     var finishedBlock: ((Int, Int, Int) -> Void)?
     
     @IBAction func onDoneButtonPressed(_ sender: Any) {
+        
+        
+        let duration = pickerView.selectedRow(inComponent: 2) - pickerView.selectedRow(inComponent: 1) + 1
+        if duration < 1 {
+            Hud.showError("请选择正确时间")
+            return
+        }
         finishedBlock?(
             pickerView.selectedRow(inComponent: 0),
             pickerView.selectedRow(inComponent: 1),
-            pickerView.selectedRow(inComponent: 2)
+            duration
         )
+        tappedBack()
     }
     
     override func initFromXib() {

@@ -57,15 +57,15 @@ class DatabaseManager {
      - parameter piandaoId: 频道ID
      */
     func delete(id: [String], from: HFBDTable) {
-        let db = FMDatabase(path: dbPath)!
-        db.open()
-        do {
-            try db.executeUpdate(sql: "DELETE from \(from.rawValue) where id in (\(id.joined(separator: ",")));")
-        } catch {
-            Logger.error("DELETE from \(from.rawValue) where id in (\(id));  error \(error.localizedDescription)")
+        let statement =  "DELETE from \(from.rawValue) where id in ('\(id.joined(separator: "','"))');"
+        databaseQueue.inTransaction { db, rollback in
+            do {
+                try db?.executeUpdate(statement, values: [])
+                Logger.debug("executed | \(statement)")
+            } catch {
+                Logger.error("DELETE from \(from.rawValue) where id in (\(id.joined(separator: ","))); failed \(error.localizedDescription)")
+            }
         }
-        db.commit()
-        db.close()
     }
     
     /**
@@ -79,7 +79,7 @@ class DatabaseManager {
         
         var sql = "SELECT * FROM \(from.rawValue)"
         if let filter = filter {
-           sql += " WHERE " + filter
+            sql += " WHERE " + filter
         }
         
         let rs = try! db.executeQuery(sql, values: [])
