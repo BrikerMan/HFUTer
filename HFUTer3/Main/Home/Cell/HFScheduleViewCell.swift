@@ -42,6 +42,10 @@ class HFScheduleViewCell: HFXibView {
                     self?.layoutIfNeeded()
                 }
             }).addDisposableTo(disposeBag)
+        
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(onCellPressed(_:)))
+        addGestureRecognizer(tap)
     }
     
     @IBAction func onCellPressed(_ sender: Any) {
@@ -63,10 +67,28 @@ class HFScheduleViewCell: HFXibView {
     }
     
     func updateUI() {
-        nameLabel.text = models.map { $0.name }.joined(separator: " / ")
-        placeLabel.text = models.map { $0.place }.joined(separator: " / ")
+        
         if let colorName = models.first?.cources.first?.colorName {
             backView.backgroundColor = HFTheme.getColor(with: colorName)
+        }
+        
+        if models.count == 1 {
+            nameLabel.text = models.map { $0.name }.joined(separator: " / ")
+            placeLabel.text = models.map { $0.place }.joined(separator: " / ")
+        } else {
+            nameLabel.text = models.map { $0.name.maxLenth(6) }.joined(separator: " / ")
+            placeLabel.text = models.map { $0.place }.joined(separator: " / ")
+        }
+    }
+}
+
+
+extension String {
+    func maxLenth(_ len: Int) -> String {
+        if self.characters.count <= len {
+            return self
+        } else {
+            return self[0...len]
         }
     }
 }
