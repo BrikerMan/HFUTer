@@ -125,14 +125,13 @@ class HFScheduleView: HFView {
     }
     
     func setup(with schedules: [HFScheduleModel]) {
-        
         let viewModels = group(schedules: schedules)
         drawScheduleView(viewModels: viewModels)
-        
     }
     
     func drawScheduleView(viewModels: [HFCourceViewModel]) {
         scheduleCells.removeAll()
+        containerView.removeSubviews()
         
         for model in viewModels {
             if let cell = scheduleCells["\(model.day)-\(model.start)"] {

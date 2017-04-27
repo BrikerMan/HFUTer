@@ -79,16 +79,11 @@
 		6A2C98C31D6C20AC00BD5182 /* HFInfoRankingHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A2C98C21D6C20AC00BD5182 /* HFInfoRankingHeaderCell.swift */; };
 		6A338F121D04375600A40C98 /* HFHelpInfoWebVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A338F101D04375600A40C98 /* HFHelpInfoWebVC.swift */; };
 		6A338F131D04375600A40C98 /* HFHelpInfoWebVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6A338F111D04375600A40C98 /* HFHelpInfoWebVC.xib */; };
-		6A35E4311EB0AB8500FC3E4E /* HFScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A35E4301EB0AB8500FC3E4E /* HFScheduleView.swift */; };
 		6A3E6F101E407DE7001FA3E3 /* YYLabel+Copyable.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A3E6F0F1E407DE7001FA3E3 /* YYLabel+Copyable.m */; };
 		6A3E6F131E408B96001FA3E3 /* HFAPIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A3E6F121E408B96001FA3E3 /* HFAPIRequest.swift */; };
 		6A3EAAEE1CE0227000809226 /* HFComLoveWallListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A3EAAED1CE0227000809226 /* HFComLoveWallListModel.swift */; };
 		6A3EAAF01CE0263B00809226 /* HFGetCommunityLoveWallListRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A3EAAEF1CE0263B00809226 /* HFGetCommunityLoveWallListRequest.swift */; };
 		6A4101E71D3A06420068FC5B /* DataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A4101E61D3A06420068FC5B /* DataHelper.swift */; };
-		6A44C9901EB0C0FA006F6877 /* HFScheduleViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A44C98F1EB0C0FA006F6877 /* HFScheduleViewCell.swift */; };
-		6A44C9921EB0C124006F6877 /* HFScheduleViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6A44C9911EB0C124006F6877 /* HFScheduleViewCell.xib */; };
-		6A44C9941EB0C7A0006F6877 /* HFScheduleLeftView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A44C9931EB0C7A0006F6877 /* HFScheduleLeftView.swift */; };
-		6A44C9961EB0CEA0006F6877 /* HFScheduleTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A44C9951EB0CEA0006F6877 /* HFScheduleTopView.swift */; };
 		6A61A1921E70EA5400892EA6 /* MJRefresh.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A61A1911E70EA5400892EA6 /* MJRefresh.framework */; };
 		6A6A648C1CC51C6D0049715C /* HFBaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A6A648B1CC51C6D0049715C /* HFBaseTableViewCell.swift */; };
 		6A6A649C1CC51E840049715C /* HFGetCommunityLostAndFindRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A6A649B1CC51E840049715C /* HFGetCommunityLostAndFindRequest.swift */; };
@@ -106,6 +101,15 @@
 		6A7988BD1D6D528C0068C6F6 /* ColorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7988B71D6D528C0068C6F6 /* ColorManager.swift */; };
 		6A7988BE1D6D528C0068C6F6 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7988B81D6D528C0068C6F6 /* DataManager.swift */; };
 		6A7988BF1D6D528C0068C6F6 /* HFCourseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7988BA1D6D528C0068C6F6 /* HFCourseModel.swift */; };
+		6A7D82861EB16C9400D6A65C /* HFHomeScheduleSelectWeekViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7D827C1EB16C9400D6A65C /* HFHomeScheduleSelectWeekViewCell.swift */; };
+		6A7D82871EB16C9400D6A65C /* HFHomeScheduleSelectWeekViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6A7D827D1EB16C9400D6A65C /* HFHomeScheduleSelectWeekViewCell.xib */; };
+		6A7D82881EB16C9400D6A65C /* HFScheduleViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7D827E1EB16C9400D6A65C /* HFScheduleViewCell.swift */; };
+		6A7D82891EB16C9400D6A65C /* HFScheduleViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6A7D827F1EB16C9400D6A65C /* HFScheduleViewCell.xib */; };
+		6A7D828A1EB16C9400D6A65C /* HFHomeScheduleSelectWeekView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7D82811EB16C9400D6A65C /* HFHomeScheduleSelectWeekView.swift */; };
+		6A7D828B1EB16C9400D6A65C /* HFHomeScheduleSelectWeekView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6A7D82821EB16C9400D6A65C /* HFHomeScheduleSelectWeekView.xib */; };
+		6A7D828C1EB16C9400D6A65C /* HFScheduleLeftView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7D82831EB16C9400D6A65C /* HFScheduleLeftView.swift */; };
+		6A7D828D1EB16C9400D6A65C /* HFScheduleTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7D82841EB16C9400D6A65C /* HFScheduleTopView.swift */; };
+		6A7D828E1EB16C9400D6A65C /* HFScheduleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A7D82851EB16C9400D6A65C /* HFScheduleView.swift */; };
 		6A80F1C21DC5B03400712030 /* CourceDayHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A80F1C11DC5B03400712030 /* CourceDayHeaderCell.swift */; };
 		6A8AA34C1D6DB7B4007DAC57 /* HFDonateLoadingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A8AA34B1D6DB7B4007DAC57 /* HFDonateLoadingTableViewCell.swift */; };
 		6A8C851C1D3607EC00CF1C5D /* AnalyseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A8C851B1D3607EC00CF1C5D /* AnalyseManager.swift */; };
@@ -431,17 +435,12 @@
 		6A2C98C21D6C20AC00BD5182 /* HFInfoRankingHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFInfoRankingHeaderCell.swift; sourceTree = "<group>"; };
 		6A338F101D04375600A40C98 /* HFHelpInfoWebVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFHelpInfoWebVC.swift; sourceTree = "<group>"; };
 		6A338F111D04375600A40C98 /* HFHelpInfoWebVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HFHelpInfoWebVC.xib; sourceTree = "<group>"; };
-		6A35E4301EB0AB8500FC3E4E /* HFScheduleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFScheduleView.swift; sourceTree = "<group>"; };
 		6A3E6F0F1E407DE7001FA3E3 /* YYLabel+Copyable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "YYLabel+Copyable.m"; sourceTree = "<group>"; };
 		6A3E6F111E407DFA001FA3E3 /* YYLabel+Copyable.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "YYLabel+Copyable.h"; sourceTree = "<group>"; };
 		6A3E6F121E408B96001FA3E3 /* HFAPIRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFAPIRequest.swift; sourceTree = "<group>"; };
 		6A3EAAED1CE0227000809226 /* HFComLoveWallListModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFComLoveWallListModel.swift; sourceTree = "<group>"; };
 		6A3EAAEF1CE0263B00809226 /* HFGetCommunityLoveWallListRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFGetCommunityLoveWallListRequest.swift; sourceTree = "<group>"; };
 		6A4101E61D3A06420068FC5B /* DataHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataHelper.swift; sourceTree = "<group>"; };
-		6A44C98F1EB0C0FA006F6877 /* HFScheduleViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFScheduleViewCell.swift; sourceTree = "<group>"; };
-		6A44C9911EB0C124006F6877 /* HFScheduleViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HFScheduleViewCell.xib; sourceTree = "<group>"; };
-		6A44C9931EB0C7A0006F6877 /* HFScheduleLeftView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFScheduleLeftView.swift; sourceTree = "<group>"; };
-		6A44C9951EB0CEA0006F6877 /* HFScheduleTopView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFScheduleTopView.swift; sourceTree = "<group>"; };
 		6A61A1911E70EA5400892EA6 /* MJRefresh.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MJRefresh.framework; sourceTree = "<group>"; };
 		6A6A648B1CC51C6D0049715C /* HFBaseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFBaseTableViewCell.swift; sourceTree = "<group>"; };
 		6A6A649B1CC51E840049715C /* HFGetCommunityLostAndFindRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFGetCommunityLostAndFindRequest.swift; sourceTree = "<group>"; };
@@ -462,6 +461,15 @@
 		6A7988B71D6D528C0068C6F6 /* ColorManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ColorManager.swift; sourceTree = "<group>"; };
 		6A7988B81D6D528C0068C6F6 /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		6A7988BA1D6D528C0068C6F6 /* HFCourseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFCourseModel.swift; sourceTree = "<group>"; };
+		6A7D827C1EB16C9400D6A65C /* HFHomeScheduleSelectWeekViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFHomeScheduleSelectWeekViewCell.swift; sourceTree = "<group>"; };
+		6A7D827D1EB16C9400D6A65C /* HFHomeScheduleSelectWeekViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HFHomeScheduleSelectWeekViewCell.xib; sourceTree = "<group>"; };
+		6A7D827E1EB16C9400D6A65C /* HFScheduleViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFScheduleViewCell.swift; sourceTree = "<group>"; };
+		6A7D827F1EB16C9400D6A65C /* HFScheduleViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HFScheduleViewCell.xib; sourceTree = "<group>"; };
+		6A7D82811EB16C9400D6A65C /* HFHomeScheduleSelectWeekView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFHomeScheduleSelectWeekView.swift; sourceTree = "<group>"; };
+		6A7D82821EB16C9400D6A65C /* HFHomeScheduleSelectWeekView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HFHomeScheduleSelectWeekView.xib; sourceTree = "<group>"; };
+		6A7D82831EB16C9400D6A65C /* HFScheduleLeftView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFScheduleLeftView.swift; sourceTree = "<group>"; };
+		6A7D82841EB16C9400D6A65C /* HFScheduleTopView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFScheduleTopView.swift; sourceTree = "<group>"; };
+		6A7D82851EB16C9400D6A65C /* HFScheduleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFScheduleView.swift; sourceTree = "<group>"; };
 		6A80F1C11DC5B03400712030 /* CourceDayHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CourceDayHeaderCell.swift; sourceTree = "<group>"; };
 		6A8AA34B1D6DB7B4007DAC57 /* HFDonateLoadingTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFDonateLoadingTableViewCell.swift; sourceTree = "<group>"; };
 		6A8C851B1D3607EC00CF1C5D /* AnalyseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalyseManager.swift; sourceTree = "<group>"; };
@@ -916,6 +924,29 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		6A7D827B1EB16C9400D6A65C /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				6A7D827C1EB16C9400D6A65C /* HFHomeScheduleSelectWeekViewCell.swift */,
+				6A7D827D1EB16C9400D6A65C /* HFHomeScheduleSelectWeekViewCell.xib */,
+				6A7D827E1EB16C9400D6A65C /* HFScheduleViewCell.swift */,
+				6A7D827F1EB16C9400D6A65C /* HFScheduleViewCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		6A7D82801EB16C9400D6A65C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				6A7D82811EB16C9400D6A65C /* HFHomeScheduleSelectWeekView.swift */,
+				6A7D82821EB16C9400D6A65C /* HFHomeScheduleSelectWeekView.xib */,
+				6A7D82831EB16C9400D6A65C /* HFScheduleLeftView.swift */,
+				6A7D82841EB16C9400D6A65C /* HFScheduleTopView.swift */,
+				6A7D82851EB16C9400D6A65C /* HFScheduleView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		6A96F4711E3E093B00F65859 /* EZSwiftExtensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -1310,8 +1341,9 @@
 				6AB967241E6A607D00DA6079 /* HFParseViewModel.swift */,
 				6BA9EAF91C995DCF0017DBC4 /* Home.storyboard */,
 				6B23B0C61C97DEAE0089214D /* Controller */,
+				6A7D827B1EB16C9400D6A65C /* Cell */,
+				6A7D82801EB16C9400D6A65C /* View */,
 				6B23B0C71C97DEAE0089214D /* Request */,
-				6B23B0C81C97DEAE0089214D /* View */,
 				6B23B0C91C97DEAE0089214D /* ViewModel */,
 			);
 			path = Home;
@@ -1332,18 +1364,6 @@
 				6BA9EB111C9982480017DBC4 /* HFHomeGetCourseListRequest.swift */,
 			);
 			path = Request;
-			sourceTree = "<group>";
-		};
-		6B23B0C81C97DEAE0089214D /* View */ = {
-			isa = PBXGroup;
-			children = (
-				6A35E4301EB0AB8500FC3E4E /* HFScheduleView.swift */,
-				6A44C98F1EB0C0FA006F6877 /* HFScheduleViewCell.swift */,
-				6A44C9911EB0C124006F6877 /* HFScheduleViewCell.xib */,
-				6A44C9931EB0C7A0006F6877 /* HFScheduleLeftView.swift */,
-				6A44C9951EB0CEA0006F6877 /* HFScheduleTopView.swift */,
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		6B23B0C91C97DEAE0089214D /* ViewModel */ = {
@@ -1767,8 +1787,8 @@
 			files = (
 				6ACB1EB91E403D8F00B708C7 /* HFCommunityLoveDetailCommentCell.xib in Resources */,
 				6A1CEA821D05245300481D3A /* HFInfoGradesChargeTableHeaderView.xib in Resources */,
-				6A44C9921EB0C124006F6877 /* HFScheduleViewCell.xib in Resources */,
 				6AE631CB1D02AE9C002C4AEC /* HFMineMessageListView.xib in Resources */,
+				6A7D82891EB16C9400D6A65C /* HFScheduleViewCell.xib in Resources */,
 				6AE631B11D0282EB002C4AEC /* HFTabbarView.xib in Resources */,
 				6AF574111E44A13B00FD8234 /* HFMineChooseThemeViewController.xib in Resources */,
 				6AF574191E44AADD00FD8234 /* HFCustumRGBColorView.xib in Resources */,
@@ -1791,10 +1811,12 @@
 				6AE4A2901D0009F10025BB79 /* HFCommunityLoveWallDetailVC.xib in Resources */,
 				6A02E2771CF320CB00DC669A /* HFCommunityHomeListView.xib in Resources */,
 				6B23B0AF1C97DA4E0089214D /* LaunchScreen.storyboard in Resources */,
+				6A7D82871EB16C9400D6A65C /* HFHomeScheduleSelectWeekViewCell.xib in Resources */,
 				6AC924911D0A6DD100E1F43F /* HFTableInfoCell.xib in Resources */,
 				6A02E2711CF320CB00DC669A /* FMCommunityLostAndFindCell.xib in Resources */,
 				6AE631AF1D0282EB002C4AEC /* HFTabbarCollectionViewCell.xib in Resources */,
 				6BA9EB021C995E190017DBC4 /* Mine.storyboard in Resources */,
+				6A7D828B1EB16C9400D6A65C /* HFHomeScheduleSelectWeekView.xib in Resources */,
 				6A96F4701E3DFE1600F65859 /* HFCommunityLoveWallListCell.xib in Resources */,
 				6AF574151E44A1F000FD8234 /* HFMineChooseColorCell.xib in Resources */,
 				6A02E2741CF320CB00DC669A /* FMCommunityActionListView.xib in Resources */,
@@ -1980,6 +2002,7 @@
 				6AC924901D0A6DD100E1F43F /* HFTableInfoCell.swift in Sources */,
 				6A264F891D02D09700146D03 /* HFMineNorifModel.swift in Sources */,
 				6A02E27A1CF3366D00DC669A /* HFCommunityPostLostAndFoundVC.swift in Sources */,
+				6A7D82861EB16C9400D6A65C /* HFHomeScheduleSelectWeekViewCell.swift in Sources */,
 				6ACB1EB51E40331200B708C7 /* UITableView+Reusable.swift in Sources */,
 				6A264F8C1D02D39000146D03 /* HFMineNotifTableViewCell.swift in Sources */,
 				27B191311D01CEDD004F57C7 /* HFMineMessageVC.swift in Sources */,
@@ -2023,6 +2046,7 @@
 				6AE8D3FF1E3D923300E44BE3 /* HFToast.swift in Sources */,
 				6B23B0B11C97DA4E0089214D /* RootViewController.swift in Sources */,
 				6A96F4B11E3E093B00F65859 /* DictionaryExtensions.swift in Sources */,
+				6A7D828A1EB16C9400D6A65C /* HFHomeScheduleSelectWeekView.swift in Sources */,
 				6AF62C971E7678F8009F0FC4 /* HFWebLoginViewController.swift in Sources */,
 				6B9B67571C9BB405009B5F68 /* PlistManager.swift in Sources */,
 				6A6A649C1CC51E840049715C /* HFGetCommunityLostAndFindRequest.swift in Sources */,
@@ -2045,7 +2069,6 @@
 				277AB76E1CA02E0500F84FB1 /* HFInfoAcademicClassListVC.swift in Sources */,
 				6A96F4B31E3E093B00F65859 /* ErrorTypeExtensions.swift in Sources */,
 				6A2111E31D6C254F00CB65DE /* HFInfoRankingDetailCell.swift in Sources */,
-				6A35E4311EB0AB8500FC3E4E /* HFScheduleView.swift in Sources */,
 				6ACB1EA01E3E28AC00B708C7 /* YYWeakProxy.m in Sources */,
 				6ACB1EB11E40331200B708C7 /* NibLoadable.swift in Sources */,
 				6A1CEA811D05245300481D3A /* HFInfoGradesChargeTableHeaderView.swift in Sources */,
@@ -2059,7 +2082,6 @@
 				27EF73251DD08C3F009E9592 /* ImageRow.swift in Sources */,
 				6A712F561E6AB27400B87FB5 /* HFMineRepostViewController.swift in Sources */,
 				6A96F46F1E3DFE1600F65859 /* HFCommunityLoveWallListCell.swift in Sources */,
-				6A44C9901EB0C0FA006F6877 /* HFScheduleViewCell.swift in Sources */,
 				6B94268A1CA8FCE900C8E85D /* HFInfoPlanModel.swift in Sources */,
 				6A25768E1D0562B700A47A76 /* HFMineListInfoTableViewCell.swift in Sources */,
 				6B2FE05D1CA6651700147BC3 /* HFInfoGradesCalculatorVC.swift in Sources */,
@@ -2079,7 +2101,8 @@
 				6A96F4A21E3E093B00F65859 /* ArrayExtensions.swift in Sources */,
 				6AE631BF1D0289E4002C4AEC /* HFMineListActionTableViewCell.swift in Sources */,
 				6B2FE0571CA557A600147BC3 /* HFInfoGradesGpaModel.swift in Sources */,
-				6A44C9961EB0CEA0006F6877 /* HFScheduleTopView.swift in Sources */,
+				6A7D828E1EB16C9400D6A65C /* HFScheduleView.swift in Sources */,
+				6A7D828D1EB16C9400D6A65C /* HFScheduleTopView.swift in Sources */,
 				6A06EB121E61AD1700F18981 /* Logger.swift in Sources */,
 				6AE1F4F11E470CAE003CFA27 /* GTMBase64.m in Sources */,
 				6A71A59E1EB092E1000D8B12 /* UIEdgeInsets.swift in Sources */,
@@ -2092,7 +2115,7 @@
 				6B41DDC21CA385F400B19803 /* Utilities.swift in Sources */,
 				6A02E2721CF320CB00DC669A /* FMCommunityLoveWellCell.swift in Sources */,
 				6AE1F4EF1E470CAE003CFA27 /* DESEncryption.m in Sources */,
-				6A44C9941EB0C7A0006F6877 /* HFScheduleLeftView.swift in Sources */,
+				6A7D828C1EB16C9400D6A65C /* HFScheduleLeftView.swift in Sources */,
 				6B9210611CA410F700A59095 /* HFInfoGradesVC.swift in Sources */,
 				6B23B0DE1C97E6680089214D /* HFPlaceholdImageView.swift in Sources */,
 				6B89D91D1C994D780030DD7D /* Functions.swift in Sources */,
@@ -2142,6 +2165,7 @@
 				6A96F4A31E3E093B00F65859 /* BlockButton.swift in Sources */,
 				6A2C98BF1D6C0E1F00BD5182 /* HFMineChangePasswordVC.swift in Sources */,
 				6B2FE06C1CA69D6F00147BC3 /* HFInfoChargeModel.swift in Sources */,
+				6A7D82881EB16C9400D6A65C /* HFScheduleViewCell.swift in Sources */,
 				6A3EAAEE1CE0227000809226 /* HFComLoveWallListModel.swift in Sources */,
 				6B23B0DC1C97E0BC0089214D /* HFBasicButton.swift in Sources */,
 				6B9B67021C9AB5EC009B5F68 /* FadeAnimator.swift in Sources */,

@@ -23,7 +23,7 @@ class HFHomeVC: HFBasicViewController{
     fileprivate var currentWeek = 0
     
     fileprivate var scheduleView   : HFScheduleView!
-//    fileprivate var weekSelectView : HFHomeScheduleSelectWeekView!
+    fileprivate var weekSelectView : HFHomeScheduleSelectWeekView!
     
     fileprivate var isSelectWeekViewShowing = false
     
@@ -57,7 +57,7 @@ class HFHomeVC: HFBasicViewController{
     
     // MARK:- Load Data
     func loadSchedule() {
-        let week = 0
+        let week = currentWeek
         
         viewModel.fetchSchedule(for: week) { result, error in
             if let error = error {
@@ -73,19 +73,19 @@ class HFHomeVC: HFBasicViewController{
     // MARK: Animations
     func showOrHideSelectWeekView() {
         isSelectWeekViewShowing = !isSelectWeekViewShowing
-//        let offset = isSelectWeekViewShowing ? weekSelectView.height : 0
-//        let rotate = isSelectWeekViewShowing ? CGFloat(-Double.pi) : 0
-//        
-//        weekSelectView.snp.updateConstraints { (make) in
-//            make.bottom.equalTo(navBarView.snp.bottom).offset(offset)
-//        }
-//        
-//        view.bringSubview(toFront: weekSelectView)
-//        view.bringSubview(toFront: navBarView)
-//        UIView.animate(withDuration: 0.3, delay: 0, options: UIViewAnimationOptions(), animations: {
-//            self.view.layoutIfNeeded()
-//            self.navTitleIconView.transform = CGAffineTransform(rotationAngle: rotate)
-//        },completion: nil)
+        let offset = isSelectWeekViewShowing ? weekSelectView.height : 0
+        let rotate = isSelectWeekViewShowing ? CGFloat(-Double.pi) : 0
+        
+        weekSelectView.snp.updateConstraints { (make) in
+            make.bottom.equalTo(navBarView.snp.bottom).offset(offset)
+        }
+        
+        view.bringSubview(toFront: weekSelectView)
+        view.bringSubview(toFront: navBarView)
+        UIView.animate(withDuration: 0.3, delay: 0, options: UIViewAnimationOptions(), animations: {
+            self.view.layoutIfNeeded()
+            self.navTitleIconView.transform = CGAffineTransform(rotationAngle: rotate)
+        },completion: nil)
     }
     
     func loadFromServer(with error1: String) {
@@ -123,18 +123,18 @@ class HFHomeVC: HFBasicViewController{
         scheduleView.snp.makeConstraints { (make) in
             make.edges.equalTo(containView)
         }
-//
-//        weekSelectView = HFHomeScheduleSelectWeekView()
-//        weekSelectView.delegate = self
-//        
-//        view.addSubview(weekSelectView)
-//        
-//        weekSelectView.snp.makeConstraints { (make) in
-//            make.left.equalTo(view.snp.left)
-//            make.bottom.equalTo(navBarView.snp.bottom)
-//            make.width.equalTo(view.snp.width)
-//            make.height.equalTo(weekSelectView.height)
-//        }
+
+        weekSelectView = HFHomeScheduleSelectWeekView()
+        weekSelectView.delegate = self
+        
+        view.addSubview(weekSelectView)
+        
+        weekSelectView.snp.makeConstraints { (make) in
+            make.left.equalTo(view.snp.left)
+            make.bottom.equalTo(navBarView.snp.bottom)
+            make.width.equalTo(view.snp.width)
+            make.height.equalTo(weekSelectView.height)
+        }
         
         view.bringSubview(toFront: navBarView)
     }
@@ -160,7 +160,7 @@ class HFHomeVC: HFBasicViewController{
             Hud.showLoading("正在加载课表")
             loadSchedule()
         }
-//        weekSelectView.selectedWeek = currentWeek
+        weekSelectView.selectedWeek = currentWeek
     }
 }
 
@@ -181,17 +181,18 @@ class HFHomeVC: HFBasicViewController{
 //    
 //}
 //
-//extension HFHomeVC: HFHomeScheduleSelectWeekViewDelegate {
-//    func selectWeekViewDidSelectedOnWeek(weekIndex index: Int) {
-//        if index == 0 {
-//            navTitleLabel.text = "全部"
-//        } else {
-//            navTitleLabel.text = "第 \(index) 周"
-//        }
-//        showOrHideSelectWeekView()
-//        currentWeek = index
-//        loadSchedule()
-//        
-//        AnalyseManager.ChangeWeeks.record()
-//    }
-//}
+
+extension HFHomeVC: HFHomeScheduleSelectWeekViewDelegate {
+    func selectWeekViewDidSelectedOnWeek(weekIndex index: Int) {
+        if index == 0 {
+            navTitleLabel.text = "全部"
+        } else {
+            navTitleLabel.text = "第 \(index) 周"
+        }
+        showOrHideSelectWeekView()
+        currentWeek = index
+        loadSchedule()
+        
+        AnalyseManager.ChangeWeeks.record()
+    }
+}
