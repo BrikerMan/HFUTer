@@ -33,15 +33,21 @@ class HFScheduleViewCell: HFXibView {
                     self?.topConstraint.constant      = 2
                 } else {
                     self?.backView.layer.cornerRadius = 0
-                    self?.leadingConstraint.constant  = 0
-                    self?.bottomConstraint.constant   = 0
-                    self?.trailingConstraint.constant = 0
-                    self?.topConstraint.constant      = 0
+                    self?.leadingConstraint.constant  = 0.5
+                    self?.bottomConstraint.constant   = 0.5
+                    self?.trailingConstraint.constant = 0.5
+                    self?.topConstraint.constant      = 0.5
                 }
                 runOnMainThread {
                     self?.layoutIfNeeded()
                 }
             }).addDisposableTo(disposeBag)
+        
+        DataEnv.settings.scheduleCellAlpha.asObservable().subscribe(onNext: { [weak self] (element) in
+            if let colorName = self?.models.first?.cources.first?.colorName {
+                self?.backView.backgroundColor = HFTheme.getColor(with: colorName).withAlphaComponent(element)
+            }
+        }).addDisposableTo(disposeBag)
         
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(onCellPressed(_:)))
@@ -67,11 +73,10 @@ class HFScheduleViewCell: HFXibView {
     }
     
     func updateUI() {
-        
         if let colorName = models.first?.cources.first?.colorName {
-            backView.backgroundColor = HFTheme.getColor(with: colorName)
+            backView.backgroundColor = HFTheme.getColor(with: colorName).withAlphaComponent(DataEnv.settings.scheduleCellAlpha.value)
         }
-        
+
         if models.count == 1 {
             nameLabel.text = models.map { $0.name }.joined(separator: " / ")
             placeLabel.text = models.map { $0.place }.joined(separator: " / ")

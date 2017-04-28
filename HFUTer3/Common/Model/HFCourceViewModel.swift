@@ -64,8 +64,8 @@ class HFCourceViewModel: CustomStringConvertible {
     }
     
     func update(name: String, color: String, place: String, weeks: [Int]) {
-        let models = DBManager.read(from: .schedule, type: HFScheduleModel.self, filter: "name = '\(self.name)'")
-        for cource in models {
+//        let models = DBManager.read(from: .schedule, type: HFScheduleModel.self, filter: "name = '\(self.name)'")
+        for cource in cources {
             cource.name      = name
             cource.place     = place
             cource.colorName = color

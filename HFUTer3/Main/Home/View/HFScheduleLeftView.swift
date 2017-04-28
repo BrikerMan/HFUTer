@@ -18,7 +18,7 @@ class HFScheduleLeftView: HFView {
             $0.center.equalTo(self)
         }
         titleLabel.font = UIFont.systemFont(ofSize: 12)
-        titleLabel.textColor = HFTheme.LightTextColor
+        titleLabel.textColor = HFTheme.GreyTextColor
     }
 
 }

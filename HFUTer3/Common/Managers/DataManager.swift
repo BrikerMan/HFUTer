@@ -15,26 +15,47 @@ struct HFSettings {
     var weekendSchedule     : Variable<Bool>
     var scheduleRoundStyle  : Variable<Bool>
     var scheduleShowDayDate : Variable<Bool>
+    var scheduleCellAlpha   : Variable<CGFloat>
+    
+    var scheduleBackImage: Variable<UIImage?>
+    
+    let filePath: URL
     
     init() {
+        
+        filePath = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
+        
         let data = PlistManager.settingsPlist.getValues()
         let settings = data?[HFSettingPlistKey.settings.rawValue] as? JSON
         
         let weekEnd  = settings?[HFSettingPlistKey.weekendSchedule.rawValue] as? Bool ?? false
         let round    = settings?[HFSettingPlistKey.scheduleRoundStyle.rawValue] as? Bool ?? true
         let showDate = settings?[HFSettingPlistKey.scheduleRoundStyle.rawValue] as? Bool ?? true
+        let alpha    = settings?[HFSettingPlistKey.scheduleCellAlpha.rawValue]  as? CGFloat ?? 1.0
         
         weekendSchedule     = Variable(weekEnd)
         scheduleRoundStyle  = Variable(round)
         scheduleShowDayDate = Variable(showDate)
+        scheduleCellAlpha   = Variable(alpha)
+        
+        let path = filePath.appendingPathComponent("backImage.jpg").path
+       
+        if let image = UIImage(contentsOfFile: path) {
+            scheduleBackImage = Variable(image)
+        } else {
+            scheduleBackImage = Variable(nil)
+        }
+        
     }
     
     func save() {
-        let settings = [
+        let settings: JSON = [
             HFSettingPlistKey.weekendSchedule.rawValue    : weekendSchedule.value,
             HFSettingPlistKey.scheduleRoundStyle.rawValue : scheduleRoundStyle.value,
-            HFSettingPlistKey.scheduleShowDate.rawValue   : scheduleShowDayDate.value
+            HFSettingPlistKey.scheduleShowDate.rawValue   : scheduleShowDayDate.value,
+            HFSettingPlistKey.scheduleCellAlpha.rawValue  : scheduleCellAlpha.value
         ]
+        
         let data = [ HFSettingPlistKey.settings.rawValue : settings]
         PlistManager.settingsPlist.saveValues(data)
     }

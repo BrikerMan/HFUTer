@@ -31,6 +31,7 @@ class HFScheduleView: HFView {
     var leftView      = UIView()
     
     var containerView = UIView()
+    var imageView     = UIImageView()
     
     var scheduleCells : [String: HFScheduleViewCell] = [:]
     var topViewCells  : [HFScheduleTopView] = []
@@ -58,11 +59,33 @@ class HFScheduleView: HFView {
             self?.setup(week: self?.week ?? 0)
         }).addDisposableTo(disposeBag)
         
+        
+        DataEnv.settings.scheduleBackImage.asObservable().subscribe(onNext: { [weak self] (element) in
+            if let image = element {
+                self?.topView.backgroundColor  = HFTheme.BlackAreaColor.withAlphaComponent(0.2)
+                self?.leftView.backgroundColor = HFTheme.BlackAreaColor.withAlphaComponent(0.2)
+                self?.imageView.image          = image
+            } else {
+                self?.topView.backgroundColor  = HFTheme.BlackAreaColor
+                self?.leftView.backgroundColor = HFTheme.BlackAreaColor
+                self?.imageView.image = nil
+            }
+            self?.updateSave()
+        }).addDisposableTo(disposeBag)
+        
         scrollView.mj_header = MJRefreshNormalHeader(refreshingBlock: { [weak self] in
             self?.delegate?.scheduleViewDidStartRefresh()
         })
         
         NotificationCenter.default.addObserver(self, selector: #selector(onTintColorUpdated), name: .tintColorUpdated, object: nil)
+    }
+    
+    func updateSave() {
+        if let image = DataEnv.settings.scheduleBackImage.value,
+            let data = UIImageJPEGRepresentation(image, 0.8) {
+            let filename = DataEnv.settings.filePath.appendingPathComponent("backImage.jpg")
+            try? data.write(to: filename)
+        }
     }
     
     @objc fileprivate func onTintColorUpdated() {
@@ -87,7 +110,7 @@ class HFScheduleView: HFView {
             if week == DataEnv.currentWeek, Date().getDayOfWeek() == index {
                 color = HFTheme.TintColor
             } else {
-                color = HFTheme.LightTextColor
+                color = HFTheme.DarkTextColor
             }
             
             let font  = UIFont.systemFont(ofSize: 12)
@@ -117,9 +140,12 @@ class HFScheduleView: HFView {
             $0.edges.equalTo(self)
         }
         
+        scrollView.addSubview(imageView)
         scrollView.addSubview(topView)
         scrollView.addSubview(leftView)
         scrollView.addSubview(containerView)
+        
+        imageView.contentMode = .scaleAspectFill
         
         topView.snp.makeConstraints {
             $0.left.top.right.equalTo(scrollView)
@@ -140,10 +166,14 @@ class HFScheduleView: HFView {
             $0.right.bottom.equalTo(scrollView)
         }
         
-        scrollView.backgroundColor = HFTheme.BlackAreaColor
-        topView.backgroundColor    = HFTheme.BlackAreaColor
-        leftView.backgroundColor   = HFTheme.BlackAreaColor
-        containerView.backgroundColor = UIColor.white
+
+        containerView.backgroundColor = UIColor.clear
+        
+        imageView.snp.makeConstraints {
+            $0.top.left.right.equalTo(scrollView)
+            $0.bottom.equalTo(leftView.snp.bottom)
+        }
+        
     }
     
     fileprivate func setupTopView() {
