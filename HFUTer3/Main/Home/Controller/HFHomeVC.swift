@@ -68,7 +68,7 @@ class HFHomeVC: HFBasicViewController{
                 self.showEduError(error: error)
             } else {
                 runOnMainThread {
-                    self.scheduleView.setup(with: result)
+                    self.scheduleView.setup(with: result, week: week)
                     self.scheduleView.scrollView.mj_header.endRefreshing()
                 }
             }
@@ -178,7 +178,7 @@ extension HFHomeVC: HFScheduleViewDelegate {
                     self.loadFromServer(with: error)
                 } else {
                     runOnMainThread {
-                        self.scheduleView.setup(with: result)
+                        self.scheduleView.setup(with: result, week: self.currentWeek)
                         self.scheduleView.scrollView.mj_header.endRefreshing()
                     }
                 }

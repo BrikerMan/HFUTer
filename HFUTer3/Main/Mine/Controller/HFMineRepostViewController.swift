@@ -35,7 +35,7 @@ class HFMineRepostViewController: HFFormViewController {
             }
             
             let json: JSON = [
-                "text": DataEnv.user?.sid ?? "" + " : " + text,
+                "text": (DataEnv.user?.sid ?? "") + " : " + text,
                 "attachments":[
                     ["title":"log", "text": log]
                 ]

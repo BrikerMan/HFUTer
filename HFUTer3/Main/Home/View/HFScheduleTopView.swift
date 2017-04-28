@@ -19,6 +19,8 @@ class HFScheduleTopView: HFView {
         }
         titleLabel.font = UIFont.systemFont(ofSize: 12)
         titleLabel.textColor = HFTheme.LightTextColor
+        titleLabel.numberOfLines = 0
+        titleLabel.textAlignment = .center
     }
     
 }

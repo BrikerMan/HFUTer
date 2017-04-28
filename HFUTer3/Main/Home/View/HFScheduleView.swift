@@ -36,6 +36,7 @@ class HFScheduleView: HFView {
     var topViewCells  : [HFScheduleTopView] = []
     
     var schedules: [HFScheduleModel] = []
+    var week = 0
     
     var delegate: HFScheduleViewDelegate?
     
@@ -49,18 +50,65 @@ class HFScheduleView: HFView {
             kSchedule.day = element ? 7 : 5
             kSchedule.cellWidth  = (ScreenWidth - 30) / CGFloat(kSchedule.day)
             self?.setupTopView()
-            self?.setup(with: self?.schedules ?? [])
+            self?.setup(with: self?.schedules ?? [], week: self?.week ?? 0)
+        }).addDisposableTo(disposeBag)
+        
+        
+        DataEnv.settings.scheduleShowDayDate.asObservable().subscribe(onNext: { [weak self] (element) in
+            self?.setup(week: self?.week ?? 0)
         }).addDisposableTo(disposeBag)
         
         scrollView.mj_header = MJRefreshNormalHeader(refreshingBlock: { [weak self] in
             self?.delegate?.scheduleViewDidStartRefresh()
         })
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(onTintColorUpdated), name: .tintColorUpdated, object: nil)
     }
     
-    func setup(with schedules: [HFScheduleModel]) {
+    @objc fileprivate func onTintColorUpdated() {
+        setup(week: week)
+    }
+    
+    func setup(with schedules: [HFScheduleModel], week: Int) {
         self.schedules = schedules
         let viewModels = HFCourceViewModel.group(schedules: schedules)
         drawScheduleView(viewModels: viewModels)
+        setup(week: week)
+    }
+    
+    func setup(week: Int) {
+        self.week = week
+        let dates = DataHelper.getDaysListForWeek(week)
+        
+        for (index, cell) in topViewCells.enumerated() {
+            let att = NSMutableAttributedString()
+            
+            var color: UIColor
+            if week == DataEnv.currentWeek, Date().getDayOfWeek() == index {
+                color = HFTheme.TintColor
+            } else {
+                color = HFTheme.LightTextColor
+            }
+            
+            let font  = UIFont.systemFont(ofSize: 12)
+            let boldfont  = UIFont.boldSystemFont(ofSize: 12)
+            
+            let dayName = NSAttributedString(string: kSchedule.dayNamesList[index],
+                                             attributes: [
+                                                NSFontAttributeName: boldfont,
+                                                NSForegroundColorAttributeName: color])
+            att.append(dayName)
+            if DataEnv.settings.scheduleShowDayDate.value {
+                
+                let dateAtt = NSAttributedString(string: "\n\(dates[index])",
+                    attributes: [
+                        NSFontAttributeName: font,
+                        NSForegroundColorAttributeName: color])
+                att.append(dateAtt)
+            }
+            
+            cell.titleLabel.attributedText = att
+        }
     }
     
     fileprivate func setupBaseViews() {
@@ -104,7 +152,7 @@ class HFScheduleView: HFView {
         
         for i in 0...kSchedule.day {
             let cell = HFScheduleTopView()
-            cell.titleLabel.text = kSchedule.dayNamesList[i]
+            //            cell.titleLabel.text = kSchedule.dayNamesList[i]
             topView.addSubview(cell)
             
             cell.snp.makeConstraints {
@@ -173,6 +221,18 @@ class HFScheduleView: HFView {
                 }
                 scheduleCells["\(model.day)-\(model.start)"] = cell
             }
+        }
+    }
+}
+
+extension Date {
+    func getDayOfWeek() -> Int {
+        let myCalendar = Calendar(identifier: .gregorian)
+        let day = myCalendar.component(.weekday, from: self)
+        if day == 1 {
+            return 7
+        } else {
+            return day - 1
         }
     }
 }

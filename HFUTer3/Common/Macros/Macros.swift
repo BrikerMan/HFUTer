@@ -68,6 +68,7 @@ enum HFSettingPlistKey: String {
     case settings           = "SettingsList"
     case weekendSchedule    = "weekendSchedule"
     case scheduleRoundStyle = "scheduleRoundStyle"
+    case scheduleShowDate   = "scheduleShowDate"
 }
 
 ////////////////////////////////////////////////////////////////////////

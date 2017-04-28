@@ -8,6 +8,7 @@
 
 import UIKit
 import SnapKit
+import Crashlytics
 
 class HFMineChooseThemeViewController: HFBaseViewController, XibBasedController {
 
@@ -72,8 +73,11 @@ extension HFMineChooseThemeViewController: UITableViewDelegate {
                 block(HFTheme.flatColors[indexPath.row].name)
                 self.pop()
             } else {
-                let color = HFTheme.flatColors[indexPath.row].color
-                HFTheme.saveTintColor(name: HFTheme.flatColors[indexPath.row].name, color: color.hex())
+                let color = HFTheme.flatColors[indexPath.row]
+                HFTheme.saveTintColor(name: color.name, color: color.color.hex())
+                Answers.logCustomEvent(withName: "主题颜色替换",
+                                               customAttributes: [
+                                                "颜色名称": color.name])
             }
         }
         

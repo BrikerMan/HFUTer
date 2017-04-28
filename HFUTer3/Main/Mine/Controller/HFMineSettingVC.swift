@@ -36,6 +36,14 @@ class HFMineSettingVC: HFFormViewController {
                     DataEnv.settings.save()
                 })
             
+            <<< SwitchRow() {
+                $0.title = "课表显示日期"
+                $0.value =  DataEnv.settings.scheduleShowDayDate.value
+                }.onChange({ (row) in
+                    DataEnv.settings.scheduleShowDayDate.value = row.value!
+                    DataEnv.settings.save()
+                })
+            
             +++ Section()
             <<< ButtonRow("上传 log") {
                 $0.title = $0.tag

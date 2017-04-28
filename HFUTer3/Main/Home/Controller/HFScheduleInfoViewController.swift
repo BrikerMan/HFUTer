@@ -8,6 +8,7 @@
 
 import UIKit
 import Eureka
+import Crashlytics
 
 class HFScheduleInfoViewController: HFFormViewController {
     
@@ -167,6 +168,10 @@ class HFScheduleInfoViewController: HFFormViewController {
                     vc.selectedBlock = { [weak self] color in
                         self?.newModel.colorName = color
                         self?.updateValue()
+                        Answers.logCustomEvent(withName: "课表颜色替换",
+                                                       customAttributes: [
+                                                        "颜色名称": color,
+                                                        "自定义课表": self?.currentModel?.isUserAdded ?? true])
                     }
                     self.push(vc)
                 })

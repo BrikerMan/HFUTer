@@ -12,24 +12,28 @@ import RxSwift
 import Pitaya
 
 struct HFSettings {
-    var weekendSchedule    : Variable<Bool>
-    var scheduleRoundStyle : Variable<Bool>
+    var weekendSchedule     : Variable<Bool>
+    var scheduleRoundStyle  : Variable<Bool>
+    var scheduleShowDayDate : Variable<Bool>
     
     init() {
         let data = PlistManager.settingsPlist.getValues()
         let settings = data?[HFSettingPlistKey.settings.rawValue] as? JSON
         
-        let weekEnd = settings?[HFSettingPlistKey.weekendSchedule.rawValue] as? Bool ?? false
-        let round   = settings?[HFSettingPlistKey.scheduleRoundStyle.rawValue] as? Bool ?? false
+        let weekEnd  = settings?[HFSettingPlistKey.weekendSchedule.rawValue] as? Bool ?? false
+        let round    = settings?[HFSettingPlistKey.scheduleRoundStyle.rawValue] as? Bool ?? true
+        let showDate = settings?[HFSettingPlistKey.scheduleRoundStyle.rawValue] as? Bool ?? true
         
-        weekendSchedule    = Variable(weekEnd)
-        scheduleRoundStyle = Variable(round)
+        weekendSchedule     = Variable(weekEnd)
+        scheduleRoundStyle  = Variable(round)
+        scheduleShowDayDate = Variable(showDate)
     }
     
     func save() {
         let settings = [
             HFSettingPlistKey.weekendSchedule.rawValue    : weekendSchedule.value,
-            HFSettingPlistKey.scheduleRoundStyle.rawValue : scheduleRoundStyle.value
+            HFSettingPlistKey.scheduleRoundStyle.rawValue : scheduleRoundStyle.value,
+            HFSettingPlistKey.scheduleShowDate.rawValue   : scheduleShowDayDate.value
         ]
         let data = [ HFSettingPlistKey.settings.rawValue : settings]
         PlistManager.settingsPlist.saveValues(data)
