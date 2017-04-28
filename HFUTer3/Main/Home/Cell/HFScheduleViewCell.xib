@@ -29,23 +29,23 @@
                     <rect key="frame" x="2" y="2" width="142" height="133"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pkz-pp-MCB">
-                            <rect key="frame" x="13" y="2" width="117.5" height="129"/>
+                            <rect key="frame" x="11" y="10" width="121" height="114"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="600" text="fdsaf fdsafdsaffdsaf fdsafdsaffdsaf fdsafdsaffdsaf fdsafdsaf" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.40000000000000002" translatesAutoresizingMaskIntoConstraints="NO" id="NdB-Bh-cdC">
-                                    <rect key="frame" x="0.0" y="78" width="117.5" height="51"/>
+                                    <rect key="frame" x="0.0" y="78" width="121" height="36"/>
                                     <constraints>
                                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="20" id="CCo-rQ-ZDa"/>
                                     </constraints>
-                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="500" verticalCompressionResistancePriority="700" text="fdsaf fdsafdsaffdsaf fdsafdsaffdsaf fdsafdsaffdsaf fdsafdsaffdsaf fdsafdsaf" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.29999999999999999" translatesAutoresizingMaskIntoConstraints="NO" id="YAR-mE-Tc6">
-                                    <rect key="frame" x="0.0" y="0.0" width="117.5" height="72"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="121" height="72"/>
                                     <constraints>
                                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="20" id="W1i-ry-Cmr"/>
                                     </constraints>
-                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="12"/>
                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>

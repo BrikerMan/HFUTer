@@ -26,7 +26,8 @@ class HFLoginRequest: HFBaseAPIManager {
     override func requestParams() -> [String : Any]? {
         return [
             "sid":username,
-            "pwd":password.md5()
+            "pwd":password,
+            "auto_rebound": true
             ]
     }
 }

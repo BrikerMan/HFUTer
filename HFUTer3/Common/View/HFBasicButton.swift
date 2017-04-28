@@ -8,7 +8,7 @@
 
 import UIKit
 
-@IBDesignable
+//@IBDesignable
 class HFBasicButton: UIButton {
 
     @IBInspectable var cornerRadius: CGFloat = 20.0 {
