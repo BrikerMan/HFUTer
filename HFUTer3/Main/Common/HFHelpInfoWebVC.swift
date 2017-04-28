@@ -28,7 +28,8 @@ class HFHelpInfoWebVC: HFBaseViewController {
         
         switch type {
         case .Help:
-            url = DataEnv.helpWebLinks[type.rawValue] ?? "http://ac-jkqbcp9o.clouddn.com/1a2d59312f43f416.html"
+//            url = DataEnv.helpWebLinks[type.rawValue] ?? "http://ac-jkqbcp9o.clouddn.com/03205dcaf449a6f8c102.html"
+            url = "http://ac-jkqbcp9o.clouddn.com/5cf9f1ab6228efbc2d3b.html"
             navTitle = "帮助"
         case .About:
             url = DataEnv.helpWebLinks[type.rawValue] ?? "http://ac-jkqbcp9o.clouddn.com/a8409b5b34ab13af.html"
