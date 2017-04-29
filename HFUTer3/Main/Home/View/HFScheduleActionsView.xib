@@ -34,7 +34,7 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="15O-RZ-rKv">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="270"/>
                     <subviews>
-                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C6N-XY-Ugs">
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="C6N-XY-Ugs" userLabel="create">
                             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="创建新课程" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J0r-fB-n4c">
@@ -131,10 +131,10 @@
                                     </connections>
                                 </switch>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jnx-Xs-zwc">
-                                    <rect key="frame" x="12" y="44" width="308" height="0.0"/>
+                                    <rect key="frame" x="12" y="43" width="308" height="1"/>
                                     <color key="backgroundColor" red="0.95686274510000002" green="0.95686274510000002" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <constraints>
-                                        <constraint firstAttribute="height" constant="0.5" id="KFB-OA-Nqn"/>
+                                        <constraint firstAttribute="height" constant="1" id="KFB-OA-Nqn"/>
                                     </constraints>
                                 </view>
                             </subviews>
@@ -166,10 +166,10 @@
                                     </connections>
                                 </switch>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="o8U-7C-ala">
-                                    <rect key="frame" x="12" y="44" width="308" height="0.0"/>
+                                    <rect key="frame" x="12" y="43" width="308" height="1"/>
                                     <color key="backgroundColor" red="0.95686274510000002" green="0.95686274510000002" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <constraints>
-                                        <constraint firstAttribute="height" constant="0.5" id="O7C-g6-Afn"/>
+                                        <constraint firstAttribute="height" constant="1" id="O7C-g6-Afn"/>
                                     </constraints>
                                 </view>
                             </subviews>
@@ -195,10 +195,10 @@
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="swi-xj-akE">
-                                    <rect key="frame" x="12" y="44" width="308" height="0.0"/>
+                                    <rect key="frame" x="12" y="43" width="308" height="1"/>
                                     <color key="backgroundColor" red="0.95686274510000002" green="0.95686274510000002" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                     <constraints>
-                                        <constraint firstAttribute="height" constant="0.5" id="gFF-FC-p1H"/>
+                                        <constraint firstAttribute="height" constant="1" id="gFF-FC-p1H"/>
                                     </constraints>
                                 </view>
                                 <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="top" segmentControlStyle="plain" momentary="YES" translatesAutoresizingMaskIntoConstraints="NO" id="r8g-7C-Xql">
@@ -304,7 +304,6 @@
                         <constraint firstItem="C6N-XY-Ugs" firstAttribute="leading" secondItem="15O-RZ-rKv" secondAttribute="leading" id="5Gw-E5-qJH"/>
                         <constraint firstAttribute="trailing" secondItem="7Vm-Nh-h0G" secondAttribute="trailing" id="BEq-PV-AE5"/>
                         <constraint firstItem="C6N-XY-Ugs" firstAttribute="top" secondItem="15O-RZ-rKv" secondAttribute="top" id="CsU-Zq-dMS"/>
-                        <constraint firstAttribute="bottom" secondItem="7Vm-Nh-h0G" secondAttribute="bottom" id="DFU-MU-w6C"/>
                         <constraint firstItem="lYf-j7-Tf6" firstAttribute="top" secondItem="C6N-XY-Ugs" secondAttribute="bottom" id="Doq-y4-PAJ"/>
                         <constraint firstAttribute="trailing" secondItem="CdA-dD-zqI" secondAttribute="trailing" id="Enk-4S-9Fd"/>
                         <constraint firstItem="CdA-dD-zqI" firstAttribute="top" secondItem="TV0-BO-Slj" secondAttribute="bottom" id="Qaw-89-uFn"/>
@@ -312,6 +311,7 @@
                         <constraint firstItem="ePy-wz-9Of" firstAttribute="leading" secondItem="15O-RZ-rKv" secondAttribute="leading" id="T7x-K4-xrJ"/>
                         <constraint firstItem="lYf-j7-Tf6" firstAttribute="leading" secondItem="15O-RZ-rKv" secondAttribute="leading" id="Tji-6l-mi4"/>
                         <constraint firstItem="TV0-BO-Slj" firstAttribute="leading" secondItem="15O-RZ-rKv" secondAttribute="leading" id="awz-Bf-Ugz"/>
+                        <constraint firstAttribute="bottom" secondItem="7Vm-Nh-h0G" secondAttribute="bottom" id="hzH-MB-gCD"/>
                         <constraint firstAttribute="trailing" secondItem="ePy-wz-9Of" secondAttribute="trailing" id="i8Z-xL-PTB"/>
                         <constraint firstItem="7Vm-Nh-h0G" firstAttribute="leading" secondItem="15O-RZ-rKv" secondAttribute="leading" id="kXN-1F-sWP"/>
                         <constraint firstItem="TV0-BO-Slj" firstAttribute="top" secondItem="lYf-j7-Tf6" secondAttribute="bottom" id="lvO-pe-wku"/>

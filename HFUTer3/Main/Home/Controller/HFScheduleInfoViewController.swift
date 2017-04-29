@@ -53,6 +53,7 @@ class HFScheduleInfoViewController: HFFormViewController {
             newModel.name  = model.name
             newModel.place = model.place
             newModel.weeks = model.cources.first?.weeks ?? []
+            newModel.day   = model.day
             newModel.colorName = model.color
             newModel.duration = model.duration
             newModel.hour = model.start
@@ -72,7 +73,9 @@ class HFScheduleInfoViewController: HFFormViewController {
                     model.cleanUP()
                     HFCourceViewModel.create(model: newModel)
                 } else {
-                    model.update(name: newModel.name, color: newModel.colorName, place: newModel.place, weeks: newModel.weeks)
+                    model.cleanUP()
+                    HFCourceViewModel.create(model: newModel, isUserAdded: false)
+//                    model.update(name: newModel.name, color: newModel.colorName, place: newModel.place, weeks: newModel.weeks)
                 }
                 
             } else {
@@ -120,10 +123,10 @@ class HFScheduleInfoViewController: HFFormViewController {
                     row.deselect()
                     let picker = HFScheduleTimePicker()
                     if let model = self.currentModel {
-                        if !model.isUserAdded {
-                            Hud.showError("只有用户添加课程能修改")
-                            return
-                        }
+//                        if !model.isUserAdded {
+//                            Hud.showError("只有用户添加课程能修改")
+//                            return
+//                        }
                         picker.setup(day: model.day, hour: model.start, duration: model.duration)
                     }
                     picker.finishedBlock = { [weak self] (day, hour, duration) in
@@ -139,12 +142,12 @@ class HFScheduleInfoViewController: HFFormViewController {
                 $0.title = "教学周"
                 }.onCellSelection({ (cell, row) in
                     row.deselect()
-                    if let model = self.currentModel {
-                        if !model.isUserAdded {
-                            Hud.showError("只有用户添加课程能修改")
-                            return
-                        }
-                    }
+//                    if let model = self.currentModel {
+//                        if !model.isUserAdded {
+//                            Hud.showError("只有用户添加课程能修改")
+//                            return
+//                        }
+//                    }
                     
                     let vc = HFScheduleWeekChoostViewController()
                     vc.selected =  self.newModel.weeks

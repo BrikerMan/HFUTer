@@ -47,7 +47,7 @@ class HFCourceViewModel: CustomStringConvertible {
         DBManager.delete(id: self.cources.map({ $0.id}), from: .schedule)
     }
     
-    static func create(model: HFScheduleModel) {
+    static func create(model: HFScheduleModel, isUserAdded: Bool = true) {
         for i in 0..<model.duration {
             let cource = HFScheduleModel()
             
@@ -57,7 +57,7 @@ class HFCourceViewModel: CustomStringConvertible {
             cource.day         = model.day
             cource.weeks       = model.weeks
             cource.hour        = model.hour + i
-            cource.isUserAdded = true
+            cource.isUserAdded = isUserAdded
             
             DBManager.insert(item: cource, to: .schedule)
         }
@@ -106,6 +106,15 @@ class HFCourceViewModel: CustomStringConvertible {
                 }
             }
         }
+        
+        
+        result.sort { (left, right) -> Bool in
+            if left.day == right.day {
+                return left.start < right.start
+            }
+            return left.day < right.day
+        }
+        
         return result
     }
 }

@@ -16,7 +16,6 @@ target 'HFUTer3' do
     pod 'YYText'    , :git => 'https://github.com/BrikerMan/YYText.git'
     pod 'ZYCornerRadius'                        # 优化圆角绘制
 #    pod 'Kingfisher'
-
     
     # TableView
     pod 'UITableView+FDTemplateLayoutCell_Bell' ##优化UITableViewCell高度计算

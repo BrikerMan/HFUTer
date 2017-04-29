@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HFScheduleShareBottonView" customModule="HFUTer3" customModuleProvider="target"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clipsSubviews="YES" contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="379" height="100"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" alpha="0.5" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hf_share_view_bottom" translatesAutoresizingMaskIntoConstraints="NO" id="pRV-ky-I2o">
+                    <rect key="frame" x="0.0" y="0.0" width="379" height="100"/>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hf_scan_code" translatesAutoresizingMaskIntoConstraints="NO" id="cmW-8o-rv3">
+                    <rect key="frame" x="20" y="5" width="90" height="90"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="90" id="5a8-AZ-M2z"/>
+                        <constraint firstAttribute="height" constant="90" id="Kte-y5-BIc"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qRX-Ay-9XI">
+                    <rect key="frame" x="120" y="33.5" width="129" height="33.5"/>
+                    <string key="text">长按图片识别二维码
+下载 HFUTer 客户端</string>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="pRV-ky-I2o" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Diy-jR-uwd"/>
+                <constraint firstItem="cmW-8o-rv3" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="HGI-ne-d1T"/>
+                <constraint firstItem="qRX-Ay-9XI" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="NB1-Q4-WvF"/>
+                <constraint firstItem="pRV-ky-I2o" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="SHr-C7-a5T"/>
+                <constraint firstItem="cmW-8o-rv3" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="cRx-uz-AfM"/>
+                <constraint firstAttribute="trailing" secondItem="pRV-ky-I2o" secondAttribute="trailing" id="jyJ-f7-TeK"/>
+                <constraint firstItem="qRX-Ay-9XI" firstAttribute="leading" secondItem="cmW-8o-rv3" secondAttribute="trailing" constant="10" id="v1M-0U-akr"/>
+                <constraint firstAttribute="bottom" secondItem="pRV-ky-I2o" secondAttribute="bottom" id="xtG-9J-bnR"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="36.5" y="256"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="hf_scan_code" width="92" height="92"/>
+        <image name="hf_share_view_bottom" width="414" height="120"/>
+    </resources>
+</document>

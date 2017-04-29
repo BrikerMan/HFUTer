@@ -12,6 +12,7 @@ import UIKit
 protocol HFScheduleActionsViewDelegate: class {
     func actionsViewDidChooseAdd()
     func actionsViewDidChooseCustomBack()
+    func actionsViewDidChooseShare()
 }
 
 class HFScheduleActionsView: HFXibView {
@@ -141,5 +142,9 @@ class HFScheduleActionsView: HFXibView {
     
     @IBAction func onCustomBackButtonPressed(_ sender: Any) {
         delegate?.actionsViewDidChooseCustomBack()
+    }
+    
+    @IBAction func onShareButtonPressed(_ sender: Any) {
+        delegate?.actionsViewDidChooseShare()
     }
 }

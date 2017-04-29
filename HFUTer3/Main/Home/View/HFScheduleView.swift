@@ -7,8 +7,8 @@
 //
 
 import UIKit
-import MJRefresh
 import SnapKit
+import MJRefresh
 
 fileprivate class kSchedule {
     static var day = 5
@@ -38,6 +38,8 @@ class HFScheduleView: HFView {
     
     var schedules: [HFScheduleModel] = []
     var week = 0
+    
+    fileprivate var shareBottom = HFScheduleShareBottonView()
     
     var delegate: HFScheduleViewDelegate?
     
@@ -134,6 +136,34 @@ class HFScheduleView: HFView {
         }
     }
     
+//    public func saveToImage(completion: @escaping (UIImage?)->Void)  {
+//        shareBottom.snp.updateConstraints {
+//            $0.height.equalTo(110)
+//        }
+//        runOnMainThread {
+//            self.layoutIfNeeded()
+//        }
+//        
+////        scrollView.swContentCapture { (image) in
+////            completion(image)
+////            self.shareBottom.snp.updateConstraints {
+////                $0.height.equalTo(0)
+////            }
+////            runOnMainThread {
+////                self.layoutIfNeeded()
+////            }
+////        }
+//        completion(scrollView.screenshot())
+//                    self.shareBottom.snp.updateConstraints {
+//                        $0.height.equalTo(0)
+//                    }
+//                    runOnMainThread {
+//                        self.layoutIfNeeded()
+//                    }
+//    }
+    
+    
+    
     fileprivate func setupBaseViews() {
         addSubview(scrollView)
         scrollView.snp.makeConstraints {
@@ -144,6 +174,7 @@ class HFScheduleView: HFView {
         scrollView.addSubview(topView)
         scrollView.addSubview(leftView)
         scrollView.addSubview(containerView)
+        scrollView.addSubview(shareBottom)
         
         imageView.contentMode = .scaleAspectFill
         
@@ -155,9 +186,16 @@ class HFScheduleView: HFView {
         
         leftView.snp.makeConstraints {
             $0.top.equalTo(topView.snp.bottom)
-            $0.left.bottom.equalTo(scrollView)
+            $0.left.equalTo(scrollView)
             $0.width.equalTo(kSchedule.leftWidth)
             $0.height.equalTo(scrollView.snp.height)
+        }
+        
+        shareBottom.snp.makeConstraints {
+            $0.top.equalTo(leftView.snp.bottom)
+            $0.left.right.equalTo(scrollView)
+            $0.height.equalTo(0)
+            $0.bottom.equalTo(scrollView.snp.bottom)
         }
         
         containerView.snp.makeConstraints {
@@ -264,5 +302,36 @@ extension Date {
         } else {
             return day - 1
         }
+    }
+}
+
+extension UIView {
+    func screenshot() -> UIImage {
+        
+        if(self is UIScrollView) {
+            let scrollView = self as! UIScrollView
+            
+            let savedContentOffset = scrollView.contentOffset
+            let savedFrame = scrollView.frame
+            
+            UIGraphicsBeginImageContext(scrollView.contentSize)
+            scrollView.contentOffset = .zero
+            self.frame = CGRect(x: 0, y: 0, width: scrollView.contentSize.width, height: scrollView.contentSize.height)
+            self.layer.render(in: UIGraphicsGetCurrentContext()!)
+            let image = UIGraphicsGetImageFromCurrentImageContext()
+            UIGraphicsEndImageContext();
+            
+            scrollView.contentOffset = savedContentOffset
+            scrollView.frame = savedFrame
+            
+            return image!
+        }
+        
+        UIGraphicsBeginImageContext(self.bounds.size)
+        self.layer.render(in: UIGraphicsGetCurrentContext()!)
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return image!
+        
     }
 }

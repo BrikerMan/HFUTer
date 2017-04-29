@@ -44,7 +44,6 @@ class HFScheduleWeekChoostViewController: HFFormViewController {
     
     func setup() {
         form +++ Section()
-        
         for i in 1...24 {
             form.allSections.last!
                 <<< CheckRow("\(i)") {
@@ -59,6 +58,7 @@ class HFScheduleWeekChoostViewController: HFFormViewController {
         for i in 1...24 {
             values["\(i)"] = selected.contains(i)
         }
+        form.setValues(values)
         tableView?.reloadData()
     }
 }

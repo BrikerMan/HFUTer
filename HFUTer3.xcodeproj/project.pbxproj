@@ -227,6 +227,8 @@
 		6A9F1EA71E40BC1700FFC39D /* jcore-ios-1.1.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A9F1EA41E40BC1700FFC39D /* jcore-ios-1.1.0.a */; };
 		6A9F1EA81E40BC1700FFC39D /* jpush-ios-3.0.1.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A9F1EA51E40BC1700FFC39D /* jpush-ios-3.0.1.a */; };
 		6A9F1EAA1E40BC4E00FFC39D /* libresolv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A9F1EA91E40BC4E00FFC39D /* libresolv.tbd */; };
+		6AA75C221EB3399100A9BF94 /* HFScheduleShareBottonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AA75C211EB3399100A9BF94 /* HFScheduleShareBottonView.swift */; };
+		6AA75C241EB339A900A9BF94 /* HFScheduleShareBottonView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6AA75C231EB339A900A9BF94 /* HFScheduleShareBottonView.xib */; };
 		6AAF78941D0ACB7E00D08ADC /* HFMineAboutHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AAF78931D0ACB7E00D08ADC /* HFMineAboutHeaderTableViewCell.swift */; };
 		6AB5B8911CF56429001C6F2F /* HFFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AB5B8901CF56429001C6F2F /* HFFormViewController.swift */; };
 		6AB967251E6A607D00DA6079 /* HFParseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AB967241E6A607D00DA6079 /* HFParseViewModel.swift */; };
@@ -596,6 +598,8 @@
 		6A9F1EA51E40BC1700FFC39D /* jpush-ios-3.0.1.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "jpush-ios-3.0.1.a"; sourceTree = "<group>"; };
 		6A9F1EA61E40BC1700FFC39D /* JPUSHService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPUSHService.h; sourceTree = "<group>"; };
 		6A9F1EA91E40BC4E00FFC39D /* libresolv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libresolv.tbd; path = usr/lib/libresolv.tbd; sourceTree = SDKROOT; };
+		6AA75C211EB3399100A9BF94 /* HFScheduleShareBottonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFScheduleShareBottonView.swift; sourceTree = "<group>"; };
+		6AA75C231EB339A900A9BF94 /* HFScheduleShareBottonView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HFScheduleShareBottonView.xib; sourceTree = "<group>"; };
 		6AAF78931D0ACB7E00D08ADC /* HFMineAboutHeaderTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFMineAboutHeaderTableViewCell.swift; sourceTree = "<group>"; };
 		6AB5B8901CF56429001C6F2F /* HFFormViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFFormViewController.swift; sourceTree = "<group>"; };
 		6AB967241E6A607D00DA6079 /* HFParseViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFParseViewModel.swift; sourceTree = "<group>"; };
@@ -1027,6 +1031,8 @@
 				6A112F541EB31215007BF9BE /* HFScheduleActionsView.xib */,
 				6ADA6E831EB17CB90006E4FD /* HFScheduleTimePicker.swift */,
 				6ADA6E851EB17CD50006E4FD /* HFScheduleTimePicker.xib */,
+				6AA75C211EB3399100A9BF94 /* HFScheduleShareBottonView.swift */,
+				6AA75C231EB339A900A9BF94 /* HFScheduleShareBottonView.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1900,6 +1906,7 @@
 				6A7D828B1EB16C9400D6A65C /* HFHomeScheduleSelectWeekView.xib in Resources */,
 				6A96F4701E3DFE1600F65859 /* HFCommunityLoveWallListCell.xib in Resources */,
 				6AE3F7191EB1F54F00D2D30B /* HFComunityListLoveWallCell.xib in Resources */,
+				6AA75C241EB339A900A9BF94 /* HFScheduleShareBottonView.xib in Resources */,
 				6AF574151E44A1F000FD8234 /* HFMineChooseColorCell.xib in Resources */,
 				6A02E2741CF320CB00DC669A /* FMCommunityActionListView.xib in Resources */,
 			);
@@ -2289,6 +2296,7 @@
 				6A96F4AA1E3E093B00F65859 /* BoolExtensions.swift in Sources */,
 				6A96F4C61E3E093B00F65859 /* UILabelExtensions.swift in Sources */,
 				277AB7701CA0CED300F84FB1 /* HFInfoAcademicClassDetailVC.swift in Sources */,
+				6AA75C221EB3399100A9BF94 /* HFScheduleShareBottonView.swift in Sources */,
 				6AAF78941D0ACB7E00D08ADC /* HFMineAboutHeaderTableViewCell.swift in Sources */,
 				6A96F4BB1E3E093B00F65859 /* TimerExtensions.swift in Sources */,
 				6B6121731CA2941200C56FD4 /* HFMineInfoVC.swift in Sources */,
