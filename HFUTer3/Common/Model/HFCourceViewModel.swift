@@ -40,11 +40,19 @@ class HFCourceViewModel: CustomStringConvertible {
     }
     
     var description: String {
-        return "\(cources) \(start) - \(start + duration - 1)"
+        return "\(name) \(start) - \(start + duration - 1) \(cources)"
     }
     
     func cleanUP() {
         DBManager.delete(id: self.cources.map({ $0.id}), from: .schedule)
+    }
+    
+    func insert(cource: HFScheduleModel) {
+        if !cources.contains(cource) {
+            cources.append(cource)
+        } else {
+            Logger.error("重复课程 \(cource)")
+        }
     }
     
     static func create(model: HFScheduleModel, isUserAdded: Bool = true) {
@@ -93,7 +101,7 @@ class HFCourceViewModel: CustomStringConvertible {
             for (index, item) in sortedArray.enumerated() {
                 if index > 0 {
                     if item.name == sortedArray[index - 1].name {
-                        result.last?.cources.append(item)
+                        result.last?.insert(cource: item)
                     } else {
                         let model = HFCourceViewModel()
                         model.cources.append(item)

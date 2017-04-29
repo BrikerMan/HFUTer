@@ -35,7 +35,7 @@ class DataHelper {
             }
             return weekString
         } else {
-            return Array<String>(repeating: "", count: 7)
+            return Array<String>(repeating: "", count: 10)
         }
     }
 }

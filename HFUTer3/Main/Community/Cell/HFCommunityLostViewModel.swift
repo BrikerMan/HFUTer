@@ -45,6 +45,7 @@ class HFCommunityLostViewModel {
             .response { (json, error, _) in
                 if let error = error {
                     Hud.showError(error)
+                    completion(JSONItem())
                 } else {
                     completion(json)
                 }

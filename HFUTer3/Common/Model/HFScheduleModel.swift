@@ -128,6 +128,12 @@ class HFScheduleModel: SQLiteCachable {
     }
 }
 
+extension HFScheduleModel: Equatable {
+    static func ==(lhs: HFScheduleModel, rhs: HFScheduleModel) -> Bool {
+        return lhs.name == rhs.name && lhs.hour == rhs.hour && lhs.day == rhs.day
+    }
+}
+
 extension HFScheduleModel: CustomStringConvertible {
     var description: String {
         return "\(name) - day:\(day)-\(hour) \(weeks)"

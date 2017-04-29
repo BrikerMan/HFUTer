@@ -338,7 +338,6 @@ class HFParseViewModel {
                         case.grades:
                             PlistManager.dataPlist.saveValues([PlistKey.GradesList.rawValue: array])
                         }
-                        
                         Logger.debug("解析数据缓存成功")
                         reject(HFParseError.fullfill)
                     } else {
@@ -360,7 +359,7 @@ class HFParseViewModel {
         case.grades:
             url = EduURL.score
         }
-        
+
         return Promise<Data> { fulfill, reject in
             Pita.build(HTTPMethod: .GET, url: url)
                 .onNetworkError({ (error) in
@@ -379,6 +378,9 @@ class HFParseViewModel {
     
     /// 上传服务器解析数据
     fileprivate func parseData(data: Data) -> Promise<JSONItem> {
+        
+        Logger.verbose("HTML \(String(data: data, encoding: .gb2312) ?? "解析失败")")
+        
         return Promise<JSONItem> { fulfill, reject in
             let fileName : String
             let url      : String
@@ -417,7 +419,9 @@ class HFParseViewModel {
                         Logger.error("解析失败 \(json["info"].stringValue)")
                         let html = String(data: data, encoding: .gb2312)?.trimmed()
                         Logger.error(html ?? "")
-                        reject(HFParseError.suspend(info: "解析数据失败"))
+                        HFToast.showError("操作失败 \(json["info"].stringValue)")
+                        reject(HFParseError.suspend(info: "操作失败 \(json["info"].stringValue)"))
+                        
                         return
                     }
                 })

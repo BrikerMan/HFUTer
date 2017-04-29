@@ -121,8 +121,11 @@ class DataManager {
      登出时调用，初始化全局数据环境
      */
     func handleLogout() {
+        DBManager.execute(sql: "Delete from schedule where isUserAdded == 0;")
+        
         PlistManager.dataPlist.clearPlist()
         PlistManager.userDataPlist.clearPlist()
+        
         isLogin = false
         hasUpdateToken =  false
         

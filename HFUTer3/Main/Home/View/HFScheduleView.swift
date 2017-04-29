@@ -176,6 +176,7 @@ class HFScheduleView: HFView {
         scrollView.addSubview(containerView)
         scrollView.addSubview(shareBottom)
         
+        imageView.clipsToBounds = true
         imageView.contentMode = .scaleAspectFill
         
         topView.snp.makeConstraints {
