@@ -23,7 +23,7 @@ PODS:
   - Crashlytics (3.8.4):
     - Fabric (~> 1.6.3)
   - DZNEmptyDataSet (1.8.1)
-  - Eureka (2.0.1)
+  - Eureka (3.0.0)
   - Fabric (1.6.11)
   - FMDB (2.6.2):
     - FMDB/standard (= 2.6.2)
@@ -49,6 +49,7 @@ PODS:
     - AFNetworking (~> 3)
     - HappyDNS (~> 0.3)
   - Reveal-SDK (8)
+  - RSKImageCropper (1.4.1)
   - RxSwift (3.4.0)
   - Shimmer (1.0.2)
   - SnapKit (3.2.0)
@@ -78,7 +79,7 @@ DEPENDENCIES:
   - CocoaLumberjack/Swift
   - Crashlytics
   - DZNEmptyDataSet
-  - Eureka (~> 2.0.0-beta.1)
+  - Eureka
   - Fabric
   - FMDB
   - GzipSwift
@@ -89,6 +90,7 @@ DEPENDENCIES:
   - PromiseKit
   - Qiniu
   - Reveal-SDK
+  - RSKImageCropper (from `https://github.com/BrikerMan/RSKImageCropper.git`)
   - RxSwift (~> 3.0)
   - SnapKit
   - SVProgressHUD
@@ -108,6 +110,8 @@ EXTERNAL SOURCES:
     :git: https://github.com/lexrus/LTMorphingLabel.git
   Pitaya:
     :git: https://github.com/johnlui/Pitaya.git
+  RSKImageCropper:
+    :git: https://github.com/BrikerMan/RSKImageCropper.git
   YYText:
     :git: https://github.com/BrikerMan/YYText.git
 
@@ -118,8 +122,11 @@ CHECKOUT OPTIONS:
   Pitaya:
     :commit: 8b9775dd795c2f135ff63f6df74a7085332d3326
     :git: https://github.com/johnlui/Pitaya.git
+  RSKImageCropper:
+    :commit: bd06a56738362d036fc5d53728834f8412ff2071
+    :git: https://github.com/BrikerMan/RSKImageCropper.git
   YYText:
-    :commit: 19fdf17a06c79d77b3fd612cb817e74ec7906e99
+    :commit: d20cdd40e109456f831774f7d0c2499044d68a33
     :git: https://github.com/BrikerMan/YYText.git
 
 SPEC CHECKSUMS:
@@ -130,7 +137,7 @@ SPEC CHECKSUMS:
   CocoaLumberjack: 8311463ddf9ee86a06ef92a071dd656c89244500
   Crashlytics: 79e236942ca1e7fc641df1feb9a275360a78ab6a
   DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
-  Eureka: ae837bb1dfae0c07bc1bda7aeef87876eeb537c2
+  Eureka: f36fd440c3ebb7bfea0a4fbe6f16a05f1cb35906
   Fabric: 5911403591946b8228ab1c51d98f1d7137e863c6
   FMDB: 854a0341b4726e53276f2a8996f06f1b80f9259a
   GzipSwift: 11ddb2bf253b1cd7b60bb169da20f62ac4348769
@@ -142,6 +149,7 @@ SPEC CHECKSUMS:
   PromiseKit: 08dfb783c161ddcd95b7912421f14c5113fd8318
   Qiniu: 77a3dba411556a383d72d17e842345a9d4c83252
   Reveal-SDK: 43be4e662864e937960d0d04d005135e29c4e53b
+  RSKImageCropper: 98ae426eb4eb11b733ff87f8e2542a480f4fa8e6
   RxSwift: 3789a1af753002a14edecdb698a2424624296a9c
   Shimmer: c5374be1c2b0c9e292fb05b339a513cf291cac86
   SnapKit: 1ca44df72cfa543218d177cb8aab029d10d86ea7
@@ -157,6 +165,6 @@ SPEC CHECKSUMS:
   YYWebImage: 5f7f36aee2ae293f016d418c7d6ba05c4863e928
   ZYCornerRadius: f0af817be7805b5c63d793042ca7a03f81e14069
 
-PODFILE CHECKSUM: 257e15fcb47557e3575ac17db69ea87288eac5e5
+PODFILE CHECKSUM: 584fc2fdb7161410db0a1d4333162ea31dcc6f68
 
 COCOAPODS: 1.2.1

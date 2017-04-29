@@ -8,7 +8,7 @@
 
 import UIKit
 import Qiniu
-
+import YYImage
 
 class HFMineInfoVC: HFBaseViewController {
     
@@ -17,12 +17,13 @@ class HFMineInfoVC: HFBaseViewController {
     fileprivate var newImage: UIImage?
     
     var infoCellValues:[[HFMineInfoInfoCellModel]] = []
+    let picker = HFImagePicker()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         prepareCells()
         tableView.backgroundColor = HFTheme.BlackAreaColor
-        NotificationCenter.default.addObserver(self, selector: #selector(HFMineInfoVC.onUserDataUpdate), name: NSNotification.Name(rawValue: HFNotification.UserInfoUpdate.rawValue), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(onUserDataUpdate), name: NSNotification.Name(rawValue: HFNotification.UserInfoUpdate.rawValue), object: nil)
     }
     
     func prepareCells() {
@@ -53,37 +54,8 @@ class HFMineInfoVC: HFBaseViewController {
     }
     
     fileprivate func onSelectImageButtonPressed() {
-        let alertController = UIAlertController()
-        
-        let action0 = UIAlertAction(title: "拍照", style: UIAlertActionStyle.default) { (action) in
-            let controller = UIImagePickerController(sourceType: UIImagePickerControllerSourceType.camera)
-            if (controller?.isAvailableCamera())! && (controller?.isSupportTakingPhotos())! {
-                controller?.delegate = self
-                self.present(controller!, animated: true, completion: nil)
-            } else {
-                hud.showError("相机权限受限")
-            }
-        }
-        
-        let action1 = UIAlertAction(title: "相册", style: UIAlertActionStyle.default) { (action) in
-            let controller = UIImagePickerController(sourceType: UIImagePickerControllerSourceType.photoLibrary)
-            controller?.delegate = self
-            if (controller?.isAvailablePhotoLibrary())! {
-                self.present(controller!, animated: true, completion: nil)
-            } else {
-                hud.showError("相册权限受限")
-            }
-        }
-        
-        let action2 = UIAlertAction(title: "取消", style: UIAlertActionStyle.destructive) { (action) in
-            
-        }
-        
-        alertController.addAction(action0)
-        alertController.addAction(action1)
-        alertController.addAction(action2)
-        
-        self.present(alertController, animated: true, completion: nil)
+        picker.delegate = self
+        picker.showActionSheet(vc: self)
     }
     
     fileprivate func uploadImageFileToQiniu(withToken token:String) {
@@ -155,32 +127,47 @@ extension HFMineInfoVC: HFBaseAPIManagerCallBack {
     }
 }
 
-extension HFMineInfoVC: STPhotoKitDelegate {
-    func photoKitController(_ photoKitController: STPhotoKitController, resultImage: UIImage) {
+extension HFMineInfoVC: HFImagePickerDelegate {
+    func imagePickerDidCancel() {
+        
+    }
+    
+    func imagePickerDidGetCroppedImage(image: UIImage) {
+        let image = image.yy_imageByResize(to: CGSize(width: 200, height: 200))!
         hud.showLoading("正在上传头像")
-        newImage = resultImage
+        newImage = image
         let request = HFGetQiniuTokenRequest()
         request.callback = self
         request.loadData()
     }
 }
 
-extension HFMineInfoVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        picker.dismiss(animated: true) {
-            let imageOriginal = info[UIImagePickerControllerOriginalImage] as! UIImage
-            let photoVC = STPhotoKitController()
-            photoVC.delegate = self
-            photoVC.imageOriginal = imageOriginal
-            photoVC.sizeClip = CGSize(width: 200, height: 200)
-            self.present(photoVC, animated: true, completion: nil)
-        }
-    }
-    
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        picker.dismiss(animated: true, completion: nil)
-    }
-}
+//extension HFMineInfoVC: STPhotoKitDelegate {
+//    func photoKitController(_ photoKitController: STPhotoKitController, resultImage: UIImage) {
+//        hud.showLoading("正在上传头像")
+//        newImage = resultImage
+//        let request = HFGetQiniuTokenRequest()
+//        request.callback = self
+//        request.loadData()
+//    }
+//}
+
+//extension HFMineInfoVC: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+//    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+//        picker.dismiss(animated: true) {
+//            let imageOriginal = info[UIImagePickerControllerOriginalImage] as! UIImage
+//            let photoVC = STPhotoKitController()
+//            photoVC.delegate = self
+//            photoVC.imageOriginal = imageOriginal
+//            photoVC.sizeClip = CGSize(width: 200, height: 200)
+//            self.present(photoVC, animated: true, completion: nil)
+//        }
+//    }
+//    
+//    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+//        picker.dismiss(animated: true, completion: nil)
+//    }
+//}
 
 extension HFMineInfoVC: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {

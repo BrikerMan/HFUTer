@@ -99,8 +99,8 @@ class HFFormViewController: FormViewController, UIGestureRecognizerDelegate {
         TextAreaRow.defaultCellUpdate = { cell, row in
             cell.textView.textColor          = HFTheme.DarkTextColor
             cell.textView.font               = UIFont.systemFont(ofSize: 14)
-            cell.placeholderLabel.font       = UIFont.systemFont(ofSize: 14)
-            cell.placeholderLabel.textColor  = HFTheme.GreyTextColor
+            cell.placeholderLabel?.font       = UIFont.systemFont(ofSize: 14)
+            cell.placeholderLabel?.textColor  = HFTheme.GreyTextColor
 
         }
 

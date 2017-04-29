@@ -12,7 +12,7 @@ class HFMineAboutVC: HFBaseViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
-    let cellTitles = ["帮助","关于我们","隐私条款"]
+    let cellTitles = ["帮助","关于我们","隐私条款","反馈"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,15 +51,20 @@ extension HFMineAboutVC: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 1 {
-            let vc = HFHelpInfoWebVC(nibName: "HFHelpInfoWebVC",bundle: nil)
-            if indexPath.row == 0 {
-                vc.type = HFHelpInfoWebType.Help
-            } else if indexPath.row == 1 {
-                vc.type = HFHelpInfoWebType.About
+            if indexPath.row == 3 {
+                let vc = HFMineRepostViewController()
+                self.push(vc)
             } else {
-                vc.type = HFHelpInfoWebType.Privacy
+                let vc = HFHelpInfoWebVC(nibName: "HFHelpInfoWebVC",bundle: nil)
+                if indexPath.row == 0 {
+                    vc.type = HFHelpInfoWebType.Help
+                } else if indexPath.row == 1 {
+                    vc.type = HFHelpInfoWebType.About
+                } else {
+                    vc.type = HFHelpInfoWebType.Privacy
+                }
+                self.push(vc)
             }
-            self.push(vc)
         }
     }
     

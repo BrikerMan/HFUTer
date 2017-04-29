@@ -18,7 +18,6 @@ class HFMineRepostViewController: HFFormViewController {
     }
     
     
-    
     func fire() {
         let text = form.values()["notes"] as? String ?? ""
         if text.isEmpty {

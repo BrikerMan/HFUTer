@@ -15,11 +15,11 @@ target 'HFUTer3' do
     pod 'AIFlatSwitch'                          ## 动态选择button
     pod 'YYText'    , :git => 'https://github.com/BrikerMan/YYText.git'
     pod 'ZYCornerRadius'                        # 优化圆角绘制
-#    pod 'Kingfisher'
+    pod 'RSKImageCropper', :git => 'https://github.com/BrikerMan/RSKImageCropper.git' ## 图片选择
     
     # TableView
     pod 'UITableView+FDTemplateLayoutCell_Bell' ##优化UITableViewCell高度计算
-    pod 'Eureka', '~> 2.0.0-beta.1'             ## 优秀的TableView封装
+    pod 'Eureka' #, '~> 2.0.0-beta.1'             ## 优秀的TableView封装
     pod 'DZNEmptyDataSet'                       ## 空数据展示
     
     # 动画

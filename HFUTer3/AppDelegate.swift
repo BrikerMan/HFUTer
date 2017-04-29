@@ -166,6 +166,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let conf = UMAnalyticsConfig()
         conf.appKey = UmengKey
         MobClick.start(withConfigure: conf)
+        MobClick.setAppVersion(ez.appVersion!)
         
         Fabric.with([Crashlytics.self])
     }
