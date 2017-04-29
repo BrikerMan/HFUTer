@@ -56,8 +56,13 @@ platform :ios do
         silent: false,
         clean: true,
       ) # Build your app - more options available
-    deliver(force: true)
-    # frameit
+    
+    pilot(
+      skip_waiting_for_build_processing:true
+    )
+    
+    upload_symbols
+    
   end
 
   lane :upload_symbols do

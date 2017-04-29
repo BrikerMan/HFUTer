@@ -5,42 +5,42 @@
     
     
       
-      <testcase classname="fastlane.lanes" name="0: Verifying required fastlane version" time="0.001869">
+      <testcase classname="fastlane.lanes" name="0: Verifying required fastlane version" time="0.002023">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="1: default_platform" time="0.001396">
+      <testcase classname="fastlane.lanes" name="1: default_platform" time="0.002091">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="2: xcode_select" time="0.001649">
+      <testcase classname="fastlane.lanes" name="2: xcode_select" time="0.001787">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="3: clear_derived_data" time="0.917229">
+      <testcase classname="fastlane.lanes" name="3: clear_derived_data" time="4.747262">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="4: gym" time="243.045604">
+      <testcase classname="fastlane.lanes" name="4: gym" time="295.367917">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="5: testflight" time="161.505988">
+      <testcase classname="fastlane.lanes" name="5: pilot" time="215.045047">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="6: Switch to ios upload_symbols lane" time="0.001749">
+      <testcase classname="fastlane.lanes" name="6: Switch to ios upload_symbols lane" time="0.001537">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="7: upload_symbols_to_crashlytics" time="188.989274">
+      <testcase classname="fastlane.lanes" name="7: upload_symbols_to_crashlytics" time="106.047904">
         
       </testcase>
     
