@@ -42,10 +42,8 @@ class HFCommunityLoveDetailCommentCell: UITableViewCell, NibReusable {
     
     @IBAction func onActionButtonPressed(_ sender: Any) {
         var action = HFCommentActionType.replyComment
-        if let user = DataEnv.user {
-            if model.uid == user.id {
-                action = .delete
-            }
+        if model.mine {
+            action = .delete
         }
         delegate?.commentCell(cell: self, didPessOnAction: action)
     }
@@ -56,6 +54,7 @@ class HFCommunityLoveDetailCommentCell: UITableViewCell, NibReusable {
         
         // AutolAyout 处理补分
         avatarView.loadAvatar(avatar: model.image)
+        
         if model.name.isBlank {
             usernameLabel.text = "匿名"
             actionButton.isHidden = true
@@ -65,15 +64,25 @@ class HFCommunityLoveDetailCommentCell: UITableViewCell, NibReusable {
             usernameLabel.text = model.name
         }
         
-        if let user = DataEnv.user {
-            if model.uid == user.id {
-                actionButton.setImage(UIImage(named: "fm_community_love_wall_delete_small"), for: .normal)
-            }
+        if model.mine {
+            actionButton.isHidden = false
+            actionButton.setImage(UIImage(named: "fm_community_love_wall_delete_small"), for: .normal)
         }
         
-        dateLabel.text       = Utilities.getTimeStringFromTimeStamp(model.date_int)
         infoLabel.size       = model.detailLayout!.textBoundingSize
         infoLabel.textLayout = model.detailLayout!
+        
+        
+        let att = NSMutableAttributedString()
+        let date = NSAttributedString(string: Utilities.getTimeStringFromTimeStamp(model.date_int))
+        att.append(date)
+        
+        if model.poster {
+            let poster = NSAttributedString(string: " #楼主", attributes: [NSForegroundColorAttributeName: Theme.TintColor])
+            att.append(poster)
+        }
+        
+        dateLabel.attributedText = att
     }
     
     

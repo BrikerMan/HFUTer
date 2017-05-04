@@ -18,11 +18,13 @@ class HFComLoveWallCommentModel: HFBaseModel {
     var uid      = 0
     var at       : [HFComLoveWallCommentAtModel] = []
     
-    var detailLayout : YYTextLayout? /// 详情页文字布局
+    // 是否为楼主
+    var poster = false
+   
+    // 是否为当前发送者
+    var mine   = false
     
-//    static func ==(lhs: HFComLoveWallCommentModel, rhs: HFComLoveWallCommentModel) -> Bool {
-//        return lhs.id == rhs.id
-//    }
+    var detailLayout : YYTextLayout? /// 详情页文字布局
 }
 
 

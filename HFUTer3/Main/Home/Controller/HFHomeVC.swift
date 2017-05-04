@@ -218,17 +218,7 @@ extension HFHomeVC: HFScheduleActionsViewDelegate {
     }
     
     func actionsViewDidChooseShare() {
-//        scheduleView.saveToImage { (image) in
-//            if let image = image {
-//                UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil)
-//                
-//                let alert = UIAlertController(title: "Save Completion",
-//                                              message: "Your Image has been saved to Photo Library!",
-//                                              preferredStyle: .alert)
-//                alert.addAction(UIAlertAction(title: "Ok", style: .cancel, handler: nil))
-//                self.present(alert, animated: true, completion: nil)
-//            }
-//        }
+
     }
 }
 

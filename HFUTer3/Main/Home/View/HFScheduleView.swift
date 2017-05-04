@@ -13,7 +13,7 @@ import MJRefresh
 fileprivate class kSchedule {
     static var day = 5
     static var cellWidth  = (ScreenWidth - 30) / CGFloat(kSchedule.day)
-    static var cellHeight = (ScreenHeight - 64 - 49) / 11
+    static var cellHeight = (ScreenHeight - 64 - 49 - topHeight) / 11
     
     static let leftWidth: CGFloat = 30
     static let topHeight: CGFloat = 40
@@ -83,10 +83,12 @@ class HFScheduleView: HFView {
     }
     
     func updateSave() {
+        let file = DataEnv.settings.filePath.appendingPathComponent("backImage.jpg")
         if let image = DataEnv.settings.scheduleBackImage.value,
             let data = UIImageJPEGRepresentation(image, 0.8) {
-            let filename = DataEnv.settings.filePath.appendingPathComponent("backImage.jpg")
-            try? data.write(to: filename)
+            try? data.write(to: file)
+        } else {
+            try? FileManager.default.removeItem(at: file)
         }
     }
     
@@ -189,7 +191,7 @@ class HFScheduleView: HFView {
             $0.top.equalTo(topView.snp.bottom)
             $0.left.equalTo(scrollView)
             $0.width.equalTo(kSchedule.leftWidth)
-            $0.height.equalTo(scrollView.snp.height)
+            $0.height.equalTo(ScreenHeight - 64 - 49 - kSchedule.topHeight)
         }
         
         shareBottom.snp.makeConstraints {
