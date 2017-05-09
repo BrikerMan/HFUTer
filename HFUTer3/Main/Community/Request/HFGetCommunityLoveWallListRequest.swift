@@ -30,19 +30,24 @@ class HFGetCommunityLoveWallListRequest: HFBaseAPIManager {
         return ["pageIndex":page]
     }
     
+    // TODO: fix
     static func handleData(_ data:HFRequestParam, isMine: Bool = false) -> [HFComLoveWallListModel] {
         var models = [HFComLoveWallListModel]()
         
         if let list = data["data"] as? [AnyObject] {
-            for item in list {
-                if let model = HFComLoveWallListModel.yy_model(withJSON: item) {
-                    if isMine && !model.anonymous {
-                        model.image = DataEnv.user!.image
-                        model.name  = DataEnv.user!.name
-                    }
-                    models.append(model)
-                }
-            }
+//            for item in list {
+//                let model = HFComLoveWallListModel(json: item)
+//            
+//                result.append(model)
+//                
+//                if let model = HFComLoveWallListModel.yy_model(withJSON: item) {
+//                    if isMine && !model.anonymous {
+//                        model.image = DataEnv.user!.image
+//                        model.name  = DataEnv.user!.name
+//                    }
+//                    models.append(model)
+//                }
+//            }
         }
         
         AnalyseManager.UpdateLoveWall.record()

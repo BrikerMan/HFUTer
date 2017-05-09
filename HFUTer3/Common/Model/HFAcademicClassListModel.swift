@@ -9,6 +9,7 @@
 import Foundation
 import YYModel
 
+
 class HFAcademicClassTermModel:NSObject {
     var termCode = ""
     var list: [HFAcademicClassListModel] = []

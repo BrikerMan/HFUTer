@@ -7,50 +7,49 @@
 //
 
 import UIKit
+import PromiseKit
 
 class HFCommunityLoveWallDetailVC: HFBaseViewController, XibBasedController {
     
     @IBOutlet weak var tableView: HFPullTableView!
     
     var mainModel: HFComLoveWallListModel!
-    var commentReqeust: HFGetComLoveWallCommentRequest!
+    let viewModel  = HFCommunityDetailViewModel()
+    var commentList: [HFComLoveWallCommentModel] = []
     
     @IBOutlet weak var likeImageView: UIImageView!
-    var commentList: [HFComLoveWallCommentModel] = []
+    
     
     var loadingView: HFLoadingView = HFLoadingView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        viewModel.model = mainModel
         initUI()
         loadData()
         navTitle = "表白详情"
     }
     
-    func loadDetail() {
-        HFBaseRequest.fire("/api/confession/detail" ,
-                           params:[:] ,
-                           succesBlock: { (reqeust, result) in
-                            
-        }) { (request, error) in
-            
+    fileprivate func loadData() {
+        loadingView.show()
+        
+        let detail   = viewModel.loadDetail()
+        let comments = viewModel.loadComments(page: 0)
+        
+        when(fulfilled: detail, comments)
+            .then { model, comments -> Void in
+                self.mainModel = model
+                self.commentList = comments
+                self.updateLikeView()
+                runOnMainThread {
+                    self.loadingView.hide()
+                    self.tableView.reloadData()
+                }
+                
+            }.catch { error in
+                Hud.showError(error.hfDescription)
         }
     }
-    
-    @objc fileprivate func loadData() {
-        loadingView.show()
-        commentReqeust = HFGetComLoveWallCommentRequest()
-        commentReqeust.callback = self
-        commentReqeust.fire(mainModel.id)
-        updateLikeView()
-        tableView.endLoadMore()
-    }
-    
-    fileprivate func updateLikeView() {
-        let image = mainModel.favorite.value ? "fm_community_love_wall_like_fill" : "fm_community_love_wall_like"
-        likeImageView.image = UIImage(named: image)
-    }
-    
     
     func sendCommentRequest(_ param: HFRequestParam) {
         HFBaseRequest.fire("/api/confession/comment", method: HFBaseAPIRequestMethod.POST, params: param, succesBlock: { (request, resultDic) in
@@ -136,29 +135,10 @@ class HFCommunityLoveWallDetailVC: HFBaseViewController, XibBasedController {
             make.edges.equalTo(UIEdgeInsetsMake(64, 0, 0, 0))
         }
     }
-}
-
-extension HFCommunityLoveWallDetailVC: HFBaseAPIManagerCallBack {
-    func managerApiCallBackFailed(_ manager: HFBaseAPIManager) {
-        hud.showError(manager.errorInfo)
-    }
     
-    func managerApiCallBackSuccess(_ manager: HFBaseAPIManager) {
-        let result =  HFGetComLoveWallCommentRequest.handleData(manager.resultDic)
-        if commentReqeust.page == 0 {
-            commentList.removeAll()
-            commentList = result
-        } else {
-            commentList += result
-            if result.isEmpty {
-                tableView.endLoadMoreWithoutWithNoMoreData()
-            } else {
-                tableView.endLoadMore()
-            }
-        }
-        self.mainModel.commentCount = commentList.count
-        tableView.reloadData()
-        self.loadingView.hide()
+    fileprivate func updateLikeView() {
+        let image = mainModel.favorite.value ? "fm_community_love_wall_like_fill" : "fm_community_love_wall_like"
+        likeImageView.image = UIImage(named: image)
     }
 }
 
@@ -183,7 +163,7 @@ extension HFCommunityLoveWallDetailVC: HFCommunityLoveDetailCommentCellDelegate 
             self.present(vc, animated: true, completion: nil)
             
         case .delete:
-              onDeletePressed(model: model, index: cell.index)
+            onDeletePressed(model: model, index: cell.index)
         }
     }
 }
@@ -194,7 +174,23 @@ extension HFCommunityLoveWallDetailVC: HFPullTableViewPullDelegate {
     }
     
     func pullTableViewStartLoadingMore(_ tableView: HFPullTableView) {
-        commentReqeust.loadNextPage()
+        viewModel.loadNextComments()
+            .then { result -> Void in
+                self.commentList += result
+                if result.isEmpty {
+                    self.tableView.endLoadMoreWithoutWithNoMoreData()
+                } else {
+                    self.tableView.endLoadMore()
+                }
+                if self.mainModel.commentCount < self.commentList.count {
+                    self.mainModel.commentCount = self.commentList.count
+                }
+                runOnMainThread {
+                    self.tableView.reloadData()
+                }
+            }.catch { error in
+                Hud.showError(error.hfDescription)
+        }
     }
 }
 
@@ -235,6 +231,7 @@ extension HFCommunityLoveWallDetailVC: UITableViewDataSource {
                 }
                 return cell
             } else {
+                self.tableView.shouldStartPrefetch(at: indexPath, dataCount: commentList.count)
                 let cell = tableView.dequeueReusableCell(indexPath: indexPath) as HFCommunityLoveDetailCommentCell
                 cell.delegate = self
                 cell.setup(commentList[indexPath.row], index: indexPath.row)

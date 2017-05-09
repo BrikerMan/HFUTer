@@ -24,6 +24,8 @@ class HFPullTableView: UITableView {
     /// 是否在刷新
     var isRefreshing = false
     
+    var isNoMoreData = false
+    
     /// 是否在加载更多
     var isLoadingMore  = false
     
@@ -71,6 +73,7 @@ class HFPullTableView: UITableView {
      */
     func endLoadMoreWithoutWithNoMoreData() {
         isLoadingMore = false
+        isNoMoreData  = true
         mj_footer.endRefreshingWithNoMoreData()
     }
     
@@ -91,7 +94,7 @@ class HFPullTableView: UITableView {
      - parameter dataCount: 总数据数量
      */
     func shouldStartPrefetch(at indexPath: IndexPath, dataCount: Int) {
-        if indexPath.row == dataCount - 4 && self.mj_footer != nil {
+        if indexPath.row == dataCount - 4 && !isNoMoreData && self.mj_footer != nil {
             self.beginLoadMore()
         }
     }

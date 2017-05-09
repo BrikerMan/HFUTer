@@ -148,6 +148,8 @@
 		6A4101E71D3A06420068FC5B /* DataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A4101E61D3A06420068FC5B /* DataHelper.swift */; };
 		6A44FB6E1EB18FBD008EDA68 /* HFScheduleWeekChoostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A44FB6D1EB18FBD008EDA68 /* HFScheduleWeekChoostViewController.swift */; };
 		6A61A1921E70EA5400892EA6 /* MJRefresh.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A61A1911E70EA5400892EA6 /* MJRefresh.framework */; };
+		6A67F45D1EC170AC0046146E /* HF-Model-protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A67F45C1EC170AC0046146E /* HF-Model-protocols.swift */; };
+		6A67F45F1EC175890046146E /* HFCommunityDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A67F45E1EC175890046146E /* HFCommunityDetailViewModel.swift */; };
 		6A6A648C1CC51C6D0049715C /* HFBaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A6A648B1CC51C6D0049715C /* HFBaseTableViewCell.swift */; };
 		6A6A649C1CC51E840049715C /* HFGetCommunityLostAndFindRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A6A649B1CC51E840049715C /* HFGetCommunityLostAndFindRequest.swift */; };
 		6A6A64A01CC521860049715C /* HFBaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A6A649F1CC521860049715C /* HFBaseModel.swift */; };
@@ -516,6 +518,8 @@
 		6A4101E61D3A06420068FC5B /* DataHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataHelper.swift; sourceTree = "<group>"; };
 		6A44FB6D1EB18FBD008EDA68 /* HFScheduleWeekChoostViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFScheduleWeekChoostViewController.swift; sourceTree = "<group>"; };
 		6A61A1911E70EA5400892EA6 /* MJRefresh.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MJRefresh.framework; sourceTree = "<group>"; };
+		6A67F45C1EC170AC0046146E /* HF-Model-protocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HF-Model-protocols.swift"; sourceTree = "<group>"; };
+		6A67F45E1EC175890046146E /* HFCommunityDetailViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HFCommunityDetailViewModel.swift; path = HFUTer3/Common/Protocols/HFCommunityDetailViewModel.swift; sourceTree = SOURCE_ROOT; };
 		6A6A648B1CC51C6D0049715C /* HFBaseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFBaseTableViewCell.swift; sourceTree = "<group>"; };
 		6A6A649B1CC51E840049715C /* HFGetCommunityLostAndFindRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFGetCommunityLostAndFindRequest.swift; sourceTree = "<group>"; };
 		6A6A649F1CC521860049715C /* HFBaseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFBaseModel.swift; sourceTree = "<group>"; };
@@ -959,6 +963,14 @@
 			path = "YYLabel-Extension";
 			sourceTree = "<group>";
 		};
+		6A67F45B1EC170970046146E /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				6A67F45C1EC170AC0046146E /* HF-Model-protocols.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
 		6A6A64A11CC521C30049715C /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -1244,13 +1256,6 @@
 			path = JPush;
 			sourceTree = "<group>";
 		};
-		6B0526CE1C9FE33C00C2E672 /* Protocol */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Protocol;
-			sourceTree = "<group>";
-		};
 		6B23B0A61C97DA4E0089214D /* Resource */ = {
 			isa = PBXGroup;
 			children = (
@@ -1285,8 +1290,8 @@
 			isa = PBXGroup;
 			children = (
 				6B23B0B21C97DA670089214D /* HFUTer3-Bridging-Header.h */,
+				6A67F45B1EC170970046146E /* Protocols */,
 				6A0906DF1E45F5D100EEE3F1 /* Parse */,
-				6B0526CE1C9FE33C00C2E672 /* Protocol */,
 				6B9B67001C9AB3D2009B5F68 /* Animations */,
 				6B23B0BB1C97DBDB0089214D /* Macros */,
 				6B23B0B61C97DB630089214D /* Managers */,
@@ -1422,6 +1427,7 @@
 			isa = PBXGroup;
 			children = (
 				6AE3F71A1EB203B500D2D30B /* HFCommunityHomeViewModel.swift */,
+				6A67F45E1EC175890046146E /* HFCommunityDetailViewModel.swift */,
 				6AE3F71C1EB2129C00D2D30B /* HFCommunityLostViewModel.swift */,
 			);
 			path = ViewModel;
@@ -2152,6 +2158,7 @@
 				6ACB1EB51E40331200B708C7 /* UITableView+Reusable.swift in Sources */,
 				6A264F8C1D02D39000146D03 /* HFMineNotifTableViewCell.swift in Sources */,
 				27B191311D01CEDD004F57C7 /* HFMineMessageVC.swift in Sources */,
+				6A67F45D1EC170AC0046146E /* HF-Model-protocols.swift in Sources */,
 				6A96F4A91E3E093B00F65859 /* BlockWebView.swift in Sources */,
 				6B89D9061C993DDF0030DD7D /* UIColor-Extensions.swift in Sources */,
 				6A2576901D0568EA00A47A76 /* HFCommunityContactLosterVC.swift in Sources */,
@@ -2195,6 +2202,7 @@
 				6A7D828A1EB16C9400D6A65C /* HFHomeScheduleSelectWeekView.swift in Sources */,
 				6AF62C971E7678F8009F0FC4 /* HFWebLoginViewController.swift in Sources */,
 				6A6A649C1CC51E840049715C /* HFGetCommunityLostAndFindRequest.swift in Sources */,
+				6A67F45F1EC175890046146E /* HFCommunityDetailViewModel.swift in Sources */,
 				6AB5B8911CF56429001C6F2F /* HFFormViewController.swift in Sources */,
 				27949D3C1CC48AB400495206 /* HFInfoGetEmptyClassroomsListRequest.swift in Sources */,
 				27949D3D1CC48AB400495206 /* HFInfoGetEmptyClassroomsResultRequest.swift in Sources */,

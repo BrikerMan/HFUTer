@@ -35,25 +35,24 @@ class HFGetComLoveWallCommentRequest: HFBaseAPIManager {
     }
     
     static func handleData(_ data:HFRequestParam) -> [HFComLoveWallCommentModel] {
-        var models = [HFComLoveWallCommentModel]()
-        
-        if let list = data["data"] as? [AnyObject] {
-            for item in list {
-                if let model = HFComLoveWallCommentModel.yy_model(withJSON: item) {
-                    models.append(model)
-                    if let item = item as? HFRequestParam,
-                        let at = item["at"] as? [AnyObject] {
-                        var ats:[HFComLoveWallCommentAtModel] = []
-                        for atItem in at {
-                            if let atModel = HFComLoveWallCommentAtModel.yy_model(withJSON: atItem) {
-                                ats.append(atModel)
-                            }
-                        }
-                        model.at = ats
-                    }
-                }
-            }
-        }
+        let models = [HFComLoveWallCommentModel]()
+//        if let list = data["data"] as? [AnyObject] {
+//            for item in list {
+//                if let model = HFComLoveWallCommentModel.yy_model(withJSON: item) {
+//                    models.append(model)
+//                    if let item = item as? HFRequestParam,
+//                        let at = item["at"] as? [AnyObject] {
+//                        var ats:[HFComLoveWallCommentAtModel] = []
+//                        for atItem in at {
+//                            if let atModel = HFComLoveWallCommentAtModel.yy_model(withJSON: atItem) {
+//                                ats.append(atModel)
+//                            }
+//                        }
+//                        model.at = ats
+//                    }
+//                }
+//            }
+//        }
         return  models
     }
 }

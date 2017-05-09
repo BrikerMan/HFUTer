@@ -32,10 +32,8 @@ class HFCommunityLoveViewModel {
         fireRequest(page: page) { (json) in
             var result = [HFComLoveWallListModel]()
             for item in json.arrayValue {
-                if let model = HFComLoveWallListModel.yy_model(withJSON: item.RAWValue) {
-                    model.favorite.value = item["favorite"].boolValue
-                    result.append(model)
-                }
+                let model = HFComLoveWallListModel(json: item)
+                result.append(model)
             }
             completion(result)
         }
