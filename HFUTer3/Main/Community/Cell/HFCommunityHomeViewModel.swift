@@ -17,6 +17,8 @@ class HFCommunityLoveViewModel {
     var type = CommunityHomeListTpe.loveWall
     var page = 0
     
+    var isMine = false
+    
     func loadFirstPage(completion: @escaping ([HFComLoveWallListModel])->Void) {
         page = 0
         loadPage(page: page, completion: completion)
@@ -41,7 +43,7 @@ class HFCommunityLoveViewModel {
     
     
     func fireRequest(page: Int, completion: @escaping (_ json: JSONItem) -> Void) {
-        let api: String
+        var api: String
         var param: JSON = [
             "pageIndex" : page
         ]
@@ -54,6 +56,10 @@ class HFCommunityLoveViewModel {
         case  .loveWallHot:
             api =  "api/confession/list"
             param["type"] = 1
+        }
+        
+        if isMine {
+            api = "api/confession/myConfessionList"
         }
         
         HFAPIRequest.build(api: api, method: .POST, param: param)

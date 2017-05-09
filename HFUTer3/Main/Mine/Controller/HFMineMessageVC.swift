@@ -19,6 +19,7 @@ class HFMineMessageVC: HFBasicViewController {
     var notifList  : HFMineMessageListView!
     
     let viewModel = HFMineMessageViewModel()
+    var loadingView: HFLoadingView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,7 +53,7 @@ class HFMineMessageVC: HFBasicViewController {
         messageList = HFMineMessageListView()
         
         scrollView.addSubview(messageList)
-        
+        messageList.delegate = self
         messageList.snp.makeConstraints { (make) in
             make.left.top.bottom.equalTo(scrollView)
             make.width.equalTo(ScreenWidth)
@@ -69,6 +70,9 @@ class HFMineMessageVC: HFBasicViewController {
             make.width.equalTo(ScreenWidth)
             make.height.equalTo(ScreenHeight-64)
         }
+        
+        loadingView = HFLoadingView()
+        loadingView?.add(to: self.view)
     }
     
     override func updateTintColor() {
@@ -77,16 +81,29 @@ class HFMineMessageVC: HFBasicViewController {
     
     
     fileprivate func initData() {
+        loadingView?.show()
         viewModel.loadMessageFirstPage()
             .then { result -> Void in
                 self.messageList.messageList.removeAll()
                 self.messageList.setupWithMessage(result)
+                self.loadingView?.hide()
             }.catch { error in
                 Hud.showError("")
         }
         notifRequest  = HFGetMineNotifReqeust()
-//        notifRequest.callback = self
-//        notifRequest.loadData()
+        notifRequest.callback = self
+        notifRequest.loadData()
+    }
+}
+
+extension HFMineMessageVC: HFMineMessageListViewDelegate {
+    func tableViewStartLoadingMore() {
+        viewModel.loadMessageNextPage()
+            .then { result -> Void in
+                self.messageList.setupWithMessage(result)
+            }.catch { error in
+                Hud.showError("")
+        }
     }
 }
 

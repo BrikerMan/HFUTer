@@ -20,6 +20,11 @@ class HFMineMessageViewModel {
     }
     
     
+    func loadMessageNextPage() -> Promise<[HFMineMessageModel]> {
+        messagePage += 1
+        return loadMessage(page: messagePage)
+    }
+    
     
     func loadMessage(page: Int) -> Promise<[HFMineMessageModel]> {
         return Promise<[HFMineMessageModel]> { fullfill, reject in

@@ -97,6 +97,8 @@ class HFAPIRequestManager {
         
         Logger.verbose("fire request \(url) param: \(param)")
         
+        let start = Date()
+        
         Pita.build(HTTPMethod: .POST, url: url)
             .addParams(param)
             .setHTTPHeader(Name: "Cookie", Value: DataEnv.token)
@@ -105,6 +107,7 @@ class HFAPIRequestManager {
                 Logger.error(HFAPIRequestError.netError.decs())
             })
             .responseJSON { (json, response) in
+                Logger.verbose("request \(url) finished at \(Date().timeIntervalSince1970 - start.timeIntervalSince1970)")
                 if json["statue"].intValue == 1 {
                     if let headers = response?.allHeaderFields {
                         DataEnv.saveToken(headers)

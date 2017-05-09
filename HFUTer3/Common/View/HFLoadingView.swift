@@ -30,6 +30,14 @@ class HFLoadingView: UIView {
         setupView()
     }
     
+    
+    func add(to: UIView) {
+        to.addSubview(self)
+        self.snp.makeConstraints {
+            $0.edges.equalTo(to).inset(UIEdgeInsets(top: 64, left: 0, bottom: 0, right: 0))
+        }
+    }
+    
     func show() {
         self.superview?.bringSubview(toFront: self)
         self.alpha = 1.0

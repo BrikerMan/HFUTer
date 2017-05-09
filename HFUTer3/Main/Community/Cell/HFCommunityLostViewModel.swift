@@ -11,6 +11,7 @@ import UIKit
 
 class HFCommunityLostViewModel {
     var page = 0
+    var isMine = false
     
     func loadFirstPage(completion: @escaping ([HFComLostFoundModel])->Void) {
         page = 0
@@ -36,7 +37,7 @@ class HFCommunityLostViewModel {
     }
     
     func fireRequest(page: Int, completion: @escaping (_ json: JSONItem) -> Void) {
-        let api = "api/lostFound/getList"
+        let api = isMine ? "api/user/lostFoundList" : "api/lostFound/getList"
         let param: JSON = [
             "pageIndex" : page
         ]

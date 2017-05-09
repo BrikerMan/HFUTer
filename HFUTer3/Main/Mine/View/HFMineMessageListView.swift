@@ -9,7 +9,13 @@
 import UIKit
 import UITableView_FDTemplateLayoutCell_Bell
 
+protocol HFMineMessageListViewDelegate: class {
+    func tableViewStartLoadingMore()
+}
+
 class HFMineMessageListView: HFXibView {
+    
+    weak var delegate: HFMineMessageListViewDelegate?
     
     @IBOutlet weak var tableView: HFPullTableView!
     
@@ -22,22 +28,37 @@ class HFMineMessageListView: HFXibView {
         super.initFromXib()
         tableView.registerReusableCell(HFMineMessageTableViewCell.self)
         tableView.registerReusableCell(HFMineNotifTableViewCell.self)
+        tableView.addLoadMoreView()
+        tableView.pullDelegate = self
     }
     
-    
     func setupWithMessage(_ messageList:[HFMineMessageModel]) {
-        self.messageList = messageList
-        self.tableView.reloadData()
+        self.messageList += messageList
+        runOnMainThread {
+            if messageList.isEmpty {
+                self.tableView.endLoadMoreWithoutWithNoMoreData()
+            } else {
+                self.tableView.endLoadMore()
+            }
+            self.tableView.reloadData()
+        }
     }
     
     func setupWithNotif(_ notifList:[HFMineNotifModel]) {
         self.notifList = notifList
         self.tableView.reloadData()
     }
-    
 }
 
-
+extension HFMineMessageListView: HFPullTableViewPullDelegate {
+    func pullTableViewStartRefeshing(_ tableView: HFPullTableView) {
+        
+    }
+    
+    func pullTableViewStartLoadingMore(_ tableView: HFPullTableView) {
+        delegate?.tableViewStartLoadingMore()
+    }
+}
 
 extension HFMineMessageListView: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

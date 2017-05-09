@@ -54,19 +54,28 @@ class HFCommunityHomeListView: HFXibView {
     }
     
     func setupWithLostModel(_ models:[HFComLostFoundModel]) {
-        self.style = HFCommunityStyle.lostFind
-        self.lostModels += models
+        style = HFCommunityStyle.lostFind
+        lostModels += models
+        
         tableView.endRefresh()
-        tableView.endLoadMore()
-        self.tableView.reloadData()
+        if !models.isEmpty {
+            tableView.endLoadMore()
+            tableView.reloadData()
+        } else {
+            tableView.endLoadMoreWithoutWithNoMoreData()
+        }
     }
     
     func setupWithLoveModel(_ models:[HFComLoveWallListModel]) {
-        self.style = HFCommunityStyle.loveWall
-        self.loveModels +=  models
+        style = HFCommunityStyle.loveWall
+        loveModels += models
         tableView.endRefresh()
-        tableView.endLoadMore()
-        self.tableView.reloadData()
+        if !models.isEmpty {
+            tableView.endLoadMore()
+            tableView.reloadData()
+        } else {
+            tableView.endLoadMoreWithoutWithNoMoreData()
+        }
     }
     
     func deleteRow(_ index: IndexPath) {
@@ -144,6 +153,7 @@ extension HFCommunityHomeListView: UITableViewDataSource {
             if indexPath.row == self.lostModels.count - 3 {
                 self.tableView.beginLoadMore()
             }
+//            self.tableView.shouldStartPrefetch(at: indexPath, dataCount: lostModels.count)
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(indexPath: indexPath) as HFComunityListLoveWallCell
@@ -153,7 +163,7 @@ extension HFCommunityHomeListView: UITableViewDataSource {
             if indexPath.row == self.loveModels.count - 3 {
                 self.tableView.beginLoadMore()
             }
-            self.tableView.shouldStartPrefetch(at: indexPath, dataCount: loveModels.count)
+//            self.tableView.shouldStartPrefetch(at: indexPath, dataCount: loveModels.count)
             return cell
         }
     }

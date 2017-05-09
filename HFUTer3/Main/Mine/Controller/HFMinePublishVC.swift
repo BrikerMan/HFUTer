@@ -20,11 +20,8 @@ class HFMinePublishVC: HFBasicViewController {
     var lostfindView:HFCommunityHomeListView!
     var loveWallView:HFCommunityHomeListView!
     
-    fileprivate var lostModels      : [HFComLostFoundModel] = []
-    fileprivate var loveWallModels  : [HFComLoveWallListModel] = []
-    
-    fileprivate var lostAndFindRequest: HFGetCommunityLostAndFindRequest!
-    fileprivate var loveWallRequest   : HFGetCommunityLoveWallListRequest!
+    let loveViewModel = HFCommunityLoveViewModel()
+    let lostViewModel = HFCommunityLostViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,14 +50,16 @@ class HFMinePublishVC: HFBasicViewController {
         automaticallyAdjustsScrollViewInsets = false
         
         lostfindView = HFCommunityHomeListView()
+        lostfindView.style = .lostFind
         lostfindView.isAllowDelete = true
         lostfindView.delegate = self
         scrollView.addSubview(lostfindView)
         
-
+        
         loveWallView = HFCommunityHomeListView()
         loveWallView.isAllowDelete = true
         loveWallView.delegate = self
+        loveWallView.style = .loveWall
         scrollView.addSubview(loveWallView)
         
         loveWallView.snp.makeConstraints { (make) in
@@ -84,41 +83,11 @@ class HFMinePublishVC: HFBasicViewController {
     }
     
     fileprivate func initData() {
-        lostAndFindRequest = HFGetCommunityLostAndFindRequest()
-        lostAndFindRequest.isMine = true
-        lostAndFindRequest.callback = self
-        lostAndFindRequest.loadData()
+        loveViewModel.isMine = true
+        lostViewModel.isMine = true
         
-        
-        loveWallRequest = HFGetCommunityLoveWallListRequest()
-        loveWallRequest.isMine = true
-        loveWallRequest.callback = self
-        loveWallRequest.loadData()
-    }
-}
-
-extension HFMinePublishVC: HFBaseAPIManagerCallBack {
-    func managerApiCallBackFailed(_ manager: HFBaseAPIManager) {
-        print(manager.errorInfo)
-        
-    }
-    
-    func managerApiCallBackSuccess(_ manager: HFBaseAPIManager) {
-        if let manager = manager as? HFGetCommunityLostAndFindRequest {
-            let result =  HFGetCommunityLostAndFindRequest.handleData(manager.resultDic)
-            if manager.page == 0 {
-                lostfindView.lostModels.removeAll()
-            }
-            lostfindView.setupWithLostModel(result)
-        }
-        
-        if let manager = manager as? HFGetCommunityLoveWallListRequest {
-            let result =  HFGetCommunityLoveWallListRequest.handleData(manager.resultDic, isMine: true)
-            if manager.page == 0 {
-                loveWallView.loveModels.removeAll()
-            }
-            loveWallView.setupWithLoveModel(result)
-        }
+        loveWallView.tableView.beginRefresh()
+        lostfindView.tableView.beginRefresh()
     }
 }
 
@@ -135,7 +104,7 @@ extension HFMinePublishVC: HFCommunityHomeListViewDelegate {
         if listView.style == .lostFind {
             
         } else {
-            let vc = HFCommunityLoveWallDetailVC(nibName: "HFCommunityLoveWallDetailVC", bundle: nil)
+            let vc = HFCommunityLoveWallDetailVC.instantiate()
             vc.mainModel = loveWallView.loveModels[index]
             self.push(vc)
         }
@@ -143,19 +112,27 @@ extension HFMinePublishVC: HFCommunityHomeListViewDelegate {
     
     func listViewTableViewStartRefeshing(_ listView: HFCommunityHomeListView) {
         if listView.style == .lostFind {
-            lostAndFindRequest.page = 0
-            lostAndFindRequest.loadData()
+            lostViewModel.loadFirstPage { (models) in
+                self.lostfindView.lostModels.removeAll()
+                self.lostfindView.setupWithLostModel(models)
+            }
         } else {
-            loveWallRequest.page = 0
-            loveWallRequest.loadData()
+            loveViewModel.loadFirstPage { (models) in
+                self.loveWallView.loveModels.removeAll()
+                self.loveWallView.setupWithLoveModel(models)
+            }
         }
     }
     
     func listViewTableViewStartLoadingMore(_ listView: HFCommunityHomeListView) {
         if listView.style == .lostFind {
-            lostAndFindRequest.loadNextPage()
+            lostViewModel.loadNextPage(completion: { (models) in
+                self.lostfindView.setupWithLostModel(models)
+            })
         } else {
-            loveWallRequest.loadNextPage()
+            loveViewModel.loadNextPage(completion: { (models) in
+                self.loveWallView.setupWithLoveModel(models)
+            })
         }
     }
 }

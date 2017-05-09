@@ -46,6 +46,9 @@ class HFComLoveWallListModel {
         self.image ??= json["image"].string
         self.name  ??= json["name"].string
         self.color ??= json["color"].int
+        
+        self.anonymous ??= json["anonymous"].bool
+        
         self.layout = JSON()
     }
     
