@@ -46,14 +46,12 @@ class HFComLoveWallListModel {
         self.image ??= json["image"].string
         self.name  ??= json["name"].string
         self.color ??= json["color"].int
+        self.layout = JSON()
     }
     
     // 表白照片
     var cImage : String?
     var cImageSize : CGSize?
     
-    var listLayout   : YYTextLayout?
-    var detailLayout : YYTextLayout? /// 详情页文字布局
-    
-    var layout: JSON?
+    var layout: JSON = JSON()
 }

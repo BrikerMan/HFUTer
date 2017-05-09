@@ -9,8 +9,7 @@
 import Foundation
 
 class HFMineMessageVC: HFBasicViewController {
-    
-    var messageRequest  : HFGetMineMessageRequest!
+
     var notifRequest    : HFGetMineNotifReqeust!
     
     @IBOutlet weak var topView: UIView!
@@ -19,10 +18,18 @@ class HFMineMessageVC: HFBasicViewController {
     var messageList: HFMineMessageListView!
     var notifList  : HFMineMessageListView!
     
+    let viewModel = HFMineMessageViewModel()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         initUI()
         initData()
+        viewModel.loadMessageFirstPage()
+            .then { json -> Void in
+                
+            }.catch { error in
+                Hud.showError("")
+        }
         NotificationCenter.default.post(name: Notification.Name(rawValue: HFNotification.RemoveBundge.rawValue), object: nil)
         
         topView.backgroundColor = HFTheme.TintColor
@@ -70,13 +77,16 @@ class HFMineMessageVC: HFBasicViewController {
     
     
     fileprivate func initData() {
-        messageRequest = HFGetMineMessageRequest()
-        messageRequest.callback = self
-        messageRequest.loadData()
-        
+        viewModel.loadMessageFirstPage()
+            .then { result -> Void in
+                self.messageList.messageList.removeAll()
+                self.messageList.setupWithMessage(result)
+            }.catch { error in
+                Hud.showError("")
+        }
         notifRequest  = HFGetMineNotifReqeust()
-        notifRequest.callback = self
-        notifRequest.loadData()
+//        notifRequest.callback = self
+//        notifRequest.loadData()
     }
 }
 
@@ -85,11 +95,6 @@ extension HFMineMessageVC: HFBaseAPIManagerCallBack {
         if let manager = manager as? HFGetMineNotifReqeust {
             let result = HFGetMineNotifReqeust.handleData(manager.resultDic)
             notifList.setupWithNotif(result)
-        }
-        
-        if let manager = manager as? HFGetMineMessageRequest {
-            let results = HFGetMineMessageRequest.handleData(manager.resultDic)
-            messageList.setupWithMessage(results)
         }
     }
     

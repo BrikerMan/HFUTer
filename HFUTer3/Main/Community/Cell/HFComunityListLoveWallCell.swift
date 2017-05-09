@@ -107,7 +107,7 @@ class HFComunityListLoveWallCell: UITableViewCell, NibReusable {
             }
         }).addDisposableTo(disposeBag)
         
-        if let layout = model.layout?["infoLayout"] as? YYTextLayout {
+        if let layout = model.layout["infoLayout"] as? YYTextLayout {
             infoLabel.frame.origin.x = 54
             infoLabel.size       = layout.textBoundingSize
             infoLabel.textLayout = layout
@@ -155,8 +155,10 @@ class HFComunityListLoveWallCell: UITableViewCell, NibReusable {
     }
     
     static func cacheLayout(_ model: HFComLoveWallListModel) -> CGFloat {
-        if let layout = model.layout {
-            return layout["height"] as! CGFloat
+        let imageHeight: CGFloat = model.cImage != nil ? 200 : 0
+        
+        if let layout = model.layout["infoLayout"] as? YYTextLayout {
+            return layout.textBoundingSize.height + 54 + 44 + imageHeight
         } else {
             let attText = NSMutableAttributedString(string: model.content, attributes: [
                 NSFontAttributeName             : UIFont.systemFont(ofSize: 14),
@@ -179,15 +181,8 @@ class HFComunityListLoveWallCell: UITableViewCell, NibReusable {
                 NSForegroundColorAttributeName  : UIColor(hexString: "#3d9cdd")
                 ])
             let infoLayout = YYTextLayout(container: container, text: attText)!
-            
-            let imageHeight: CGFloat = model.cImage != nil ? 200 : 0
-            let height = infoLayout.textBoundingSize.height + 54 + 44 + imageHeight
-            
-            var layout = JSON()
-            layout["height"] = height
-            layout["infoLayout"] = infoLayout
-            model.layout = layout
-            return height
+            model.layout["infoLayout"] = infoLayout
+            return infoLayout.textBoundingSize.height + 54 + 44 + imageHeight
         }
     }
 }

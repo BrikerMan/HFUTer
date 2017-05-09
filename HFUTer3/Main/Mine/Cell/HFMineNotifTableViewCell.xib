@@ -11,34 +11,35 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="84" id="KGk-i7-Jjw" customClass="HFMineNotifTableViewCell" customModule="HFUTer3" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="84"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" rowHeight="138" id="KGk-i7-Jjw" customClass="HFMineNotifTableViewCell" customModule="HFUTer3" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="328" height="138"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="83.5"/>
+                <rect key="frame" x="0.0" y="0.0" width="328" height="137.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z8U-eu-uSq">
-                        <rect key="frame" x="10" y="82.5" width="310" height="1"/>
+                        <rect key="frame" x="10" y="136.5" width="318" height="1"/>
                         <color key="backgroundColor" red="0.87450980392156863" green="0.87450980392156863" blue="0.87450980392156863" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="1" id="usV-wH-Mvy"/>
                         </constraints>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h4W-MD-HBr">
-                        <rect key="frame" x="10" y="10" width="300" height="17"/>
+                        <rect key="frame" x="10" y="10" width="308" height="17"/>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pve-gz-Kzq">
-                        <rect key="frame" x="10" y="35" width="300" height="14.5"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="200" verticalCompressionResistancePriority="780" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pve-gz-Kzq">
+                        <rect key="frame" x="10" y="35" width="308" height="14.5"/>
                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                         <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vOX-7J-hOy">
-                        <rect key="frame" x="10" y="57.5" width="300" height="17"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="220" verticalCompressionResistancePriority="800" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vOX-7J-hOy">
+                        <rect key="frame" x="10" y="57.5" width="308" height="134"/>
+                        <string key="text">最近因为一些未知的问题，导致获取用户的信息（包括课表、成绩等）会偶现失败的情况。最近因为一些未知的问题，导致获取用户的信息（包括课表、成绩等）会偶现失败的情况。最近因为一些未知的问题，导致获取用户的信息（包括课表、成绩等）会偶现失败的情况。最近因为一些未知的问题，导致获取用户的信息（包括课表、成绩等）会偶现失败的情况。</string>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" red="0.33333333333333331" green="0.33333333333333331" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
@@ -50,7 +51,7 @@
                     <constraint firstItem="z8U-eu-uSq" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="RCB-y8-LEP"/>
                     <constraint firstAttribute="trailing" secondItem="vOX-7J-hOy" secondAttribute="trailing" constant="10" id="Vgu-tc-FIF"/>
                     <constraint firstItem="pve-gz-Kzq" firstAttribute="top" secondItem="h4W-MD-HBr" secondAttribute="bottom" constant="8" id="buQ-wX-ap7"/>
-                    <constraint firstItem="z8U-eu-uSq" firstAttribute="top" secondItem="vOX-7J-hOy" secondAttribute="bottom" constant="8" id="cwy-M0-Arh"/>
+                    <constraint firstItem="z8U-eu-uSq" firstAttribute="top" secondItem="vOX-7J-hOy" secondAttribute="bottom" priority="740" constant="8" id="cwy-M0-Arh"/>
                     <constraint firstItem="h4W-MD-HBr" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="ewL-iJ-Z5a"/>
                     <constraint firstAttribute="trailing" secondItem="h4W-MD-HBr" secondAttribute="trailing" constant="10" id="fur-2I-KhB"/>
                     <constraint firstItem="pve-gz-Kzq" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="gxd-ls-vqD"/>
@@ -66,7 +67,7 @@
                 <outlet property="timeLabel" destination="pve-gz-Kzq" id="C16-78-jRL"/>
                 <outlet property="titleLabel" destination="h4W-MD-HBr" id="B4o-Kz-A3q"/>
             </connections>
-            <point key="canvasLocation" x="260" y="379"/>
+            <point key="canvasLocation" x="264" y="406"/>
         </tableViewCell>
     </objects>
 </document>

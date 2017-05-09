@@ -8,6 +8,7 @@
 
 import Foundation
 
+@available(*, deprecated)
 class HFGetCommunityLoveWallListRequest: HFBaseAPIManager {
     var page = 0
     var isMine = false
@@ -30,9 +31,9 @@ class HFGetCommunityLoveWallListRequest: HFBaseAPIManager {
         return ["pageIndex":page]
     }
     
-    // TODO: fix
+    // TODO: clean up
     static func handleData(_ data:HFRequestParam, isMine: Bool = false) -> [HFComLoveWallListModel] {
-        var models = [HFComLoveWallListModel]()
+        let models = [HFComLoveWallListModel]()
         
         if let list = data["data"] as? [AnyObject] {
 //            for item in list {

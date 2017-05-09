@@ -8,10 +8,29 @@
 
 import Foundation
 
-class HFMineMessageModel: HFBaseModel {
-    var id          = 0
-    var message     = ""
-    var name        = ""
-    var date_int    = 0
-    var sImage      = ""
+class HFMineMessageModel {
+    var id       = 0
+   
+    var message  = ""
+    var name     = ""
+    var date_int = 0
+    
+    var sImage   = ""
+    var type     = 0
+    var type_id  = 0
+    init() {
+        
+    }
+    
+    init(json: JSONItem) {
+        id = json["id"].intValue
+       
+        name    = json["name"].stringValue
+        message = json["message"].stringValue
+        sImage  = json["sImage"].stringValue
+        
+        date_int = json["date_int"].intValue
+        type     = json["type"].intValue
+        type_id  = json["type_id"].intValue
+    }
 }

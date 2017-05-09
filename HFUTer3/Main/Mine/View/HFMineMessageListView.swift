@@ -62,6 +62,21 @@ extension HFMineMessageListView: UITableViewDataSource {
 }
 
 extension HFMineMessageListView: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if !self.isNotif {
+            let model = messageList[indexPath.row]
+            if model.type == 100 {
+                let confess = HFComLoveWallListModel()
+                confess.id = model.type_id
+                
+                let vc = HFCommunityLoveWallDetailVC.instantiate()
+                vc.mainModel = confess
+                findViewController()!.pushVC(vc)
+            }
+        }
+    }
+    
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if !self.isNotif {
             return tableView.fd_heightForCell(withIdentifier: "HFMineMessageTableViewCell", cacheBy: indexPath, configuration: { (cell) in

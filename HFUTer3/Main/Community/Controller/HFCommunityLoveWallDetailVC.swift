@@ -215,7 +215,7 @@ extension HFCommunityLoveWallDetailVC: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
             let cell = tableView.dequeueReusableCell(indexPath: indexPath) as HFCommunityLoveWallListCell
-            cell.setupWithModel(mainModel, index: 0,isDetail: true)
+            cell.setupWithModel(mainModel, index: 0)
             return cell
         } else {
             if commentList.isEmpty {
@@ -248,7 +248,7 @@ extension HFCommunityLoveWallDetailVC: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         if indexPath.section == 0 {
-            return HFCommunityLoveWallListCell.height(model: mainModel, isDetail: true)
+            return HFCommunityLoveWallListCell.height(model: mainModel)
         } else {
             if commentList.isEmpty {
                 return 200

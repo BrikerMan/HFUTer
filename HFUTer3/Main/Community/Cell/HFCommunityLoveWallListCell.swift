@@ -60,9 +60,14 @@ class HFCommunityLoveWallListCell: UITableViewCell, NibReusable {
         disposeBag = DisposeBag()
     }
     
-    func setupWithModel(_ model: HFComLoveWallListModel, index: Int, isDetail: Bool = false) {
+    func setupWithModel(_ model: HFComLoveWallListModel, index: Int) {
         self.index = index
         self.model = model
+        
+        guard let layout = model.layout["detailLayout"] as? YYTextLayout else {
+            Logger.error("布局绘制有问题啊")
+            return
+        }
         
         // AutolAyout 处理补分
         avatarView.loadAvatar(avatar: model.image)
@@ -80,49 +85,18 @@ class HFCommunityLoveWallListCell: UITableViewCell, NibReusable {
         
         dateLabel.text  = Utilities.getTimeStringFromTimeStamp(model.date_int)
         
-        // 详情页不用设置
-        if !isDetail {
-            if model.favoriteCount != 0 {
-                likeCountLabel.text = "  \(model.favoriteCount)"
-            } else {
-                likeCountLabel.text = "  赞"
-            }
-            
-            if model.commentCount != 0 {
-                commentCountLabel.text = "  \(model.commentCount)"
-            } else {
-                commentCountLabel.text = "  评论"
-            }
-            
-            model.favorite.asObservable().subscribe(onNext: { [weak self] (element) in
-                let image = element ? "fm_community_love_wall_like_fill" : "fm_community_love_wall_like"
-                self?.likeImageView.image = UIImage(named: image)
-            }).addDisposableTo(disposeBag)
-            
-            bottomViewHeight.constant = 30
-            containerBottom.constant  = 4
-        } else {
-            bottomViewHeight.constant = 0
-            containerBottom.constant  = 12
-        }
+        
+        bottomViewHeight.constant = 0
+        containerBottom.constant  = 12
         
         // Old fashion frame 部分
-        // 首页列表补分
-        if !isDetail {
-            infoLabel.frame.origin.x = 54
-            infoLabel.size       = model.listLayout!.textBoundingSize
-            infoLabel.textLayout = model.listLayout!
-        } else {
-            infoLabel.frame.origin.x = 10
-            infoLabel.size       = model.detailLayout!.textBoundingSize
-            infoLabel.textLayout = model.detailLayout!
-        }
-        
-        
+        infoLabel.frame.origin.x = 10
+        infoLabel.size       = layout.textBoundingSize
+        infoLabel.textLayout = layout
         
         if let _ = model.cImage {
             let frame = CGRect(x: 10,
-                               y: model.detailLayout!.textBoundingSize.height + 54 + 8,
+                               y: layout.textBoundingSize.height + 54 + 8,
                                w: ScreenWidth - 20,
                                h: ScreenWidth - 20)
             
@@ -132,14 +106,8 @@ class HFCommunityLoveWallListCell: UITableViewCell, NibReusable {
                 var size = CGSize(width: 100, height: 190)
                 let imagesize  = model.cImageSize ?? image?.size ?? self.bigImageView.size
                 
-                let x: CGFloat
-                if !isDetail {
-                    x = 54
-                    size = Utilities.getWidthWithFixedHeight(size: imagesize, height: 190, maxWidth: ScreenWidth - 64)
-                } else {
-                    x = 10
-                    size = Utilities.getImageSize(size: imagesize, maxWidth: ScreenWidth - 20)
-                }
+                let x = CGFloat(10)
+                size = Utilities.getImageSize(size: imagesize, maxWidth: ScreenWidth - 20)
                 
                 self.bigImageView.frame = CGRect(x: x,
                                                  y: self.bigImageView.frame.y,
@@ -160,26 +128,23 @@ class HFCommunityLoveWallListCell: UITableViewCell, NibReusable {
                                      placeholder: placeHolder,
                                      options:  [.progressiveBlur, .showNetworkActivity],
                                      completion: { (image, url, cacheType, stage, error) in
-                model.cImageSize = image?.size
-                finished?(image)
+                                        model.cImageSize = image?.size
+                                        finished?(image)
             })
         }
     }
     
-    static func height(model: HFComLoveWallListModel, isDetail: Bool = false) -> CGFloat {
+    static func height(model: HFComLoveWallListModel) -> CGFloat {
+        
+        
         var imageHeight: CGFloat = model.cImage != nil ? 200 : 0
         
-        if isDetail {
-            if let imageSize = model.cImageSize {
-                imageHeight = Utilities.getImageSize(size: imageSize, maxWidth: ScreenWidth - 20).height + 10
-            }
-            if let layout = model.detailLayout {
-                return layout.textBoundingSize.height + 54 + 22 + imageHeight
-            }
-        } else {
-            if let layout = model.listLayout {
-                return layout.textBoundingSize.height + 54 + 44 + imageHeight
-            }
+        if let imageSize = model.cImageSize {
+            imageHeight = Utilities.getImageSize(size: imageSize, maxWidth: ScreenWidth - 20).height + 10
+        }
+        
+        if let layout = model.layout["detailLayout"] as? YYTextLayout {
+            return layout.textBoundingSize.height + 54 + 22 + imageHeight
         }
         
         let attText = NSMutableAttributedString(string: model.content, attributes: [
@@ -187,7 +152,7 @@ class HFCommunityLoveWallListCell: UITableViewCell, NibReusable {
             NSForegroundColorAttributeName  : HFTheme.DarkTextColor,
             ])
         
-        let width = isDetail ? ScreenWidth - 20 : ScreenWidth - 64
+        let width = ScreenWidth - 20
         let size = CGSize(width: width, height: CGFloat.greatestFiniteMagnitude)
         
         let mod = YYTextLinePositionSimpleModifier()
@@ -196,23 +161,9 @@ class HFCommunityLoveWallListCell: UITableViewCell, NibReusable {
         let container = YYTextContainer(size: size)
         container.linePositionModifier = mod
         
-        if !isDetail {
-            container.maximumNumberOfRows  = 15
-            container.truncationType = YYTextTruncationType.end
-            container.truncationToken = NSAttributedString(string: " ...", attributes: [
-                NSFontAttributeName             : UIFont.systemFont(ofSize: 14),
-                NSForegroundColorAttributeName  : UIColor(hexString: "#3d9cdd")
-                ])
-        }
-        let layout = YYTextLayout(container: container, text: attText)!
         
-        if isDetail {
-            model.detailLayout = layout
-            return layout.textBoundingSize.height + 54 + 14 + imageHeight
-        } else {
-            model.listLayout   = layout
-            return layout.textBoundingSize.height + 54 + 44 + imageHeight
-        }
+        let layout = YYTextLayout(container: container, text: attText)!
+        model.layout["detailLayout"] = layout
+        return layout.textBoundingSize.height + 54 + 14 + imageHeight
     }
-    
 }

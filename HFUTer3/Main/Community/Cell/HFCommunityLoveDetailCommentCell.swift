@@ -115,6 +115,8 @@ class HFCommunityLoveDetailCommentCell: UITableViewCell, NibReusable {
         
         let layout = YYTextLayout(container: container, text: attText)!
         model.detailLayout = layout
+        
+        
         return layout.textBoundingSize.height + 54 + 14
     }
 }

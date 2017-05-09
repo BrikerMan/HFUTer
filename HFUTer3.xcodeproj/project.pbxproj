@@ -150,6 +150,7 @@
 		6A61A1921E70EA5400892EA6 /* MJRefresh.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A61A1911E70EA5400892EA6 /* MJRefresh.framework */; };
 		6A67F45D1EC170AC0046146E /* HF-Model-protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A67F45C1EC170AC0046146E /* HF-Model-protocols.swift */; };
 		6A67F45F1EC175890046146E /* HFCommunityDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A67F45E1EC175890046146E /* HFCommunityDetailViewModel.swift */; };
+		6A67F4611EC18CAE0046146E /* HFMineMessageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A67F4601EC18CAE0046146E /* HFMineMessageViewModel.swift */; };
 		6A6A648C1CC51C6D0049715C /* HFBaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A6A648B1CC51C6D0049715C /* HFBaseTableViewCell.swift */; };
 		6A6A649C1CC51E840049715C /* HFGetCommunityLostAndFindRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A6A649B1CC51E840049715C /* HFGetCommunityLostAndFindRequest.swift */; };
 		6A6A64A01CC521860049715C /* HFBaseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A6A649F1CC521860049715C /* HFBaseModel.swift */; };
@@ -520,6 +521,7 @@
 		6A61A1911E70EA5400892EA6 /* MJRefresh.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MJRefresh.framework; sourceTree = "<group>"; };
 		6A67F45C1EC170AC0046146E /* HF-Model-protocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HF-Model-protocols.swift"; sourceTree = "<group>"; };
 		6A67F45E1EC175890046146E /* HFCommunityDetailViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HFCommunityDetailViewModel.swift; path = HFUTer3/Common/Protocols/HFCommunityDetailViewModel.swift; sourceTree = SOURCE_ROOT; };
+		6A67F4601EC18CAE0046146E /* HFMineMessageViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HFMineMessageViewModel.swift; path = HFUTer3/Common/Protocols/HFMineMessageViewModel.swift; sourceTree = SOURCE_ROOT; };
 		6A6A648B1CC51C6D0049715C /* HFBaseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFBaseTableViewCell.swift; sourceTree = "<group>"; };
 		6A6A649B1CC51E840049715C /* HFGetCommunityLostAndFindRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFGetCommunityLostAndFindRequest.swift; sourceTree = "<group>"; };
 		6A6A649F1CC521860049715C /* HFBaseModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFBaseModel.swift; sourceTree = "<group>"; };
@@ -1625,6 +1627,7 @@
 		6B23B0D81C97DEAE0089214D /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				6A67F4601EC18CAE0046146E /* HFMineMessageViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -2246,6 +2249,7 @@
 				27949D311CC48A5500495206 /* HFInfoBookListVC.swift in Sources */,
 				6A96F4CF1E3E093B00F65859 /* UIWindowExtensions.swift in Sources */,
 				27B730AC1CA2E4C90011D33A /* HFInfoGetAcademicClassDetailRequest.swift in Sources */,
+				6A67F4611EC18CAE0046146E /* HFMineMessageViewModel.swift in Sources */,
 				6B89D9271C99532F0030DD7D /* HFUserAvaterNickNameVC.swift in Sources */,
 				6B2BFBB11C9D5D7F00FFA661 /* Dictionary-Extensions.swift in Sources */,
 				6AE4A2981D0019360025BB79 /* HFGetComLoveWallCommentRequest.swift in Sources */,

@@ -7,6 +7,8 @@
 //
 
 import Foundation
+
+@available(*, deprecated)
 class HFGetMineMessageRequest: HFBaseAPIManager {
     var page = 0
     
@@ -25,16 +27,17 @@ class HFGetMineMessageRequest: HFBaseAPIManager {
         ]
     }
     
+    // TODO: clean up
     static func handleData(_ data:HFRequestParam) -> [HFMineMessageModel] {
-        var models = [HFMineMessageModel]()
+        let models = [HFMineMessageModel]()
         
-        if let list = data["data"] as? [AnyObject] {
-            for item in list {
-                if let model = HFMineMessageModel.yy_model(withJSON: item) {
-                    models.append(model)
-                }
-            }
-        }
+//        if let list = data["data"] as? [AnyObject] {
+//            for item in list {
+//                if let model = HFMineMessageModel.yy_model(withJSON: item) {
+//                    models.append(model)
+//                }
+//            }
+//        }
         
         return  models
     }
