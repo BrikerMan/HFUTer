@@ -90,7 +90,7 @@ class HFMineMessageVC: HFBasicViewController {
             }.catch { error in
                 Hud.showError("")
         }
-        notifRequest  = HFGetMineNotifReqeust()
+        notifRequest = HFGetMineNotifReqeust()
         notifRequest.callback = self
         notifRequest.loadData()
     }
