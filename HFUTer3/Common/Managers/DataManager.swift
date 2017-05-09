@@ -30,7 +30,7 @@ struct HFSettings {
         
         let weekEnd  = settings?[HFSettingPlistKey.weekendSchedule.rawValue] as? Bool ?? false
         let round    = settings?[HFSettingPlistKey.scheduleRoundStyle.rawValue] as? Bool ?? true
-        let showDate = settings?[HFSettingPlistKey.scheduleRoundStyle.rawValue] as? Bool ?? true
+        let showDate = settings?[HFSettingPlistKey.scheduleShowDate.rawValue] as? Bool ?? true
         let alpha    = settings?[HFSettingPlistKey.scheduleCellAlpha.rawValue]  as? CGFloat ?? 1.0
         
         weekendSchedule     = Variable(weekEnd)
