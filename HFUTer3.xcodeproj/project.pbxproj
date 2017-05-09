@@ -390,7 +390,7 @@
 		6BB4F7B01CA276FD005D7903 /* HFImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BB4F7AF1CA276FD005D7903 /* HFImageView.swift */; };
 		6BC674A11C993305005C4462 /* HFUserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BC674A01C993305005C4462 /* HFUserModel.swift */; };
 		6BC674A31C9934A6005C4462 /* HFUserLoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BC674A21C9934A6005C4462 /* HFUserLoginViewModel.swift */; };
-		6BCF69011C9A5349008646BA /* HFUpdateCookieRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BCF69001C9A5349008646BA /* HFUpdateCookieRequest.swift */; };
+		6BCF69011C9A5349008646BA /* HFCookieRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BCF69001C9A5349008646BA /* HFCookieRequest.swift */; };
 		ABC177B7B17421ECD3C39761 /* Pods_HFUTer3.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACCA37A71D92272B01FCE8FD /* Pods_HFUTer3.framework */; };
 /* End PBXBuildFile section */
 
@@ -778,7 +778,7 @@
 		6BB4F7AF1CA276FD005D7903 /* HFImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFImageView.swift; sourceTree = "<group>"; };
 		6BC674A01C993305005C4462 /* HFUserModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFUserModel.swift; sourceTree = "<group>"; };
 		6BC674A21C9934A6005C4462 /* HFUserLoginViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFUserLoginViewModel.swift; sourceTree = "<group>"; };
-		6BCF69001C9A5349008646BA /* HFUpdateCookieRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFUpdateCookieRequest.swift; sourceTree = "<group>"; };
+		6BCF69001C9A5349008646BA /* HFCookieRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFCookieRequest.swift; sourceTree = "<group>"; };
 		72CD66026CB20E98AF3CD290 /* Pods-TodayWidget.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TodayWidget.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TodayWidget/Pods-TodayWidget.debug.xcconfig"; sourceTree = "<group>"; };
 		ACCA37A71D92272B01FCE8FD /* Pods_HFUTer3.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HFUTer3.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C75739461AB5F16042C9B4CE /* Pods_TodayWidget.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TodayWidget.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1722,7 +1722,7 @@
 				6B83552C1C980FC5002DBE06 /* HFBaseAPIRequest.swift */,
 				6A128E201CF69247000185C3 /* HFBaseRequest.swift */,
 				6A3E6F121E408B96001FA3E3 /* HFAPIRequest.swift */,
-				6BCF69001C9A5349008646BA /* HFUpdateCookieRequest.swift */,
+				6BCF69001C9A5349008646BA /* HFCookieRequest.swift */,
 				6B89D9091C9941800030DD7D /* HFLog.swift */,
 				6A06EB111E61AD1700F18981 /* Logger.swift */,
 			);
@@ -2309,7 +2309,7 @@
 				6ACB1EB01E40331200B708C7 /* StoryboardSceneBased.swift in Sources */,
 				6ACB1EAF1E40331200B708C7 /* StoryboardBased.swift in Sources */,
 				6AE1F4EE1E470CAE003CFA27 /* Base64Util.m in Sources */,
-				6BCF69011C9A5349008646BA /* HFUpdateCookieRequest.swift in Sources */,
+				6BCF69011C9A5349008646BA /* HFCookieRequest.swift in Sources */,
 				6A96F4A31E3E093B00F65859 /* BlockButton.swift in Sources */,
 				6A2C98BF1D6C0E1F00BD5182 /* HFMineChangePasswordVC.swift in Sources */,
 				6B2FE06C1CA69D6F00147BC3 /* HFInfoChargeModel.swift in Sources */,

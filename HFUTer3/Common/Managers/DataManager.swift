@@ -39,7 +39,7 @@ struct HFSettings {
         scheduleCellAlpha   = Variable(alpha)
         
         let path = filePath.appendingPathComponent("backImage.jpg").path
-       
+        
         if let image = UIImage(contentsOfFile: path) {
             scheduleBackImage = Variable(image)
         } else {
@@ -81,7 +81,7 @@ class DataManager {
     }
     
     /// 是否获取Token，第一次发起请求时候先登陆，确保Token有效。
-    var hasUpdateToken =  false
+    var updateTokenDate = Date(timeIntervalSince1970: 100)
     
     /// 当前的课程周
     var currentWeek: Int {
@@ -125,9 +125,9 @@ class DataManager {
         
         PlistManager.dataPlist.clearPlist()
         PlistManager.userDataPlist.clearPlist()
+        updateTokenDate = Date(timeIntervalSince1970: 100)
         
         isLogin = false
-        hasUpdateToken =  false
         
         NotificationCenter.default.post(name: Notification.Name(rawValue: HFNotification.UserLogout.rawValue), object: nil)
     }
@@ -180,7 +180,7 @@ class DataManager {
         
         
         /*
-        
+         
          */
     }
     
@@ -188,10 +188,13 @@ class DataManager {
         if let tokenString = headers["Set-Cookie"] as? String,
             let access = tokenString.matchesForRegexInText("access_token=\\w*;", text: tokenString).first,
             let refresh = tokenString.matchesForRegexInText("refresh_token=\\w*;", text: tokenString).first {
-            DataEnv.token = access + refresh
-            
-//            log.debugLog("刷新Token成功", params: [access + refresh])
-            DataEnv.hasUpdateToken = true
+            if access + refresh != DataEnv.token {
+                DataEnv.token = access + refresh
+                DataEnv.updateTokenDate = Date()
+                Logger.info("更新用户 token 成功")
+            } else {
+                Logger.info("token 没变，无需更新")
+            }
         }
         
     }

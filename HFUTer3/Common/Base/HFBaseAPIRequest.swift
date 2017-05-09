@@ -71,11 +71,11 @@ class HFBaseAPIManager {
      */
     func loadData() {
         startTime = Date()
-        HFUpdateCookieRequest().checkUpdate(
-            onSucces: { () -> Void in
+        HFCookieRequest.update()
+            .then {
                 self.fire()
-            }) { (error) -> Void in
-                
+            }.catch { error in
+                Logger.warning(error.hfDescription)
         }
     }
     

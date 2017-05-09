@@ -59,12 +59,12 @@ class HFCommunityLoveViewModel {
         }
         
         HFAPIRequest.build(api: api, method: .POST, param: param)
-            .response { (json, error, _) in
+            .response(callback: { (json, error) in
                 if let error = error {
-                    Hud.showError(error)
+                    Hud.showError(error.hfDescription)
                 } else {
                     completion(json)
                 }
-        }
+            })
     }
 }

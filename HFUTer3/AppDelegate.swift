@@ -22,7 +22,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Logger.invoke()
         handleFristLuacnh()
         DataEnv.updataHostInfo()
-        HFUpdateCookieRequest().checkUpdate(onSucces: nil, failed: nil)
+        
+        HFCookieRequest.update()
         prepareThridPart(launchOptions)
         
         let rootViewController = RootViewController()
@@ -76,6 +77,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         application.applicationIconBadgeNumber = 0
         JPUSHService.resetBadge()
         application.cancelAllLocalNotifications()
+        HFCookieRequest.update()
     }
     
     @available(iOS 9.0, *)

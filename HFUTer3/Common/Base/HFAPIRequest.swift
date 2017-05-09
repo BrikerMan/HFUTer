@@ -8,9 +8,38 @@
 
 import Foundation
 import Pitaya
+import PromiseKit
 
 typealias PitaHTTPMethod = HTTPMethod
 typealias JSON = [String: Any]
+
+enum HFAPIRequestError: Error {
+    case netError
+    case jsonError
+    case serverError(info: String)
+    
+    func decs() -> String {
+        switch self {
+        case .netError:
+            return "网络错误，请稍候再试"
+        case .jsonError:
+            return "数据格式错误，请联系开发者"
+        case .serverError(let info):
+            return info
+        }
+    }
+}
+
+
+extension Error {
+    var hfDescription: String {
+        if let error = self as? HFAPIRequestError {
+            return error.decs()
+        } else {
+            return self.localizedDescription
+        }
+    }
+}
 
 class HFAPIRequest {
     var manager: HFAPIRequestManager!
@@ -21,10 +50,22 @@ class HFAPIRequest {
         return r
     }
     
-    func response(callback: ((_ json: JSONItem, _ error: String?, _ isNetError: Bool) -> Void)?) {
-        self.manager.response(callback: callback)
+    static func buildPromise(api: String, method: PitaHTTPMethod = PitaHTTPMethod.POST, param: JSON = JSON()) -> Promise<JSONItem> {
+        return Promise<JSONItem> { fullfill, reject in
+            HFAPIRequestManager(api:api ,method: method, param: param)
+                .response(callback: { (json, error) in
+                    if let error = error {
+                        reject(error)
+                    } else {
+                        fullfill(json)
+                    }
+                })
+        }
     }
     
+    func response(callback: ((_ json: JSONItem, _ error: HFAPIRequestError?) -> Void)?) {
+        self.manager.response(callback: callback)
+    }
 }
 
 class HFAPIRequestManager {
@@ -38,22 +79,43 @@ class HFAPIRequestManager {
         self.param  = param
     }
     
-    func response(callback: ((_ json: JSONItem, _ error: String?, _ isNetError: Bool) -> Void)?) {
+    func response(callback: ((_ json: JSONItem, _ error: HFAPIRequestError?) -> Void)?) {
+        if api != "api/user/login" {
+            HFCookieRequest.update()
+                .then {
+                    self.fire(callback: callback)
+                }.catch { error in
+                   callback?(JSONItem(), error as? HFAPIRequestError)
+            }
+        } else {
+            self.fire(callback: callback)
+        }
+    }
+    
+    func fire(callback: ((_ json: JSONItem, _ error: HFAPIRequestError?) -> Void)?) {
         let url = APIBaseURL + "/" + api
-//        log.infoLog("| FLBaseRequest | fire request @ \(api) | params: \n \(param)")
+        
+        Logger.verbose("fire request \(url) param: \(param)")
         
         Pita.build(HTTPMethod: .POST, url: url)
             .addParams(param)
             .setHTTPHeader(Name: "Cookie", Value: DataEnv.token)
             .onNetworkError({ (error) in
-                callback?(JSONND(),error.localizedDescription, true)
+                callback?(JSONND(), HFAPIRequestError.netError)
+                Logger.error(HFAPIRequestError.netError.decs())
             })
             .responseJSON { (json, response) in
                 if json["statue"].intValue == 1 {
-                    callback?(json["data"], nil, false)
+                    if let headers = response?.allHeaderFields {
+                        DataEnv.saveToken(headers)
+                    }
+                    callback?(json["data"], nil)
                 } else {
-                    callback?(JSONND(),json["error_msg"].string ?? "服务器未返回错误信息", false)
+                    let errorInfo = json["error_msg"].string ?? "服务器未返回错误信息"
+                    callback?(JSONND(), HFAPIRequestError.serverError(info: errorInfo))
+                    Logger.error(errorInfo)
                 }
         }
+
     }
 }
