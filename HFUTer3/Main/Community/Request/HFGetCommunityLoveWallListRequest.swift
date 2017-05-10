@@ -35,7 +35,7 @@ class HFGetCommunityLoveWallListRequest: HFBaseAPIManager {
     static func handleData(_ data:HFRequestParam, isMine: Bool = false) -> [HFComLoveWallListModel] {
         let models = [HFComLoveWallListModel]()
         
-        if let list = data["data"] as? [AnyObject] {
+//        if let list = data["data"] as? [AnyObject] {
 //            for item in list {
 //                let model = HFComLoveWallListModel(json: item)
 //            
@@ -49,7 +49,7 @@ class HFGetCommunityLoveWallListRequest: HFBaseAPIManager {
 //                    models.append(model)
 //                }
 //            }
-        }
+//        }
         
         AnalyseManager.UpdateLoveWall.record()
         return  models

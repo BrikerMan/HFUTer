@@ -135,8 +135,6 @@ class HFCommunityLoveWallListCell: UITableViewCell, NibReusable {
     }
     
     static func height(model: HFComLoveWallListModel) -> CGFloat {
-        
-        
         var imageHeight: CGFloat = model.cImage != nil ? 200 : 0
         
         if let imageSize = model.cImageSize {

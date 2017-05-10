@@ -24,8 +24,15 @@ class HFComLoveWallListModel {
     var name          = ""
     var color         = 0
     
+    // 表白照片
+    var cImage : String?
+    var cImageSize : CGSize?
+    
     // 是否匿名
     var anonymous = false
+    
+    // 布局缓存
+    var layout: JSON = JSON()
     
     init() { }
     
@@ -47,14 +54,10 @@ class HFComLoveWallListModel {
         self.name  ??= json["name"].string
         self.color ??= json["color"].int
         
+        self.cImage ??= json["cImage"].string
+        
         self.anonymous ??= json["anonymous"].bool
         
         self.layout = JSON()
     }
-    
-    // 表白照片
-    var cImage : String?
-    var cImageSize : CGSize?
-    
-    var layout: JSON = JSON()
 }

@@ -21,7 +21,7 @@ class HFCookieRequest {
                 return
             }
             
-            if Date().timeIntervalSince1970 - DataEnv.updateTokenDate.timeIntervalSince1970 < 5 * 3600 {
+            if Date().timeIntervalSince1970 - DataEnv.updateTokenDate.timeIntervalSince1970 < 3600 {
                 Logger.warning("不需要更新 token， 时间未到")
                 fullfill()
                 return
