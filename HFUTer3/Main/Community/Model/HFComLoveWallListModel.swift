@@ -11,7 +11,7 @@ import YYText
 import RxSwift
 
 class HFComLoveWallListModel {
-    var id            = 0
+    var id            = -1
 //    var date          = 0
     var date_int      = 0
     

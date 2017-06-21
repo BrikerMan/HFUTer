@@ -227,6 +227,8 @@
 		6A96F4CF1E3E093B00F65859 /* UIWindowExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A96F49F1E3E093B00F65859 /* UIWindowExtensions.swift */; };
 		6A96F4D01E3E093B00F65859 /* URLExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A96F4A01E3E093B00F65859 /* URLExtensions.swift */; };
 		6A96F4D11E3E093B00F65859 /* UserDefaultsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A96F4A11E3E093B00F65859 /* UserDefaultsExtension.swift */; };
+		6A9DD2A81EFA495E0031559C /* HFMineCommentsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A9DD2A61EFA495E0031559C /* HFMineCommentsVC.swift */; };
+		6A9DD2A91EFA495E0031559C /* HFMineCommentsVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6A9DD2A71EFA495E0031559C /* HFMineCommentsVC.xib */; };
 		6A9F1EA71E40BC1700FFC39D /* jcore-ios-1.1.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A9F1EA41E40BC1700FFC39D /* jcore-ios-1.1.0.a */; };
 		6A9F1EA81E40BC1700FFC39D /* jpush-ios-3.0.1.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A9F1EA51E40BC1700FFC39D /* jpush-ios-3.0.1.a */; };
 		6A9F1EAA1E40BC4E00FFC39D /* libresolv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A9F1EA91E40BC4E00FFC39D /* libresolv.tbd */; };
@@ -239,6 +241,9 @@
 		6ABA71C51D092D8200D259F7 /* libicucore.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 6ABA71C41D092D8200D259F7 /* libicucore.tbd */; };
 		6ABD54D61E74EEA200D6197B /* FMDatabaseAdditionsVariadic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ABD54D41E74EEA200D6197B /* FMDatabaseAdditionsVariadic.swift */; };
 		6ABD54D71E74EEA200D6197B /* FMDatabaseVariadic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ABD54D51E74EEA200D6197B /* FMDatabaseVariadic.swift */; };
+		6ABD75F61EFA4D540056F719 /* HFMineCommentsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ABD75F41EFA4D540056F719 /* HFMineCommentsTableViewCell.swift */; };
+		6ABD75F71EFA4D540056F719 /* HFMineCommentsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6ABD75F51EFA4D540056F719 /* HFMineCommentsTableViewCell.xib */; };
+		6ABD75F91EFA4DBB0056F719 /* HFMineCommentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ABD75F81EFA4DBB0056F719 /* HFMineCommentModel.swift */; };
 		6AC4775D1D03C91E00B4B8BA /* HFUserRestPassVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC4775C1D03C91E00B4B8BA /* HFUserRestPassVC.swift */; };
 		6AC477601D03CB3D00B4B8BA /* HFUserRestPassToOriginalVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC4775F1D03CB3D00B4B8BA /* HFUserRestPassToOriginalVC.swift */; };
 		6AC477621D03CE3800B4B8BA /* HFUserRestPassByEmailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC477611D03CE3800B4B8BA /* HFUserRestPassByEmailVC.swift */; };
@@ -600,6 +605,8 @@
 		6A96F49F1E3E093B00F65859 /* UIWindowExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIWindowExtensions.swift; sourceTree = "<group>"; };
 		6A96F4A01E3E093B00F65859 /* URLExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLExtensions.swift; sourceTree = "<group>"; };
 		6A96F4A11E3E093B00F65859 /* UserDefaultsExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsExtension.swift; sourceTree = "<group>"; };
+		6A9DD2A61EFA495E0031559C /* HFMineCommentsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFMineCommentsVC.swift; sourceTree = "<group>"; };
+		6A9DD2A71EFA495E0031559C /* HFMineCommentsVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HFMineCommentsVC.xib; sourceTree = "<group>"; };
 		6A9F1EA41E40BC1700FFC39D /* jcore-ios-1.1.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "jcore-ios-1.1.0.a"; sourceTree = "<group>"; };
 		6A9F1EA51E40BC1700FFC39D /* jpush-ios-3.0.1.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "jpush-ios-3.0.1.a"; sourceTree = "<group>"; };
 		6A9F1EA61E40BC1700FFC39D /* JPUSHService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPUSHService.h; sourceTree = "<group>"; };
@@ -613,6 +620,9 @@
 		6ABA71C41D092D8200D259F7 /* libicucore.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libicucore.tbd; path = usr/lib/libicucore.tbd; sourceTree = SDKROOT; };
 		6ABD54D41E74EEA200D6197B /* FMDatabaseAdditionsVariadic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FMDatabaseAdditionsVariadic.swift; sourceTree = "<group>"; };
 		6ABD54D51E74EEA200D6197B /* FMDatabaseVariadic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FMDatabaseVariadic.swift; sourceTree = "<group>"; };
+		6ABD75F41EFA4D540056F719 /* HFMineCommentsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFMineCommentsTableViewCell.swift; sourceTree = "<group>"; };
+		6ABD75F51EFA4D540056F719 /* HFMineCommentsTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HFMineCommentsTableViewCell.xib; sourceTree = "<group>"; };
+		6ABD75F81EFA4DBB0056F719 /* HFMineCommentModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFMineCommentModel.swift; sourceTree = "<group>"; };
 		6AC4775C1D03C91E00B4B8BA /* HFUserRestPassVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFUserRestPassVC.swift; sourceTree = "<group>"; };
 		6AC4775F1D03CB3D00B4B8BA /* HFUserRestPassToOriginalVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFUserRestPassToOriginalVC.swift; sourceTree = "<group>"; };
 		6AC477611D03CE3800B4B8BA /* HFUserRestPassByEmailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFUserRestPassByEmailVC.swift; sourceTree = "<group>"; };
@@ -1220,6 +1230,8 @@
 				6AAF78931D0ACB7E00D08ADC /* HFMineAboutHeaderTableViewCell.swift */,
 				6AF574121E44A1F000FD8234 /* HFMineChooseColorCell.swift */,
 				6AF574131E44A1F000FD8234 /* HFMineChooseColorCell.xib */,
+				6ABD75F41EFA4D540056F719 /* HFMineCommentsTableViewCell.swift */,
+				6ABD75F51EFA4D540056F719 /* HFMineCommentsTableViewCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -1242,6 +1254,7 @@
 			children = (
 				6AE631D11D02B3AF002C4AEC /* HFMineMessageModel.swift */,
 				6A264F881D02D09700146D03 /* HFMineNorifModel.swift */,
+				6ABD75F81EFA4DBB0056F719 /* HFMineCommentModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1608,6 +1621,8 @@
 				6A25768B1D05574A00A47A76 /* HFMineAboutVC.swift */,
 				6AF5740E1E44A13B00FD8234 /* HFMineChooseThemeViewController.swift */,
 				6AF5740F1E44A13B00FD8234 /* HFMineChooseThemeViewController.xib */,
+				6A9DD2A61EFA495E0031559C /* HFMineCommentsVC.swift */,
+				6A9DD2A71EFA495E0031559C /* HFMineCommentsVC.xib */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -1902,6 +1917,7 @@
 				6A264F871D02C47800146D03 /* HFMineMessageTableViewCell.xib in Resources */,
 				6A0F76E51D0A894B0096A759 /* HFInfoCalendarVC.xib in Resources */,
 				6A264F8D1D02D39000146D03 /* HFMineNotifTableViewCell.xib in Resources */,
+				6A9DD2A91EFA495E0031559C /* HFMineCommentsVC.xib in Resources */,
 				6B94267E1CA8DFA600C8E85D /* HFChooseTableViewCell.xib in Resources */,
 				6AE4A2901D0009F10025BB79 /* HFCommunityLoveWallDetailVC.xib in Resources */,
 				6A02E2771CF320CB00DC669A /* HFCommunityHomeListView.xib in Resources */,
@@ -1917,6 +1933,7 @@
 				6AE3F7191EB1F54F00D2D30B /* HFComunityListLoveWallCell.xib in Resources */,
 				6AA75C241EB339A900A9BF94 /* HFScheduleShareBottonView.xib in Resources */,
 				6AF574151E44A1F000FD8234 /* HFMineChooseColorCell.xib in Resources */,
+				6ABD75F71EFA4D540056F719 /* HFMineCommentsTableViewCell.xib in Resources */,
 				6A02E2741CF320CB00DC669A /* FMCommunityActionListView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2137,6 +2154,7 @@
 				6A96F4CD1E3E093B00F65859 /* UIViewControllerExtensions.swift in Sources */,
 				6A96F4CA1E3E093B00F65859 /* UITextFieldExtensions.swift in Sources */,
 				6A6A64A31CC521D60049715C /* HFComLostFoundModel.swift in Sources */,
+				6ABD75F91EFA4DBB0056F719 /* HFMineCommentModel.swift in Sources */,
 				6AC477661D03F92000B4B8BA /* HFInfoGetPlanDetailRequest.swift in Sources */,
 				6A1CEA7A1D05245300481D3A /* HFInfoChargesListCell.swift in Sources */,
 				6AF574101E44A13B00FD8234 /* HFMineChooseThemeViewController.swift in Sources */,
@@ -2146,6 +2164,7 @@
 				6AE3F7181EB1F54F00D2D30B /* HFComunityListLoveWallCell.swift in Sources */,
 				6B89D9251C99530A0030DD7D /* HFUserSetEmailVC.swift in Sources */,
 				6AB859FB1EB4707000CC6820 /* HFImagePicker.swift in Sources */,
+				6ABD75F61EFA4D540056F719 /* HFMineCommentsTableViewCell.swift in Sources */,
 				6AF574171E44AAD300FD8234 /* HFCustumRGBColorView.swift in Sources */,
 				6A0F76E41D0A894B0096A759 /* HFInfoCalendarVC.swift in Sources */,
 				6BC674A31C9934A6005C4462 /* HFUserLoginViewModel.swift in Sources */,
@@ -2339,6 +2358,7 @@
 				6A12AD391EB1E01600242BD2 /* PlistManager.swift in Sources */,
 				6AE544451CFF1CA600EB3FE7 /* HFCommunityPostLoveWallVC.swift in Sources */,
 				6A3581A61EB17534006EFEAA /* HFScheduleInfoViewController.swift in Sources */,
+				6A9DD2A81EFA495E0031559C /* HFMineCommentsVC.swift in Sources */,
 				6A1CEA791D05245300481D3A /* HFInfoBookListTableCell.swift in Sources */,
 				6A96F4BA1E3E093B00F65859 /* StringExtensions.swift in Sources */,
 				6ACB1EB21E40331200B708C7 /* NibOwnerLoadable.swift in Sources */,

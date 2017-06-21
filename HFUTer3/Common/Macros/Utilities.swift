@@ -57,6 +57,31 @@ class Utilities {
         
     }
     
+    static func getTimeStringWithYear(_ stm:Int) -> String {
+        let timeInterval:TimeInterval = Double(stm)
+        let nowTimeStamp = Date().timeIntervalSince1970
+        
+        let sec =  Int(nowTimeStamp - timeInterval)
+        
+        let min:Int = Int(sec/60)
+        if sec < 60 {
+            return "\(sec) 秒钟前"
+        }
+        
+        if min < 60 {
+            return "\(min) 分钟前"
+        }
+        
+        let hour:Int = Int(min/60)
+        
+        if hour < 12 {
+            return "\(hour) 小时前"
+        }
+        
+        let date = Date(timeIntervalSince1970: timeInterval)
+        return date.toString(format: "yy-MM-dd hh:mm")
+    }
+    
 
     class func resizeImage(_ image: UIImage, newWidth: CGFloat = 1080) -> UIImage {
         
