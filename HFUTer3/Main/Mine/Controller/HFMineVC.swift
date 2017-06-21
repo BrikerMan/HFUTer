@@ -25,7 +25,7 @@ class HFMineVC: HFBasicViewController {
                 [
                     HFMineListCellInfo("个人信息","fm_mine_geren",""),
                     HFMineListCellInfo("我的发布","fm_mine_publish",""),
-                    HFMineListCellInfo("我的评论","fm_mine_message",""),
+                    HFMineListCellInfo("我的评论","fm_mine_comments",""),
                     HFMineListCellInfo("我的消息","fm_mine_message",""),
                     ],
                 [

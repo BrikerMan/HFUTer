@@ -60,7 +60,7 @@ class HFMineCommentsTableViewCell: UITableViewCell, NibReusable {
                                      h: originalLayout.textBoundingSize.height)
         originalLabel.textLayout = originalLayout
         dateLabel.attributedText = dateAttText
-        Logger.debug("\(model.content) \n\(titleLayout.textBoundingSize)")
+        //        Logger.debug("\(model.content) \n\(titleLayout.textBoundingSize)")
     }
     
     @IBAction func onDeleteButtonPressed(_ sender: Any) {
@@ -74,7 +74,16 @@ class HFMineCommentsTableViewCell: UITableViewCell, NibReusable {
         }
         
         let titleContainer = YYTextContainer(size: CGSize(width: ScreenWidth - 24, height: CGFloat.greatestFiniteMagnitude))
-        let titleLayout = YYTextLayout(container: titleContainer, text: NSAttributedString(string: model.content))!
+        let titleMod = YYTextLinePositionSimpleModifier()
+        titleMod.fixedLineHeight = 16
+        titleContainer.linePositionModifier = titleMod
+        
+        let titleText = NSAttributedString(string: model.content,
+                                           attributes: [
+                                            NSFontAttributeName: UIFont.systemFont(ofSize: 14),
+                                            NSForegroundColorAttributeName: HFTheme.DarkTextColor])
+        
+        let titleLayout = YYTextLayout(container: titleContainer, text: titleText)!
         model.layoutCache["titleLayout"] = titleLayout
         
         var originalText = NSMutableAttributedString()
@@ -82,21 +91,29 @@ class HFMineCommentsTableViewCell: UITableViewCell, NibReusable {
             let name = original.name.isBlank ? "匿名" : original.name
             originalText.append(NSMutableAttributedString(string: name + "：",
                                                           attributes: [
+                                                            NSFontAttributeName: UIFont.systemFont(ofSize: 12),
                                                             NSForegroundColorAttributeName: HFTheme.TintColor
                 ]))
             
             originalText.append(NSMutableAttributedString(string: original.content,
                                                           attributes: [
+                                                            NSFontAttributeName: UIFont.systemFont(ofSize: 12),
                                                             NSForegroundColorAttributeName: HFTheme.DarkTextColor
                 ]))
         } else {
             originalText = NSMutableAttributedString(string: "表白已被删除", attributes: [
+                NSFontAttributeName: UIFont.systemFont(ofSize: 12),
                 NSForegroundColorAttributeName: HFTheme.DarkTextColor
                 ])
         }
         
+        
         let originalContainer = YYTextContainer(size: CGSize(width: ScreenWidth - 40, height: 100))
+        let originalMod = YYTextLinePositionSimpleModifier()
+        originalMod.fixedLineHeight = 14
+        originalContainer.linePositionModifier = originalMod
         let originalLayout = YYTextLayout(container: originalContainer, text: originalText)!
+        
         
         model.layoutCache["originalLayout"] = originalLayout
         
@@ -110,7 +127,7 @@ class HFMineCommentsTableViewCell: UITableViewCell, NibReusable {
         }
         model.layoutCache["dateAttText"] = att
         
-        Logger.debug("cache \(model.content) \n\(titleLayout.textBoundingSize)")
+        //        Logger.debug("cache \(model.content) \n\(titleLayout.textBoundingSize)")
         return titleLayout.textBoundingSize.height + originalLayout.textBoundingSize.height + 10 + 10 + 8 + 8 + 10 + 14 + 10
     }
 }

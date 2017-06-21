@@ -22,7 +22,11 @@ class HFMineCommentsVC: HFBaseViewController, XibBasedController {
         navTitle = "我的评论"
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.pullDelegate = self
         tableView.registerReusableCell(HFMineCommentsTableViewCell.self)
+        
+        tableView.addRefreshView()
+        tableView.addLoadMoreView()
         
         loadingView = HFLoadingView()
         loadingView?.add(to: self.view)
@@ -49,7 +53,6 @@ class HFMineCommentsVC: HFBaseViewController, XibBasedController {
                     }
                 }
                 completion(models)
-                //                print(json)
         }
     }
 }
@@ -97,7 +100,7 @@ extension HFMineCommentsVC: HFPullTableViewPullDelegate {
     func pullTableViewStartLoadingMore(_ tableView: HFPullTableView) {
         page += 1
         loadData() { (models) in
-            self.models = models
+            self.models += models
             runOnMainThread {
                 self.tableView.reloadData()
                 if models.isEmpty {
@@ -121,6 +124,7 @@ extension HFMineCommentsVC: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(indexPath: indexPath) as HFMineCommentsTableViewCell
         cell.blind(model: models[indexPath.row], indexPath: indexPath)
         cell.delegate = self
+        self.tableView.shouldStartPrefetch(at: indexPath, dataCount: models.count)
         return cell
     }
 }
