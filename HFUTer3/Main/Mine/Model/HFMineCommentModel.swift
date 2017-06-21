@@ -8,7 +8,7 @@
 
 import Foundation
 
-class HFMineCommentModel {
+class HFMineCommentModel: Equatable {
     var id   = 0
     var name = ""
     var date = 0
@@ -16,6 +16,7 @@ class HFMineCommentModel {
     var confession: HFComLoveWallListModel?
     
     
+    var layoutCache = JSON()
     
     init(json: JSONItem) {
         id = json["id"].intValue
@@ -27,5 +28,9 @@ class HFMineCommentModel {
         if data.id != -1 {
             confession = data
         }
+    }
+    
+    static func ==(lhs: HFMineCommentModel, rhs: HFMineCommentModel) -> Bool {
+        return lhs.id == rhs.id
     }
 }

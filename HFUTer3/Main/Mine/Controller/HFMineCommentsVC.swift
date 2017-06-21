@@ -54,6 +54,32 @@ class HFMineCommentsVC: HFBaseViewController, XibBasedController {
     }
 }
 
+extension HFMineCommentsVC: HFMineCommentsTableViewCellDelegate {
+    func onDeleteButtonPressed(model: HFMineCommentModel, indexPath: IndexPath) {
+        let alert = UIAlertController(title: "确认是否删除评论", message: nil, preferredStyle: .alert)
+        let delete = UIAlertAction(title: "删除", style: .default) { (_) in
+            Hud.showLoading()
+            HFAPIRequest.build(api: "api/confession/deleteComment", param: ["id":model.id])
+                .response(callback: { (json, error) in
+                    if let error = error {
+                        Hud.showError(error.decs())
+                    } else {
+                        runOnMainThread {
+                            Hud.dismiss()
+                            self.tableView.beginUpdates()
+                            self.models.removeFirst(model)
+                            self.tableView.deleteRows(at: [indexPath], with: .automatic)
+                            self.tableView.endUpdates()
+                        }
+                    }
+                })
+        }
+        let cancel = UIAlertAction(title: "取消", style: .cancel, handler: nil)
+        alert.addAction(delete)
+        alert.addAction(cancel)
+        self.presentVC(alert)
+    }
+}
 
 extension HFMineCommentsVC: HFPullTableViewPullDelegate {
     func pullTableViewStartRefeshing(_ tableView: HFPullTableView) {
@@ -93,19 +119,29 @@ extension HFMineCommentsVC: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(indexPath: indexPath) as HFMineCommentsTableViewCell
-        cell.blind(model: models[indexPath.row])
+        cell.blind(model: models[indexPath.row], indexPath: indexPath)
+        cell.delegate = self
         return cell
     }
 }
 
 extension HFMineCommentsVC: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let confession = models[indexPath.row].confession {
+            let vc = HFCommunityLoveWallDetailVC.instantiate()
+            vc.mainModel = confession
+            pushVC(vc)
+        }
+    }
+    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return tableView.fd_heightForCell(withIdentifier: HFMineCommentsTableViewCell.reuseIdentifier,
-                                          cacheBy: indexPath,
-                                          configuration: { (cell) in
-                                            if let cell = cell as? HFMineCommentsTableViewCell {
-                                                cell.blind(model: self.models[indexPath.row])
-                                            }
-        })
+        return HFMineCommentsTableViewCell.height(model: models[indexPath.row])
+        //        return tableView.fd_heightForCell(withIdentifier: HFMineCommentsTableViewCell.reuseIdentifier,
+        //                                          cacheBy: indexPath,
+        //                                          configuration: { (cell) in
+        //                                            if let cell = cell as? HFMineCommentsTableViewCell {
+        //                                                cell.blind(model: self.models[indexPath.row])
+        //                                            }
+        //        })
     }
 }
