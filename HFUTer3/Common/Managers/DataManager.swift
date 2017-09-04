@@ -151,12 +151,19 @@ class DataManager {
                 }
         }
         
-        
+        var HFSemesterStartTime = PlistManager.settingsPlist.getValues()?["HFSemesterStartTime"] as? Int ?? 1487520000
+        var XCSemesterStartTime = PlistManager.settingsPlist.getValues()?["XCSemesterStartTime"] as? Int ?? 1487520000
         Pitaya.build(HTTPMethod: .GET, url: SettingInfo)
             .responseJSON { (json, response) in
                 
                 self.allowDonate  = json["allowDonate"].boolValue
                 self.allowDashang  = json["allowDashang"].boolValue
+                
+                
+                if let hf = json["HFSemesterStartTime"].int, let xc = json["XCSemesterStartTime"].int {
+                    PlistManager.settingsPlist.saveValues(["HFSemesterStartTime" : hf])
+                    PlistManager.settingsPlist.saveValues(["XCSemesterStartTime" : xc])
+                }
                 
                 PlistManager.settingsPlist.saveValues(["allowDonate"  : self.allowDonate])
                 PlistManager.settingsPlist.saveValues(["allowDashang" : self.allowDashang])
