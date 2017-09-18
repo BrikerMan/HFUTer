@@ -11,8 +11,6 @@ import Pitaya
 import PromiseKit
 import Gzip
 
-
-
 extension Error {
     var description: String {
         if let error = self as? HFParseError {
@@ -43,7 +41,6 @@ extension Error {
         }
     }
 }
-
 
 enum HFParseServerType: String {
     case jw = "教务系统"

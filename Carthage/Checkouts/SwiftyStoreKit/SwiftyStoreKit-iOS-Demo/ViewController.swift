@@ -62,7 +62,7 @@ class ViewController: UIViewController {
     @IBAction func verifyPurchase2() {
         verifyPurchase(purchase2Suffix)
     }
-
+    
     func getInfo(_ purchase: RegisteredPurchase) {
 
         NetworkActivityIndicatorManager.networkOperationStarted()
@@ -79,10 +79,10 @@ class ViewController: UIViewController {
         SwiftyStoreKit.purchaseProduct(appBundleId + "." + purchase.rawValue, atomically: true) { result in
             NetworkActivityIndicatorManager.networkOperationFinished()
 
-            if case .success(let product) = result {
+            if case .success(let purchase) = result {
                 // Deliver content from server, then:
-                if product.needsFinishTransaction {
-                    SwiftyStoreKit.finishTransaction(product.transaction)
+                if purchase.needsFinishTransaction {
+                    SwiftyStoreKit.finishTransaction(purchase.transaction)
                 }
             }
             if let alert = self.alertForPurchaseResult(result) {
@@ -97,9 +97,9 @@ class ViewController: UIViewController {
         SwiftyStoreKit.restorePurchases(atomically: true) { results in
             NetworkActivityIndicatorManager.networkOperationFinished()
 
-            for product in results.restoredProducts where product.needsFinishTransaction {
+            for purchase in results.restoredPurchases where purchase.needsFinishTransaction {
                 // Deliver content from server, then:
-                SwiftyStoreKit.finishTransaction(product.transaction)
+                SwiftyStoreKit.finishTransaction(purchase.transaction)
             }
             self.showAlert(self.alertForRestorePurchases(results))
         }
@@ -108,25 +108,23 @@ class ViewController: UIViewController {
     @IBAction func verifyReceipt() {
 
         NetworkActivityIndicatorManager.networkOperationStarted()
-		let appleValidator = AppleReceiptValidator(service: .production)
-		SwiftyStoreKit.verifyReceipt(using: appleValidator, password: "your-shared-secret") { result in
+        verifyReceipt { result in
             NetworkActivityIndicatorManager.networkOperationFinished()
-
             self.showAlert(self.alertForVerifyReceipt(result))
-
-            if case .error(let error) = result {
-                if case .noReceiptData = error {
-                    self.refreshReceipt()
-                }
-            }
         }
+    }
+    
+    func verifyReceipt(completion: @escaping (VerifyReceiptResult) -> Void) {
+        
+        let appleValidator = AppleReceiptValidator(service: .production)
+        let password = "your-shared-secret"
+        SwiftyStoreKit.verifyReceipt(using: appleValidator, password: password, completion: completion)
     }
 
     func verifyPurchase(_ purchase: RegisteredPurchase) {
 
         NetworkActivityIndicatorManager.networkOperationStarted()
-		let appleValidator = AppleReceiptValidator(service: .production)
-		SwiftyStoreKit.verifyReceipt(using: appleValidator, password: "your-shared-secret") { result in
+        verifyReceipt { result in
             NetworkActivityIndicatorManager.networkOperationFinished()
 
             switch result {
@@ -159,20 +157,9 @@ class ViewController: UIViewController {
                     self.showAlert(self.alertForVerifyPurchase(purchaseResult))
                 }
 
-            case .error(let error):
+            case .error:
                 self.showAlert(self.alertForVerifyReceipt(result))
-                if case .noReceiptData = error {
-                    self.refreshReceipt()
-                }
             }
-        }
-    }
-
-    func refreshReceipt() {
-
-        SwiftyStoreKit.refreshReceipt { result in
-
-            self.showAlert(self.alertForRefreshReceipt(result))
         }
     }
 
@@ -216,13 +203,13 @@ extension ViewController {
     // swiftlint:disable cyclomatic_complexity
     func alertForPurchaseResult(_ result: PurchaseResult) -> UIAlertController? {
         switch result {
-        case .success(let product):
-            print("Purchase Success: \(product.productId)")
+        case .success(let purchase):
+            print("Purchase Success: \(purchase.productId)")
             return alertWithTitle("Thank You", message: "Purchase completed")
         case .error(let error):
             print("Purchase Failed: \(error)")
             switch error.code {
-            case .unknown: return alertWithTitle("Purchase failed", message: "Unknown error. Please contact support")
+            case .unknown: return alertWithTitle("Purchase failed", message: error.localizedDescription)
             case .clientInvalid: // client is not allowed to issue the request, etc.
                 return alertWithTitle("Purchase failed", message: "Not allowed to make the payment")
             case .paymentCancelled: // user cancelled the request, etc.
@@ -238,18 +225,18 @@ extension ViewController {
             case .cloudServiceNetworkConnectionFailed: // the device could not connect to the nework
                 return alertWithTitle("Purchase failed", message: "Could not connect to the network")
             case .cloudServiceRevoked: // user has revoked permission to use this cloud service
-                return alertWithTitle("Purchase failed", message: "Could service was revoked")
+                return alertWithTitle("Purchase failed", message: "Cloud service was revoked")
             }
         }
     }
 
     func alertForRestorePurchases(_ results: RestoreResults) -> UIAlertController {
 
-        if results.restoreFailedProducts.count > 0 {
-            print("Restore Failed: \(results.restoreFailedProducts)")
+        if results.restoreFailedPurchases.count > 0 {
+            print("Restore Failed: \(results.restoreFailedPurchases)")
             return alertWithTitle("Restore failed", message: "Unknown error. Please contact support")
-        } else if results.restoredProducts.count > 0 {
-            print("Restore Success: \(results.restoredProducts)")
+        } else if results.restoredPurchases.count > 0 {
+            print("Restore Success: \(results.restoredPurchases)")
             return alertWithTitle("Purchases Restored", message: "All purchases have been restored")
         } else {
             print("Nothing to Restore")
@@ -262,14 +249,16 @@ extension ViewController {
         switch result {
         case .success(let receipt):
             print("Verify receipt Success: \(receipt)")
-            return alertWithTitle("Receipt verified", message: "Receipt verified remotly")
+            return alertWithTitle("Receipt verified", message: "Receipt verified remotely")
         case .error(let error):
             print("Verify receipt Failed: \(error)")
             switch error {
-            case .noReceiptData :
-                return alertWithTitle("Receipt verification", message: "No receipt data, application will try to get a new one. Try again.")
+            case .noReceiptData:
+                return alertWithTitle("Receipt verification", message: "No receipt data. Try again.")
+            case .networkError(let error):
+                return alertWithTitle("Receipt verification", message: "Network error while verifying receipt: \(error)")
             default:
-                return alertWithTitle("Receipt verification", message: "Receipt verification failed")
+                return alertWithTitle("Receipt verification", message: "Receipt verification failed: \(error)")
             }
         }
     }
@@ -300,16 +289,4 @@ extension ViewController {
             return alertWithTitle("Not purchased", message: "This product has never been purchased")
         }
     }
-
-    func alertForRefreshReceipt(_ result: RefreshReceiptResult) -> UIAlertController {
-        switch result {
-        case .success(let receiptData):
-            print("Receipt refresh Success: \(receiptData.base64EncodedString)")
-            return alertWithTitle("Receipt refreshed", message: "Receipt refreshed successfully")
-        case .error(let error):
-            print("Receipt refresh Failed: \(error)")
-            return alertWithTitle("Receipt refresh failed", message: "Receipt refresh failed")
-        }
-    }
-
 }

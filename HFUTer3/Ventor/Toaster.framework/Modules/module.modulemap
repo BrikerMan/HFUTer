@@ -7,4 +7,5 @@ framework module Toaster {
 
 module Toaster.Swift {
     header "Toaster-Swift.h"
+    requires objc
 }

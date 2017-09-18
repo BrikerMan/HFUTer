@@ -15,6 +15,7 @@ PODS:
   - AFNetworking/UIKit (3.1.0):
     - AFNetworking/NSURLSession
   - AIFlatSwitch (1.0.2)
+  - Alamofire (4.5.1)
   - AlamofireDomain (4.1)
   - AVOSCloud (4.4.0)
   - CocoaLumberjack/Default (3.1.0)
@@ -28,7 +29,7 @@ PODS:
   - FMDB (2.6.2):
     - FMDB/standard (= 2.6.2)
   - FMDB/standard (2.6.2)
-  - GzipSwift (3.1.4)
+  - GzipSwift (4.0.0-beta.2)
   - HappyDNS (0.3.10)
   - KMPlaceholderTextView (1.3.0)
   - LTMorphingLabel (0.3.0)
@@ -38,6 +39,9 @@ PODS:
     - PromiseKit/Foundation (= 4.2.0)
     - PromiseKit/QuartzCore (= 4.2.0)
     - PromiseKit/UIKit (= 4.2.0)
+  - PromiseKit/Alamofire (4.2.0):
+    - Alamofire (~> 4.0)
+    - PromiseKit/CorePromise
   - PromiseKit/CorePromise (4.2.0)
   - PromiseKit/Foundation (4.2.0):
     - PromiseKit/CorePromise
@@ -79,15 +83,16 @@ DEPENDENCIES:
   - CocoaLumberjack/Swift
   - Crashlytics
   - DZNEmptyDataSet
-  - Eureka
+  - Eureka (from `https://github.com/xmartlabs/Eureka.git`, branch `feature/Xcode9-Swift3_2`)
   - Fabric
   - FMDB
-  - GzipSwift
+  - GzipSwift (from `https://github.com/1024jp/GzipSwift.git`, branch `swift4`)
   - KMPlaceholderTextView
   - LTMorphingLabel (from `https://github.com/lexrus/LTMorphingLabel.git`, branch `swift3`)
   - NVActivityIndicatorView
   - Pitaya (from `https://github.com/johnlui/Pitaya.git`)
   - PromiseKit
+  - PromiseKit/Alamofire
   - Qiniu
   - Reveal-SDK
   - RSKImageCropper (from `https://github.com/BrikerMan/RSKImageCropper.git`)
@@ -105,6 +110,12 @@ DEPENDENCIES:
   - ZYCornerRadius
 
 EXTERNAL SOURCES:
+  Eureka:
+    :branch: feature/Xcode9-Swift3_2
+    :git: https://github.com/xmartlabs/Eureka.git
+  GzipSwift:
+    :branch: swift4
+    :git: https://github.com/1024jp/GzipSwift.git
   LTMorphingLabel:
     :branch: swift3
     :git: https://github.com/lexrus/LTMorphingLabel.git
@@ -116,6 +127,12 @@ EXTERNAL SOURCES:
     :git: https://github.com/BrikerMan/YYText.git
 
 CHECKOUT OPTIONS:
+  Eureka:
+    :commit: 170433bedb6db4228da60eb6c866156b6b29e666
+    :git: https://github.com/xmartlabs/Eureka.git
+  GzipSwift:
+    :commit: 72e16b884600b98ac77a871daecaea34aec87f8e
+    :git: https://github.com/1024jp/GzipSwift.git
   LTMorphingLabel:
     :commit: 93c60bb1626aa96dbd5e899c82e280d7a785315d
     :git: https://github.com/lexrus/LTMorphingLabel.git
@@ -132,15 +149,16 @@ CHECKOUT OPTIONS:
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   AIFlatSwitch: 5ab22806eeff3e09d585c2f13d22bfa6e3427191
+  Alamofire: 2d95912bf4c34f164fdfc335872e8c312acaea4a
   AlamofireDomain: 6a17c975e5fe8c10d8dbfdb1ab28e6dd0ae7cd41
   AVOSCloud: c2cbba727f10776c995108d7e8fd3142d703ebaa
   CocoaLumberjack: 8311463ddf9ee86a06ef92a071dd656c89244500
   Crashlytics: 79e236942ca1e7fc641df1feb9a275360a78ab6a
   DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
-  Eureka: f36fd440c3ebb7bfea0a4fbe6f16a05f1cb35906
+  Eureka: 5b9418d7bfdc21ca977d69d124a6409f3e9af2c7
   Fabric: 5911403591946b8228ab1c51d98f1d7137e863c6
   FMDB: 854a0341b4726e53276f2a8996f06f1b80f9259a
-  GzipSwift: 11ddb2bf253b1cd7b60bb169da20f62ac4348769
+  GzipSwift: 502e99b339a441575d762ba234e10250bc491d29
   HappyDNS: 06a9fed2796663fd87626dbf02552933265bf059
   KMPlaceholderTextView: 2bbcd19a273648a80a61e1e48f9743a24d8930e3
   LTMorphingLabel: 2777d8d9cb699125f48dfcd95d78bd3d77c87ade
@@ -165,6 +183,6 @@ SPEC CHECKSUMS:
   YYWebImage: 5f7f36aee2ae293f016d418c7d6ba05c4863e928
   ZYCornerRadius: f0af817be7805b5c63d793042ca7a03f81e14069
 
-PODFILE CHECKSUM: 584fc2fdb7161410db0a1d4333162ea31dcc6f68
+PODFILE CHECKSUM: 4f99bec0c300bebe513f016aaeeca8e3a288e619
 
-COCOAPODS: 1.2.1
+COCOAPODS: 1.3.1

@@ -19,7 +19,7 @@ target 'HFUTer3' do
     
     # TableView
     pod 'UITableView+FDTemplateLayoutCell_Bell' ##优化UITableViewCell高度计算
-    pod 'Eureka' #, '~> 2.0.0-beta.1'             ## 优秀的TableView封装
+    pod 'Eureka' , :git => 'https://github.com/xmartlabs/Eureka.git', :branch => 'feature/Xcode9-Swift3_2'
     pod 'DZNEmptyDataSet'                       ## 空数据展示
     
     # 动画
@@ -28,6 +28,8 @@ target 'HFUTer3' do
     pod 'LTMorphingLabel', :git => 'https://github.com/lexrus/LTMorphingLabel.git', :branch => 'swift3'
     
     # 网络
+#    pod 'Alamofire', '~> 4.5'
+    pod 'PromiseKit/Alamofire'
     pod 'AlamofireDomain', '~> 4.0'         ## 牛逼的网络请求库
     pod 'KMPlaceholderTextView'             ## 带Placeholder的TextView
     pod 'Pitaya', :git => 'https://github.com/johnlui/Pitaya.git'
@@ -36,10 +38,11 @@ target 'HFUTer3' do
     # 数据
     pod 'YYModel'                           ## Dic or Json -> Model
     pod 'Qiniu'
-    pod 'GzipSwift'
+    pod 'GzipSwift', :git => 'https://github.com/1024jp/GzipSwift.git', :branch => 'swift4'
     pod 'FMDB'
     pod 'AVOSCloud'
     pod 'PromiseKit'
+    
     
     # 统计
     pod 'Fabric'

@@ -906,7 +906,6 @@ Let us know about it, we would be glad to mention it here. :)
 Specify Eureka into your project's `Podfile`:
 
 ```ruby
-source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '9.0'
 use_frameworks!
 
@@ -1021,8 +1020,6 @@ Look at this [issue](https://github.com/xmartlabs/Eureka/issues/96).
 * Set up a new header/footer data ....
 
 ```swift
-section.header = "Header Title" // use string literal as a header/footer data. HeaderFooterView conforms to ExpressibleByStringLiteral.
-//or
 section.header = HeaderFooterView(title: "Header title \(variable)") // use String interpolation
 //or
 var header = HeaderFooterView<UIView>(.class) // most flexible way to set up a header using any view type

@@ -70,7 +70,7 @@ public final class Form {
     /**
      Returns the row whose tag is passed as parameter. Uses a dictionary to get the row faster
      */
-    public func rowBy<T: Equatable>(tag: String) -> RowOf<T>? {
+    public func rowBy<T>(tag: String) -> RowOf<T>? where T: Equatable{
         let row: BaseRow? = rowBy(tag: tag)
         return row as? RowOf<T>
     }
@@ -78,7 +78,7 @@ public final class Form {
     /**
      Returns the row whose tag is passed as parameter. Uses a dictionary to get the row faster
      */
-    public func rowBy<Row: RowType>(tag: String) -> Row? {
+    public func rowBy<Row>(tag: String) -> Row? where Row: RowType{
         let row: BaseRow? = rowBy(tag: tag)
         return row as? Row
     }
@@ -172,7 +172,24 @@ extension Form: MutableCollection {
 
     public subscript (_ position: Int) -> Section {
         get { return kvoWrapper.sections[position] as! Section }
-        set { kvoWrapper.sections[position] = newValue }
+        set {
+            if position > kvoWrapper.sections.count {
+                assertionFailure("Form: Index out of bounds")
+            }
+
+            if position < kvoWrapper.sections.count {
+                let oldSection = kvoWrapper.sections[position]
+                let oldSectionIndex = kvoWrapper._allSections.index(of: oldSection as! Section)!
+                // Remove the previous section from the form
+                kvoWrapper._allSections[oldSectionIndex].willBeRemovedFromForm()
+                kvoWrapper._allSections[oldSectionIndex] = newValue
+            } else {
+                kvoWrapper._allSections.append(newValue)
+            }
+
+            kvoWrapper.sections[position] = newValue
+            newValue.wasAddedTo(form: self)
+        }
     }
     public func index(after i: Int) -> Int {
         return i+1 <= endIndex ? i+1 : endIndex

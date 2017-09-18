@@ -36,8 +36,8 @@ protocol TransactionController {
 }
 
 public enum TransactionResult {
-    case purchased(product: Product)
-    case restored(product: Product)
+    case purchased(purchase: PurchaseDetails)
+    case restored(purchase: Purchase)
     case failed(error: SKError)
 }
 
@@ -108,6 +108,7 @@ class PaymentQueueController: NSObject, SKPaymentTransactionObserver {
 
         let skPayment = SKMutablePayment(product: payment.product)
         skPayment.applicationUsername = payment.applicationUsername
+        skPayment.quantity = payment.quantity
         paymentQueue.add(skPayment)
 
         paymentsController.append(payment)
@@ -141,6 +142,8 @@ class PaymentQueueController: NSObject, SKPaymentTransactionObserver {
         }
         paymentQueue.finishTransaction(skTransaction)
     }
+    
+    var shouldAddStorePaymentHandler: ShouldAddStorePaymentHandler?
 
     // MARK: SKPaymentTransactionObserver
     func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
@@ -166,16 +169,20 @@ class PaymentQueueController: NSObject, SKPaymentTransactionObserver {
          * 3. complete transactions (transactionState: .purchased, .failed, .restored, .deferred)
          * Any transactions where state == .purchasing are ignored.
          */
-        var unhandledTransactions = paymentsController.processTransactions(transactions, on: paymentQueue)
-
-        unhandledTransactions = restorePurchasesController.processTransactions(unhandledTransactions, on: paymentQueue)
-
-        unhandledTransactions = completeTransactionsController.processTransactions(unhandledTransactions, on: paymentQueue)
-
-        unhandledTransactions = unhandledTransactions.filter { $0.transactionState != .purchasing }
+        var unhandledTransactions = transactions.filter { $0.transactionState != .purchasing }
+        
         if unhandledTransactions.count > 0 {
-            let strings = unhandledTransactions.map { $0.debugDescription }.joined(separator: "\n")
-            print("unhandledTransactions:\n\(strings)")
+        
+            unhandledTransactions = paymentsController.processTransactions(transactions, on: paymentQueue)
+
+            unhandledTransactions = restorePurchasesController.processTransactions(unhandledTransactions, on: paymentQueue)
+
+            unhandledTransactions = completeTransactionsController.processTransactions(unhandledTransactions, on: paymentQueue)
+
+            if unhandledTransactions.count > 0 {
+                let strings = unhandledTransactions.map { $0.debugDescription }.joined(separator: "\n")
+                print("unhandledTransactions:\n\(strings)")
+            }
         }
     }
 
@@ -197,4 +204,8 @@ class PaymentQueueController: NSObject, SKPaymentTransactionObserver {
 
     }
 
+    func paymentQueue(_ queue: SKPaymentQueue, shouldAddStorePayment payment: SKPayment, for product: SKProduct) -> Bool {
+        
+        return shouldAddStorePaymentHandler?(payment, product) ?? false
+    }
 }
