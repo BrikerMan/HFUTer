@@ -83,7 +83,7 @@ extension DDTTYLogger {
         // TTY Logging, Needs to install XcodeColors && KZLinkedConsole
         setenv("XcodeColors", "YES", 0)
         let logger = DDTTYLogger.sharedInstance
-        logger?.setXcodeColors()
+//        logger?.setXcodeColors()
         logger?.logFormatter = CustomLogFormatter()
         DDLog.add(logger!)
         
@@ -92,9 +92,6 @@ extension DDTTYLogger {
         fileLogger?.maximumFileSize = 1024 * 4
         
         DDLog.add(fileLogger!)
-        
-        
-        
     }
     
     func setXcodeColors() {

@@ -9,9 +9,12 @@
 import Foundation
 
 
+
+
+
 class DataManager {
     static let shared = DataManager()
-    
+    var HFSemesterStartTime = PlistManager.settingsPlist.getValues()?["HFSemesterStartTime"] as? Int ?? 1487520000
     let dayNames = ["星期一", "星期二", "星期三", "星期四", "星期五", "星期六", "星期日", "星期一"]
     
     func getHeaderString(_ isToday: Bool = true) -> String {
@@ -31,7 +34,7 @@ class DataManager {
      这次两边开学时间一致，没做区分计算
      */
     func calculateCurrentWeek() -> Int {
-        let from = TimeInterval(1487520000)
+        let from = TimeInterval(HFSemesterStartTime)
         let now = (Date().timeIntervalSince1970)
         var week = Int((now - from)/(7 * 24 * 3600)) + 1
         if week < 0 {

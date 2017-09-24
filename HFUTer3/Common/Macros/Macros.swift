@@ -21,8 +21,8 @@ let ServerInfoFile  = "https://coding.net/u/Haidy/p/HfuterSettings/git/raw/maste
 var APIBaseURL      = "http://wehfut.duapp.com"
 let SettingInfo     = "https://coding.net/u/eliyar917/p/HFUTer-Settings/git/raw/master/setting"
 
-var HFSemesterStartTime = 1487520000
-var XCSemesterStartTime = 1487520000
+var HFSemesterStartTime = PlistManager.settingsPlist.getValues()?["HFSemesterStartTime"] as? Int ?? 1487520000
+var XCSemesterStartTime = PlistManager.settingsPlist.getValues()?["XCSemesterStartTime"] as? Int ?? 1487520000
 
 let JSPatchAppKey   = "b8f87fcd146b9bc8"
 let JPushAppKey     = "c7031180612e5564f89cca6e"

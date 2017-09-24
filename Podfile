@@ -20,6 +20,7 @@ target 'HFUTer3' do
     # TableView
     pod 'UITableView+FDTemplateLayoutCell_Bell' ##优化UITableViewCell高度计算
     pod 'Eureka' , :git => 'https://github.com/xmartlabs/Eureka.git', :branch => 'feature/Xcode9-Swift3_2'
+    pod 'Kanna', '~> 2.1.0'
     pod 'DZNEmptyDataSet'                       ## 空数据展示
     
     # 动画

@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '527E1949B5CE9E099FD9F6D084EC0054'
+               BlueprintIdentifier = '83888E650C724F186772D269BE495C5C'
                BlueprintName = 'SwipeBack'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'SwipeBack.framework'>

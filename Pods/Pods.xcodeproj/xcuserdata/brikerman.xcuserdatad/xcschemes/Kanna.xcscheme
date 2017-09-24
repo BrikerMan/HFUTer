@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '51DB1F903D23D23F4E0B92304FE88B47'
-               BlueprintName = 'ZYCornerRadius'
+               BlueprintIdentifier = '4D10E4FF5A483B852B47CCA0B994E340'
+               BlueprintName = 'Kanna'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'ZYCornerRadius.framework'>
+               BuildableName = 'Kanna.framework'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
