@@ -32,7 +32,7 @@ class HFEducationURLs {
     var score: String {
         return host() + "/student/asp/Select_Success.asp"
     }
-        
+    /// 合肥 0 宣城 1
     var school = 0
     
     let hfhost = "http://bkjw.hfut.edu.cn"

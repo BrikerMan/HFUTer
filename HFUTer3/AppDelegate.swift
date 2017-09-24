@@ -17,7 +17,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   
   var window: UIWindow?
   
-  var model = HFNewParserViewModel()
   
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
     Logger.invoke()
@@ -36,9 +35,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     window?.rootViewController = rootNavController
     window?.makeKeyAndVisible()
     window?.tintColor = HFTheme.TintColor
-    delay(seconds: 3) {
-      self.model.login()
-    }
     
     if #available(iOS 9.1, *) {
       if DataEnv.isLogin {

@@ -127,54 +127,60 @@ class HFNewParserViewModel {
   var timeTableJson = JSONItem()
   var datumJson = JSONItem()
   
-  func login() {
-    Alamofire.request(kURL.salt).promiseString()
-      .then { salt -> Promise<JSONItem> in
-        print("== Get salt success ==")
-        return self.login_with_id(id: "2014213893", pass: "280017", salt: salt)
-        
-      }.then { json -> Promise<String> in
-        print("== login_with_id success ==")
-        return self.getCourceTable()
-        
-      }.then { html -> Promise<JSONItem> in
-        if let doc = HTML(html: html, encoding: .utf8) {
-          for link in doc.css("option[selected=selected]") {
-            if let v = link["value"] {
-              self.semesterId = v
+  func fetchData(id: String, pass: String) -> Promise<JSONItem> {
+    return Promise<JSONItem> { fullfill, reject in
+      Alamofire.request(kURL.salt).promiseString()
+        .then { salt -> Promise<JSONItem> in
+          print("== Get salt success ==")
+          Logger.debug("获取 salt 成功")
+          return self.login_with_id(id: id, pass: pass, salt: salt)
+          
+        }.then { json -> Promise<String> in
+          Logger.debug("登录新教务成功")
+          return self.getCourceTable()
+          
+        }.then { html -> Promise<JSONItem> in
+          if let doc = HTML(html: html, encoding: .utf8) {
+            for link in doc.css("option[selected=selected]") {
+              if let v = link["value"] {
+                self.semesterId = v
+              }
             }
           }
-        }
-        let url = kURL.get_data + "?bizTypeId=\(self.bizTypeId)&semesterId=\(self.semesterId)&dataId=\(self.dataId)"
-        return Alamofire.request(url).promiseJSON()
-        
-      }.then { json  -> Promise<JSONItem> in
-        self.getDataJson = json
-        
-        let params: JSON = [
-          "timeTableLayoutId": self.getDataJson["timeTableLayoutId"].intValue
-        ]
-        return Alamofire.request(kURL.timetable_layout, method: .post, parameters: params, encoding: JSONEncoding.default).promiseJSON()
-      }.then { json  -> Promise<JSONItem> in
-        
-        self.timeTableJson = json["result"]
-        var lessonIds = [Int]()
-        for item in self.getDataJson["lessonIds"].arrayValue {
-          lessonIds.append(item.intValue)
-        }
-        let params: JSON = [
-          "lessonIds": lessonIds,
-          "studentId": self.dataId
-        ]
-        return Alamofire.request(kURL.datum, method: .post, parameters: params, encoding: JSONEncoding.default).promiseJSON()
-        
-      }.then { json  -> Void in
-        self.datumJson = json["result"]
-        let result = self.createNewCourseData()
-        let array = result.map { $0.toDict() }
-        print(JSONItem(array: array).RAWValue)
-      }.catch { error in
-        print(error.localizedDescription)
+          let url = kURL.get_data + "?bizTypeId=\(self.bizTypeId)&semesterId=\(self.semesterId)&dataId=\(self.dataId)"
+          return Alamofire.request(url).promiseJSON()
+          
+        }.then { json  -> Promise<JSONItem> in
+          self.getDataJson = json
+          
+          let params: JSON = [
+            "timeTableLayoutId": self.getDataJson["timeTableLayoutId"].intValue
+          ]
+          return Alamofire.request(kURL.timetable_layout, method: .post, parameters: params, encoding: JSONEncoding.default).promiseJSON()
+        }.then { json  -> Promise<JSONItem> in
+          
+          self.timeTableJson = json["result"]
+          var lessonIds = [Int]()
+          for item in self.getDataJson["lessonIds"].arrayValue {
+            lessonIds.append(item.intValue)
+          }
+          let params: JSON = [
+            "lessonIds": lessonIds,
+            "studentId": self.dataId
+          ]
+          return Alamofire.request(kURL.datum, method: .post, parameters: params, encoding: JSONEncoding.default).promiseJSON()
+          
+        }.then { json  -> Void in
+          Logger.debug("获取全部数据成功，开始拼接")
+          self.datumJson = json["result"]
+          let result = self.createNewCourseData()
+          let array = result.map { $0.toDict() }
+          let jsonItem = JSONItem(array: array)
+          fullfill(jsonItem)
+        }.catch { error in
+          Logger.error(error.localizedDescription)
+          reject(error)
+      }
     }
   }
   
@@ -208,17 +214,18 @@ class HFNewParserViewModel {
       
       var placeText = ""
       if let roomName = schedule.json["room"]["nameZh"].string {
-        if let  campus = schedule.json["room"]["building"]["nameZh"].string {
-          placeText = campus + " " + roomName
-        } else {
-          placeText = roomName
-        }
+//        if let campus = schedule.json["room"]["building"]["campus"].string {
+//          placeText = campus + " " + roomName
+//        } else {
+//          placeText = roomName
+//        }
+        placeText = roomName
       }
       
       let lesson = lessonItemHashMap[schedule.json["lessonId"].intValue]!
       let courseData = CourseData(lesson: lesson, place: placeText, week: [])
       
-      for i in schedule.startIndex..<schedule.endIndex {
+      for i in schedule.startIndex...schedule.endIndex {
         var contains = false
         if let weekday = schedule.json["weekday"].int {
           let courses = dayCoursesList[weekday-1].dayCourseList[i]
