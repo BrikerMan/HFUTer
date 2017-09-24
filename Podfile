@@ -26,7 +26,7 @@ target 'HFUTer3' do
     # 动画
     pod 'NVActivityIndicatorView'
     pod 'SwipeBack'
-    pod 'LTMorphingLabel', :git => 'https://github.com/lexrus/LTMorphingLabel.git', :branch => 'swift3'
+    pod 'LTMorphingLabel'
     
     # 网络
 #    pod 'Alamofire', '~> 4.5'
@@ -34,7 +34,7 @@ target 'HFUTer3' do
     pod 'AlamofireDomain', '~> 4.0'         ## 牛逼的网络请求库
     pod 'KMPlaceholderTextView'             ## 带Placeholder的TextView
     pod 'Pitaya', :git => 'https://github.com/johnlui/Pitaya.git'
-    pod 'RxSwift',    '~> 3.0'
+    pod 'RxSwift', '~> 3.0'
     
     # 数据
     pod 'YYModel'                           ## Dic or Json -> Model
@@ -52,7 +52,7 @@ target 'HFUTer3' do
     pod 'CocoaLumberjack/Swift'
     
     # 调试
-    pod 'Reveal-SDK', :configurations => ['Debug']
+    pod 'Reveal-SDK', '~> 11', :configurations => ['Debug']
     
 end
 

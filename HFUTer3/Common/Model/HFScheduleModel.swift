@@ -41,10 +41,10 @@ class HFScheduleModel: SQLiteCachable {
     }
     
     required init(row: FMResultSet) {
-        self.id        = row.string(forColumn : "id")
-        self.name      = row.string(forColumn : "name")
-        self.colorName = row.string(forColumn : "colorName")
-        self.place     = row.string(forColumn : "place")
+        self.id        = row.string(forColumn : "id") ?? ""
+        self.name      = row.string(forColumn : "name") ?? ""
+        self.colorName = row.string(forColumn : "colorName") ?? ""
+        self.place     = row.string(forColumn : "place") ?? ""
         
         self.isHidden    = row.bool(forColumn : "isHidden")
         self.isUserAdded = row.bool(forColumn : "isUserAdded")

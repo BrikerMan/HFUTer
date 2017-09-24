@@ -41,11 +41,11 @@ class DatabaseManager {
         let statement = item.insertSQLStatement(tableName: to.rawValue)
         databaseQueue.inTransaction { db, rollback in
             do {
-                try db?.executeUpdate(statement.sql, values: statement.values)
+                try db.executeUpdate(statement.sql, values: statement.values)
                 Logger.debug("\(item) inserted to \(to.rawValue) table")
                 completion?(true)
             } catch {
-                rollback?.pointee = true
+                rollback.pointee = true
                 Logger.error(error.localizedDescription)
                 completion?(false)
             }
@@ -60,7 +60,7 @@ class DatabaseManager {
         let statement =  "DELETE from \(from.rawValue) where id in ('\(id.joined(separator: "','"))');"
         databaseQueue.inTransaction { db, rollback in
             do {
-                try db?.executeUpdate(statement, values: [])
+                try db.executeUpdate(statement, values: [])
                 Logger.debug("executed | \(statement)")
             } catch {
                 Logger.error("DELETE from \(from.rawValue) where id in (\(id.joined(separator: ","))); failed \(error.localizedDescription)")
@@ -74,7 +74,7 @@ class DatabaseManager {
      */
     func read<T:SQLiteCachable>(from: HFBDTable, type: T.Type, filter: String? = nil) -> [T] {
         var models: [T] = []
-        let db = FMDatabase(path: dbPath)!
+        let db = FMDatabase(path: dbPath)
         db.open()
         
         var sql = "SELECT * FROM \(from.rawValue)"
@@ -91,7 +91,7 @@ class DatabaseManager {
     }
     
     func count(from: HFBDTable, filter: String? = nil) -> Int {
-        let db = FMDatabase(path: dbPath)!
+        let db = FMDatabase(path: dbPath)
         db.open()
         
         var sql = "Select COUNT(*) as count from \(from.rawValue)"
@@ -110,7 +110,7 @@ class DatabaseManager {
     }
     
     func execute(sql: String) {
-        let db = FMDatabase(path: dbPath)!
+        let db = FMDatabase(path: dbPath)
         db.open()
         do {
             try db.executeUpdate(sql: sql)
@@ -126,11 +126,8 @@ class DatabaseManager {
     }
     
     init() {
-        guard let database = FMDatabase(path: dbPath) else {
-            Logger.error("unable to create database")
-            return
-        }
-        
+        let database = FMDatabase(path: dbPath)
+      
         guard database.open() else {
             Logger.error("Unable to open database")
             return

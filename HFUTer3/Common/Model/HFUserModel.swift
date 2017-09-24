@@ -36,8 +36,9 @@ class HFUserModel: HFBaseModel {
   var password = ""
   
   var status_new_jwxt: Bool {
-    return {
-      return PlistManager.userDataPlist.value["newPwdIMS"].string != nil
+    get {
+      let newPwdIMS = PlistManager.userDataPlist.value["newPwdIMS"].string
+      return newPwdIMS != nil
     }
   }
   

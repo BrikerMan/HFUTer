@@ -3,7 +3,7 @@
 //  https://github.com/lexrus/LTMorphingLabel
 //
 //  The MIT License (MIT)
-//  Copyright (c) 2016 Lex Tang, http://lexrus.com
+//  Copyright (c) 2017 Lex Tang, http://lexrus.com
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a
 //  copy of this software and associated documentation files
@@ -26,7 +26,6 @@
 //
 
 import UIKit
-
 
 extension LTMorphingLabel {
     
@@ -81,7 +80,6 @@ extension LTMorphingLabel {
             )
         }
         
-        
         drawingClosures["Fall\(LTMorphingPhases.draw)"] = {
             limbo in
             
@@ -103,7 +101,7 @@ extension LTMorphingLabel {
                             0.5
                         )
                     )
-                    charBottomY = charBottomY + ease * 10.0
+                    charBottomY += ease * 10.0
                     let fadeOutAlpha = min(
                         1.0,
                         max(
@@ -132,7 +130,7 @@ extension LTMorphingLabel {
                         1.0
                     ) * angle
                 )
-                context!.rotate(by: rotation * CGFloat(M_PI) / 180.0)
+                context!.rotate(by: rotation * CGFloat(Double.pi) / 180.0)
                 let s = String(limbo.char)
                 let attributes: [String: Any] = [
                     NSFontAttributeName: self.font.withSize(limbo.size),

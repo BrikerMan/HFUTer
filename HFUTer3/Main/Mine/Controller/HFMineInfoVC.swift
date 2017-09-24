@@ -11,6 +11,7 @@ import Qiniu
 import YYImage
 
 class HFMineInfoVC: HFBaseViewController {
+  var parser = HFNewParserViewModel()
   
   @IBOutlet weak var tableView: UITableView!
   
@@ -89,6 +90,21 @@ extension HFMineInfoVC: HFTextFieldAlertControllerDelegate {
     case .bindJWXT:
       request.bindWithData(1, password: text)
       AnalyseManager.BindJWXT.record()
+    case .bindNewJW:
+      self.parser.login(id: DataEnv.user!.sid, pass: text)
+        .then { json -> Void in
+          print(json)
+          if json["result"].boolValue {
+            PlistManager.userDataPlist.save(["newPwdIMS": text])
+            hud.showMassage("绑定成功")
+            self.tableView.reloadData()
+          } else {
+            HFToast.showError(json["message"].stringValue)
+          }
+        }.catch { error in
+          HFToast.showError("密码错误，请重试")
+      }
+      
     case .bindXXMH:
       request.bindWithData(0, password: text)
       AnalyseManager.BindXXMH.record()
@@ -202,7 +218,7 @@ extension HFMineInfoVC: UITableViewDataSource {
 }
 
 extension HFMineInfoVC: UITableViewDelegate {
-
+  
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     switch (indexPath.section,indexPath.row) {
     // 点击头像
@@ -224,7 +240,15 @@ extension HFMineInfoVC: UITableViewDelegate {
       }
       let alertController = HFTextFieldAlertController(title: title, message: message, preferredStyle: UIAlertControllerStyle.alert)
       alertController.delegate = self
-      alertController.type = indexPath.row == 0 ? HFTextFieldAlertType.bindJWXT : .bindXXMH
+      switch indexPath.row {
+      case 0:
+        alertController.type = HFTextFieldAlertType.bindJWXT
+      case 1:
+        alertController.type = HFTextFieldAlertType.bindNewJW
+      default:
+        alertController.type = HFTextFieldAlertType.bindXXMH
+      }
+      
       alertController.addConrimButtonAndTextField(confermTitle: "确认")
       self.present(alertController, animated: true, completion: nil)
     // 点击修改邮箱

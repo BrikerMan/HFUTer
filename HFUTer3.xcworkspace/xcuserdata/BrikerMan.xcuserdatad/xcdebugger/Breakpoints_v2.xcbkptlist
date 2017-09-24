@@ -21,5 +21,245 @@
             continueAfterRunningActions = "No">
          </BreakpointContent>
       </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "HFUTer3/Main/Home/Controller/HFHomeVC.swift"
+            timestampString = "527943728.271372"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "73"
+            endingLineNumber = "73"
+            landmarkName = "loadSchedule()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "HFUTer3/Main/Home/Controller/HFHomeVC.swift"
+            timestampString = "527943728.271445"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "78"
+            endingLineNumber = "78"
+            landmarkName = "loadSchedule()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Array&lt;HFUTer3.HFScheduleModel&gt;, Swift.Optional&lt;Swift.String&gt;) -&gt; () in HFUTer3.HFHomeVC.loadSchedule() -&gt; ()"
+                  moduleName = "HFUTer3"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/brikerman/Desktop/projects/iOS/Apps/HFUTer/HFUTer4/HFUTer3/Main/Home/Controller/HFHomeVC.swift"
+                  timestampString = "527942704.493791"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "78"
+                  endingLineNumber = "78"
+                  offsetFromSymbolStart = "376">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; () in closure #1 (Swift.Array&lt;HFUTer3.HFScheduleModel&gt;, Swift.Optional&lt;Swift.String&gt;) -&gt; () in HFUTer3.HFHomeVC.loadSchedule() -&gt; ()"
+                  moduleName = "HFUTer3"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/brikerman/Desktop/projects/iOS/Apps/HFUTer/HFUTer4/HFUTer3/Main/Home/Controller/HFHomeVC.swift"
+                  timestampString = "527942704.495806"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "79"
+                  endingLineNumber = "79"
+                  offsetFromSymbolStart = "25">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "HFUTer3/Main/Home/Controller/HFHomeVC.swift"
+            timestampString = "527943728.271495"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "80"
+            endingLineNumber = "80"
+            landmarkName = "loadSchedule()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "HFUTer3/Main/Home/Controller/HFHomeVC.swift"
+            timestampString = "527943728.271537"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "79"
+            endingLineNumber = "79"
+            landmarkName = "loadSchedule()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "HFUTer3/Main/Home/Controller/HFHomeVC.swift"
+            timestampString = "527943728.271577"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "75"
+            endingLineNumber = "75"
+            landmarkName = "loadSchedule()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "HFUTer3/Common/Model/HFScheduleModel.swift"
+            timestampString = "527943728.27162"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "83"
+            endingLineNumber = "83"
+            landmarkName = "check()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "HFUTer3/Common/Model/HFScheduleModel.swift"
+            timestampString = "527943728.271663"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "84"
+            endingLineNumber = "84"
+            landmarkName = "check()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (() -&gt; (), (Swift.Error) -&gt; ()) -&gt; () in static HFUTer3.HFScheduleModel.check() -&gt; PromiseKit.Promise&lt;()&gt;"
+                  moduleName = "HFUTer3"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/brikerman/Desktop/projects/iOS/Apps/HFUTer/HFUTer4/HFUTer3/Common/Model/HFScheduleModel.swift"
+                  timestampString = "527942726.314373"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "84"
+                  endingLineNumber = "84"
+                  offsetFromSymbolStart = "196">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "implicit closure #1 : @autoclosure () -&gt; Swift.String in closure #1 (() -&gt; (), (Swift.Error) -&gt; ()) -&gt; () in static HFUTer3.HFScheduleModel.check() -&gt; PromiseKit.Promise&lt;()&gt;"
+                  moduleName = "HFUTer3"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/brikerman/Desktop/projects/iOS/Apps/HFUTer/HFUTer4/HFUTer3/Common/Model/HFScheduleModel.swift"
+                  timestampString = "527942726.316762"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "84"
+                  endingLineNumber = "84"
+                  offsetFromSymbolStart = "4">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "HFUTer3/Common/Model/HFScheduleModel.swift"
+            timestampString = "527943728.271734"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "87"
+            endingLineNumber = "87"
+            landmarkName = "check()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (() -&gt; (), (Swift.Error) -&gt; ()) -&gt; () in static HFUTer3.HFScheduleModel.check() -&gt; PromiseKit.Promise&lt;()&gt;"
+                  moduleName = "HFUTer3"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/brikerman/Desktop/projects/iOS/Apps/HFUTer/HFUTer4/HFUTer3/Common/Model/HFScheduleModel.swift"
+                  timestampString = "527942793.354793"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "87"
+                  endingLineNumber = "87"
+                  offsetFromSymbolStart = "630">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "implicit closure #2 : @autoclosure () -&gt; Swift.String in closure #1 (() -&gt; (), (Swift.Error) -&gt; ()) -&gt; () in static HFUTer3.HFScheduleModel.check() -&gt; PromiseKit.Promise&lt;()&gt;"
+                  moduleName = "HFUTer3"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/brikerman/Desktop/projects/iOS/Apps/HFUTer/HFUTer4/HFUTer3/Common/Model/HFScheduleModel.swift"
+                  timestampString = "527942793.358663"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "87"
+                  endingLineNumber = "87"
+                  offsetFromSymbolStart = "4">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "HFUTer3/Main/Home/HFParseViewModel.swift"
+            timestampString = "527943728.27178"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "177"
+            endingLineNumber = "177"
+            landmarkName = "fetchScheduleFromServer()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
    </Breakpoints>
 </Bucket>

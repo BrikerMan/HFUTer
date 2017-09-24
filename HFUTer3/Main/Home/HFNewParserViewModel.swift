@@ -127,15 +127,25 @@ class HFNewParserViewModel {
   var timeTableJson = JSONItem()
   var datumJson = JSONItem()
   
-  func fetchData(id: String, pass: String) -> Promise<JSONItem> {
+  func login(id: String, pass: String) -> Promise<JSONItem> {
     return Promise<JSONItem> { fullfill, reject in
       Alamofire.request(kURL.salt).promiseString()
         .then { salt -> Promise<JSONItem> in
-          print("== Get salt success ==")
           Logger.debug("获取 salt 成功")
           return self.login_with_id(id: id, pass: pass, salt: salt)
-          
-        }.then { json -> Promise<String> in
+        }.then { json in
+          fullfill(json)
+        }.catch { error in
+          reject(error)
+      }
+    }
+  }
+  
+  
+  func fetchData(id: String, pass: String) -> Promise<JSONItem> {
+    return Promise<JSONItem> { fullfill, reject in
+      self.login(id: id, pass: pass)
+        .then { json -> Promise<String> in
           Logger.debug("登录新教务成功")
           return self.getCourceTable()
           
@@ -214,12 +224,17 @@ class HFNewParserViewModel {
       
       var placeText = ""
       if let roomName = schedule.json["room"]["nameZh"].string {
-//        if let campus = schedule.json["room"]["building"]["campus"].string {
-//          placeText = campus + " " + roomName
-//        } else {
-//          placeText = roomName
-//        }
+        //        if let campus = schedule.json["room"]["building"]["campus"].string {
+        //          placeText = campus + " " + roomName
+        //        } else {
+        //          placeText = roomName
+        //        }
         placeText = roomName
+        
+        if placeText.characters.last == "*" {
+          let chars = String(placeText.characters.dropLast())
+          placeText = String(chars)
+        }
       }
       
       let lesson = lessonItemHashMap[schedule.json["lessonId"].intValue]!

@@ -3,7 +3,7 @@
 //  https://github.com/lexrus/LTMorphingLabel
 //
 //  The MIT License (MIT)
-//  Copyright (c) 2016 Lex Tang, http://lexrus.com
+//  Copyright (c) 2017 Lex Tang, http://lexrus.com
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a
 //  copy of this software and associated documentation files 
@@ -26,7 +26,6 @@
 //
 
 import UIKit
-
 
 extension LTMorphingLabel {
     
@@ -54,7 +53,9 @@ extension LTMorphingLabel {
                 NSFontAttributeName: self.font,
                 NSForegroundColorAttributeName: self.textColor
                 ])
-            let newImage = UIGraphicsGetImageFromCurrentImageContext()
+            guard let newImage = UIGraphicsGetImageFromCurrentImageContext() else {
+                return (UIImage(), CGRect.zero)
+            }
             UIGraphicsEndImageContext()
             let newRect = CGRect(
                 x: charLimbo.rect.origin.x,
@@ -62,7 +63,7 @@ extension LTMorphingLabel {
                 width: charLimbo.rect.size.width,
                 height: maskedHeight
             )
-            return (newImage!, newRect)
+            return (newImage, newRect)
     }
     
     func SparkleLoad() {
@@ -120,15 +121,14 @@ extension LTMorphingLabel {
                             height: 1
                         )
                         layer.renderMode = kCAEmitterLayerOutline
-                        cell.emissionLongitude = CGFloat(M_PI / 2.0)
+                        cell.emissionLongitude = CGFloat(Double.pi / 2.0)
                         cell.scale = self.font.pointSize / 300.0
                         cell.scaleSpeed = self.font.pointSize / 300.0 * -1.5
                         cell.color = self.textColor.cgColor
                         cell.birthRate =
                             Float(self.font.pointSize)
                             * Float(arc4random_uniform(7) + 3)
-                    }.update {
-                        (layer, cell) in
+                    }.update { (layer, _) in
                         layer.emitterPosition = emitterPosition
                     }.play()
             }

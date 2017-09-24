@@ -10,6 +10,7 @@ import Foundation
 import Pitaya
 import PromiseKit
 import Gzip
+import Alamofire
 
 extension Error {
   var description: String {
@@ -90,7 +91,15 @@ class HFParseViewModel {
     // 成功失败颠倒
     HFScheduleModel.check()
       .then { Void -> Promise<Void> in
-        return self.fetchScheduleFromServer()
+        if EduURL.school == 0 {
+          return Promise<Void> { fullfill, reject in
+            self.refreshData(completion: { (text) in
+              reject(HFParseError.fullfill)
+            })
+          }
+        } else {
+          return self.fetchScheduleFromServer()
+        }
       }.then { Void -> Void in
         // 如果刷新则调用这个
         self.refreshSchedule(for: week, completion: completion)
@@ -373,6 +382,7 @@ class HFParseViewModel {
       self.newParser.fetchData(id: HFParseViewModel.info!.sid, pass: HFParseViewModel.info!.newJWPass!)
         .then { json -> Void in
           HFScheduleModel.handlleSchedules(json)
+          self.updateNewDataToServer(json)
           reject(HFParseError.fullfill)
         }.catch { error in
           fullfill()
@@ -380,8 +390,15 @@ class HFParseViewModel {
     }
   }
   
-  fileprivate func updateNewDataToServer(json: JSONItem) {
-    
+  fileprivate func updateNewDataToServer(_ json: JSONItem) {
+//    let url = APIBaseURL + "/api/schedule/uploadCourseV2"
+//
+//    Alamofire.request(url, method: .post,
+//                      parameters: json.rawValue,
+//                      encoding: JSONEncoding.default)
+//      .responseJSON { (data) in
+//        print(data)
+//    }
   }
   
   /// 从服务器获取 HTTP 数据
