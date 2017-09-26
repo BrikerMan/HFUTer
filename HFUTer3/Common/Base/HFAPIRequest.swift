@@ -10,7 +10,11 @@ import Foundation
 import Pitaya
 import PromiseKit
 
-typealias PitaHTTPMethod = HTTPMethod
+public enum PitaHTTPMethod: String {
+  case DELETE, GET, HEAD, OPTIONS, PATCH, POST, PUT
+}
+
+
 typealias JSON = [String: Any]
 
 enum HFAPIRequestError: Error {

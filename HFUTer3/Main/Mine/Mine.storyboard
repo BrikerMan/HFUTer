@@ -94,7 +94,7 @@
                                             <outlet property="collegeNameLabel" destination="pgz-wa-eUj" id="tL5-1Z-CR4"/>
                                             <outlet property="majorNameLabel" destination="GO8-xX-gAO" id="0Ow-Nc-RzX"/>
                                             <outlet property="nickNameLabel" destination="CbT-xy-eGg" id="rui-aM-VWM"/>
-                                            <outlet property="offscreenBackView" destination="c9O-Bc-048" id="hhA-2T-jE8"/>
+                                            <outlet property="offscreenBackView" destination="WtQ-7q-9xp" id="o8t-hp-eLY"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="listCell" rowHeight="44" id="om0-xC-Ub0" customClass="HFMineListTableViewCell" customModule="HFUTer3" customModuleProvider="target">
@@ -218,6 +218,7 @@
                     </view>
                     <connections>
                         <outlet property="tableView" destination="acn-gz-9kN" id="oEI-eA-akv"/>
+                        <outlet property="topView" destination="c9O-Bc-048" id="6Rv-DP-hTd"/>
                         <segue destination="mam-GW-VoI" kind="push" identifier="HFMineSeguePushInfoVC" id="hRt-dL-O9Z"/>
                         <segue destination="9c0-VD-0oy" kind="push" identifier="HFMineSeguePushSettingVC" id="Vfk-B3-J55"/>
                         <segue destination="Pf7-mm-stK" kind="push" identifier="HFMineSeguePushMyPublishVC" id="LOU-zb-zgh"/>

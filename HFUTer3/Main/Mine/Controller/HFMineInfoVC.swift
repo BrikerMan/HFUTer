@@ -99,7 +99,18 @@ extension HFMineInfoVC: HFTextFieldAlertControllerDelegate {
             hud.showMassage("绑定成功")
             self.tableView.reloadData()
           } else {
+            let message = json["message"].stringValue
             HFToast.showError(json["message"].stringValue)
+            if message.contains("验证码错误") {
+              let alert = UIAlertController(title: nil, message: "由于教务系统限制，有时候需要输入验证码。请前往网站登录一次，然后重启一下 HFUTer 再绑定。", preferredStyle: UIAlertControllerStyle.alert)
+              let cancel = UIAlertAction(title: "取消", style: .cancel, handler: nil)
+              let openInWeb = UIAlertAction(title: "前往网页", style: UIAlertActionStyle.default, handler: { (action) in
+                 UIApplication.shared.openURL(URL(string: "http://jxglstu.hfut.edu.cn/eams5-student/login")!)
+              })
+              alert.addAction(cancel)
+              alert.addAction(openInWeb)
+              self.presentVC(alert)
+            }
           }
         }.catch { error in
           HFToast.showError("密码错误，请重试")
