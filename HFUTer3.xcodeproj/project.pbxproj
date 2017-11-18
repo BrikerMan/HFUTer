@@ -11,6 +11,8 @@
 		277AB76E1CA02E0500F84FB1 /* HFInfoAcademicClassListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277AB76D1CA02E0500F84FB1 /* HFInfoAcademicClassListVC.swift */; };
 		277AB7701CA0CED300F84FB1 /* HFInfoAcademicClassDetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277AB76F1CA0CED300F84FB1 /* HFInfoAcademicClassDetailVC.swift */; };
 		277AB7721CA0EF3400F84FB1 /* HFAcademicClassListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 277AB7711CA0EF3400F84FB1 /* HFAcademicClassListModel.swift */; };
+		2787917D1FC021AE006BC024 /* UIDevice-Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2787917C1FC021AE006BC024 /* UIDevice-Extensions.swift */; };
+		2787917E1FC02B67006BC024 /* Macros.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B23B0BE1C97DD770089214D /* Macros.swift */; };
 		27949D311CC48A5500495206 /* HFInfoBookListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27949D301CC48A5500495206 /* HFInfoBookListVC.swift */; };
 		27949D361CC48A9900495206 /* HFInfoBookModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27949D341CC48A9900495206 /* HFInfoBookModel.swift */; };
 		27949D371CC48A9900495206 /* HFInfoEmptyClassroomModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27949D351CC48A9900495206 /* HFInfoEmptyClassroomModel.swift */; };
@@ -98,7 +100,6 @@
 		6A128E1D1CF5CD68000185C3 /* HFCommunityUserPublishedLostVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A128E1C1CF5CD68000185C3 /* HFCommunityUserPublishedLostVC.swift */; };
 		6A128E211CF69247000185C3 /* HFBaseRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A128E201CF69247000185C3 /* HFBaseRequest.swift */; };
 		6A12AD2E1EB1DE4400242BD2 /* HFScheduleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6ADD024F1E73FB9D0024B22C /* HFScheduleModel.swift */; };
-		6A12AD301EB1DEF500242BD2 /* Macros.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B23B0BE1C97DD770089214D /* Macros.swift */; };
 		6A12AD381EB1E01600242BD2 /* ColorManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A12AD361EB1E01600242BD2 /* ColorManager.swift */; };
 		6A12AD391EB1E01600242BD2 /* PlistManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A12AD371EB1E01600242BD2 /* PlistManager.swift */; };
 		6A12AD3B1EB1E02C00242BD2 /* SharedMacros.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A12AD3A1EB1E02C00242BD2 /* SharedMacros.swift */; };
@@ -148,7 +149,6 @@
 		6A3EAAF01CE0263B00809226 /* HFGetCommunityLoveWallListRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A3EAAEF1CE0263B00809226 /* HFGetCommunityLoveWallListRequest.swift */; };
 		6A4101E71D3A06420068FC5B /* DataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A4101E61D3A06420068FC5B /* DataHelper.swift */; };
 		6A44FB6E1EB18FBD008EDA68 /* HFScheduleWeekChoostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A44FB6D1EB18FBD008EDA68 /* HFScheduleWeekChoostViewController.swift */; };
-		6A61A1921E70EA5400892EA6 /* MJRefresh.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6A61A1911E70EA5400892EA6 /* MJRefresh.framework */; };
 		6A67F45D1EC170AC0046146E /* HF-Model-protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A67F45C1EC170AC0046146E /* HF-Model-protocols.swift */; };
 		6A67F45F1EC175890046146E /* HFCommunityDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A67F45E1EC175890046146E /* HFCommunityDetailViewModel.swift */; };
 		6A67F4611EC18CAE0046146E /* HFMineMessageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A67F4601EC18CAE0046146E /* HFMineMessageViewModel.swift */; };
@@ -301,9 +301,7 @@
 		6AE631CB1D02AE9C002C4AEC /* HFMineMessageListView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6AE631CA1D02AE9C002C4AEC /* HFMineMessageListView.xib */; };
 		6AE631CD1D02B090002C4AEC /* HFGetMineNotifReqeust.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AE631CC1D02B090002C4AEC /* HFGetMineNotifReqeust.swift */; };
 		6AE631D21D02B3AF002C4AEC /* HFMineMessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AE631D11D02B3AF002C4AEC /* HFMineMessageModel.swift */; };
-		6AE8D3FD1E3D91DF00E44BE3 /* Toaster.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AE8D3FC1E3D91DF00E44BE3 /* Toaster.framework */; };
 		6AE8D3FF1E3D923300E44BE3 /* HFToast.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AE8D3FE1E3D923300E44BE3 /* HFToast.swift */; };
-		6AE8D4011E3D9B4B00E44BE3 /* SwiftyStoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AE8D4001E3D9B4B00E44BE3 /* SwiftyStoreKit.framework */; };
 		6AF574101E44A13B00FD8234 /* HFMineChooseThemeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AF5740E1E44A13B00FD8234 /* HFMineChooseThemeViewController.swift */; };
 		6AF574111E44A13B00FD8234 /* HFMineChooseThemeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6AF5740F1E44A13B00FD8234 /* HFMineChooseThemeViewController.xib */; };
 		6AF574141E44A1F000FD8234 /* HFMineChooseColorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AF574121E44A1F000FD8234 /* HFMineChooseColorCell.swift */; };
@@ -441,6 +439,7 @@
 		277AB76D1CA02E0500F84FB1 /* HFInfoAcademicClassListVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFInfoAcademicClassListVC.swift; sourceTree = "<group>"; };
 		277AB76F1CA0CED300F84FB1 /* HFInfoAcademicClassDetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFInfoAcademicClassDetailVC.swift; sourceTree = "<group>"; };
 		277AB7711CA0EF3400F84FB1 /* HFAcademicClassListModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFAcademicClassListModel.swift; sourceTree = "<group>"; };
+		2787917C1FC021AE006BC024 /* UIDevice-Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice-Extensions.swift"; sourceTree = "<group>"; };
 		27949D301CC48A5500495206 /* HFInfoBookListVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFInfoBookListVC.swift; sourceTree = "<group>"; };
 		27949D341CC48A9900495206 /* HFInfoBookModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFInfoBookModel.swift; sourceTree = "<group>"; };
 		27949D351CC48A9900495206 /* HFInfoEmptyClassroomModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFInfoEmptyClassroomModel.swift; sourceTree = "<group>"; };
@@ -524,7 +523,6 @@
 		6A3EAAEF1CE0263B00809226 /* HFGetCommunityLoveWallListRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFGetCommunityLoveWallListRequest.swift; sourceTree = "<group>"; };
 		6A4101E61D3A06420068FC5B /* DataHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataHelper.swift; sourceTree = "<group>"; };
 		6A44FB6D1EB18FBD008EDA68 /* HFScheduleWeekChoostViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFScheduleWeekChoostViewController.swift; sourceTree = "<group>"; };
-		6A61A1911E70EA5400892EA6 /* MJRefresh.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MJRefresh.framework; sourceTree = "<group>"; };
 		6A67F45C1EC170AC0046146E /* HF-Model-protocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "HF-Model-protocols.swift"; sourceTree = "<group>"; };
 		6A67F45E1EC175890046146E /* HFCommunityDetailViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HFCommunityDetailViewModel.swift; path = HFUTer3/Common/Protocols/HFCommunityDetailViewModel.swift; sourceTree = SOURCE_ROOT; };
 		6A67F4601EC18CAE0046146E /* HFMineMessageViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HFMineMessageViewModel.swift; path = HFUTer3/Common/Protocols/HFMineMessageViewModel.swift; sourceTree = SOURCE_ROOT; };
@@ -687,9 +685,7 @@
 		6AE631CA1D02AE9C002C4AEC /* HFMineMessageListView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HFMineMessageListView.xib; sourceTree = "<group>"; };
 		6AE631CC1D02B090002C4AEC /* HFGetMineNotifReqeust.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFGetMineNotifReqeust.swift; sourceTree = "<group>"; };
 		6AE631D11D02B3AF002C4AEC /* HFMineMessageModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFMineMessageModel.swift; sourceTree = "<group>"; };
-		6AE8D3FC1E3D91DF00E44BE3 /* Toaster.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Toaster.framework; sourceTree = "<group>"; };
 		6AE8D3FE1E3D923300E44BE3 /* HFToast.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFToast.swift; sourceTree = "<group>"; };
-		6AE8D4001E3D9B4B00E44BE3 /* SwiftyStoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SwiftyStoreKit.framework; sourceTree = "<group>"; };
 		6AF5740E1E44A13B00FD8234 /* HFMineChooseThemeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFMineChooseThemeViewController.swift; sourceTree = "<group>"; };
 		6AF5740F1E44A13B00FD8234 /* HFMineChooseThemeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HFMineChooseThemeViewController.xib; sourceTree = "<group>"; };
 		6AF574121E44A1F000FD8234 /* HFMineChooseColorCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HFMineChooseColorCell.swift; sourceTree = "<group>"; };
@@ -820,15 +816,12 @@
 				6ABA71C51D092D8200D259F7 /* libicucore.tbd in Frameworks */,
 				6A1CEA601D04925500481D3A /* CoreLocation.framework in Frameworks */,
 				6AFF3DCB1D04557D00B575CA /* CoreTelephony.framework in Frameworks */,
-				6AE8D3FD1E3D91DF00E44BE3 /* Toaster.framework in Frameworks */,
 				6A1CEA5E1D04924800481D3A /* MobileCoreServices.framework in Frameworks */,
 				6AFF3DCD1D04558400B575CA /* SystemConfiguration.framework in Frameworks */,
 				6AFF3DD71D0455B300B575CA /* libz.tbd in Frameworks */,
 				6AFF3DD51D0455A700B575CA /* Security.framework in Frameworks */,
-				6AE8D4011E3D9B4B00E44BE3 /* SwiftyStoreKit.framework in Frameworks */,
 				6AFF3DD31D04559E00B575CA /* UIKit.framework in Frameworks */,
 				6AFF3DD11D04559300B575CA /* Foundation.framework in Frameworks */,
-				6A61A1921E70EA5400892EA6 /* MJRefresh.framework in Frameworks */,
 				6AFF3DCF1D04558B00B575CA /* CoreGraphics.framework in Frameworks */,
 				6A9F1EA81E40BC1700FFC39D /* jpush-ios-3.0.1.a in Frameworks */,
 				6AFF3DC91D04557800B575CA /* CoreFoundation.framework in Frameworks */,
@@ -1286,9 +1279,6 @@
 			isa = PBXGroup;
 			children = (
 				6ABD54D21E74EEA200D6197B /* FMDB */,
-				6A61A1911E70EA5400892EA6 /* MJRefresh.framework */,
-				6AE8D3FC1E3D91DF00E44BE3 /* Toaster.framework */,
-				6AE8D4001E3D9B4B00E44BE3 /* SwiftyStoreKit.framework */,
 				6AE1F4E21E470CAE003CFA27 /* Encryption */,
 				6A3E6F0E1E407DD1001FA3E3 /* YYLabel-Extension */,
 				6ACB1EA51E40331200B708C7 /* Reusable */,
@@ -1757,6 +1747,7 @@
 			isa = PBXGroup;
 			children = (
 				6B89D9051C993DDF0030DD7D /* UIColor-Extensions.swift */,
+				2787917C1FC021AE006BC024 /* UIDevice-Extensions.swift */,
 				6ACB1EBA1E4044DC00B708C7 /* UIView-Extensions.swift */,
 				6B89D9071C993DED0030DD7D /* String-Extensions.swift */,
 				6B2BFBB01C9D5D7F00FFA661 /* Dictionary-Extensions.swift */,
@@ -1834,7 +1825,7 @@
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = SMPQ9YA3H4;
 						LastSwiftMigration = 0810;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 1;
@@ -1848,7 +1839,7 @@
 						CreatedOnToolsVersion = 7.2;
 						DevelopmentTeam = SMPQ9YA3H4;
 						LastSwiftMigration = 0810;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.ApplicationGroups.iOS = {
 								enabled = 1;
@@ -2077,6 +2068,7 @@
 				"${BUILT_PRODUCTS_DIR}/KMPlaceholderTextView/KMPlaceholderTextView.framework",
 				"${BUILT_PRODUCTS_DIR}/Kanna/Kanna.framework",
 				"${BUILT_PRODUCTS_DIR}/LTMorphingLabel/LTMorphingLabel.framework",
+				"${BUILT_PRODUCTS_DIR}/MJRefresh/MJRefresh.framework",
 				"${BUILT_PRODUCTS_DIR}/NVActivityIndicatorView/NVActivityIndicatorView.framework",
 				"${BUILT_PRODUCTS_DIR}/Pitaya/Pitaya.framework",
 				"${BUILT_PRODUCTS_DIR}/PromiseKit.common-Alamofire/PromiseKit.framework",
@@ -2087,7 +2079,9 @@
 				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/Shimmer/Shimmer.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyStoreKit/SwiftyStoreKit.framework",
 				"${BUILT_PRODUCTS_DIR}/SwipeBack/SwipeBack.framework",
+				"${BUILT_PRODUCTS_DIR}/Toaster/Toaster.framework",
 				"${BUILT_PRODUCTS_DIR}/UITableView+FDTemplateLayoutCell_Bell/UITableView_FDTemplateLayoutCell_Bell.framework",
 				"${BUILT_PRODUCTS_DIR}/WSProgressHUD/WSProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/YYCache/YYCache.framework",
@@ -2114,6 +2108,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/KMPlaceholderTextView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kanna.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/LTMorphingLabel.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MJRefresh.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NVActivityIndicatorView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Pitaya.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PromiseKit.framework",
@@ -2124,7 +2119,9 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Shimmer.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyStoreKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwipeBack.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Toaster.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/UITableView_FDTemplateLayoutCell_Bell.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/WSProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YYCache.framework",
@@ -2174,6 +2171,7 @@
 				6A12AD411EB1E38200242BD2 /* HFCourceViewModel.swift in Sources */,
 				6A03DD831EB1B6A9003BC348 /* FMDatabaseVariadic.swift in Sources */,
 				6A03DD791EB1B5F5003BC348 /* UISwitchExtensions.swift in Sources */,
+				2787917E1FC02B67006BC024 /* Macros.swift in Sources */,
 				6A03DD771EB1B5F5003BC348 /* UISliderExtensions.swift in Sources */,
 				6A03DD5A1EB1B5F5003BC348 /* BoolExtensions.swift in Sources */,
 				6A03DD5B1EB1B5F5003BC348 /* BundleExtensions.swift in Sources */,
@@ -2185,7 +2183,6 @@
 				6A7988BC1D6D528C0068C6F6 /* NoCourceTableViewCell.swift in Sources */,
 				6A03DD6E1EB1B5F5003BC348 /* UIBarButtonItemExtensions.swift in Sources */,
 				6A03DD501EB1B582003BC348 /* Logger.swift in Sources */,
-				6A12AD301EB1DEF500242BD2 /* Macros.swift in Sources */,
 				6A03DD671EB1B5F5003BC348 /* NSAttributedStringExtensions.swift in Sources */,
 				6A03DD701EB1B5F5003BC348 /* UIColoredView.swift in Sources */,
 				6A03DD761EB1B5F5003BC348 /* UILabelExtensions.swift in Sources */,
@@ -2333,6 +2330,7 @@
 				6A712F561E6AB27400B87FB5 /* HFMineRepostViewController.swift in Sources */,
 				6A96F46F1E3DFE1600F65859 /* HFCommunityLoveWallListCell.swift in Sources */,
 				6B94268A1CA8FCE900C8E85D /* HFInfoPlanModel.swift in Sources */,
+				2787917D1FC021AE006BC024 /* UIDevice-Extensions.swift in Sources */,
 				6A25768E1D0562B700A47A76 /* HFMineListInfoTableViewCell.swift in Sources */,
 				6B2FE05D1CA6651700147BC3 /* HFInfoGradesCalculatorVC.swift in Sources */,
 				6B89D9081C993DED0030DD7D /* String-Extensions.swift in Sources */,
@@ -2512,6 +2510,7 @@
 				CODE_SIGN_ENTITLEMENTS = TodayWidget/TodayWidget.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = SMPQ9YA3H4;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2522,8 +2521,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.eliyar.hfuter.TodayWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "ec604a19-5593-4399-addb-e3700d5c7815";
+				PROVISIONING_PROFILE_SPECIFIER = hfuter.TodayWidget.dev;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 3.0;
 			};
@@ -2537,6 +2536,7 @@
 				CODE_SIGN_ENTITLEMENTS = TodayWidget/TodayWidget.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = SMPQ9YA3H4;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2547,8 +2547,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.eliyar.hfuter.TodayWidget;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "ec604a19-5593-4399-addb-e3700d5c7815";
+				PROVISIONING_PROFILE_SPECIFIER = hfuter.TodayWidget.dev;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 3.0;
 			};
@@ -2668,6 +2668,7 @@
 				CODE_SIGN_ENTITLEMENTS = HFUTer3/HFUTer3.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = SMPQ9YA3H4;
 				ENABLE_BITCODE = NO;
@@ -2701,8 +2702,8 @@
 				OTHER_SWIFT_FLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.eliyar.hfuter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "30f36e88-e05d-43c1-ba94-b4b9d6c11066";
+				PROVISIONING_PROFILE_SPECIFIER = "HFUTer Development";
 				SWIFT_OBJC_BRIDGING_HEADER = "HFUTer3/HFUTer3-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
@@ -2720,6 +2721,7 @@
 				CODE_SIGN_ENTITLEMENTS = HFUTer3/HFUTer3.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = SMPQ9YA3H4;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2751,8 +2753,8 @@
 				OTHER_SWIFT_FLAGS = "$(inherited)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.eliyar.hfuter;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "30f36e88-e05d-43c1-ba94-b4b9d6c11066";
+				PROVISIONING_PROFILE_SPECIFIER = "HFUTer Development";
 				SWIFT_OBJC_BRIDGING_HEADER = "HFUTer3/HFUTer3-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
