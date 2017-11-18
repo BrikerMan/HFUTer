@@ -14,6 +14,9 @@ class HFCommunityVC: HFBasicViewController {
     @IBOutlet weak var segmentController: UISegmentedControl!
     @IBOutlet weak var topView: UIView!
     
+    @IBOutlet weak var topViewHeight: NSLayoutConstraint!
+    
+    @IBOutlet weak var verticalOffset: NSLayoutConstraint!
     
     fileprivate var loveWallView: HFCommunityHomeListView!
     fileprivate var loveWallHotView: HFCommunityHomeListView!
@@ -31,6 +34,9 @@ class HFCommunityVC: HFBasicViewController {
         initUI()
         initData()
         NotificationCenter.default.addObserver(self, selector: #selector(self.reloadLoveListView), name: NSNotification.Name(rawValue: HFNotification.LoveWallModelUpdate.rawValue), object: nil)
+        
+        topViewHeight.constant = CGFloat(NavbarHeight)
+        verticalOffset.constant = CGFloat(NavbarVerticalOffSet)
     }
     
     

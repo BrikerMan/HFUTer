@@ -43,24 +43,41 @@ class InAppReceiptVerificator: NSObject {
     private var receiptRefreshRequest: InAppReceiptRefreshRequest?
 
     /**
-     *  Verify application receipt. This method does two things:
-     *  * If the receipt is missing, refresh it
-     *  * If the receipt is available or is refreshed, validate it
+     *  Verify application receipt.
      *  - Parameter validator: Validator to check the encrypted receipt and return the receipt in readable format
-     *  - Parameter password: Your app’s shared secret (a hexadecimal string). Only used for receipts that contain auto-renewable subscriptions.
      *  - Parameter forceRefresh: If true, refreshes the receipt even if one already exists.
      *  - Parameter refresh: closure to perform receipt refresh (this is made explicit for testability)
      *  - Parameter completion: handler for result
      */
     public func verifyReceipt(using validator: ReceiptValidator,
-                              password: String? = nil,
                               forceRefresh: Bool,
                               refresh: InAppReceiptRefreshRequest.ReceiptRefresh = InAppReceiptRefreshRequest.refresh,
                               completion: @escaping (VerifyReceiptResult) -> Void) {
         
+        fetchReceipt(forceRefresh: forceRefresh, refresh: refresh) { result in
+            switch result {
+            case .success(let receiptData):
+                self.verify(receiptData: receiptData, using: validator, completion: completion)
+            case .error(let error):
+                completion(.error(error: error))
+            }
+        }
+    }
+    
+    /**
+     *  Fetch application receipt. This method does two things:
+     *  * If the receipt is missing, refresh it
+     *  * If the receipt is available or is refreshed, validate it
+     *  - Parameter forceRefresh: If true, refreshes the receipt even if one already exists.
+     *  - Parameter refresh: closure to perform receipt refresh (this is made explicit for testability)
+     *  - Parameter completion: handler for result
+     */
+    public func fetchReceipt(forceRefresh: Bool,
+                             refresh: InAppReceiptRefreshRequest.ReceiptRefresh = InAppReceiptRefreshRequest.refresh,
+                             completion: @escaping (FetchReceiptResult) -> Void) {
+
         if let receiptData = appStoreReceiptData, forceRefresh == false {
-            
-            verify(receiptData: receiptData, using: validator, password: password, completion: completion)
+            completion(.success(receiptData: receiptData))
         } else {
             
             receiptRefreshRequest = refresh(nil) { result in
@@ -70,7 +87,7 @@ class InAppReceiptVerificator: NSObject {
                 switch result {
                 case .success:
                     if let receiptData = self.appStoreReceiptData {
-                        self.verify(receiptData: receiptData, using: validator, password: password, completion: completion)
+                        completion(.success(receiptData: receiptData))
                     } else {
                         completion(.error(error: .noReceiptData))
                     }
@@ -84,15 +101,11 @@ class InAppReceiptVerificator: NSObject {
     /**
      *  - Parameter receiptData: encrypted receipt data
      *  - Parameter validator: Validator to check the encrypted receipt and return the receipt in readable format
-     *  - Parameter password: Your app’s shared secret (a hexadecimal string). Only used for receipts that contain auto-renewable subscriptions.
      *  - Parameter completion: handler for result
      */
-    private func verify(receiptData: Data, using validator: ReceiptValidator, password: String? = nil, completion: @escaping (VerifyReceiptResult) -> Void) {
+    private func verify(receiptData: Data, using validator: ReceiptValidator, completion: @escaping (VerifyReceiptResult) -> Void) {
      
-        // The base64 encoded receipt data.
-        let base64EncodedString = receiptData.base64EncodedString(options: [])
-
-        validator.validate(receipt: base64EncodedString, password: password) { result in
+        validator.validate(receiptData: receiptData) { result in
             
             DispatchQueue.main.async {
                 completion(result)

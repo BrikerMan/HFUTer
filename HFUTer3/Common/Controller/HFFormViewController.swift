@@ -182,7 +182,7 @@ class HFFormViewController: FormViewController, UIGestureRecognizerDelegate {
             make.top.equalTo(view.snp.top)
             make.left.equalTo(view.snp.left)
             make.right.equalTo(view.snp.right)
-            make.height.equalTo(64)
+            make.height.equalTo(NavbarHeight)
         }
     }
 }

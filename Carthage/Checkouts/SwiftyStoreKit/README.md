@@ -18,7 +18,7 @@ SwiftyStoreKit is a lightweight In App Purchases framework for iOS 8.0+, tvOS 9.
 
 ### Note from the Author
 
-I'm building **Eco Buddy**, an iOS app to help you **reduce your carbon footprint**, and **take control of your impact on the environment**. **[＞ Get it Here ＜](http://ecobuddyapp.com/)**
+I started [**Sustainable Earth**](https://github.com/bizz84/Sustainable-Earth), a curated list of all things sustainable. Interested? [It's on GitHub](https://github.com/bizz84/Sustainable-Earth).
 
 ## Contributing
 
@@ -149,6 +149,38 @@ SwiftyStoreKit.retrieveProductsInfo(["com.musevisions.SwiftyStoreKit.Purchase1"]
 
 Using this `purchaseProduct` method guarantees that only one network call is made to StoreKit to perform the purchase, as opposed to one call to get the product and another to perform the purchase.
 
+### Should add store payment handling (iOS 11)
+
+iOS 11 adds a new delegate method on `SKPaymentTransactionObserver`:
+
+```swift
+@available(iOS 11.0, *)
+optional public func paymentQueue(_ queue: SKPaymentQueue, shouldAddStorePayment payment: SKPayment, for product: SKProduct) -> Bool
+```
+
+From [Apple Docs](https://developer.apple.com/documentation/storekit/skpaymenttransactionobserver/2877502-paymentqueue):
+
+> This delegate method is called when the user has started an in-app purchase in the App Store, and is continuing the transaction in your app. Specifically, if your app is already installed, the method is called automatically.
+If your app is not yet installed when the user starts the in-app purchase in the App Store, the user gets a notification when the app installation is complete. This method is called when the user taps the notification. Otherwise, if the user opens the app manually, this method is called only if the app is opened soon after the purchase was started.
+
+SwiftyStoreKit supports this with a new handler, called like this:
+
+```swift
+SwiftyStoreKit.shouldAddStorePaymentHandler = { payment, product in
+	// return true if the content can be delivered by your app
+	// return false otherwise
+}
+```
+
+To test this in sandbox mode, open this URL in Safari:
+
+```
+itms-services://?action=purchaseIntent&bundleId=com.example.app&productIdentifier=product_name
+```
+
+More information on the [WWDC17 session What's New in StoreKit](https://developer.apple.com/videos/play/wwdc2017/303)
+([slide number 165](https://devstreaming-cdn.apple.com/videos/wwdc/2017/303f0u5froddl13/303/303_whats_new_in_storekit.pdf) shows the link above).
+
 ### Restore previous purchases
 
 According to [Apple - Restoring Purchased Products](https://developer.apple.com/library/content/documentation/NetworkingInternet/Conceptual/StoreKitGuide/Chapters/Restoring.html#//apple_ref/doc/uid/TP40008267-CH8-SW9):
@@ -236,28 +268,11 @@ According to [Apple - Delivering Products](https://developer.apple.com/library/c
 
 When an app is first installed, the app receipt is missing.
 
-As soon as a user completes a purchase or restores purchases, StoreKit creates and stores the receipt locally as a file.
+As soon as a user completes a purchase or restores purchases, StoreKit creates and stores the receipt locally as a file, located by `Bundle.main.appStoreReceiptURL`.
 
-As the local receipt is always encrypted, a verification step is needed to get all the receipt fields in readable form.
+### Retrieve local receipt (encrypted)
 
-This is done with a `verifyReceipt` method which does two things:
-
-- If the receipt is missing, refresh it
-- If the receipt is available or is refreshed, validate it
-
-Receipt validation can be done remotely with Apple via the `AppleReceiptValidator` class, or with a client-supplied validator conforming to the `ReceiptValidator` protocol. 
-
-**Notes**
-
-* If the local receipt is missing when calling `verifyReceipt`, a network call is made to refresh it.
-* If the user is not logged to the App Store, StoreKit will present a popup asking to **Sign In to the iTunes Store**.
-* If the user enters valid credentials, the receipt will be refreshed and verified.
-* If the user cancels, receipt refresh will fail with a **Cannot connect to iTunes Store** error.
-* Using `AppleReceiptValidator` (see below) does remote receipt validation and also results in a network call.
-* Local receipt validation is not implemented (see [issue #101](https://github.com/bizz84/SwiftyStoreKit/issues/101) for details).
-
-
-### Retrieve local receipt
+This helper can be used to retrieve the (encrypted) local receipt data:
 
 ```swift
 let receiptData = SwiftyStoreKit.localReceiptData
@@ -265,21 +280,65 @@ let receiptString = receiptData.base64EncodedString(options: [])
 // do your receipt validation here
 ```
 
-### Verify Receipt
+However, the receipt file may be missing or outdated.
+
+### Fetch receipt (encrypted)
+
+Use this method to get the updated receipt:
 
 ```swift
-let appleValidator = AppleReceiptValidator(service: .production)
-SwiftyStoreKit.verifyReceipt(using: appleValidator, password: "your-shared-secret", forceRefresh: false) { result in
+SwiftyStoreKit.fetchReceipt(forceRefresh: true) { result in
+    switch result {
+    case .success(let receiptData):
+        let encryptedReceipt = receiptData.base64EncodedString(options: [])
+        print("Fetch receipt success:\n\(encryptedReceipt)")
+    case .error(let error):
+        print("Fetch receipt failed: \(error)")
+    }
+}
+```
+
+This method works as follows:
+
+* If `forceRefresh = false`, it returns the local receipt from file, or refreshes it if missing.
+* If `forceRefresh = true`, it always refreshes the receipt regardless.
+
+**Notes**
+
+* If the local receipt is missing or `forceRefresh = true` when calling `fetchReceipt`, a network call is made to refresh it.
+* If the user is not logged to the App Store, StoreKit will present a popup asking to **Sign In to the iTunes Store**.
+* If the user enters valid credentials, the receipt will be refreshed.
+* If the user cancels, receipt refresh will fail with a **Cannot connect to iTunes Store** error.
+
+If `fetchReceipt` is successful, it will return the **encrypted** receipt as a string. For this reason, a **validation** step is needed to get all the receipt fields in readable form. This can be done in various ways:
+
+1. Validate with Apple via the `AppleReceiptValidator` (see [`verifyReceipt`](#verify-receipt) below).
+2. Perform local receipt validation (see [#101](https://github.com/bizz84/SwiftyStoreKit/issues/101)).
+3. Post the receipt data and validate on server.
+
+### Verify Receipt
+
+Use this method to (optionally) refresh the receipt and perform validation in one step.
+
+```swift
+let appleValidator = AppleReceiptValidator(service: .production, sharedSecret: "your-shared-secret")
+SwiftyStoreKit.verifyReceipt(using: appleValidator, forceRefresh: false) { result in
     switch result {
     case .success(let receipt):
-        print("Verify receipt Success: \(receipt)")
+        print("Verify receipt success: \(receipt)")
     case .error(let error):
-        print("Verify receipt Failed: \(error)")
+        print("Verify receipt failed: \(error)")
 	}
 }
 ```
 
-Note: you can specify `forceRefresh: true` to force SwiftyStoreKit to refresh the receipt with Apple, even if a local receipt is already stored.
+**Notes**
+
+* This method is based on `fetchReceipt`, and the same refresh logic discussed above applies. 
+* `AppleReceiptValidator` is a **reference implementation** that validates the receipt with Apple and results in a network call. _This is prone to man-in-the-middle attacks._
+* You should implement your secure logic by validating your receipt locally, or sending the encrypted receipt data and validating it in your server.
+* Local receipt validation is not implemented (see [issue #101](https://github.com/bizz84/SwiftyStoreKit/issues/101) for details).
+* You can implement your own receipt validator by conforming to the `ReceiptValidator` protocol and passing it to `verifyReceipt`.
 
 ## Verifying purchases and subscriptions
 
@@ -295,8 +354,8 @@ If you need to verify multiple purchases / subscriptions, you can either:
 ### Verify Purchase
 
 ```swift
-let appleValidator = AppleReceiptValidator(service: .production)
-SwiftyStoreKit.verifyReceipt(using: appleValidator, password: "your-shared-secret") { result in
+let appleValidator = AppleReceiptValidator(service: .production, sharedSecret: "your-shared-secret")
+SwiftyStoreKit.verifyReceipt(using: appleValidator) { result in
     switch result {
     case .success(let receipt):
         // Verify the purchase of Consumable or NonConsumable
@@ -329,8 +388,8 @@ From [Apple - Working with Subscriptions](https://developer.apple.com/library/co
 When one or more subscriptions are found for a given product id, they are returned as a `ReceiptItem` array ordered by `expiryDate`, with the first one being the newest.
 
 ```swift
-let appleValidator = AppleReceiptValidator(service: .production)
-SwiftyStoreKit.verifyReceipt(using: appleValidator, password: "your-shared-secret") { result in
+let appleValidator = AppleReceiptValidator(service: .production, sharedSecret: "your-shared-secret")
+SwiftyStoreKit.verifyReceipt(using: appleValidator) { result in
     switch result {
     case .success(let receipt):
         // Verify the purchase of a Subscription
@@ -390,8 +449,8 @@ SwiftyStoreKit.purchaseProduct(productId, atomically: true) { result in
             SwiftyStoreKit.finishTransaction(purchase.transaction)
         }
         
-        let appleValidator = AppleReceiptValidator(service: .production)
-        SwiftyStoreKit.verifyReceipt(using: appleValidator, password: "your-shared-secret") { result in
+        let appleValidator = AppleReceiptValidator(service: .production, sharedSecret: "your-shared-secret")
+        SwiftyStoreKit.verifyReceipt(using: appleValidator) { result in
             
             if case .success(let receipt) = result {
                 let purchaseResult = SwiftyStoreKit.verifySubscription(
@@ -449,7 +508,7 @@ github "bizz84/SwiftyStoreKit"
 
 | Language  | Branch | Pod version | Xcode version |
 | --------- | ------ | ----------- | ------------- |
-| Swift 4.x | [swift-4.0](https://github.com/bizz84/SwiftyStoreKit/tree/swift-4.0) | TBA | Xcode 9 or greater|
+| Swift 4.x | [master](https://github.com/bizz84/SwiftyStoreKit/tree/master) | >= 0.10.4 | Xcode 9 or greater|
 | Swift 3.x | [master](https://github.com/bizz84/SwiftyStoreKit/tree/master) | >= 0.5.x | Xcode 8.x |
 | Swift 2.3 | [swift-2.3](https://github.com/bizz84/SwiftyStoreKit/tree/swift-2.3) | 0.4.x | Xcode 8, Xcode 7.3.x |
 | Swift 2.2 | [swift-2.2](https://github.com/bizz84/SwiftyStoreKit/tree/swift-2.2) | 0.3.x | Xcode 7.3.x |
@@ -480,14 +539,20 @@ Note that the pre-registered in app purchases in the demo apps are for illustrat
 * [Apple - Working with Subscriptions](https://developer.apple.com/library/content/documentation/NetworkingInternet/Conceptual/StoreKitGuide/Chapters/Subscriptions.html#//apple_ref/doc/uid/TP40008267-CH7-SW6)
 * [Apple - Offering Subscriptions](https://developer.apple.com/app-store/subscriptions/)
 * [Apple - Restoring Purchased Products](https://developer.apple.com/library/content/documentation/NetworkingInternet/Conceptual/StoreKitGuide/Chapters/Restoring.html#//apple_ref/doc/uid/TP40008267-CH8-SW9)
+* [Apple - Testing In-App Purchase Products](https://developer.apple.com/library/content/documentation/LanguagesUtilities/Conceptual/iTunesConnectInAppPurchase_Guide/Chapters/TestingInAppPurchases.html): includes info on duration of subscriptions in sandbox mode
 * [objc.io - Receipt Validation](https://www.objc.io/issues/17-security/receipt-validation/)
-* [Apple TN 2413 - Why are my product identifiers being returned in the invalidProductIdentifiers array?](https://developer.apple.com/library/content/technotes/tn2413/_index.html#//apple_ref/doc/uid/DTS40016228-CH1-TROUBLESHOOTING-WHY_ARE_MY_PRODUCT_IDENTIFIERS_BEING_RETURNED_IN_THE_INVALIDPRODUCTIDENTIFIERS_ARRAY_)
-* [Invalid Product IDs](http://troybrant.net/blog/2010/01/invalid-product-ids/): Checklist of common mistakes
 
 I have also written about building SwiftyStoreKit on Medium:
 
 * [How I got 1000 ⭐️ on my GitHub Project](https://medium.com/ios-os-x-development/how-i-got-1000-%EF%B8%8F-on-my-github-project-654d3d394ca6#.1idp27olf)
 * [Maintaining a Growing Open Source Project](https://medium.com/@biz84/maintaining-a-growing-open-source-project-1d385ca84c5#.4cv2g7tdc)
+
+### Troubleshooting 
+
+* [Apple TN 2413 - Why are my product identifiers being returned in the invalidProductIdentifiers array?](https://developer.apple.com/library/content/technotes/tn2413/_index.html#//apple_ref/doc/uid/DTS40016228-CH1-TROUBLESHOOTING-WHY_ARE_MY_PRODUCT_IDENTIFIERS_BEING_RETURNED_IN_THE_INVALIDPRODUCTIDENTIFIERS_ARRAY_)
+* [Invalid Product IDs](http://troybrant.net/blog/2010/01/invalid-product-ids/): Checklist of common mistakes
+* [Testing Auto-Renewable Subscriptions on iOS](http://davidbarnard.com/post/164337147440/testing-auto-renewable-subscriptions-on-ios)
+* [Apple forums - iOS 11 beta sandbox - cannot connect to App Store](https://forums.developer.apple.com/message/261428#261428)
 
 ## Payment flows - implementation Details
 In order to make a purchase, two operations are needed:

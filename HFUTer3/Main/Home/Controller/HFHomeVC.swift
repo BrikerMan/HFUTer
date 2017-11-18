@@ -12,6 +12,12 @@ import LTMorphingLabel
 class HFHomeVC: HFBasicViewController{
     
     @IBOutlet weak var navBarView       : UIView!
+    
+    @IBOutlet weak var navBarViewHeight: NSLayoutConstraint!
+    
+    @IBOutlet weak var verticalOffset: NSLayoutConstraint!
+    
+    
     @IBOutlet weak var containView      : UIView!
     @IBOutlet weak var navTitleLabel    : LTMorphingLabel!
     @IBOutlet weak var navTitleIconView : UIImageView!
@@ -44,6 +50,9 @@ class HFHomeVC: HFBasicViewController{
         viewModel.controller = self
         navBarView.backgroundColor = HFTheme.TintColor
         AnalyseManager.OpenSchudule.record()
+        
+        navBarViewHeight.constant = CGFloat(NavbarHeight)
+        verticalOffset.constant = CGFloat(NavbarVerticalOffSet)
     }
     
     @IBAction func onAddScheduleButtonPressed(_ sender: Any) {

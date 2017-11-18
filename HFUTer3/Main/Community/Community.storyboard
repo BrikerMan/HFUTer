@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES" initialViewController="OJv-cA-cum">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES" initialViewController="OJv-cA-cum">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -22,10 +22,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dgy-sH-y5P">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="64"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="88"/>
                                 <subviews>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="LpP-mn-ANG">
-                                        <rect key="frame" x="77.5" y="28" width="220" height="29"/>
+                                        <rect key="frame" x="77.5" y="52" width="220" height="29"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="220" id="l51-Gr-gej"/>
                                         </constraints>
@@ -40,7 +40,7 @@
                                         </connections>
                                     </segmentedControl>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2wV-TU-b5z">
-                                        <rect key="frame" x="330" y="22" width="40" height="40"/>
+                                        <rect key="frame" x="330" y="46" width="40" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="40" id="9pt-Np-UHK"/>
                                             <constraint firstAttribute="height" constant="40" id="kRi-3E-lXK"/>
@@ -53,15 +53,15 @@
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="0.35686274509803922" blue="0.3411764705882353" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="64" id="5rw-ta-XU4"/>
-                                    <constraint firstItem="LpP-mn-ANG" firstAttribute="centerY" secondItem="dgy-sH-y5P" secondAttribute="centerY" constant="10" id="Kw0-OK-6la"/>
+                                    <constraint firstItem="2wV-TU-b5z" firstAttribute="centerY" secondItem="LpP-mn-ANG" secondAttribute="centerY" id="2ge-ob-Rrn"/>
+                                    <constraint firstAttribute="height" constant="88" id="5rw-ta-XU4"/>
+                                    <constraint firstItem="LpP-mn-ANG" firstAttribute="centerY" secondItem="dgy-sH-y5P" secondAttribute="centerY" constant="22" id="Kw0-OK-6la"/>
                                     <constraint firstAttribute="trailing" secondItem="2wV-TU-b5z" secondAttribute="trailing" constant="5" id="iid-X5-ham"/>
                                     <constraint firstItem="LpP-mn-ANG" firstAttribute="centerX" secondItem="dgy-sH-y5P" secondAttribute="centerX" id="n1k-xh-EA1"/>
-                                    <constraint firstItem="2wV-TU-b5z" firstAttribute="centerY" secondItem="dgy-sH-y5P" secondAttribute="centerY" constant="10" id="zRP-g1-hvN"/>
                                 </constraints>
                             </view>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xbe-GV-FEn">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <rect key="frame" x="0.0" y="88" width="375" height="579"/>
                                 <connections>
                                     <outlet property="delegate" destination="OJv-cA-cum" id="CHR-D7-ypz"/>
                                 </connections>
@@ -82,6 +82,8 @@
                         <outlet property="scrollView" destination="xbe-GV-FEn" id="yaS-xE-eIm"/>
                         <outlet property="segmentController" destination="LpP-mn-ANG" id="NbS-Hl-evg"/>
                         <outlet property="topView" destination="dgy-sH-y5P" id="ukN-fq-ENK"/>
+                        <outlet property="topViewHeight" destination="5rw-ta-XU4" id="UP3-2f-5iF"/>
+                        <outlet property="verticalOffset" destination="Kw0-OK-6la" id="8UZ-OA-tae"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TXj-ln-u3w" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -92,9 +94,4 @@
     <resources>
         <image name="hf_community_publish_plus_icon" width="20" height="20"/>
     </resources>
-    <simulatedMetricsContainer key="defaultSimulatedMetrics">
-        <simulatedStatusBarMetrics key="statusBar"/>
-        <simulatedOrientationMetrics key="orientation"/>
-        <simulatedScreenMetrics key="destination" type="retina4_7.fullscreen"/>
-    </simulatedMetricsContainer>
 </document>

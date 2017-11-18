@@ -31,6 +31,8 @@ class HFBaseNavBar: HFXibView {
     @IBOutlet weak var navRightButton: UIButton!
     @IBOutlet weak var navRightButtonImage: UIImageView!
     
+    @IBOutlet weak var verticalOffset: NSLayoutConstraint!
+    
     override func initFromXib() {
         super.initFromXib()
         navRightButton.isHidden       = true
@@ -39,6 +41,7 @@ class HFBaseNavBar: HFXibView {
         view?.backgroundColor = HFTheme.TintColor
         NotificationCenter.default.addObserver(self, selector: #selector(updateTintColor), name: .tintColorUpdated, object: nil)
         
+        verticalOffset.constant = CGFloat(NavbarVerticalOffSet)
     }
     
     deinit {
