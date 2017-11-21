@@ -13,7 +13,7 @@ import MJRefresh
 fileprivate class kSchedule {
     static var day = 5
     static var cellWidth  = (ScreenWidth - 30) / CGFloat(kSchedule.day)
-    static var cellHeight = (ScreenHeight - 64 - 49 - topHeight) / 11
+    static var cellHeight = (ScreenHeight - NavbarHeight - TabbarHeight - topHeight) / 11
     
     static let leftWidth: CGFloat = 30
     static let topHeight: CGFloat = 40
@@ -191,7 +191,7 @@ class HFScheduleView: HFView {
             $0.top.equalTo(topView.snp.bottom)
             $0.left.equalTo(scrollView)
             $0.width.equalTo(kSchedule.leftWidth)
-            $0.height.equalTo(ScreenHeight - 64 - 49 - kSchedule.topHeight)
+            $0.height.equalTo(ScreenHeight - NavbarHeight - TabbarHeight - kSchedule.topHeight)
         }
         
         shareBottom.snp.makeConstraints {
@@ -259,7 +259,7 @@ class HFScheduleView: HFView {
     }
     
     fileprivate func setupContentView() {
-        let cellHeight = (ScreenHeight - 64 - 49) / 11
+        let cellHeight = (ScreenHeight - NavbarHeight - TabbarHeight) / 11
         for i in 1..<11 {
             let seperator = UIImageView(image: UIImage(named: "hf_widget_seperator_line"))
             containerView.addSubview(seperator)
