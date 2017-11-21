@@ -74,6 +74,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>MJRefresh.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>NVActivityIndicatorView.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -134,7 +139,17 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>SwiftyStoreKit.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>SwipeBack.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>Toaster.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
