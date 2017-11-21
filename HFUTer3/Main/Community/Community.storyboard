@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" colorMatched="YES" initialViewController="OJv-cA-cum">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="OJv-cA-cum">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
+        <deployment version="2304" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -13,10 +14,6 @@
         <scene sceneID="NdY-VH-aHo">
             <objects>
                 <viewController id="OJv-cA-cum" customClass="HFCommunityVC" customModule="HFUTer3" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="aJH-iK-muP"/>
-                        <viewControllerLayoutGuide type="bottom" id="3Tx-xI-Icj"/>
-                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="2Gw-Ix-8el">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -69,14 +66,15 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="xbe-GV-FEn" firstAttribute="top" secondItem="dgy-sH-y5P" secondAttribute="bottom" id="CBY-Ei-dNM"/>
-                            <constraint firstItem="dgy-sH-y5P" firstAttribute="leading" secondItem="2Gw-Ix-8el" secondAttribute="leading" id="IOt-rr-7nN"/>
-                            <constraint firstItem="xbe-GV-FEn" firstAttribute="leading" secondItem="2Gw-Ix-8el" secondAttribute="leading" id="Lts-xu-adV"/>
-                            <constraint firstAttribute="trailing" secondItem="xbe-GV-FEn" secondAttribute="trailing" id="NHs-Sq-F4B"/>
-                            <constraint firstAttribute="trailing" secondItem="dgy-sH-y5P" secondAttribute="trailing" id="bc8-rd-hhn"/>
-                            <constraint firstItem="3Tx-xI-Icj" firstAttribute="top" secondItem="xbe-GV-FEn" secondAttribute="bottom" id="vUo-Rh-bMh"/>
+                            <constraint firstItem="xbe-GV-FEn" firstAttribute="leading" secondItem="1DJ-fq-pYl" secondAttribute="leading" id="9QU-a8-fvE"/>
+                            <constraint firstItem="xbe-GV-FEn" firstAttribute="trailing" secondItem="1DJ-fq-pYl" secondAttribute="trailing" id="9TR-ot-9ig"/>
+                            <constraint firstItem="dgy-sH-y5P" firstAttribute="leading" secondItem="1DJ-fq-pYl" secondAttribute="leading" id="IOt-rr-7nN"/>
+                            <constraint firstItem="xbe-GV-FEn" firstAttribute="top" secondItem="dgy-sH-y5P" secondAttribute="bottom" id="JTN-iH-KZx"/>
+                            <constraint firstItem="1DJ-fq-pYl" firstAttribute="trailing" secondItem="dgy-sH-y5P" secondAttribute="trailing" id="bc8-rd-hhn"/>
+                            <constraint firstItem="xbe-GV-FEn" firstAttribute="bottom" secondItem="1DJ-fq-pYl" secondAttribute="bottom" id="qNq-i6-Aic"/>
                             <constraint firstItem="dgy-sH-y5P" firstAttribute="top" secondItem="2Gw-Ix-8el" secondAttribute="top" id="yRp-NB-zdL"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="1DJ-fq-pYl"/>
                     </view>
                     <connections>
                         <outlet property="scrollView" destination="xbe-GV-FEn" id="yaS-xE-eIm"/>

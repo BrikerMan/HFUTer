@@ -46,7 +46,7 @@ class HFCommunityVC: HFBasicViewController {
     
     
     @IBAction func onSegmentControlleralueChanged(_ sender: UISegmentedControl) {
-        let rect = CGRect(x: ScreenWidth * CGFloat(sender.selectedSegmentIndex), y: 0, width: ScreenWidth, height: ScreenHeight)
+        let rect = CGRect(x: ScreenWidth * CGFloat(sender.selectedSegmentIndex), y: 0, width: ScreenWidth, height: ScreenHeight-NavbarHeight-TabbarHeight)
         scrollView.scrollRectToVisible(rect, animated: false)
         isLostAndFound = sender.selectedSegmentIndex == 2
     }
@@ -100,21 +100,21 @@ class HFCommunityVC: HFBasicViewController {
         loveWallView.snp.makeConstraints { (make) in
             make.left.top.bottom.equalTo(scrollView)
             make.width.equalTo(ScreenWidth)
-            make.height.equalTo(ScreenHeight-64-49)
+            make.height.equalTo(ScreenHeight-NavbarHeight-TabbarHeight)
         }
         
         loveWallHotView.snp.makeConstraints { (make) in
             make.top.bottom.equalTo(scrollView)
             make.left.equalTo(loveWallView.snp.right)
             make.width.equalTo(ScreenWidth)
-            make.height.equalTo(ScreenHeight-64-49)
+            make.height.equalTo(ScreenHeight-NavbarHeight-TabbarHeight)
         }
         
         lostfindView.snp.makeConstraints { (make) in
             make.top.bottom.right.equalTo(scrollView)
             make.left.equalTo(loveWallHotView.snp.right)
             make.width.equalTo(ScreenWidth)
-            make.height.equalTo(ScreenHeight-64-49)
+            make.height.equalTo(ScreenHeight-NavbarHeight-TabbarHeight)
         }
     }
     

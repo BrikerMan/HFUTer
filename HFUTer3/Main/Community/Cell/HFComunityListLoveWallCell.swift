@@ -125,7 +125,7 @@ class HFComunityListLoveWallCell: UITableViewCell, NibReusable {
                     var size = CGSize(width: 100, height: 190)
                     let imagesize  = model.cImageSize ?? image?.size ?? self.bigImageView.size
                     
-                    size = Utilities.getWidthWithFixedHeight(size: imagesize, height: 190, maxWidth: ScreenWidth - 64)
+                    size = Utilities.getWidthWithFixedHeight(size: imagesize, height: 190, maxWidth: ScreenWidth - NavbarHeight)
                     
                     self.bigImageView.frame = CGRect(x: 54,
                                                      y: self.bigImageView.frame.y,
