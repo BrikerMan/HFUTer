@@ -16,6 +16,10 @@ class HFMinePublishVC: HFBasicViewController {
     @IBOutlet weak var scrollView: UIScrollView!
     
     @IBOutlet weak var topView: UIView!
+    @IBOutlet weak var topViewHeight: NSLayoutConstraint!
+    
+    @IBOutlet weak var topViewVerticalOffset: NSLayoutConstraint!
+    
     
     var lostfindView:HFCommunityHomeListView!
     var loveWallView:HFCommunityHomeListView!
@@ -38,7 +42,7 @@ class HFMinePublishVC: HFBasicViewController {
     
     @IBAction func onSegmentValueChanged(_ sender: AnyObject) {
         let x = CGFloat(segmentController.selectedSegmentIndex) * ScreenWidth
-        let rect = CGRect(x: x, y: 0, width: ScreenWidth, height: ScreenHeight-64)
+        let rect = CGRect(x: x, y: 0, width: ScreenWidth, height: ScreenHeight-NavbarHeight)
         scrollView.scrollRectToVisible(rect, animated: false)
     }
     
@@ -48,6 +52,8 @@ class HFMinePublishVC: HFBasicViewController {
     
     fileprivate func initUI() {
         automaticallyAdjustsScrollViewInsets = false
+        topViewHeight.constant = NavbarHeight
+        topViewVerticalOffset.constant=NavbarVerticalOffSet
         
         lostfindView = HFCommunityHomeListView()
         lostfindView.style = .lostFind
@@ -65,7 +71,7 @@ class HFMinePublishVC: HFBasicViewController {
         loveWallView.snp.makeConstraints { (make) in
             make.left.top.bottom.equalTo(scrollView)
             make.width.equalTo(ScreenWidth)
-            make.height.equalTo(ScreenHeight-64)
+            make.height.equalTo(ScreenHeight - NavbarHeight)
         }
         
         
@@ -73,12 +79,12 @@ class HFMinePublishVC: HFBasicViewController {
             make.top.bottom.right.equalTo(scrollView)
             make.left.equalTo(loveWallView.snp.right)
             make.width.equalTo(ScreenWidth)
-            make.height.equalTo(ScreenHeight-64)
+            make.height.equalTo(ScreenHeight-NavbarHeight)
         }
         
         loadingView = HFLoadingView()
         view.addSubview(loadingView!)
-        loadingView!.snp.makeConstraints({ (make) in make.edges.equalTo(view).inset(UIEdgeInsetsMake(64, 0, 0, 0))
+        loadingView!.snp.makeConstraints({ (make) in make.edges.equalTo(view).inset(UIEdgeInsetsMake(NavbarHeight, 0, 0, 0))
         })
     }
     

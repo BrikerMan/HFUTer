@@ -22,6 +22,6 @@ extension UIDevice {
 }
 
 // UI Data
-let NavbarHeight = UIDevice.current.isX() ? (44+44):(20+44)
-let NavbarVerticalOffSet = UIDevice.current.isX() ? 22.0:10.0
+let NavbarHeight:CGFloat = UIDevice.current.isX() ? (44+44):(20+44)
+let NavbarVerticalOffSet:CGFloat = UIDevice.current.isX() ? 22.0:10.0
 

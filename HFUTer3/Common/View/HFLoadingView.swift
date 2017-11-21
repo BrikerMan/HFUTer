@@ -34,7 +34,7 @@ class HFLoadingView: UIView {
     func add(to: UIView) {
         to.addSubview(self)
         self.snp.makeConstraints {
-            $0.edges.equalTo(to).inset(UIEdgeInsets(top: 64, left: 0, bottom: 0, right: 0))
+            $0.edges.equalTo(to).inset(UIEdgeInsets(top: NavbarHeight, left: 0, bottom: 0, right: 0))
         }
     }
     

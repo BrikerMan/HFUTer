@@ -13,6 +13,12 @@ class HFMineMessageVC: HFBasicViewController {
     var notifRequest    : HFGetMineNotifReqeust!
     
     @IBOutlet weak var topView: UIView!
+    
+    @IBOutlet weak var topViewHeight: NSLayoutConstraint!
+    
+    @IBOutlet weak var verticalOffset: NSLayoutConstraint!
+    
+    
     @IBOutlet weak var scrollView: UIScrollView!
     
     var messageList: HFMineMessageListView!
@@ -33,8 +39,6 @@ class HFMineMessageVC: HFBasicViewController {
         }
         NotificationCenter.default.post(name: Notification.Name(rawValue: HFNotification.RemoveBundge.rawValue), object: nil)
         
-        topView.backgroundColor = HFTheme.TintColor
-        
         AnalyseManager.SeeMessages.record()
     }
     
@@ -45,11 +49,15 @@ class HFMineMessageVC: HFBasicViewController {
     @IBAction func onSegmentValueChanged(_ sender: AnyObject) {
         let sender = sender as! UISegmentedControl
         let x = CGFloat(sender.selectedSegmentIndex) * ScreenWidth
-        let rect = CGRect.init(x: x, y: 0, width: ScreenWidth, height: ScreenHeight - 64)
+        let rect = CGRect.init(x: x, y: 0, width: ScreenWidth, height: ScreenHeight - NavbarHeight)
         scrollView.scrollRectToVisible(rect, animated: false)
     }
     
     fileprivate func initUI() {
+        topViewHeight.constant = NavbarHeight
+        verticalOffset.constant = NavbarVerticalOffSet
+        topView.backgroundColor = HFTheme.TintColor
+        
         messageList = HFMineMessageListView()
         
         scrollView.addSubview(messageList)
@@ -57,7 +65,7 @@ class HFMineMessageVC: HFBasicViewController {
         messageList.snp.makeConstraints { (make) in
             make.left.top.bottom.equalTo(scrollView)
             make.width.equalTo(ScreenWidth)
-            make.height.equalTo(ScreenHeight-64)
+            make.height.equalTo(ScreenHeight-NavbarHeight)
         }
         
         notifList = HFMineMessageListView()
@@ -68,7 +76,7 @@ class HFMineMessageVC: HFBasicViewController {
             make.top.bottom.right.equalTo(scrollView)
             make.left.equalTo(messageList.snp.right)
             make.width.equalTo(ScreenWidth)
-            make.height.equalTo(ScreenHeight-64)
+            make.height.equalTo(ScreenHeight-NavbarHeight)
         }
         
         loadingView = HFLoadingView()
