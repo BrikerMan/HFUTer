@@ -58,7 +58,7 @@ class HFInfoCalendarVC: HFBaseViewController {
     
     fileprivate func initUI() {
         imageWidth.constant   = ScreenWidth
-        imageHeight.constant  = ScreenHeight - 64
+        imageHeight.constant  = ScreenHeight - NavbarHeight
         imageView.contentMode = UIViewContentMode.scaleAspectFit
         imageView.placeHolder = UIImage(named: "hf_cover_placeholder")
         imageView.backgroundColor = UIColor.clear
@@ -66,7 +66,7 @@ class HFInfoCalendarVC: HFBaseViewController {
         loadingView = HFLoadingView()
         self.view.addSubview(loadingView)
         loadingView.snp.makeConstraints { (make) in
-            make.edges.equalTo(self.view).inset(UIEdgeInsetsMake(64, 0, 0, 0))
+            make.edges.equalTo(self.view).inset(UIEdgeInsetsMake(NavbarHeight, 0, 0, 0))
         }
     }
 }

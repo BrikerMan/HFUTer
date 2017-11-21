@@ -47,7 +47,7 @@ class HFInfoAcademicClassListVC: HFBaseViewController  {
         loadingView = HFLoadingView()
         view.addSubview(loadingView!)
         loadingView!.snp.makeConstraints({ (make) in
-            make.edges.equalTo(self.view).inset(UIEdgeInsets(top: 64, left: 0, bottom: 0, right: 0))
+            make.edges.equalTo(self.view).inset(UIEdgeInsets(top: NavbarHeight, left: 0, bottom: 0, right: 0))
         })
         loadingView!.show()
         

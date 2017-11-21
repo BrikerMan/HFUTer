@@ -67,7 +67,7 @@ class HFInfoPlanListVC: HFBaseViewController {
         loadingView = HFLoadingView()
         self.view.addSubview(loadingView!)
         loadingView?.snp.makeConstraints({ (make) in
-            make.edges.equalTo(view).inset(UIEdgeInsetsMake(64, 0, 0, 0))
+            make.edges.equalTo(view).inset(UIEdgeInsetsMake(NavbarHeight, 0, 0, 0))
         })
         loadingView?.show()
     }

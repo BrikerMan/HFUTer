@@ -42,7 +42,7 @@ class HFInfoPlanDetailVC: HFBaseViewController {
         tableView.tableFooterView = UIView()
         view.addSubview(loadingView)
         loadingView.snp.makeConstraints { (make) in
-            make.edges.equalTo(UIEdgeInsetsMake(64, 0, 0, 0))
+            make.edges.equalTo(UIEdgeInsetsMake(NavbarHeight, 0, 0, 0))
         }
     }
     

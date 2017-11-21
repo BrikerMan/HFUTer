@@ -85,7 +85,7 @@ class HFInfoEmptyClassroomListVC: HFBaseViewController {
         self.automaticallyAdjustsScrollViewInsets = false
         loadingView = HFLoadingView()
         self.view.addSubview(loadingView!)
-        loadingView?.snp.makeConstraints({(make) in make.edges.equalTo(view).inset(UIEdgeInsetsMake(64, 0, 0, 0))})
+        loadingView?.snp.makeConstraints({(make) in make.edges.equalTo(view).inset(UIEdgeInsetsMake(NavbarHeight, 0, 0, 0))})
         loadingView?.show()
     }
     

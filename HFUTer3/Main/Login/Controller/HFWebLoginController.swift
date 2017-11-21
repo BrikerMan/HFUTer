@@ -46,7 +46,7 @@ class HFWebLoginController: HFBaseViewController {
         
         webView.snp.makeConstraints { (make) in
             make.left.bottom.right.equalTo(view)
-            make.top.equalTo(view.snp.top).offset(64)
+            make.top.equalTo(view.snp.top).offset(NavbarHeight)
         }
         
         

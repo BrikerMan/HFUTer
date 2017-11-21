@@ -146,7 +146,7 @@ class HFFormViewController: FormViewController, UIGestureRecognizerDelegate {
         nav!.setNavTitle(navTitle)
         nav!.delegate = self
         nav!.shouldShowBackButton = shouldShowBackButton
-        tableView?.frame = CGRect(x: 0, y: 64, width: ScreenWidth, height: ScreenHeight-64)
+        tableView?.frame = CGRect(x: 0, y: NavbarHeight, width: ScreenWidth, height: ScreenHeight-NavbarHeight)
         tableView?.backgroundColor = HFTheme.BlackAreaColor
         tableView?.separatorColor  = HFTheme.SeperatorColor
         nav?.navLeftButton.isHidden = hideNavLeftButton
