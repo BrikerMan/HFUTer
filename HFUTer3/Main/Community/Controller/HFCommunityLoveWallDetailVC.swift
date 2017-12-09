@@ -11,6 +11,10 @@ import PromiseKit
 
 class HFCommunityLoveWallDetailVC: HFBaseViewController, XibBasedController {
     
+    @IBOutlet weak var topViewHeight: NSLayoutConstraint!
+    
+    @IBOutlet weak var bottomViewHeight: NSLayoutConstraint!
+    
     @IBOutlet weak var tableView: HFPullTableView!
     
     var mainModel: HFComLoveWallListModel!
@@ -123,6 +127,8 @@ class HFCommunityLoveWallDetailVC: HFBaseViewController, XibBasedController {
     }
     
     fileprivate func initUI() {
+       topViewHeight.constant = CGFloat(NavbarHeight)
+        bottomViewHeight.constant = CGFloat(TabbarHeight)
         tableView.registerReusableCell(HFCommunityLoveWallListCell.self)
         tableView.registerReusableCell(HFCommunityLoveDetailCommentCell.self)
         tableView.backgroundColor = HFTheme.BlackAreaColor
