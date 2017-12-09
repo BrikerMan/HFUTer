@@ -49,6 +49,7 @@ class HFInfoGradesVC: HFBaseViewController {
     fileprivate func initData() {
         loadingView?.show()
         if let result = HFTermModel.readModels() {
+            loadingView?.hide()
             termList = result
             tableView.reloadData()
         } else {
