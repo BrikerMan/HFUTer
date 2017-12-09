@@ -40,7 +40,7 @@ class HFCookieRequest {
     static func login(username: String, password: String) -> Promise<Void> {
         return Promise<Void> { fullfill, reject in
             HFAPIRequest.buildPromise(api: "api/user/login",
-                                      method: .POST,
+                                      method: .GET,
                                       param: ["sid":username, "pwd":password, "auto_rebound": true])
                 .then { _ in
                     fullfill()
