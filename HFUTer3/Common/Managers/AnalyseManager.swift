@@ -64,6 +64,7 @@ class AnalyseManager {
     /* 我的相关功能 */
     static let BindJWXT = ContentViewStruct(name: "绑定教务系统", type: "个人信息")
     static let BindXXMH = ContentViewStruct(name: "绑定信息门户", type: "个人信息")
+    static let BindNewJW = ContentViewStruct(name: "绑定新教务系统", type: "个人信息")
     static let BindMail = ContentViewStruct(name: "绑定邮箱", type: "个人信息")
     static let ChangePassword = ContentViewStruct(name: "修改密码", type: "个人信息")
     static let ChangePhoto = ContentViewStruct(name: "修改头像", type: "个人信息")
