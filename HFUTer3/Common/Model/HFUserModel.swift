@@ -32,15 +32,10 @@ class HFUserModel: HFBaseModel {
   var status_jwxt = false
   /// 是否绑定了教务系统
   var status_xxmh = false
+  /// 是否绑定了新教务系统
+  var status_new_ims = false
   /// 密码
   var password = ""
-  
-  var status_new_jwxt: Bool {
-    get {
-      let newPwdIMS = PlistManager.userDataPlist.value["newPwdIMS"].string
-      return newPwdIMS != nil
-    }
-  }
   
   func save() {
     let dic = self.yy_modelToJSONObject() as! NSDictionary

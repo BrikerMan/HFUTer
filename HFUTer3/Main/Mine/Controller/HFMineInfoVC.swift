@@ -35,7 +35,7 @@ class HFMineInfoVC: HFBaseViewController {
           ],
         [
           HFMineInfoInfoCellModel("教务系统",user.status_jwxt,"",true),
-          HFMineInfoInfoCellModel("新教务系统",user.status_new_jwxt,"",true),
+          HFMineInfoInfoCellModel("新教务系统",user.status_new_ims,"",true),
           HFMineInfoInfoCellModel("信息门户",user.status_xxmh,"",true)
         ],
         [
@@ -91,6 +91,11 @@ extension HFMineInfoVC: HFTextFieldAlertControllerDelegate {
       request.bindWithData(1, password: text)
       AnalyseManager.BindJWXT.record()
     case .bindNewJW:
+        request.bindWithData(2, password: text)
+        AnalyseManager.BindNewJW.record()
+        
+        // 取消本地登陆新教务系统，直接传服务器绑定
+        /*
       self.parser.login(id: DataEnv.user!.sid, pass: text)
         .then { json -> Void in
           print(json)
@@ -114,7 +119,7 @@ extension HFMineInfoVC: HFTextFieldAlertControllerDelegate {
           }
         }.catch { error in
           HFToast.showError("密码错误，请重试")
-      }
+      }*/
       
     case .bindXXMH:
       request.bindWithData(0, password: text)
@@ -150,7 +155,6 @@ extension HFMineInfoVC: HFBaseAPIManagerCallBack {
         self.uploadImageFileToQiniu(withToken: token)
       }
     }
-    
     
   }
 }
@@ -243,7 +247,7 @@ extension HFMineInfoVC: UITableViewDelegate {
         title = DataEnv.user!.status_jwxt ? "修改密码" : "绑定"
         message = "请输入教务系统密码"
       } else if indexPath.row == 1 {
-        title = DataEnv.user!.status_new_jwxt ? "修改密码" : "绑定"
+        title = DataEnv.user!.status_new_ims ? "修改密码" : "绑定"
         message = "请输入新教务系统密码"
       } else {
         title = DataEnv.user!.status_xxmh ? "修改密码" : "绑定"
