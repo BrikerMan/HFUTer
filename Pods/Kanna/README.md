@@ -25,30 +25,46 @@ Features:
 Installation:
 =================
 
+### Swift 4 (beta)
+If you want to use Swift 4, please use branch `feature/v4.0.0`.  
+This is a beta version. There may be API changes.
+
 ### Swift 3.0
 
-#####CocoaPods
+##### CocoaPods
 **:warning: CocoaPods (`1.1.0 or later`) is required.**
 
 Adding it to your `Podfile`:
-```
+```ruby
 use_frameworks!
 pod 'Kanna', '~> 2.1.0'
 ```
 
-#####Carthage
+##### Carthage
 Adding it to your `Cartfile`:
 
-```
+```ogdl
 github "tid-kijyun/Kanna" ~> 2.1.0
 ```
 
 1. In the project settings add `$(SDKROOT)/usr/include/libxml2` to the "header search paths" field
 
-#####Swift Package Manager
+##### Swift Package Manager
+
+Installing libxml2 to your computer:
+
+```bash
+// macOS
+$ brew install libxml2
+$ brew link --force libxml2
+
+// Linux(Ubuntu)
+$ sudo apt-get install libxml2-dev
+```
+
 Adding it to your `Package.swift`:
 
-```
+```swift
 import PackageDescription
 
 let package = Package(
@@ -60,31 +76,47 @@ let package = Package(
 )
 ```
 
-```
+```bash
 $ swift build
 ```
+
+*Note: When a build error occurs, please try run the following command:*
+```bash
+$ sudo apt-get install pkg-config
+```
+
+##### Manual Installation
+1. Add these files to your project:  
+  [Kanna.swift](Source/Kanna.swift)  
+  [CSS.swift](Source/CSS.swift)  
+  [libxmlHTMLDocument.swift](Source/libxml/libxmlHTMLDocument.swift)  
+  [libxmlHTMLNode.swift](Source/libxml/libxmlHTMLNode.swift)  
+  [libxmlParserOption.swift](Source/libxml/libxmlParserOption.swift)  
+  [Modules](Modules)
+1. In the target settings add `$(SDKROOT)/usr/include/libxml2` to the `Search Paths > Header Search Paths` field
+1. In the target settings add `$(SRCROOT)/Modules` to the `Swift Compiler - Search Paths > Import Paths` field
 
 ### Swift 2.x
 
 Three means of installation are supported:
 
-#####CocoaPods
+##### CocoaPods
 **:warning: CocoaPods (`0.39 or later`) is required.**
 
 Adding it to your `Podfile`:
-```
+```ruby
 use_frameworks!
 pod 'Kanna', '~> 1.1.0'
 ```
 
-#####Carthage
+##### Carthage
 Adding it to your `Cartfile`:
 
-```
+```ogdl
 github "tid-kijyun/Kanna" ~> 1.1.0
 ```
 
-#####Manual Installation
+##### Manual Installation
 1. Add these files to your project:  
   [Kanna.swift](Source/Kanna.swift)  
   [CSS.swift](Source/CSS.swift)  
@@ -97,7 +129,7 @@ github "tid-kijyun/Kanna" ~> 1.1.0
 
   Copy the those import statements:
 
-  ```
+  ```objective-c
   #import <libxml/HTMLtree.h>
   #import <libxml/xpath.h>
   #import <libxml/xpathInternals.h>

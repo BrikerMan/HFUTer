@@ -1774,7 +1774,6 @@
 				6A7988901D6C79900068C6F6 /* Sources */,
 				6A7988911D6C79900068C6F6 /* Frameworks */,
 				6A7988921D6C79900068C6F6 /* Resources */,
-				9B838C5B7CB0E795E9190A38 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1794,7 +1793,6 @@
 				6B5C14681C86EACB00A08941 /* Frameworks */,
 				6B5C14691C86EACB00A08941 /* Resources */,
 				E81402121332250AF2DE5D30 /* [CP] Embed Pods Frameworks */,
-				B0FAD8F868D7A7AA58F0ACE0 /* [CP] Copy Pods Resources */,
 				9734F4D61C1D1C8DA80EA28E /* Embed Pods Frameworks */,
 				6A7988A41D6C79900068C6F6 /* Embed App Extensions */,
 				6AF50A5E1E3C7C9D006B1F75 /* Carthage Run Script */,
@@ -1981,21 +1979,6 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HFUTer3/Pods-HFUTer3-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		9B838C5B7CB0E795E9190A38 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TodayWidget/Pods-TodayWidget-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		9BC696A131543801EA8B214F /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -2012,21 +1995,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		B0FAD8F868D7A7AA58F0ACE0 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HFUTer3/Pods-HFUTer3-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		B1E6CD2D90A1AFBE7D682822 /* [CP] Check Pods Manifest.lock */ = {
@@ -2130,7 +2098,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YYText.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YYWebImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ZYCornerRadius.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PromiseKit.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -2686,6 +2653,7 @@
 					"\"${PODS_ROOT}/Headers/Public/Reveal-iOS-SDK\"",
 					"\"${PODS_ROOT}/Headers/Public/UMengAnalytics-NO-IDFA\"",
 					"$(inherited)",
+					"$(SDKROOT)/usr/include/libxml2",
 				);
 				INFOPLIST_FILE = HFUTer3/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -2739,6 +2707,7 @@
 					"\"${PODS_ROOT}/Headers/Public/Reveal-iOS-SDK\"",
 					"\"${PODS_ROOT}/Headers/Public/UMengAnalytics-NO-IDFA\"",
 					"$(inherited)",
+					"$(SDKROOT)/usr/include/libxml2",
 				);
 				INFOPLIST_FILE = HFUTer3/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;

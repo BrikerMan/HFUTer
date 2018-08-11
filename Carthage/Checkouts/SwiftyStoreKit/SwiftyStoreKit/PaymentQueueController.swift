@@ -47,7 +47,12 @@ public protocol PaymentQueue: class {
     func remove(_ observer: SKPaymentTransactionObserver)
 
     func add(_ payment: SKPayment)
-
+    
+    func start(_ downloads: [SKDownload])
+    func pause(_ downloads: [SKDownload])
+    func resume(_ downloads: [SKDownload])
+    func cancel(_ downloads: [SKDownload])
+    
     func restoreCompletedTransactions(withApplicationUsername username: String?)
 
     func finishTransaction(_ transaction: SKPaymentTransaction)
@@ -103,18 +108,33 @@ class PaymentQueueController: NSObject, SKPaymentTransactionObserver {
         super.init()
         paymentQueue.add(self)
     }
+    
+    private func assertCompleteTransactionsWasCalled() {
+        
+        let message = "SwiftyStoreKit.completeTransactions() must be called when the app launches."
+        assert(completeTransactionsController.completeTransactions != nil, message)
+    }
 
     func startPayment(_ payment: Payment) {
-
+        assertCompleteTransactionsWasCalled()
+        
         let skPayment = SKMutablePayment(product: payment.product)
         skPayment.applicationUsername = payment.applicationUsername
         skPayment.quantity = payment.quantity
+        
+#if os(iOS) || os(tvOS)
+        if #available(iOS 8.3, tvOS 9.0, *) {
+            skPayment.simulatesAskToBuyInSandbox = payment.simulatesAskToBuyInSandbox
+        }
+#endif
+
         paymentQueue.add(skPayment)
 
         paymentsController.append(payment)
     }
 
     func restorePurchases(_ restorePurchases: RestorePurchases) {
+        assertCompleteTransactionsWasCalled()
 
         if restorePurchasesController.restorePurchases != nil {
             return
@@ -143,7 +163,21 @@ class PaymentQueueController: NSObject, SKPaymentTransactionObserver {
         paymentQueue.finishTransaction(skTransaction)
     }
     
+    func start(_ downloads: [SKDownload]) {
+        paymentQueue.start(downloads)
+    }
+    func pause(_ downloads: [SKDownload]) {
+        paymentQueue.pause(downloads)
+    }
+    func resume(_ downloads: [SKDownload]) {
+        paymentQueue.resume(downloads)
+    }
+    func cancel(_ downloads: [SKDownload]) {
+        paymentQueue.cancel(downloads)
+    }
+
     var shouldAddStorePaymentHandler: ShouldAddStorePaymentHandler?
+    var updatedDownloadsHandler: UpdatedDownloadsHandler?
 
     // MARK: SKPaymentTransactionObserver
     func paymentQueue(_ queue: SKPaymentQueue, updatedTransactions transactions: [SKPaymentTransaction]) {
@@ -202,10 +236,13 @@ class PaymentQueueController: NSObject, SKPaymentTransactionObserver {
 
     func paymentQueue(_ queue: SKPaymentQueue, updatedDownloads downloads: [SKDownload]) {
 
+        updatedDownloadsHandler?(downloads)
     }
 
+    #if os(iOS)
     func paymentQueue(_ queue: SKPaymentQueue, shouldAddStorePayment payment: SKPayment, for product: SKProduct) -> Bool {
         
         return shouldAddStorePaymentHandler?(payment, product) ?? false
     }
+    #endif
 }

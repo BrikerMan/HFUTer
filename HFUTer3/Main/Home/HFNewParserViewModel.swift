@@ -150,7 +150,7 @@ class HFNewParserViewModel {
           return self.getCourceTable()
           
         }.then { html -> Promise<JSONItem> in
-          if let doc = HTML(html: html, encoding: .utf8) {
+          if let doc = try? HTML(html: html, encoding: .utf8) {
             for link in doc.css("option[selected=selected]") {
               if let v = link["value"] {
                 self.semesterId = v

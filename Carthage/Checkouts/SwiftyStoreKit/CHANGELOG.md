@@ -2,6 +2,48 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.13.3](https://github.com/bizz84/SwiftyStoreKit/releases/tag/0.13.3) Fix macOS compile error on Xcode 10.0 beta (10L176w)
+
+* Fix macOS compile error on Xcode 10.0 beta (10L176w) ([#381](https://github.com/bizz84/SwiftyStoreKit/pull/381), see [#380](https://github.com/bizz84/SwiftyStoreKit/issues/380))
+
+## [0.13.2](https://github.com/bizz84/SwiftyStoreKit/releases/tag/0.13.2) Swift 4.1 / Xcode 9.3 Support
+
+* Swift 4.1 / Xcode 9.3 Support ([#360](https://github.com/bizz84/SwiftyStoreKit/pull/360))
+
+## [0.13.1](https://github.com/bizz84/SwiftyStoreKit/releases/tag/0.13.1) Add support Ask To Buy
+
+* Add a wrapper for `simulatesAskToBuyInSandbox` ([#349](https://github.com/bizz84/SwiftyStoreKit/pull/349))
+
+## [0.13.0](https://github.com/bizz84/SwiftyStoreKit/releases/tag/0.13.0) Add support for downloading content hosted with Apple
+
+* Add support for downloading content hosted with Apple ([#343](https://github.com/bizz84/SwiftyStoreKit/pull/343), related issue: [#128](https://github.com/bizz84/SwiftyStoreKit/issues/128))
+* Add table of contents to README ([#346](https://github.com/bizz84/SwiftyStoreKit/pull/346))
+
+## [0.12.1](https://github.com/bizz84/SwiftyStoreKit/releases/tag/0.12.1) Assert that `completeTransactions` was called when the app launches.
+
+* Assert that `completeTransactions()` was called when the app launches ([#337](https://github.com/bizz84/SwiftyStoreKit/pull/337), related issue: [#287](https://github.com/bizz84/SwiftyStoreKit/issues/287))
+
+## [0.12.0](https://github.com/bizz84/SwiftyStoreKit/releases/tag/0.12.0) Add `verifySubscriptions` method for subscription groups 
+
+* Add `verifySubscriptions` method to check all subscriptions in a group at once ([#333](https://github.com/bizz84/SwiftyStoreKit/pull/333), related issue: [#194](https://github.com/bizz84/SwiftyStoreKit/issues/194))
+* Rename `verifySubscription(type:productId:inReceipt:validUntil:)` to `verifySubscription(ofType:productId:inReceipt:validUntil:)` ([#333](https://github.com/bizz84/SwiftyStoreKit/pull/333))
+* Add video tutorials section in README ([#328](https://github.com/bizz84/SwiftyStoreKit/pull/328), [#330](https://github.com/bizz84/SwiftyStoreKit/pull/330), see [#326](https://github.com/bizz84/SwiftyStoreKit/issues/326))
+* Update iOS Demo App ([#327](https://github.com/bizz84/SwiftyStoreKit/pull/327), see [#147](https://github.com/bizz84/SwiftyStoreKit/issues/147))
+
+## [0.11.3](https://github.com/bizz84/SwiftyStoreKit/releases/tag/0.11.3) `completeTransactions` finishes failed transactions if `atomically: false`
+
+* Add `originalTransaction` to `PurchaseDetails` ([#323](https://github.com/bizz84/SwiftyStoreKit/pull/323), fix for [#302](https://github.com/bizz84/SwiftyStoreKit/issues/302))
+* Bug fix: `completeTransactions` finishes failed transactions if `atomically: false` ([#322](https://github.com/bizz84/SwiftyStoreKit/pull/322), related issues: [#307](https://github.com/bizz84/SwiftyStoreKit/issues/307), [#288](https://github.com/bizz84/SwiftyStoreKit/issues/288))
+
+## [0.11.2](https://github.com/bizz84/SwiftyStoreKit/releases/tag/0.11.2) Remove `SKProduct.localizedIntroductoryPrice`
+
+* Remove `localizedIntroductoryPrice` ([#320](https://github.com/bizz84/SwiftyStoreKit/pull/320), see [#319](https://github.com/bizz84/SwiftyStoreKit/issues/319), [#318](https://github.com/bizz84/SwiftyStoreKit/pull/318), [#315](https://github.com/bizz84/SwiftyStoreKit/pull/315))
+
+## [0.11.1](https://github.com/bizz84/SwiftyStoreKit/releases/tag/0.11.1) Add `PaymentTransaction.transactionDate` and  `SKProduct.localizedIntroductoryPrice`
+
+* Add `transactionDate` to `PaymentTransaction` ([#316](https://github.com/bizz84/SwiftyStoreKit/pull/316), see [#312](https://github.com/bizz84/SwiftyStoreKit/issues/312)).
+* Add `localizedIntroductoryPrice` to `SKProduct` ([#318](https://github.com/bizz84/SwiftyStoreKit/pull/318)).
+
 ## [0.11.0](https://github.com/bizz84/SwiftyStoreKit/releases/tag/0.11.0) Add `fetchReceipt` method + update `verifyReceipt` and `ReceiptValidator` protocol
 
 * Add `fetchReceipt` method. Update `verifyReceipt` to use it ([#278](https://github.com/bizz84/SwiftyStoreKit/pull/278), related issues: [#272](https://github.com/bizz84/SwiftyStoreKit/issues/272), [#223](https://github.com/bizz84/SwiftyStoreKit/issues/223)).
