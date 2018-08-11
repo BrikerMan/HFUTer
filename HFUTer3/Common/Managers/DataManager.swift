@@ -142,15 +142,6 @@ class DataManager {
   
   // 更新 Host 和通知
   func updataHostInfo() {
-    APIBaseURL = PlistManager.settingsPlist.getValues()?["BaseApiManger"] as? String ?? APIBaseURL
-    AlamofireDomain.request(ServerInfoFile, method: HTTPMethod.get, parameters: nil, encoding: URLEncoding.default, headers: nil)
-      .responseJSON { response in
-        if let resultDic = response.result.value as? [String:AnyObject], let host = resultDic["host"] as? String {
-          APIBaseURL =  "http://" + host
-          PlistManager.settingsPlist.saveValues(["BaseApiManger":APIBaseURL as AnyObject])
-        }
-    }
-    
     Pitaya.build(HTTPMethod: .GET, url: SettingInfo)
       .responseJSON { (json, response) in
         
@@ -163,6 +154,11 @@ class DataManager {
           PlistManager.settingsPlist.saveValues(["XCSemesterStartTime" : xc])
           HFSemesterStartTime = hf
           XCSemesterStartTime = xc
+        }
+        
+        if let host = json["host"].string {
+            APIBaseURL = host
+            PlistManager.settingsPlist.saveValues(["BaseApiManger":APIBaseURL as AnyObject])
         }
         
         PlistManager.settingsPlist.saveValues(["allowDonate"  : self.allowDonate])

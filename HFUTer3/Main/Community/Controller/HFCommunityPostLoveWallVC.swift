@@ -52,7 +52,7 @@ class HFCommunityPostLoveWallVC: HFFormViewController {
                 return
         }
         
-        if content.characters.count < 10 {
+        if content.count < 10 {
             hud.showError("表白内容不得少于 10 个字符")
             return
         }

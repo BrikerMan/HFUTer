@@ -14,7 +14,7 @@ import Foundation
 
 class DataManager {
     static let shared = DataManager()
-    var HFSemesterStartTime = PlistManager.settingsPlist.getValues()?["HFSemesterStartTime"] as? Int ?? 1487520000
+    var HFSemesterStartTime = PlistManager.settingsPlist.getValues()?["HFSemesterStartTime"] as? Int ?? 1535904000
     let dayNames = ["星期一", "星期二", "星期三", "星期四", "星期五", "星期六", "星期日", "星期一"]
     
     func getHeaderString(_ isToday: Bool = true) -> String {

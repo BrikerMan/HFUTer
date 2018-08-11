@@ -18,11 +18,11 @@ let Is_TestFlight          = false
 let HFLogLevel      = 0
 
 let ServerInfoFile  = "https://coding.net/u/Haidy/p/HfuterSettings/git/raw/master/host"
-var APIBaseURL      = "http://wehfut.duapp.com"
+var APIBaseURL      = "http://hfuter.bceapp.com"
 let SettingInfo     = "https://coding.net/u/eliyar917/p/HFUTer-Settings/git/raw/master/setting"
 
-var HFSemesterStartTime = PlistManager.settingsPlist.getValues()?["HFSemesterStartTime"] as? Int ?? 1487520000
-var XCSemesterStartTime = PlistManager.settingsPlist.getValues()?["XCSemesterStartTime"] as? Int ?? 1487520000
+var HFSemesterStartTime = PlistManager.settingsPlist.getValues()?["HFSemesterStartTime"] as? Int ?? 1535904000
+var XCSemesterStartTime = PlistManager.settingsPlist.getValues()?["XCSemesterStartTime"] as? Int ?? 1535904000
 
 let JSPatchAppKey   = "b8f87fcd146b9bc8"
 let JPushAppKey     = "c7031180612e5564f89cca6e"
