@@ -9,15 +9,15 @@
 import Foundation
 
 class HFComLostFoundModel: HFBaseModel {
-    var name     = ""
-    var content  = ""
-    var id       = ""
-    var sid      = ""
-    var time     = ""
-    var image    = ""
-    var pic      = [String]()
-    var date_int = 0
-    var place    = ""
-    var thing    = ""
-    var type     = 0
+    @objc var name     = ""
+    @objc var content  = ""
+    @objc var id       = ""
+    @objc var sid      = ""
+    @objc var time     = ""
+    @objc var image    = ""
+    @objc var pic      = [String]()
+    @objc var date_int = 0
+    @objc var place    = ""
+    @objc var thing    = ""
+    @objc var type     = 0
 }

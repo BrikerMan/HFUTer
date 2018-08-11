@@ -76,7 +76,7 @@ extension UIViewController {
         self.removeNotificationObserver(NSNotification.Name.UIKeyboardDidHide.rawValue)
     }
     
-    public func keyboardDidShowNotification(_ notification: Notification) {
+    @objc public func keyboardDidShowNotification(_ notification: Notification) {
         if let nInfo = (notification as NSNotification).userInfo, let value = nInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue {
             
             let frame = value.cgRectValue
@@ -84,7 +84,7 @@ extension UIViewController {
         }
     }
     
-    public func keyboardWillShowNotification(_ notification: Notification) {
+    @objc public func keyboardWillShowNotification(_ notification: Notification) {
         if let nInfo = (notification as NSNotification).userInfo, let value = nInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue {
             
             let frame = value.cgRectValue
@@ -92,7 +92,7 @@ extension UIViewController {
         }
     }
     
-    public func keyboardWillHideNotification(_ notification: Notification) {
+    @objc public func keyboardWillHideNotification(_ notification: Notification) {
         if let nInfo = (notification as NSNotification).userInfo, let value = nInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue {
             
             let frame = value.cgRectValue
@@ -100,7 +100,7 @@ extension UIViewController {
         }
     }
     
-    public func keyboardDidHideNotification(_ notification: Notification) {
+    @objc public func keyboardDidHideNotification(_ notification: Notification) {
         if let nInfo = (notification as NSNotification).userInfo, let value = nInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue {
             
             let frame = value.cgRectValue
@@ -139,7 +139,7 @@ extension UIViewController {
     #endif
     
     //EZSE: Dismisses keyboard
-    public func dismissKeyboard() {
+    @objc public func dismissKeyboard() {
         view.endEditing(true)
     }
     

@@ -40,7 +40,7 @@ class HFCommunityVC: HFBasicViewController {
     }
     
     
-    func reloadLoveListView() {
+    @objc func reloadLoveListView() {
         loveWallView.tableView.reloadData()
     }
     

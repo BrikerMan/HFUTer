@@ -42,7 +42,7 @@ class HFInformationVC: HFBaseViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(updateTint), name: .tintColorUpdated, object: nil)
     }
     
-    func updateTint() {
+    @objc func updateTint() {
         runOnMainThread {
             self.collectionView.reloadData()
         }

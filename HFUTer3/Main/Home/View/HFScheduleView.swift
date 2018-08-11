@@ -122,15 +122,15 @@ class HFScheduleView: HFView {
             
             let dayName = NSAttributedString(string: kSchedule.dayNamesList[index],
                                              attributes: [
-                                                NSFontAttributeName: boldfont,
-                                                NSForegroundColorAttributeName: color])
+                                                NSAttributedStringKey.font: boldfont,
+                                                NSAttributedStringKey.foregroundColor: color])
             att.append(dayName)
             if DataEnv.settings.scheduleShowDayDate.value {
                 
                 let dateAtt = NSAttributedString(string: "\n\(dates[index])",
                     attributes: [
-                        NSFontAttributeName: font,
-                        NSForegroundColorAttributeName: color])
+                        NSAttributedStringKey.font: font,
+                        NSAttributedStringKey.foregroundColor: color])
                 att.append(dateAtt)
             }
             

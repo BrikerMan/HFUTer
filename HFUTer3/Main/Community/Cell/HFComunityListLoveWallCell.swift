@@ -161,8 +161,8 @@ class HFComunityListLoveWallCell: UITableViewCell, NibReusable {
             return layout.textBoundingSize.height + 54 + 44 + imageHeight
         } else {
             let attText = NSMutableAttributedString(string: model.content, attributes: [
-                NSFontAttributeName             : UIFont.systemFont(ofSize: 14),
-                NSForegroundColorAttributeName  : HFTheme.DarkTextColor,
+                NSAttributedStringKey.font             : UIFont.systemFont(ofSize: 14),
+                NSAttributedStringKey.foregroundColor  : HFTheme.DarkTextColor,
                 ])
             
             let width = ScreenWidth - 64
@@ -177,8 +177,8 @@ class HFComunityListLoveWallCell: UITableViewCell, NibReusable {
             container.maximumNumberOfRows  = 15
             container.truncationType = YYTextTruncationType.end
             container.truncationToken = NSAttributedString(string: " ...", attributes: [
-                NSFontAttributeName             : UIFont.systemFont(ofSize: 14),
-                NSForegroundColorAttributeName  : UIColor(hexString: "#3d9cdd")
+                NSAttributedStringKey.font             : UIFont.systemFont(ofSize: 14),
+                NSAttributedStringKey.foregroundColor  : UIColor(hexString: "#3d9cdd")
                 ])
             let infoLayout = YYTextLayout(container: container, text: attText)!
             model.layout["infoLayout"] = infoLayout

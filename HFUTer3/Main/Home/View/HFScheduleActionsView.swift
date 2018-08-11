@@ -84,7 +84,7 @@ class HFScheduleActionsView: HFXibView {
         }
     }
     
-    func hide() {
+    @objc func hide() {
         isShowing = false
         UIView.animate(withDuration: 0.3, animations: {
             self.backgroundColor = UIColor.clear

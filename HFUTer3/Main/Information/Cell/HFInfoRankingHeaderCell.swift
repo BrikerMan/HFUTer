@@ -18,8 +18,8 @@ class HFInfoRankingHeaderCell: UITableViewCell {
     }
     
     func setup(_ number:Int) {
-        let normal      = [ NSFontAttributeName: UIFont.systemFont(ofSize: 15), NSForegroundColorAttributeName: ColorManager.shared.DarkTextColor ]
-        let heightligh  = [ NSFontAttributeName: UIFont.systemFont(ofSize: 15), NSForegroundColorAttributeName: ColorManager.shared.TintColor ] as [String : Any] as [String : Any]
+        let normal      = [ NSAttributedStringKey.font: UIFont.systemFont(ofSize: 15), NSAttributedStringKey.foregroundColor: ColorManager.shared.DarkTextColor ]
+        let heightligh: [NSAttributedStringKey : Any]  = [ NSAttributedStringKey.font: UIFont.systemFont(ofSize: 15), NSAttributedStringKey.foregroundColor: ColorManager.shared.TintColor ]
         
         
         

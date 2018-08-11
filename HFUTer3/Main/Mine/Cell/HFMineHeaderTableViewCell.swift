@@ -37,7 +37,7 @@ class HFMineHeaderTableViewCell: UITableViewCell {
         NotificationCenter.default.removeObserver(self, name: .tintColorUpdated, object: nil)
     }
     
-    func updateColor() {
+    @objc func updateColor() {
         backgroundColor                   = HFTheme.TintColor
         offscreenBackView.backgroundColor = HFTheme.TintColor
     }

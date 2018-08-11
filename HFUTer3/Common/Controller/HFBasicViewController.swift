@@ -71,7 +71,7 @@ class HFBasicViewController: UIViewController, UIGestureRecognizerDelegate{
         view.endEditing(true)
     }
     
-    func updateTintColor() {
+    @objc func updateTintColor() {
         
     }
     

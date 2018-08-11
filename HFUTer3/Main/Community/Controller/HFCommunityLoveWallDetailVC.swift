@@ -285,7 +285,7 @@ extension HFCommunityLoveWallDetailVC: UITableViewDelegate {
             label.textColor = HFTheme.DarkTextColor
             
             if #available(iOS 8.2, *) {
-                label.font = UIFont.systemFont(ofSize: 14, weight: UIFontWeightMedium)
+                label.font = UIFont.systemFont(ofSize: 14, weight: UIFont.Weight.medium)
             } else {
                 label.font = UIFont.boldSystemFont(ofSize: 14)
             }

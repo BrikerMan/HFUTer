@@ -17,7 +17,7 @@ class HFScheduleShareBottonView: HFXibView {
     }
     
     
-    func onTintChange() {
+    @objc func onTintChange() {
         self.backgroundColor = HFTheme.TintColor
     }
 }
