@@ -48,7 +48,7 @@ class HFScheduleActionsView: HFXibView {
         
         DataEnv.settings.scheduleCellAlpha.asObservable().subscribe(onNext: { [weak self] (element) in
             self?.alphaValue.text = String(format: "%.2f", element)
-        }).addDisposableTo(disposeBag)
+        }).disposed(by: disposeBag)
         
         DataEnv.settings.scheduleBackImage.asObservable().subscribe(onNext: { [weak self] (element) in
             if let image = element {
@@ -58,7 +58,7 @@ class HFScheduleActionsView: HFXibView {
                 self?.imageView.image = nil
                 self?.deleteButton.isHidden = true
             }
-        }).addDisposableTo(disposeBag)
+        }).disposed(by: disposeBag)
     }
     
     func show() {

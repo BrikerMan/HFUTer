@@ -32,7 +32,7 @@ target 'HFUTer3' do
     
     # 网络
     #    pod 'Alamofire', '~> 4.5'
-    pod 'PromiseKit/Alamofire', '~> 4.2.0'
+    
     pod 'AlamofireDomain', '~> 4.0'         ## 牛逼的网络请求库
     pod 'KMPlaceholderTextView', '~> 1.3.0'             ## 带Placeholder的TextView
     pod 'Pitaya', :git => 'https://github.com/johnlui/Pitaya.git'
@@ -45,6 +45,8 @@ target 'HFUTer3' do
     pod 'FMDB', '~> 2.7.2'
     pod 'AVOSCloud', '~> 11.3.0'
     pod 'PromiseKit', '~> 4.2.0'
+#    pod 'Alamofire', '~> 4.5'
+    pod 'PromiseKit/Alamofire', '~> 4.2.0'
     
     # 统计
     pod 'Fabric', '~> 1.7.9'

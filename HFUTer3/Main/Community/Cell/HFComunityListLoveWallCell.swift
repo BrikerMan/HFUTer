@@ -105,7 +105,7 @@ class HFComunityListLoveWallCell: UITableViewCell, NibReusable {
                     self?.likeCountLabel.text = "  赞"
                 }
             }
-        }).addDisposableTo(disposeBag)
+        }).disposed(by: disposeBag)
         
         if let layout = model.layout["infoLayout"] as? YYTextLayout {
             infoLabel.frame.origin.x = 54

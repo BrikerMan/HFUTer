@@ -96,7 +96,7 @@ class FMCommunityLoveWellCell: UITableViewCell, NibReusable {
         model.favorite.asObservable().subscribe(onNext: { [weak self] (element) in
             let image = element ? "fm_community_love_wall_like_fill" : "fm_community_love_wall_like"
             self?.likeImageView.image = UIImage(named: image)
-        }).addDisposableTo(disposeBag)
+        }).disposed(by: disposeBag)
         
         prepareUIForImage(model.cImage)
 

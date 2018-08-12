@@ -231,8 +231,8 @@ class HFNewParserViewModel {
         //        }
         placeText = roomName
         
-        if placeText.characters.last == "*" {
-          let chars = String(placeText.characters.dropLast())
+        if placeText.last == "*" {
+          let chars = String(placeText.dropLast())
           placeText = String(chars)
         }
       }
@@ -266,7 +266,8 @@ class HFNewParserViewModel {
   }
   
   func getCourceTable() -> Promise<String> {
-    return Promise<String> { fulfill, reject in
+    return Promise<String>
+        { fulfill, reject in
       Alamofire.request(kURL.newCourse, headers: nil).responseString { (response) in
         let url = response.response?.url?.absoluteString ?? "info/67391"
         self.dataId = url.components(separatedBy: "/").last ?? self.dataId
