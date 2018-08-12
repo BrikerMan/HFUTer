@@ -6,14 +6,16 @@ target 'HFUTer3' do
     inhibit_all_warnings!
     use_frameworks!
     # UI
-    pod 'WSProgressHUD', '~> 1.1.2'                         ## 不错的Hud
+    pod 'WSProgressHUD', '~> 1.1.3'                         ## 不错的Hud
     pod 'YYWebImage', '~> 1.0.5'                            ## 高效ImageView
     pod 'YYImage/WebP', '~> 1.0.4'
     pod 'SnapKit', '~> 3.2.0'                               ## AutoLayout
     pod 'SVProgressHUD', '~> 2.1.2'
     pod 'MJRefresh', '~> 3.1.15'
     pod 'AIFlatSwitch', '~> 1.0.2'                          ## 动态选择button
-    pod 'YYText' , :git => 'https://github.com/BrikerMan/YYText.git'
+    # pod 'YYText' , :git => 'https://github.com/BrikerMan/YYText.git'
+    pod 'YYText'
+    pod 'GzipSwift'
     pod 'ZYCornerRadius', '~> 1.0.2'                        # 优化圆角绘制
     pod 'RSKImageCropper', :git => 'https://github.com/BrikerMan/RSKImageCropper.git' ## 图片选择
     pod 'Toaster', '~> 2.1.1'
@@ -39,8 +41,8 @@ target 'HFUTer3' do
     
     # 数据Eureka
     pod 'YYModel', '~> 1.0.4'                           ## Dic or Json -> Model
-    pod 'Qiniu', '~> 7.1.5'
-    pod 'GzipSwift', :git => 'https://github.com/1024jp/GzipSwift.git', :branch => 'swift4'
+    pod 'Qiniu', '~> 7.2.4'
+    # pod 'GzipSwift', :git => 'https://github.com/1024jp/GzipSwift.git', :branch => 'swift4'
     pod 'FMDB', '~> 2.6.2'
     pod 'AVOSCloud', '~> 4.4.0'
     pod 'PromiseKit', '~> 4.2.0'
@@ -72,10 +74,10 @@ end
 # 指定 swift 版本，这样升级也能编译通过，然后逐个升级替换
 post_install do |installer|
     swift3_2 = ['AIFlatSwitch', 'Alamofire', 'AlamofireDomain', 'CocoaLumberjack/Swift', 
-        'GzipSwift', 'KMPlaceholderTextView', 'LTMorphingLabel',
+        'KMPlaceholderTextView', 'LTMorphingLabel',
         'NVActivityIndicatorView', 'Pitaya', 'PromiseKit', 'RxSwift', 'SnapKit',
         'Toaster']
-    swift4_1 = ['Kanna', 'Eureka', 'SwiftyStoreKit']
+    swift4_1 = ['Kanna', 'Eureka', 'SwiftyStoreKit', 'GzipSwift', 'YYText', 'WSProgressHUD']
     
     installer.pods_project.targets.each do |target|
         if swift3_2.include? target.name

@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "F63C586B36E9F218501F6966D30C004D"
+               BlueprintIdentifier = "D090985AC43FD1E96CAEDF5ECC9DAD47"
                BuildableName = "PromiseKit.framework"
                BlueprintName = "PromiseKit.common-Alamofire"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "F63C586B36E9F218501F6966D30C004D"
+            BlueprintIdentifier = "D090985AC43FD1E96CAEDF5ECC9DAD47"
             BuildableName = "PromiseKit.framework"
             BlueprintName = "PromiseKit.common-Alamofire"
             ReferencedContainer = "container:Pods.xcodeproj">

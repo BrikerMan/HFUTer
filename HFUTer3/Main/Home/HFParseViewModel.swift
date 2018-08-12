@@ -219,7 +219,6 @@ class HFParseViewModel {
                                         
                                         var error = ""
                                         
-                                        // TODO: 临时从本地读取新教务系统密码
                                         let newjwpass = PlistManager.userDataPlist.value["newPwdIMS"].string
                                         
                                         if school == 0 && newjwpass == nil {
