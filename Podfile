@@ -43,15 +43,15 @@ target 'HFUTer3' do
     pod 'YYModel', '~> 1.0.4'                           ## Dic or Json -> Model
     pod 'Qiniu', '~> 7.2.4'
     # pod 'GzipSwift', :git => 'https://github.com/1024jp/GzipSwift.git', :branch => 'swift4'
-    pod 'FMDB', '~> 2.6.2'
-    pod 'AVOSCloud', '~> 4.4.0'
+    pod 'FMDB', '~> 2.7.2'
+    pod 'AVOSCloud', '~> 11.3.0'
     pod 'PromiseKit', '~> 4.2.0'
     
     # 统计
-    pod 'Fabric', '~> 1.6.11'
-    pod 'Crashlytics', '~> 3.8.4'
+    pod 'Fabric', '~> 1.7.9'
+    pod 'Crashlytics', '~> 3.10.5'
     pod 'UMengAnalytics-NO-IDFA', '~> 4.2.5'
-    pod 'CocoaLumberjack/Swift', '~> 3.1.0'
+    pod 'CocoaLumberjack/Swift', '~> 3.4.2'
     
     # 调试
     pod 'Reveal-SDK', '~> 11', :configurations => ['Debug']
@@ -66,8 +66,8 @@ target 'TodayWidget' do
     use_frameworks!
     pod 'Pitaya', :git => 'https://github.com/johnlui/Pitaya.git'
     pod 'PromiseKit', '~> 4.2.0'
-    pod 'FMDB', '~> 2.6.2'
-    pod 'CocoaLumberjack/Swift', '~> 3.1.0'
+    pod 'FMDB', '~> 2.7.2'
+    pod 'CocoaLumberjack/Swift', '~> 3.4.2'
 end
 
 # 指定 swift 版本，这样升级也能编译通过，然后逐个升级替换
@@ -87,14 +87,17 @@ post_install do |installer|
         if swift3_2.include? target.name
             target.build_configurations.each do |config|
                 config.build_settings['SWIFT_VERSION'] = '3.2'
+                printf "SWIFT_VERSION 3.2 %s\n", target.name
             end
             elsif swift4_1.include? target.name
             target.build_configurations.each do |config|
                 config.build_settings['SWIFT_VERSION'] = '4.1'
+                printf "SWIFT_VERSION 4.1 %s\n", target.name
             end
             else
             target.build_configurations.each do |config|
                 config.build_settings['SWIFT_VERSION'] = '3.0'
+                printf "SWIFT_VERSION 3.0 %s\n", target.name
             end
         end
     end

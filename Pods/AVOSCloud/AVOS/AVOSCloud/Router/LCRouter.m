@@ -10,16 +10,17 @@
 #import "AVOSCloud.h"
 #import "AVPaasClient.h"
 #import "LCKeyValueStore.h"
+#import "LCNetworkStatistics.h"
 
 #define APIVersion @"1.1"
 
 static NSString *const routerURLString = @"https://app-router.leancloud.cn/2/route";
 
-static NSString *const moduleAPIServer       = @"api_server";
-static NSString *const moduleEngineServer    = @"engine_server";
-static NSString *const modulePushServer      = @"push_server";
-static NSString *const moduleRTMRouterServer = @"rtm_router_server";
-static NSString *const moduleStatsServer     = @"stats_server";
+NSString *const LCServiceModuleAPI           = @"api_server";
+NSString *const LCServiceModuleEngine        = @"engine_server";
+NSString *const LCServiceModulePush          = @"push_server";
+NSString *const LCServiceModuleRTM           = @"rtm_router_server";
+NSString *const LCServiceModuleStatistics    = @"stats_server";
 
 static NSString *const ttlKey                = @"ttl";
 static NSString *const lastModifiedKey       = @"last_modified";
@@ -28,7 +29,7 @@ static NSString *const serverTableKey        = @"server_table";
 static NSString *const LCAppRouterCacheKey   = @"LCAppRouterCacheKey";
 static NSString *const LCRTMRouterCacheKey   = @"LCRTMRouterCacheKey";
 
-NSString *LCRouterDidUpdateNotification      = @"LCRouterDidUpdateNotification";
+NSString *const LCRouterDidUpdateNotification = @"LCRouterDidUpdateNotification";
 
 extern AVServiceRegion LCEffectiveServiceRegion;
 
@@ -46,6 +47,9 @@ typedef NS_ENUM(NSInteger, LCServerLocation) {
 @property (nonatomic, strong) NSDictionary *candidateAPIURLStringTable;
 @property (nonatomic, strong) NSDictionary *candidateRTMRouterURLStringTable;
 @property (nonatomic, strong) NSDictionary *module2dn;
+
+/// A dictionary holds the preset URLString of each service module.
+@property (nonatomic, strong) NSMutableDictionary *presetURLStringTable;
 
 @property (nonatomic,   copy) NSString *lifesavingAPIURLString;
 @property (nonatomic,   copy) NSString *lifesavingRTMRouterURLString;
@@ -96,12 +100,14 @@ typedef NS_ENUM(NSInteger, LCServerLocation) {
     _lifesavingRTMRouterURLString = @"router-g0-push.leancloud.cn";
 
     _module2dn = @{
-        moduleAPIServer       : @"api",
-        moduleEngineServer    : @"engine",
-        modulePushServer      : @"push",
-        moduleRTMRouterServer : @"rtm",
-        moduleStatsServer     : @"stats"
+        LCServiceModuleAPI        : @"api",
+        LCServiceModuleEngine     : @"engine",
+        LCServiceModulePush       : @"push",
+        LCServiceModuleRTM        : @"rtm",
+        LCServiceModuleStatistics : @"stats"
     };
+
+    _presetURLStringTable = [NSMutableDictionary dictionary];
 
     _userDefaults = [LCKeyValueStore userDefaultsKeyValueStore];
 }
@@ -126,15 +132,15 @@ typedef NS_ENUM(NSInteger, LCServerLocation) {
         return LCServerLocationUnknown;
 }
 
-- (NSString *)moduleForPath:(NSString *)path {
+- (NSString *)serviceModuleForPath:(NSString *)path {
     if ([path hasPrefix:@"call"] || [path hasPrefix:@"functions"])
-        return moduleEngineServer;
+        return LCServiceModuleEngine;
     else if ([path hasPrefix:@"push"] || [path hasPrefix:@"installations"])
-        return modulePushServer;
+        return LCServiceModulePush;
     else if ([path hasPrefix:@"stats"] || [path hasPrefix:@"statistics"] || [path hasPrefix:@"always_collect"])
-        return moduleStatsServer;
+        return LCServiceModuleStatistics;
     else
-        return moduleAPIServer;
+        return LCServiceModuleAPI;
 }
 
 - (NSString *)fallbackAPIURLString {
@@ -197,12 +203,50 @@ typedef NS_ENUM(NSInteger, LCServerLocation) {
     [self postUpdateNotification];
 }
 
-- (void)updateInBackground {
+- (void)updateInBackground
+{
     /* App router 2 is unavailable in US node. */
-    if (LCEffectiveServiceRegion == AVServiceRegionUS)
+    if (LCEffectiveServiceRegion == AVServiceRegionUS) {
         return;
+    }
+    
+    BOOL (^isCustomAllService)(void) = ^BOOL(void) {
+        
+        NSArray *serviceKeyArray = @[LCServiceModuleAPI,
+                                     LCServiceModuleRTM,
+                                     LCServiceModulePush,
+                                     LCServiceModuleEngine,
+                                     LCServiceModuleStatistics];
+        
+        for (NSString *serviceKey in serviceKeyArray) {
+            
+            if (_presetURLStringTable[serviceKey] == nil) {
+                
+                return false;
+            }
+        }
+        
+        return true;
+    };
+    
+    /* if custom all service url, then there is no need to update router. */
+    ///
+    BOOL shouldReturn = isCustomAllService();
+    
+    if (shouldReturn) {
+        
+        return;
+    }
+    ///
 
-    NSDictionary *parameters = @{@"appId": [AVOSCloud getApplicationId]};
+    NSString *applicationId = [AVOSCloud getApplicationId];
+
+    if (!applicationId) {
+        AVLoggerError(AVLoggerDomainStorage, @"LeanCloud SDK not initialized.");
+        return;
+    }
+
+    NSDictionary *parameters = @{@"appId": applicationId};
 
     [[AVPaasClient sharedInstance] getObject:routerURLString withParameters:parameters block:^(NSDictionary *result, NSError *error) {
         if (!error && result)
@@ -221,18 +265,38 @@ typedef NS_ENUM(NSInteger, LCServerLocation) {
     return result;
 }
 
-- (NSString *)absoluteURLStringForServer:(NSString *)server path:(NSString *)path {
-    NSURLComponents *URLComponents = [[NSURLComponents alloc] init];
+- (NSString *)schemePrefixedURLString:(NSString *)URLString {
+    NSURL *URL = [NSURL URLWithString:URLString];
 
-    URLComponents.scheme = @"https";
-    URLComponents.host   = server;
+    if (URL.scheme
+        /* For "example.com:8080", the scheme is "example.com".
+           Here, we need a farther check. */
+        && [URLString hasPrefix:[URL.scheme stringByAppendingString:@"://"]])
+    {
+        return URLString;
+    }
+
+    URLString = [NSString stringWithFormat:@"https://%@", URLString];
+
+    return URLString;
+}
+
+- (NSString *)absoluteURLStringForHost:(NSString *)host path:(NSString *)path {
+    NSString *unifiedHost = [self schemePrefixedURLString:host];
+
+    NSURLComponents *URLComponents = [[NSURLComponents alloc] initWithString:unifiedHost];
 
     if (path.length) {
-        NSURL *url = [NSURL URLWithString:path];
+        NSString *head = URLComponents.path;
 
-        URLComponents.path = url.path;
-        URLComponents.query = url.query;
-        URLComponents.fragment = url.fragment;
+        if (head.length)
+            path = [head stringByAppendingPathComponent:path];
+
+        NSURL *pathURL = [NSURL URLWithString:path];
+
+        URLComponents.path = pathURL.path;
+        URLComponents.query = pathURL.query;
+        URLComponents.fragment = pathURL.fragment;
     }
 
     NSURL *URL = [URLComponents URL];
@@ -254,47 +318,74 @@ typedef NS_ENUM(NSInteger, LCServerLocation) {
 }
 
 - (NSString *)URLStringForPath:(NSString *)path {
-    NSString *server = nil;
-    NSString *module = [self moduleForPath:path];
-    NSDictionary *APIServerTable = [self cachedServerTableForKey:LCAppRouterCacheKey];
+    NSString *URLString = nil;
+    NSString *host = nil;
+    NSString *presetHost = nil;
+    NSString *cachedHost = nil;
+    NSString *versionPrefixedPath = nil;
+    NSString *module = [self serviceModuleForPath:path];
 
-    if (module && APIServerTable) {
-        server = APIServerTable[module];
+    presetHost = _presetURLStringTable[module];
+
+    if (presetHost) {
+        host = presetHost;
+        goto found;
     }
 
-    if (!server.length) {
-        switch (self.serverLocation) {
-        case LCServerLocationUCloud:
-            server = [self lncldServerForModule:module] ?: [self fallbackAPIURLString]; break;
-        default:
-            server = [self fallbackAPIURLString]; break;
+    switch (self.serverLocation) {
+    case LCServerLocationUCloud:
+        cachedHost = [self cachedServerTableForKey:LCAppRouterCacheKey][module];
+
+        if (cachedHost) {
+            host = cachedHost;
+            goto found;
         }
+
+        host = [self lncldServerForModule:module] ?: [self fallbackAPIURLString];
+        break;
+    default:
+        host = [self fallbackAPIURLString];
+        break;
     }
 
-    NSString *versionPrefixedPath = [self prefixVersionForPath:path];
-    NSString *URLString = [self absoluteURLStringForServer:server path:versionPrefixedPath];
+found:
+
+    versionPrefixedPath = [self prefixVersionForPath:path];
+    URLString = [self absoluteURLStringForHost:host path:versionPrefixedPath];
 
     return URLString;
 }
 
 - (NSString *)RTMRouterURLString {
-    NSString *server = nil;
-    NSDictionary *APIServerTable = [self cachedServerTableForKey:LCAppRouterCacheKey];
+    NSString *URLString = nil;
+    NSString *host = nil;
+    NSString *presetHost = nil;
+    NSString *cachedHost = nil;
 
-    if (APIServerTable) {
-        server = APIServerTable[moduleRTMRouterServer];
+    presetHost = _presetURLStringTable[LCServiceModuleRTM];
+
+    if (presetHost) {
+        host = presetHost;
+        goto found;
     }
 
-    if (!server.length) {
-        switch (self.serverLocation) {
-        case LCServerLocationUCloud:
-            server = [self lncldServerForModule:moduleRTMRouterServer] ?: [self fallbackRTMRouterURLString]; break;
-        default:
-            server = [self fallbackRTMRouterURLString]; break;
-        }
+    cachedHost = [self cachedServerTableForKey:LCAppRouterCacheKey][LCServiceModuleRTM];
+
+    if (cachedHost) {
+        host = cachedHost;
+        goto found;
     }
 
-    NSString *URLString = [self absoluteURLStringForServer:server path:@"/v1/route"];
+    switch (self.serverLocation) {
+    case LCServerLocationUCloud:
+        host = [self lncldServerForModule:LCServiceModuleRTM] ?: [self fallbackRTMRouterURLString]; break;
+    default:
+        host = [self fallbackRTMRouterURLString]; break;
+    }
+
+found:
+
+    URLString = [self absoluteURLStringForHost:host path:@"/v1/route"];
 
     return URLString;
 }
@@ -305,12 +396,6 @@ typedef NS_ENUM(NSInteger, LCServerLocation) {
 
     parameters[@"appId"] = appId;
     parameters[@"secure"] = @"1";
-
-    /*
-     * iOS SDK *must* use IP address to access IM server to prevent DNS hijacking.
-     * And IM server *must* issue the pinned certificate.
-     */
-    parameters[@"ip"] = @"true";
 
     /* Back door for user to connect to puppet environment. */
     if (getenv("LC_IM_PUPPET_ENABLED") && getenv("SIMULATOR_UDID")) {
@@ -332,6 +417,11 @@ typedef NS_ENUM(NSInteger, LCServerLocation) {
     }];
 }
 
+- (NSDictionary *)cachedAppRouterServerTable
+{
+    return [self cachedServerTableForKey:LCAppRouterCacheKey];
+}
+
 - (NSDictionary *)cachedRTMServerTable {
     NSDictionary *RTMServerTable = [self cachedServerTableForKey:LCRTMRouterCacheKey];
 
@@ -345,6 +435,16 @@ typedef NS_ENUM(NSInteger, LCServerLocation) {
 - (NSString *)batchPathForPath:(NSString *)path {
     NSString *result = [self prefixVersionForPath:path];
     return result;
+}
+
+- (void)presetURLString:(NSString *)URLString
+       forServiceModule:(NSString *)serviceModule
+{
+    if (!serviceModule)
+        return;
+
+    _presetURLStringTable[serviceModule] = URLString;
+    LCNetworkStatistics.sharedInstance.ignoreAlwaysCollectIfCustomedService = true;
 }
 
 @end

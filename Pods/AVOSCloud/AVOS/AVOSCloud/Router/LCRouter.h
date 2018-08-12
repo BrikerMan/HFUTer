@@ -8,16 +8,29 @@
 
 #import <Foundation/Foundation.h>
 
-FOUNDATION_EXPORT NSString *LCRouterDidUpdateNotification;
+NS_ASSUME_NONNULL_BEGIN
+
+FOUNDATION_EXPORT NSString *const LCServiceModuleAPI;
+FOUNDATION_EXPORT NSString *const LCServiceModuleEngine;
+FOUNDATION_EXPORT NSString *const LCServiceModulePush;
+FOUNDATION_EXPORT NSString *const LCServiceModuleRTM;
+FOUNDATION_EXPORT NSString *const LCServiceModuleStatistics;
+
+FOUNDATION_EXPORT NSString *const LCRouterDidUpdateNotification;
 
 @interface LCRouter : NSObject
 
 + (instancetype)sharedInstance;
 
 /**
+ Get cached App-Router server table
+ */
+- (NSDictionary * _Nullable)cachedAppRouterServerTable;
+
+/**
  Get cached RTM server table.
  */
-- (NSDictionary *)cachedRTMServerTable;
+- (NSDictionary * _Nullable)cachedRTMServerTable;
 
 /**
  Fetch RTM server table asynchronously.
@@ -26,7 +39,7 @@ FOUNDATION_EXPORT NSString *LCRouterDidUpdateNotification;
 
  @param block The callback of fetching result.
  */
-- (void)fetchRTMServerTableInBackground:(void(^)(NSDictionary *RTMServerTable, NSError *error))block;
+- (void)fetchRTMServerTableInBackground:(void(^_Nullable)(NSDictionary *RTMServerTable, NSError *error))block;
 
 /**
  Get URL string for storage server.
@@ -46,8 +59,28 @@ FOUNDATION_EXPORT NSString *LCRouterDidUpdateNotification;
 - (NSString *)batchPathForPath:(NSString *)path;
 
 /**
+ Preset URL string for a service module.
+
+ The preset URL has the highest priority, it will override app router's result.
+
+ @param URLString     The URL string of service module.
+ @param serviceModule The service module which you want to preset.
+ */
+- (void)presetURLString:(NSString *)URLString forServiceModule:(NSString *)serviceModule;
+
+/**
  Update router asynchronously.
  */
 - (void)updateInBackground;
 
+/**
+ Clean router cache.
+
+ @param key Key for cache.
+ */
+- (void)cleanRouterCacheForKey:(NSString *)key;
+
 @end
+
+NS_ASSUME_NONNULL_END
+
