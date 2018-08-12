@@ -123,7 +123,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     } else {
       JPUSHService.setTags(Set(["push", testflight]), aliasInbackground: "000000")
     }
-    let currentInstallation = AVInstallation.current()
+    let currentInstallation = AVInstallation.default()
     let sid = DataEnv.user?.sid ?? "\(000000)"
     
     currentInstallation.setDeviceTokenFrom(deviceToken)

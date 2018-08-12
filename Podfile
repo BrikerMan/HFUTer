@@ -1,7 +1,6 @@
 source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '8.0'
 
-
 target 'HFUTer3' do
     inhibit_all_warnings!
     use_frameworks!
@@ -72,32 +71,37 @@ end
 
 # 指定 swift 版本，这样升级也能编译通过，然后逐个升级替换
 post_install do |installer|
+    swift3_0 = [
+    'PromiseKit', 'PromiseKit.common', 'PromiseKit.common-Alamofire'
+    ]
     swift3_2 = [
     'AIFlatSwitch', 'Alamofire', 'AlamofireDomain', 'CocoaLumberjack/Swift',
     'KMPlaceholderTextView',
-    'NVActivityIndicatorView', 'Pitaya', 'PromiseKit', 'RxSwift',
+    'NVActivityIndicatorView', 'Pitaya', 'RxSwift',
     'Toaster'
     ]
-    swift4_1 = [
-    'Kanna', 'Eureka', 'SwiftyStoreKit', 'GzipSwift',
-    'YYText', 'WSProgressHUD', 'SnapKit', 'RxSwift', 'LTMorphingLabel'
-    ]
-    
+#    swift4_1 = [
+#    'Kanna', 'Eureka', 'SwiftyStoreKit', 'GzipSwift',
+#    'YYText', 'WSProgressHUD', 'SnapKit', 'RxSwift', 'LTMorphingLabel',
+#    'AVOSCloud', 'DZNEmptyDataSet', 'FMDB', 'Qiniu', 'MJRefresh', 'RSKImageCropper',
+#    'SVProgressHUD', 'YYModel', 'YYWebImage'
+#    ]
+
     installer.pods_project.targets.each do |target|
         if swift3_2.include? target.name
             target.build_configurations.each do |config|
                 config.build_settings['SWIFT_VERSION'] = '3.2'
                 printf "SWIFT_VERSION 3.2 %s\n", target.name
             end
-            elsif swift4_1.include? target.name
-            target.build_configurations.each do |config|
-                config.build_settings['SWIFT_VERSION'] = '4.1'
-                printf "SWIFT_VERSION 4.1 %s\n", target.name
-            end
-            else
+            elsif swift3_0.include? target.name
             target.build_configurations.each do |config|
                 config.build_settings['SWIFT_VERSION'] = '3.0'
                 printf "SWIFT_VERSION 3.0 %s\n", target.name
+            end
+            else
+            target.build_configurations.each do |config|
+                config.build_settings['SWIFT_VERSION'] = '4.1'
+                printf "SWIFT_VERSION 4.1 %s\n", target.name
             end
         end
     end
