@@ -1,6 +1,6 @@
 PODS:
   - AIFlatSwitch (1.0.2)
-  - Alamofire (4.5.1)
+  - Alamofire (4.7.3)
   - AlamofireDomain (4.1)
   - AVOSCloud (4.4.0)
   - CocoaLumberjack/Default (3.1.0)
@@ -18,32 +18,34 @@ PODS:
   - HappyDNS (0.3.14)
   - Kanna (4.0.0)
   - KMPlaceholderTextView (1.3.0)
-  - LTMorphingLabel (0.5.3)
-  - MJRefresh (3.1.15)
-  - NVActivityIndicatorView (3.6.1)
+  - LTMorphingLabel (0.5.7)
+  - MJRefresh (3.1.15.3)
+  - NVActivityIndicatorView (4.3.0):
+    - NVActivityIndicatorView/Presenter (= 4.3.0)
+  - NVActivityIndicatorView/Presenter (4.3.0)
   - Pitaya (1.0.0)
-  - PromiseKit (4.2.0):
-    - PromiseKit/Foundation (= 4.2.0)
-    - PromiseKit/QuartzCore (= 4.2.0)
-    - PromiseKit/UIKit (= 4.2.0)
-  - PromiseKit/Alamofire (4.2.0):
+  - PromiseKit (4.2.2):
+    - PromiseKit/Foundation (= 4.2.2)
+    - PromiseKit/QuartzCore (= 4.2.2)
+    - PromiseKit/UIKit (= 4.2.2)
+  - PromiseKit/Alamofire (4.2.2):
     - Alamofire (~> 4.0)
     - PromiseKit/CorePromise
-  - PromiseKit/CorePromise (4.2.0)
-  - PromiseKit/Foundation (4.2.0):
+  - PromiseKit/CorePromise (4.2.2)
+  - PromiseKit/Foundation (4.2.2):
     - PromiseKit/CorePromise
-  - PromiseKit/QuartzCore (4.2.0):
+  - PromiseKit/QuartzCore (4.2.2):
     - PromiseKit/CorePromise
-  - PromiseKit/UIKit (4.2.0):
+  - PromiseKit/UIKit (4.2.2):
     - PromiseKit/CorePromise
   - Qiniu (7.2.4):
     - HappyDNS (~> 0.3)
   - Reveal-SDK (11)
   - RSKImageCropper (1.4.1)
-  - RxSwift (3.4.0)
+  - RxSwift (4.2.0)
   - Shimmer (1.0.2)
-  - SnapKit (3.2.0)
-  - SVProgressHUD (2.1.2)
+  - SnapKit (4.0.0)
+  - SVProgressHUD (2.2.5)
   - SwiftyStoreKit (0.13.3)
   - SwipeBack (1.1.1)
   - Toaster (2.1.1)
@@ -77,18 +79,18 @@ DEPENDENCIES:
   - GzipSwift
   - Kanna (~> 4.0.0)
   - KMPlaceholderTextView (~> 1.3.0)
-  - LTMorphingLabel (~> 0.5.3)
-  - MJRefresh (~> 3.1.15)
-  - NVActivityIndicatorView (~> 3.6.1)
+  - LTMorphingLabel (~> 0.5.7)
+  - MJRefresh (~> 3.1.15.3)
+  - NVActivityIndicatorView (~> 4.3.0)
   - Pitaya (from `https://github.com/johnlui/Pitaya.git`)
   - PromiseKit (~> 4.2.0)
   - PromiseKit/Alamofire (~> 4.2.0)
   - Qiniu (~> 7.2.4)
   - Reveal-SDK (~> 11)
   - RSKImageCropper (from `https://github.com/BrikerMan/RSKImageCropper.git`)
-  - RxSwift (~> 3.4.0)
-  - SnapKit (~> 3.2.0)
-  - SVProgressHUD (~> 2.1.2)
+  - RxSwift (~> 4.2.0)
+  - SnapKit (~> 4.0.0)
+  - SVProgressHUD (~> 2.2.5)
   - SwiftyStoreKit
   - SwipeBack (~> 1.1.1)
   - Toaster (~> 2.1.1)
@@ -156,7 +158,7 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   AIFlatSwitch: 5ab22806eeff3e09d585c2f13d22bfa6e3427191
-  Alamofire: 2d95912bf4c34f164fdfc335872e8c312acaea4a
+  Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
   AlamofireDomain: 6a17c975e5fe8c10d8dbfdb1ab28e6dd0ae7cd41
   AVOSCloud: c2cbba727f10776c995108d7e8fd3142d703ebaa
   CocoaLumberjack: 8311463ddf9ee86a06ef92a071dd656c89244500
@@ -169,18 +171,18 @@ SPEC CHECKSUMS:
   HappyDNS: dc6a164ee81979093123c241c6353bcf0218add6
   Kanna: d5ae2a26472f7e7a474e7f36a9cd8aa2c8c63ad3
   KMPlaceholderTextView: 2bbcd19a273648a80a61e1e48f9743a24d8930e3
-  LTMorphingLabel: b85b6c1c5d0c4203e22f8d3dca722546f67b8410
-  MJRefresh: 9af70f5f9327a2cf87f0fb5929f35fcc2fa638ea
-  NVActivityIndicatorView: 9f52a7f84bf5c6a798722c450fe3c198e01c56ed
+  LTMorphingLabel: 9d1c38bd602fe505f264d3e9fdb780995142f275
+  MJRefresh: b48380ae2b927b46c4ef000de9adb8dc748e1df7
+  NVActivityIndicatorView: 963f62bf9f993fcf23218e55958e5b1761b9504c
   Pitaya: 9e6a94903cbce6cdab9ad8b82e88142f4abd770d
-  PromiseKit: 08dfb783c161ddcd95b7912421f14c5113fd8318
+  PromiseKit: 00e8886881f151c7e573d06b437915b0bb2970ec
   Qiniu: 65384bca1cdb0480a68d9b9b8f54db53418c0355
   Reveal-SDK: 7fa13d04bb55db61ff2342a990cf731d5159361d
   RSKImageCropper: 98ae426eb4eb11b733ff87f8e2542a480f4fa8e6
-  RxSwift: 3789a1af753002a14edecdb698a2424624296a9c
+  RxSwift: 99e10317ddfcc7fbe01356aafd118fde4a0be104
   Shimmer: c5374be1c2b0c9e292fb05b339a513cf291cac86
-  SnapKit: 1ca44df72cfa543218d177cb8aab029d10d86ea7
-  SVProgressHUD: c404a55d78acbeb7ebb78b76d3faf986475a6994
+  SnapKit: a42d492c16e80209130a3379f73596c3454b7694
+  SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
   SwiftyStoreKit: 9ebd15971e28aa2989825fe8bc092eb5f75dd0b2
   SwipeBack: d6759601b40da1f4161033feb30ab475d7d04322
   Toaster: a6c9532de1ded8105e77376f7dffeb2e12b46dbb
@@ -194,6 +196,6 @@ SPEC CHECKSUMS:
   YYWebImage: 5f7f36aee2ae293f016d418c7d6ba05c4863e928
   ZYCornerRadius: f0af817be7805b5c63d793042ca7a03f81e14069
 
-PODFILE CHECKSUM: 4da6e104068402592f209fd4905617cd861f07f4
+PODFILE CHECKSUM: f3aab7fe856c012857d6545a22feaa75d94a5a07
 
 COCOAPODS: 1.5.3

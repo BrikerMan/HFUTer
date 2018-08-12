@@ -9,9 +9,9 @@ target 'HFUTer3' do
     pod 'WSProgressHUD', '~> 1.1.3'                         ## 不错的Hud
     pod 'YYWebImage', '~> 1.0.5'                            ## 高效ImageView
     pod 'YYImage/WebP', '~> 1.0.4'
-    pod 'SnapKit', '~> 3.2.0'                               ## AutoLayout
-    pod 'SVProgressHUD', '~> 2.1.2'
-    pod 'MJRefresh', '~> 3.1.15'
+    pod 'SnapKit', '~> 4.0.0'                               ## AutoLayout
+    pod 'SVProgressHUD', '~> 2.2.5'
+    pod 'MJRefresh', '~> 3.1.15.3'
     pod 'AIFlatSwitch', '~> 1.0.2'                          ## 动态选择button
     # pod 'YYText' , :git => 'https://github.com/BrikerMan/YYText.git'
     pod 'YYText'
@@ -27,17 +27,17 @@ target 'HFUTer3' do
     pod 'DZNEmptyDataSet', '~> 1.8.1'                       ## 空数据展示
     
     # 动画
-    pod 'NVActivityIndicatorView', '~> 3.6.1'
+    pod 'NVActivityIndicatorView', '~> 4.3.0'
     pod 'SwipeBack', '~> 1.1.1'
-    pod 'LTMorphingLabel', '~> 0.5.3'
+    pod 'LTMorphingLabel', '~> 0.5.7'
     
     # 网络
-#    pod 'Alamofire', '~> 4.5'
+    #    pod 'Alamofire', '~> 4.5'
     pod 'PromiseKit/Alamofire', '~> 4.2.0'
     pod 'AlamofireDomain', '~> 4.0'         ## 牛逼的网络请求库
     pod 'KMPlaceholderTextView', '~> 1.3.0'             ## 带Placeholder的TextView
     pod 'Pitaya', :git => 'https://github.com/johnlui/Pitaya.git'
-    pod 'RxSwift', '~> 3.4.0'
+    pod 'RxSwift', '~> 4.2.0'
     
     # 数据Eureka
     pod 'YYModel', '~> 1.0.4'                           ## Dic or Json -> Model
@@ -46,7 +46,6 @@ target 'HFUTer3' do
     pod 'FMDB', '~> 2.6.2'
     pod 'AVOSCloud', '~> 4.4.0'
     pod 'PromiseKit', '~> 4.2.0'
-    
     
     # 统计
     pod 'Fabric', '~> 1.6.11'
@@ -73,22 +72,27 @@ end
 
 # 指定 swift 版本，这样升级也能编译通过，然后逐个升级替换
 post_install do |installer|
-    swift3_2 = ['AIFlatSwitch', 'Alamofire', 'AlamofireDomain', 'CocoaLumberjack/Swift', 
-        'KMPlaceholderTextView', 'LTMorphingLabel',
-        'NVActivityIndicatorView', 'Pitaya', 'PromiseKit', 'RxSwift', 'SnapKit',
-        'Toaster']
-    swift4_1 = ['Kanna', 'Eureka', 'SwiftyStoreKit', 'GzipSwift', 'YYText', 'WSProgressHUD']
+    swift3_2 = [
+    'AIFlatSwitch', 'Alamofire', 'AlamofireDomain', 'CocoaLumberjack/Swift',
+    'KMPlaceholderTextView',
+    'NVActivityIndicatorView', 'Pitaya', 'PromiseKit', 'RxSwift',
+    'Toaster'
+    ]
+    swift4_1 = [
+    'Kanna', 'Eureka', 'SwiftyStoreKit', 'GzipSwift',
+    'YYText', 'WSProgressHUD', 'SnapKit', 'RxSwift', 'LTMorphingLabel'
+    ]
     
     installer.pods_project.targets.each do |target|
         if swift3_2.include? target.name
             target.build_configurations.each do |config|
                 config.build_settings['SWIFT_VERSION'] = '3.2'
             end
-        elsif swift4_1.include? target.name
+            elsif swift4_1.include? target.name
             target.build_configurations.each do |config|
                 config.build_settings['SWIFT_VERSION'] = '4.1'
             end
-        else
+            else
             target.build_configurations.each do |config|
                 config.build_settings['SWIFT_VERSION'] = '3.0'
             end
