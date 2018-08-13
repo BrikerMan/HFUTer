@@ -165,10 +165,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     AVOSCloud.setApplicationId(LeanCLoudAppID, clientKey: LeanCLoudAppKey)
     AVOSCloud.setLogLevel(AVLogLevelNone)
     
-    let conf = UMAnalyticsConfig()
-    conf.appKey = UmengKey
-    MobClick.start(withConfigure: conf)
-    MobClick.setAppVersion(ez.appVersion!)
+    UMConfigure.initWithAppkey(UmengKey, channel: "App Store")
+//    let conf = UMAnalyticsConfig()
+//    conf.appKey = UmengKey
+//    MobClick.start(withConfigure: conf)
+//    MobClick.setAppVersion(ez.appVersion!)
     
     Fabric.with([Crashlytics.self])
   }

@@ -9,7 +9,8 @@
 ///
 #import "JPUSHService.h"
 
-#import <UMMobClick/MobClick.h>
+// #import <UMMobClick/MobClick.h>
+#import <UMCommon/UMCommon.h>
 
 /// YYKit
 #import "YYFPSLabel.h"

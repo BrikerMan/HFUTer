@@ -51,8 +51,11 @@ target 'HFUTer3' do
     # 统计
     pod 'Fabric', '~> 1.7.9'
     pod 'Crashlytics', '~> 3.10.5'
-    pod 'UMengAnalytics-NO-IDFA', '~> 4.2.5'
     pod 'CocoaLumberjack/Swift', '~> 3.4.2'
+    # pod 'UMengAnalytics-NO-IDFA', '~> 4.2.5'
+    pod 'UMCCommon'
+    pod 'UMCAnalytics'
+    pod 'UMCSecurityPlugins'
     
     # 调试
     pod 'Reveal-SDK', '~> 11', :configurations => ['Debug']
