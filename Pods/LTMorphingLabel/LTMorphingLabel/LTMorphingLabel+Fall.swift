@@ -28,7 +28,8 @@
 import UIKit
 
 extension LTMorphingLabel {
-    
+
+    @objc
     func FallLoad() {
         
         progressClosures["Fall\(LTMorphingPhases.progress)"] = {
@@ -132,9 +133,9 @@ extension LTMorphingLabel {
                 )
                 context!.rotate(by: rotation * CGFloat(Double.pi) / 180.0)
                 let s = String(limbo.char)
-                let attributes: [String: Any] = [
-                    NSFontAttributeName: self.font.withSize(limbo.size),
-                    NSForegroundColorAttributeName: charColor
+                let attributes: [NSAttributedStringKey: Any] = [
+                    .font: self.font.withSize(limbo.size),
+                    .foregroundColor: charColor
                 ]
                 s.draw(in: charRect, withAttributes: attributes)
                 context!.restoreGState()

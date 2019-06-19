@@ -41,13 +41,13 @@ class HFScheduleViewCell: HFXibView {
                 runOnMainThread {
                     self?.layoutIfNeeded()
                 }
-            }).addDisposableTo(disposeBag)
+            }).disposed(by: disposeBag)
         
         DataEnv.settings.scheduleCellAlpha.asObservable().subscribe(onNext: { [weak self] (element) in
             if let colorName = self?.models.first?.cources.first?.colorName {
                 self?.backView.backgroundColor = HFTheme.getColor(with: colorName).withAlphaComponent(element)
             }
-        }).addDisposableTo(disposeBag)
+        }).disposed(by: disposeBag)
         
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(onCellPressed(_:)))
@@ -90,7 +90,7 @@ class HFScheduleViewCell: HFXibView {
 
 extension String {
     func maxLenth(_ len: Int) -> String {
-        if self.characters.count <= len {
+        if self.count <= len {
             return self
         } else {
             return self[0...len]

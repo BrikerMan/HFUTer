@@ -32,37 +32,90 @@ enum RegisteredPurchase: String {
     case purchase2
     case nonConsumablePurchase
     case consumablePurchase
-    case autoRenewablePurchase
     case nonRenewingPurchase
+    case autoRenewableWeekly
+    case autoRenewableMonthly
+    case autoRenewableYearly
 }
 
 class ViewController: UIViewController {
 
     let appBundleId = "com.musevisions.iOS.SwiftyStoreKit"
-
-    let purchase1Suffix = RegisteredPurchase.purchase1
-    let purchase2Suffix = RegisteredPurchase.autoRenewablePurchase
-
-    // MARK: actions
-    @IBAction func getInfo1() {
-        getInfo(purchase1Suffix)
+    
+#if os(iOS)
+    // UISwitch is unavailable on tvOS
+    @IBOutlet var nonConsumableAtomicSwitch: UISwitch!
+    @IBOutlet var consumableAtomicSwitch: UISwitch!
+    @IBOutlet var nonRenewingAtomicSwitch: UISwitch!
+    @IBOutlet var autoRenewableAtomicSwitch: UISwitch!
+    var nonConsumableIsAtomic: Bool { return nonConsumableAtomicSwitch.isOn }
+    var consumableIsAtomic: Bool { return consumableAtomicSwitch.isOn }
+    var nonRenewingIsAtomic: Bool { return nonRenewingAtomicSwitch.isOn }
+    var autoRenewableIsAtomic: Bool { return autoRenewableAtomicSwitch.isOn }
+#else
+    let nonConsumableIsAtomic = true
+    let consumableIsAtomic = true
+    let nonRenewingIsAtomic = true
+    let autoRenewableIsAtomic = true
+#endif
+    // MARK: non consumable
+    @IBAction func nonConsumableGetInfo() {
+        getInfo(.nonConsumablePurchase)
     }
-    @IBAction func purchase1() {
-        purchase(purchase1Suffix)
+    @IBAction func nonConsumablePurchase() {
+        purchase(.nonConsumablePurchase, atomically: nonConsumableIsAtomic)
     }
-    @IBAction func verifyPurchase1() {
-        verifyPurchase(purchase1Suffix)
-    }
-    @IBAction func getInfo2() {
-        getInfo(purchase2Suffix)
-    }
-    @IBAction func purchase2() {
-        purchase(purchase2Suffix)
-    }
-    @IBAction func verifyPurchase2() {
-        verifyPurchase(purchase2Suffix)
+    @IBAction func nonConsumableVerifyPurchase() {
+        verifyPurchase(.nonConsumablePurchase)
     }
     
+    // MARK: consumable
+    @IBAction func consumableGetInfo() {
+        getInfo(.consumablePurchase)
+    }
+    @IBAction func consumablePurchase() {
+        purchase(.consumablePurchase, atomically: consumableIsAtomic)
+    }
+    @IBAction func consumableVerifyPurchase() {
+        verifyPurchase(.consumablePurchase)
+    }
+
+    // MARK: non renewing
+    @IBAction func nonRenewingGetInfo() {
+        getInfo(.nonRenewingPurchase)
+    }
+    @IBAction func nonRenewingPurchase() {
+        purchase(.nonRenewingPurchase, atomically: nonRenewingIsAtomic)
+    }
+    @IBAction func nonRenewingVerifyPurchase() {
+        verifyPurchase(.nonRenewingPurchase)
+    }
+
+    // MARK: auto renewable
+#if os(iOS)
+    @IBOutlet var autoRenewableSubscriptionSegmentedControl: UISegmentedControl!
+    
+    var autoRenewableSubscription: RegisteredPurchase {
+        switch autoRenewableSubscriptionSegmentedControl.selectedSegmentIndex {
+        case 0: return .autoRenewableWeekly
+        case 1: return .autoRenewableMonthly
+        case 2: return .autoRenewableYearly
+        default: return .autoRenewableWeekly
+        }
+    }
+#else
+    let autoRenewableSubscription = RegisteredPurchase.autoRenewableWeekly
+#endif
+    @IBAction func autoRenewableGetInfo() {
+        getInfo(autoRenewableSubscription)
+    }
+    @IBAction func autoRenewablePurchase() {
+        purchase(autoRenewableSubscription, atomically: autoRenewableIsAtomic)
+    }
+    @IBAction func autoRenewableVerifyPurchase() {
+        verifySubscriptions([.autoRenewableWeekly, .autoRenewableMonthly, .autoRenewableYearly])
+    }
+
     func getInfo(_ purchase: RegisteredPurchase) {
 
         NetworkActivityIndicatorManager.networkOperationStarted()
@@ -73,13 +126,17 @@ class ViewController: UIViewController {
         }
     }
 
-    func purchase(_ purchase: RegisteredPurchase) {
+    func purchase(_ purchase: RegisteredPurchase, atomically: Bool) {
 
         NetworkActivityIndicatorManager.networkOperationStarted()
-        SwiftyStoreKit.purchaseProduct(appBundleId + "." + purchase.rawValue, atomically: true) { result in
+        SwiftyStoreKit.purchaseProduct(appBundleId + "." + purchase.rawValue, atomically: atomically) { result in
             NetworkActivityIndicatorManager.networkOperationFinished()
 
             if case .success(let purchase) = result {
+                let downloads = purchase.transaction.downloads
+                if !downloads.isEmpty {
+                    SwiftyStoreKit.start(downloads)
+                }
                 // Deliver content from server, then:
                 if purchase.needsFinishTransaction {
                     SwiftyStoreKit.finishTransaction(purchase.transaction)
@@ -97,9 +154,14 @@ class ViewController: UIViewController {
         SwiftyStoreKit.restorePurchases(atomically: true) { results in
             NetworkActivityIndicatorManager.networkOperationFinished()
 
-            for purchase in results.restoredPurchases where purchase.needsFinishTransaction {
-                // Deliver content from server, then:
-                SwiftyStoreKit.finishTransaction(purchase.transaction)
+            for purchase in results.restoredPurchases {
+                let downloads = purchase.transaction.downloads
+                if !downloads.isEmpty {
+                    SwiftyStoreKit.start(downloads)
+                } else if purchase.needsFinishTransaction {
+                    // Deliver content from server, then:
+                    SwiftyStoreKit.finishTransaction(purchase.transaction)
+                }
             }
             self.showAlert(self.alertForRestorePurchases(results))
         }
@@ -119,7 +181,7 @@ class ViewController: UIViewController {
         let appleValidator = AppleReceiptValidator(service: .production, sharedSecret: "your-shared-secret")
         SwiftyStoreKit.verifyReceipt(using: appleValidator, completion: completion)
     }
-
+    
     func verifyPurchase(_ purchase: RegisteredPurchase) {
 
         NetworkActivityIndicatorManager.networkOperationStarted()
@@ -132,30 +194,42 @@ class ViewController: UIViewController {
                 let productId = self.appBundleId + "." + purchase.rawValue
 
                 switch purchase {
-                case .autoRenewablePurchase:
+                case .autoRenewableWeekly, .autoRenewableMonthly, .autoRenewableYearly:
                     let purchaseResult = SwiftyStoreKit.verifySubscription(
-                        type: .autoRenewable,
+                        ofType: .autoRenewable,
                         productId: productId,
-                        inReceipt: receipt,
-                        validUntil: Date()
-                    )
-                    self.showAlert(self.alertForVerifySubscription(purchaseResult))
+                        inReceipt: receipt)
+                    self.showAlert(self.alertForVerifySubscriptions(purchaseResult, productIds: [productId]))
                 case .nonRenewingPurchase:
                     let purchaseResult = SwiftyStoreKit.verifySubscription(
-                        type: .nonRenewing(validDuration: 60),
+                        ofType: .nonRenewing(validDuration: 60),
                         productId: productId,
-                        inReceipt: receipt,
-                        validUntil: Date()
-                    )
-                    self.showAlert(self.alertForVerifySubscription(purchaseResult))
+                        inReceipt: receipt)
+                    self.showAlert(self.alertForVerifySubscriptions(purchaseResult, productIds: [productId]))
                 default:
                     let purchaseResult = SwiftyStoreKit.verifyPurchase(
                         productId: productId,
-                        inReceipt: receipt
-                    )
-                    self.showAlert(self.alertForVerifyPurchase(purchaseResult))
+                        inReceipt: receipt)
+                    self.showAlert(self.alertForVerifyPurchase(purchaseResult, productId: productId))
                 }
 
+            case .error:
+                self.showAlert(self.alertForVerifyReceipt(result))
+            }
+        }
+    }
+    
+    func verifySubscriptions(_ purchases: Set<RegisteredPurchase>) {
+        
+        NetworkActivityIndicatorManager.networkOperationStarted()
+        verifyReceipt { result in
+            NetworkActivityIndicatorManager.networkOperationFinished()
+            
+            switch result {
+            case .success(let receipt):
+                let productIds = Set(purchases.map { self.appBundleId + "." + $0.rawValue })
+                let purchaseResult = SwiftyStoreKit.verifySubscriptions(productIds: productIds, inReceipt: receipt)
+                self.showAlert(self.alertForVerifySubscriptions(purchaseResult, productIds: productIds))
             case .error:
                 self.showAlert(self.alertForVerifyReceipt(result))
             }
@@ -204,7 +278,7 @@ extension ViewController {
         switch result {
         case .success(let purchase):
             print("Purchase Success: \(purchase.productId)")
-            return alertWithTitle("Thank You", message: "Purchase completed")
+            return nil
         case .error(let error):
             print("Purchase Failed: \(error)")
             switch error.code {
@@ -262,29 +336,29 @@ extension ViewController {
         }
     }
 
-    func alertForVerifySubscription(_ result: VerifySubscriptionResult) -> UIAlertController {
+    func alertForVerifySubscriptions(_ result: VerifySubscriptionResult, productIds: Set<String>) -> UIAlertController {
 
         switch result {
-        case .purchased(let expiryDate):
-            print("Product is valid until \(expiryDate)")
+        case .purchased(let expiryDate, let items):
+            print("\(productIds) is valid until \(expiryDate)\n\(items)\n")
             return alertWithTitle("Product is purchased", message: "Product is valid until \(expiryDate)")
-        case .expired(let expiryDate):
-            print("Product is expired since \(expiryDate)")
+        case .expired(let expiryDate, let items):
+            print("\(productIds) is expired since \(expiryDate)\n\(items)\n")
             return alertWithTitle("Product expired", message: "Product is expired since \(expiryDate)")
         case .notPurchased:
-            print("This product has never been purchased")
+            print("\(productIds) has never been purchased")
             return alertWithTitle("Not purchased", message: "This product has never been purchased")
         }
     }
 
-    func alertForVerifyPurchase(_ result: VerifyPurchaseResult) -> UIAlertController {
+    func alertForVerifyPurchase(_ result: VerifyPurchaseResult, productId: String) -> UIAlertController {
 
         switch result {
         case .purchased:
-            print("Product is purchased")
+            print("\(productId) is purchased")
             return alertWithTitle("Product is purchased", message: "Product will not expire")
         case .notPurchased:
-            print("This product has never been purchased")
+            print("\(productId) has never been purchased")
             return alertWithTitle("Not purchased", message: "This product has never been purchased")
         }
     }

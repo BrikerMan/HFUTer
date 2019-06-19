@@ -17,20 +17,20 @@ class HFCookieRequest {
         return Promise<Void> { fullfill, reject in
             guard let username = DataEnv.user?.sid, let password = DataEnv.user?.password, DataEnv.isLogin else {
                 Logger.error("木有保存用户名密码")
-                fullfill()
+                fullfill(())
                 return
             }
             
             if Date().timeIntervalSince1970 - DataEnv.updateTokenDate.timeIntervalSince1970 < 3600 {
                 Logger.warning("不需要更新 token， 时间未到")
-                fullfill()
+                fullfill(())
                 return
             }
             
             Logger.info("开始更新 Token")
             login(username: username, password: password)
                 .then {
-                    fullfill()
+                    fullfill(())
                 }.catch { error in
                     reject(error)
             }
@@ -43,7 +43,7 @@ class HFCookieRequest {
                                       method: .GET,
                                       param: ["sid":username, "pwd":password, "auto_rebound": true])
                 .then { _ in
-                    fullfill()
+                    fullfill(())
                 }.catch { error in
                     reject(error)
             }

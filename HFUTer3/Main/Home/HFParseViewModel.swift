@@ -145,7 +145,7 @@ class HFParseViewModel {
             HFBaseRequest.fire(api: "/api/schedule/schedule", response: { (json, error) in
                 if let error = error {
                     Logger.error("获取服务器缓存失败 | \(error)")
-                    fullfill()
+                    fullfill(())
                 } else {
                     if let _ = json["data"].string?.jsonToArray() {
                         var data = json["data"]
@@ -157,7 +157,7 @@ class HFParseViewModel {
                         reject(HFParseError.fullfill)
                     } else {
                         Logger.error("服务器缓存读取数据格式错误 | \(json)")
-                        fullfill()
+                        fullfill(())
                     }
                 }
             })
@@ -170,7 +170,7 @@ class HFParseViewModel {
             HFBaseRequest.fire(api: "/api/schedule/update", response: { (json, error) in
                 if let error = error {
                     Logger.error("获取服务器缓存失败 | \(error)")
-                    fullfill()
+                    fullfill(())
                 } else {
                     
                     if let _ = Optional("s") {
@@ -183,7 +183,7 @@ class HFParseViewModel {
                         reject(HFParseError.fullfill)
                     } else {
                         Logger.error("服务器缓存读取数据格式错误 | \(json)")
-                        fullfill()
+                        fullfill(())
                     }
                 }
             })
@@ -194,7 +194,7 @@ class HFParseViewModel {
     fileprivate func fetchUserPassword() -> Promise<Void> {
         return Promise<Void> { fullfill, reject in
             if let _ = HFParseViewModel.info {
-                fullfill()
+                fullfill(())
             } else {
                 Logger.debug("正在从服务器获取用户信息")
                 HFBaseRequest.fire(api: "/api/user/bindingInfo",
@@ -219,7 +219,6 @@ class HFParseViewModel {
                                         
                                         var error = ""
                                         
-                                        // TODO: 临时从本地读取新教务系统密码
                                         let newjwpass = PlistManager.userDataPlist.value["newPwdIMS"].string
                                         
                                         if school == 0 && newjwpass == nil {
@@ -235,7 +234,7 @@ class HFParseViewModel {
                                             reject(HFParseError.suspend(info: error))
                                         } else {
                                             HFParseViewModel.info = (sid, school, jwpass, mhpass, newjwpass)
-                                            fullfill()
+                                            fullfill(())
                                             Logger.debug("获取用户信息成功 | \(sid) \(school) | 教务 \(jwpass ?? "") | 信息门户 \(mhpass ?? "")")
                                         }
                                     }
@@ -256,7 +255,7 @@ class HFParseViewModel {
                 Logger.debug("被坑的用户，开始用 web 登录")
                 self.loginWithWeb(completed: { (success) in
                     if success {
-                        fulfill()
+                        fulfill(())
                     } else {
                         reject(HFParseError.loginError)
                     }
@@ -305,7 +304,7 @@ class HFParseViewModel {
                             switch type {
                             case .jw:
                                 Logger.debug("登录\(type.rawValue)成功")
-                                fulfill()
+                                fulfill(())
                             case .mh:
                                 // 信息门户跳转教务系统需要拿着用户获取的 cookie 去拉一下数据
                                 //                            let cookie = self.parseCookie(response.allHeaderFields)
@@ -315,7 +314,7 @@ class HFParseViewModel {
                                 HFBaseSession.fire(request: req, redirect: false) { (data, response, error) in
                                     if let response = response as? HTTPURLResponse, response.statusCode == 302 {
                                         Logger.debug("跳转教务系统成功")
-                                        fulfill()
+                                        fulfill(())
                                     } else {
                                         reject(HFParseError.loginError)
                                     }
@@ -372,10 +371,10 @@ class HFParseViewModel {
                         reject(HFParseError.fullfill)
                     } else {
                         Logger.error("解析后的数据格式错误 | \(json)")
-                        fullfill()
+                        fullfill(())
                     }
                 }.catch { error in
-                    fullfill()
+                    fullfill(())
             }
         }
     }
@@ -389,7 +388,7 @@ class HFParseViewModel {
                     self.updateNewDataToServer(json)
                     reject(HFParseError.fullfill)
                 }.catch { error in
-                    fullfill()
+                    fullfill(())
             }
         }
     }

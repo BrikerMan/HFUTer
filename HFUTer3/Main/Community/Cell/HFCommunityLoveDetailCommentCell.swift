@@ -78,7 +78,7 @@ class HFCommunityLoveDetailCommentCell: UITableViewCell, NibReusable {
         att.append(date)
         
         if model.poster {
-            let poster = NSAttributedString(string: " #楼主", attributes: [NSForegroundColorAttributeName: Theme.TintColor])
+            let poster = NSAttributedString(string: " #楼主", attributes: [NSAttributedStringKey.foregroundColor: Theme.TintColor])
             att.append(poster)
         }
         
@@ -91,8 +91,8 @@ class HFCommunityLoveDetailCommentCell: UITableViewCell, NibReusable {
             return layout.textBoundingSize.height + 54 + 14
         }
         
-        let textAttributes   = [ NSFontAttributeName: UIFont.systemFont(ofSize: 14), NSForegroundColorAttributeName: HFTheme.DarkTextColor ]
-        let atTextAttributes = [ NSFontAttributeName: UIFont.systemFont(ofSize: 14), NSForegroundColorAttributeName: HFTheme.TintColor ] as [String : Any]
+        let textAttributes: [NSAttributedStringKey : Any]   = [ NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14), NSAttributedStringKey.foregroundColor: HFTheme.DarkTextColor ]
+        let atTextAttributes: [NSAttributedStringKey : Any] = [ NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14), NSAttributedStringKey.foregroundColor: HFTheme.TintColor ]
         
         var attText: NSMutableAttributedString
         

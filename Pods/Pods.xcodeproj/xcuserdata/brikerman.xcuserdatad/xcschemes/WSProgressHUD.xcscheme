@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0700"
+   LastUpgradeVersion = "0930"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -13,11 +13,11 @@
             buildForProfiling = "YES"
             buildForArchiving = "YES">
             <BuildableReference
-               BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '2017DF082FFBA7C6A14037A8C2746D3D'
-               BlueprintName = 'WSProgressHUD'
-               ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'WSProgressHUD.framework'>
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "2DCC4EAC990D7A6152D5FA1E724F2561"
+               BlueprintName = "WSProgressHUD"
+               ReferencedContainer = "container:Pods.xcodeproj"
+               BuildableName = "WSProgressHUD.framework">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

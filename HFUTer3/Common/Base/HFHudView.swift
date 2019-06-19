@@ -106,8 +106,8 @@ class HFHudBackView: UIView {
     
     func update(_ info: String) {
         let attText = NSMutableAttributedString(string: info, attributes: [
-            NSFontAttributeName: UIFont.systemFont(ofSize: 13),
-            NSForegroundColorAttributeName: UIColor.white
+            NSAttributedStringKey.font: UIFont.systemFont(ofSize: 13),
+            NSAttributedStringKey.foregroundColor: UIColor.white
             ])
         
         let size = CGSize(width: ScreenWidth - 100, height: CGFloat.greatestFiniteMagnitude)

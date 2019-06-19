@@ -85,7 +85,7 @@ class HFScheduleModel: SQLiteCachable {
                 reject(HFParseError.fullfill)
             } else {
                 Logger.error(("读取缓存课表失败"))
-                fullfill()
+                fullfill(())
             }
         }
     }

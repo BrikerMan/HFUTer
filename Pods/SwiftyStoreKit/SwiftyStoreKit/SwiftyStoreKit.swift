@@ -46,11 +46,11 @@ public class SwiftyStoreKit {
         return productsInfoController.retrieveProductsInfo(productIds, completion: completion)
     }
     
-    fileprivate func purchaseProduct(_ productId: String, quantity: Int = 1, atomically: Bool = true, applicationUsername: String = "", completion: @escaping ( PurchaseResult) -> Void) {
+    fileprivate func purchaseProduct(_ productId: String, quantity: Int = 1, atomically: Bool = true, applicationUsername: String = "", simulatesAskToBuyInSandbox: Bool = false, completion: @escaping ( PurchaseResult) -> Void) {
 
         retrieveProductsInfo(Set([productId])) { result -> Void in
             if let product = result.retrievedProducts.first {
-                self.purchase(product: product, quantity: quantity, atomically: atomically, applicationUsername: applicationUsername, completion: completion)
+                self.purchase(product: product, quantity: quantity, atomically: atomically, applicationUsername: applicationUsername, simulatesAskToBuyInSandbox: simulatesAskToBuyInSandbox, completion: completion)
             } else if let error = result.error {
                 completion(.error(error: SKError(_nsError: error as NSError)))
             } else if let invalidProductId = result.invalidProductIDs.first {
@@ -61,14 +61,14 @@ public class SwiftyStoreKit {
         }
     }
 
-    fileprivate func purchase(product: SKProduct, quantity: Int, atomically: Bool, applicationUsername: String = "", completion: @escaping (PurchaseResult) -> Void) {
+    fileprivate func purchase(product: SKProduct, quantity: Int, atomically: Bool, applicationUsername: String = "", simulatesAskToBuyInSandbox: Bool = false, completion: @escaping (PurchaseResult) -> Void) {
         guard SwiftyStoreKit.canMakePayments else {
             let error = NSError(domain: SKErrorDomain, code: SKError.paymentNotAllowed.rawValue, userInfo: nil)
             completion(.error(error: SKError(_nsError: error)))
             return
         }
         
-        paymentQueueController.startPayment(Payment(product: product, quantity: quantity, atomically: atomically, applicationUsername: applicationUsername) { result in
+        paymentQueueController.startPayment(Payment(product: product, quantity: quantity, atomically: atomically, applicationUsername: applicationUsername, simulatesAskToBuyInSandbox: simulatesAskToBuyInSandbox) { result in
             
             completion(self.processPurchaseResult(result))
         })
@@ -134,6 +134,9 @@ extension SwiftyStoreKit {
 
     // MARK: Public methods - Purchases
     
+    /**
+     * Return NO if this device is not able or allowed to make payments
+     */
     public class var canMakePayments: Bool {
         return SKPaymentQueue.canMakePayments()
     }
@@ -156,9 +159,9 @@ extension SwiftyStoreKit {
      *  - Parameter applicationUsername: an opaque identifier for the user’s account on your system
      *  - Parameter completion: handler for result
      */
-    public class func purchaseProduct(_ productId: String, quantity: Int = 1, atomically: Bool = true, applicationUsername: String = "", completion: @escaping (PurchaseResult) -> Void) {
+    public class func purchaseProduct(_ productId: String, quantity: Int = 1, atomically: Bool = true, applicationUsername: String = "", simulatesAskToBuyInSandbox: Bool = false, completion: @escaping (PurchaseResult) -> Void) {
 
-        sharedInstance.purchaseProduct(productId, quantity: quantity, atomically: atomically, applicationUsername: applicationUsername, completion: completion)
+        sharedInstance.purchaseProduct(productId, quantity: quantity, atomically: atomically, applicationUsername: applicationUsername, simulatesAskToBuyInSandbox: simulatesAskToBuyInSandbox, completion: completion)
     }
     
     /**
@@ -169,9 +172,9 @@ extension SwiftyStoreKit {
      *  - Parameter applicationUsername: an opaque identifier for the user’s account on your system
      *  - Parameter completion: handler for result
      */
-    public class func purchaseProduct(_ product: SKProduct, quantity: Int = 1, atomically: Bool = true, applicationUsername: String = "", completion: @escaping ( PurchaseResult) -> Void) {
+    public class func purchaseProduct(_ product: SKProduct, quantity: Int = 1, atomically: Bool = true, applicationUsername: String = "", simulatesAskToBuyInSandbox: Bool = false, completion: @escaping ( PurchaseResult) -> Void) {
         
-        sharedInstance.purchase(product: product, quantity: quantity, atomically: atomically, applicationUsername: applicationUsername, completion: completion)
+        sharedInstance.purchase(product: product, quantity: quantity, atomically: atomically, applicationUsername: applicationUsername, simulatesAskToBuyInSandbox: simulatesAskToBuyInSandbox, completion: completion)
     }
 
     /**
@@ -212,6 +215,28 @@ extension SwiftyStoreKit {
         didSet {
             sharedInstance.paymentQueueController.shouldAddStorePaymentHandler = shouldAddStorePaymentHandler
         }
+    }
+    
+    /**
+     * Register a handler for paymentQueue(_:updatedDownloads:)
+     */
+    public static var updatedDownloadsHandler: UpdatedDownloadsHandler? {
+        didSet {
+            sharedInstance.paymentQueueController.updatedDownloadsHandler = updatedDownloadsHandler
+        }
+    }
+    
+    public class func start(_ downloads: [SKDownload]) {
+        sharedInstance.paymentQueueController.start(downloads)
+    }
+    public class func pause(_ downloads: [SKDownload]) {
+        sharedInstance.paymentQueueController.pause(downloads)
+    }
+    public class func resume(_ downloads: [SKDownload]) {
+        sharedInstance.paymentQueueController.resume(downloads)
+    }
+    public class func cancel(_ downloads: [SKDownload]) {
+        sharedInstance.paymentQueueController.cancel(downloads)
     }
 }
 
@@ -259,15 +284,34 @@ extension SwiftyStoreKit {
     }
 
     /**
-     *  Verify the purchase of a subscription (auto-renewable, free or non-renewing) in a receipt. This method extracts all transactions mathing the given productId and sorts them by date in descending order, then compares the first transaction expiry date against the validUntil value.
-     *  - Parameter type: autoRenewable or nonRenewing
-     *  - Parameter productId: the product id of the purchase to verify
-     *  - Parameter inReceipt: the receipt to use for looking up the subscription
-     *  - Parameter validUntil: date to check against the expiry date of the subscription. If nil, no verification
-     *  - return: either .notPurchased or .purchased / .expired with the expiry date found in the receipt
+     *  Verify the validity of a subscription (auto-renewable, free or non-renewing) in a receipt.
+     *
+     *  This method extracts all transactions matching the given productId and sorts them by date in descending order. It then compares the first transaction expiry date against the receipt date to determine its validity.
+     *  - Parameter type: .autoRenewable or .nonRenewing.
+     *  - Parameter productId: The product id of the subscription to verify.
+     *  - Parameter receipt: The receipt to use for looking up the subscription.
+     *  - Parameter validUntil: Date to check against the expiry date of the subscription. This is only used if a date is not found in the receipt.
+     *  - return: Either .notPurchased or .purchased / .expired with the expiry date found in the receipt.
      */
-    public class func verifySubscription(type: SubscriptionType, productId: String, inReceipt receipt: ReceiptInfo, validUntil date: Date = Date()) -> VerifySubscriptionResult {
+    public class func verifySubscription(ofType type: SubscriptionType, productId: String, inReceipt receipt: ReceiptInfo, validUntil date: Date = Date()) -> VerifySubscriptionResult {
 
-        return InAppReceipt.verifySubscription(type: type, productId: productId, inReceipt: receipt, validUntil: date)
+        return InAppReceipt.verifySubscriptions(ofType: type, productIds: [productId], inReceipt: receipt, validUntil: date)
+    }
+    
+    /**
+     *  Verify the validity of a set of subscriptions in a receipt.
+     *
+     *  This method extracts all transactions matching the given productIds and sorts them by date in descending order. It then compares the first transaction expiry date against the receipt date, to determine its validity.
+     *  - Note: You can use this method to check the validity of (mutually exclusive) subscriptions in a subscription group.
+     *  - Remark: The type parameter determines how the expiration dates are calculated for all subscriptions. Make sure all productIds match the specified subscription type to avoid incorrect results.
+     *  - Parameter type: .autoRenewable or .nonRenewing.
+     *  - Parameter productIds: The product ids of the subscriptions to verify.
+     *  - Parameter receipt: The receipt to use for looking up the subscriptions
+     *  - Parameter validUntil: Date to check against the expiry date of the subscriptions. This is only used if a date is not found in the receipt.
+     *  - return: Either .notPurchased or .purchased / .expired with the expiry date found in the receipt.
+     */
+    public class func verifySubscriptions(ofType type: SubscriptionType = .autoRenewable, productIds: Set<String>, inReceipt receipt: ReceiptInfo, validUntil date: Date = Date()) -> VerifySubscriptionResult {
+
+        return InAppReceipt.verifySubscriptions(ofType: type, productIds: productIds, inReceipt: receipt, validUntil: date)
     }
 }

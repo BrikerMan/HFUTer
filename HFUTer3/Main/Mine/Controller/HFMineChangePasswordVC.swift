@@ -48,7 +48,7 @@ class HFMineChangePasswordVC: HFFormViewController {
         let new1 = form.values()["new1"] as? String, !new1.isBlank,
         let new2 = form.values()["new2"] as? String, !new2.isBlank {
             if new1 == new2 {
-                if new1.characters.count < 6 {
+                if new1.count < 6 {
                     hud.showError("密码太短")
                     return
                 }

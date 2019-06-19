@@ -1,0 +1,24 @@
+{
+  "iOS" : [
+    {
+      "hash" : "db25f7402f2df4c4853ff741c994b2ed0ff7fb83c235af867e4299d1024e7036",
+      "name" : "SwiftyStoreKit"
+    }
+  ],
+  "commitish" : "0.13.3",
+  "watchOS" : [
+
+  ],
+  "tvOS" : [
+    {
+      "hash" : "32d5877cf9c3796a2b7b39401a43ac83512634eb08ee277508d34e67a462cec3",
+      "name" : "SwiftyStoreKit"
+    }
+  ],
+  "Mac" : [
+    {
+      "hash" : "52e8e1dbb949df3706fd40ed3f60dd774a7ebfd38c1cf82c2fb5d2a993adc3e8",
+      "name" : "SwiftyStoreKit"
+    }
+  ]
+}

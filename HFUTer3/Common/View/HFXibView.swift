@@ -28,7 +28,7 @@ class HFXibView: UIView {
     //MARK:- 加载nib
     func initFromXib() {
         let xibName = NSStringFromClass(self.classForCoder)
-        let xibClassName = xibName.characters.split{$0 == "."}.map(String.init).last
+        let xibClassName = xibName.split{$0 == "."}.map(String.init).last
         let view = Bundle.main.loadNibNamed(xibClassName!, owner: self, options: nil)?.first as! UIView
         view.frame = self.bounds
         view.translatesAutoresizingMaskIntoConstraints = true

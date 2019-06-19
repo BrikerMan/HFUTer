@@ -46,7 +46,7 @@ class HFTabbarView: HFXibView {
                                                object: nil)
     }
     
-    func updateTint() {
+    @objc func updateTint() {
         runOnMainThread {
             self.collectionView.reloadData()
         }

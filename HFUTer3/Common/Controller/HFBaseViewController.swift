@@ -114,7 +114,7 @@ class HFBaseViewController: UIViewController, UIGestureRecognizerDelegate {
         
     }
     
-    func updateTintColor() {
+    @objc func updateTintColor() {
         
     }
     

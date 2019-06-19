@@ -29,11 +29,12 @@ import StoreKit
 @testable import SwiftyStoreKit
 
 extension Payment {
-    init(product: SKProduct, quantity: Int, atomically: Bool, applicationUsername: String, callback: @escaping (TransactionResult) -> Void) {
+    init(product: SKProduct, quantity: Int, atomically: Bool, applicationUsername: String, simulatesAskToBuyInSandbox: Bool, callback: @escaping (TransactionResult) -> Void) {
         self.product = product
         self.quantity = quantity
         self.atomically = atomically
         self.applicationUsername = applicationUsername
+        self.simulatesAskToBuyInSandbox = simulatesAskToBuyInSandbox
         self.callback = callback
     }
 }
@@ -68,6 +69,8 @@ class PaymentQueueControllerTests: XCTestCase {
         let paymentQueueController = PaymentQueueController(paymentQueue: spy)
 
         let payment = makeTestPayment(productIdentifier: "com.SwiftyStoreKit.product1") { _ in }
+
+        paymentQueueController.completeTransactions(CompleteTransactions(atomically: true) { _ in })
 
         paymentQueueController.startPayment(payment)
 
@@ -127,11 +130,11 @@ class PaymentQueueControllerTests: XCTestCase {
         }
 
         // run
+        paymentQueueController.completeTransactions(completeTransactions)
+
         paymentQueueController.startPayment(testPayment)
 
         paymentQueueController.restorePurchases(restorePurchases)
-
-        paymentQueueController.completeTransactions(completeTransactions)
 
         paymentQueueController.paymentQueue(SKPaymentQueue(), updatedTransactions: transactions)
         paymentQueueController.paymentQueueRestoreCompletedTransactionsFinished(SKPaymentQueue())
@@ -183,9 +186,9 @@ class PaymentQueueControllerTests: XCTestCase {
         }
 
         // run
-        paymentQueueController.startPayment(testPayment)
-
         paymentQueueController.completeTransactions(completeTransactions)
+
+        paymentQueueController.startPayment(testPayment)
 
         paymentQueueController.paymentQueue(SKPaymentQueue(), updatedTransactions: transactions)
         paymentQueueController.paymentQueueRestoreCompletedTransactionsFinished(SKPaymentQueue())
@@ -238,9 +241,9 @@ class PaymentQueueControllerTests: XCTestCase {
         }
 
         // run
-        paymentQueueController.restorePurchases(restorePurchases)
-
         paymentQueueController.completeTransactions(completeTransactions)
+
+        paymentQueueController.restorePurchases(restorePurchases)
 
         paymentQueueController.paymentQueue(SKPaymentQueue(), updatedTransactions: transactions)
         paymentQueueController.paymentQueueRestoreCompletedTransactionsFinished(SKPaymentQueue())
@@ -298,6 +301,6 @@ class PaymentQueueControllerTests: XCTestCase {
     func makeTestPayment(productIdentifier: String, quantity: Int = 1, atomically: Bool = true, callback: @escaping (TransactionResult) -> Void) -> Payment {
 
         let testProduct = TestProduct(productIdentifier: productIdentifier)
-        return Payment(product: testProduct, quantity: quantity, atomically: atomically, applicationUsername: "", callback: callback)
+        return Payment(product: testProduct, quantity: quantity, atomically: atomically, applicationUsername: "", simulatesAskToBuyInSandbox: false, callback: callback)
     }
 }

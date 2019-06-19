@@ -150,7 +150,7 @@ class HFNewParserViewModel {
           return self.getCourceTable()
           
         }.then { html -> Promise<JSONItem> in
-          if let doc = HTML(html: html, encoding: .utf8) {
+          if let doc = try? HTML(html: html, encoding: .utf8) {
             for link in doc.css("option[selected=selected]") {
               if let v = link["value"] {
                 self.semesterId = v
@@ -231,8 +231,8 @@ class HFNewParserViewModel {
         //        }
         placeText = roomName
         
-        if placeText.characters.last == "*" {
-          let chars = String(placeText.characters.dropLast())
+        if placeText.last == "*" {
+          let chars = String(placeText.dropLast())
           placeText = String(chars)
         }
       }
@@ -266,7 +266,8 @@ class HFNewParserViewModel {
   }
   
   func getCourceTable() -> Promise<String> {
-    return Promise<String> { fulfill, reject in
+    return Promise<String>
+        { fulfill, reject in
       Alamofire.request(kURL.newCourse, headers: nil).responseString { (response) in
         let url = response.response?.url?.absoluteString ?? "info/67391"
         self.dataId = url.components(separatedBy: "/").last ?? self.dataId

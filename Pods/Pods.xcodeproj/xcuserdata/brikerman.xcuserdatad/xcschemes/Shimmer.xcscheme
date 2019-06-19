@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0700"
+   LastUpgradeVersion = "0930"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -13,11 +13,11 @@
             buildForProfiling = "YES"
             buildForArchiving = "YES">
             <BuildableReference
-               BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '2E8BA82BB7AACD931CAB9BDC77F1DDCE'
-               BlueprintName = 'Shimmer'
-               ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'Shimmer.framework'>
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "C9CCC4BA5ECF9B8C35D66D9E4F56D2E2"
+               BlueprintName = "Shimmer"
+               ReferencedContainer = "container:Pods.xcodeproj"
+               BuildableName = "Shimmer.framework">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

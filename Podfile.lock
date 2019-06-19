@@ -1,71 +1,60 @@
 PODS:
-  - AFNetworking (3.1.0):
-    - AFNetworking/NSURLSession (= 3.1.0)
-    - AFNetworking/Reachability (= 3.1.0)
-    - AFNetworking/Security (= 3.1.0)
-    - AFNetworking/Serialization (= 3.1.0)
-    - AFNetworking/UIKit (= 3.1.0)
-  - AFNetworking/NSURLSession (3.1.0):
-    - AFNetworking/Reachability
-    - AFNetworking/Security
-    - AFNetworking/Serialization
-  - AFNetworking/Reachability (3.1.0)
-  - AFNetworking/Security (3.1.0)
-  - AFNetworking/Serialization (3.1.0)
-  - AFNetworking/UIKit (3.1.0):
-    - AFNetworking/NSURLSession
   - AIFlatSwitch (1.0.2)
-  - Alamofire (4.5.1)
+  - Alamofire (4.7.3)
   - AlamofireDomain (4.1)
-  - AVOSCloud (4.4.0)
-  - CocoaLumberjack/Default (3.1.0)
-  - CocoaLumberjack/Swift (3.1.0):
+  - AVOSCloud (11.3.0)
+  - CocoaLumberjack/Default (3.4.2)
+  - CocoaLumberjack/Swift (3.4.2):
     - CocoaLumberjack/Default
-  - Crashlytics (3.8.4):
-    - Fabric (~> 1.6.3)
+  - Crashlytics (3.10.5):
+    - Fabric (~> 1.7.9)
   - DZNEmptyDataSet (1.8.1)
-  - Eureka (3.0.0)
-  - Fabric (1.6.11)
-  - FMDB (2.6.2):
-    - FMDB/standard (= 2.6.2)
-  - FMDB/standard (2.6.2)
-  - GzipSwift (4.0.0-beta.2)
-  - HappyDNS (0.3.10)
-  - Kanna (2.1.1)
+  - Eureka (4.2.0)
+  - Fabric (1.7.9)
+  - FMDB (2.7.2):
+    - FMDB/standard (= 2.7.2)
+  - FMDB/standard (2.7.2)
+  - GzipSwift (4.0.4)
+  - HappyDNS (0.3.14)
+  - Kanna (4.0.0)
   - KMPlaceholderTextView (1.3.0)
-  - LTMorphingLabel (0.5.3)
-  - MJRefresh (3.1.15)
-  - NVActivityIndicatorView (3.6.1)
+  - LTMorphingLabel (0.5.7)
+  - MJRefresh (3.1.15.3)
+  - NVActivityIndicatorView (4.3.0):
+    - NVActivityIndicatorView/Presenter (= 4.3.0)
+  - NVActivityIndicatorView/Presenter (4.3.0)
   - Pitaya (1.0.0)
-  - PromiseKit (4.2.0):
-    - PromiseKit/Foundation (= 4.2.0)
-    - PromiseKit/QuartzCore (= 4.2.0)
-    - PromiseKit/UIKit (= 4.2.0)
-  - PromiseKit/Alamofire (4.2.0):
+  - PromiseKit (4.2.2):
+    - PromiseKit/Foundation (= 4.2.2)
+    - PromiseKit/QuartzCore (= 4.2.2)
+    - PromiseKit/UIKit (= 4.2.2)
+  - PromiseKit/Alamofire (4.2.2):
     - Alamofire (~> 4.0)
     - PromiseKit/CorePromise
-  - PromiseKit/CorePromise (4.2.0)
-  - PromiseKit/Foundation (4.2.0):
+  - PromiseKit/CorePromise (4.2.2)
+  - PromiseKit/Foundation (4.2.2):
     - PromiseKit/CorePromise
-  - PromiseKit/QuartzCore (4.2.0):
+  - PromiseKit/QuartzCore (4.2.2):
     - PromiseKit/CorePromise
-  - PromiseKit/UIKit (4.2.0):
+  - PromiseKit/UIKit (4.2.2):
     - PromiseKit/CorePromise
-  - Qiniu (7.1.5):
-    - AFNetworking (~> 3)
+  - Qiniu (7.2.4):
     - HappyDNS (~> 0.3)
   - Reveal-SDK (11)
   - RSKImageCropper (1.4.1)
-  - RxSwift (3.4.0)
+  - RxSwift (4.2.0)
   - Shimmer (1.0.2)
-  - SnapKit (3.2.0)
-  - SVProgressHUD (2.1.2)
-  - SwiftyStoreKit (0.11.0)
+  - SnapKit (4.0.0)
+  - SVProgressHUD (2.2.5)
+  - SwiftyStoreKit (0.13.3)
   - SwipeBack (1.1.1)
   - Toaster (2.1.1)
-  - UITableView+FDTemplateLayoutCell_Bell (1.5.0)
-  - UMengAnalytics-NO-IDFA (4.2.5)
-  - WSProgressHUD (1.1.2):
+  - "UITableView+FDTemplateLayoutCell_Bell (1.5.0)"
+  - UMCAnalytics (5.5.0):
+    - UMCCommon
+  - UMCCommon (1.5.2)
+  - UMCSecurityPlugins (1.0.6)
+  - WSProgressHUD (1.1.3):
     - Shimmer
   - YYCache (1.0.4)
   - YYImage (1.0.4):
@@ -81,107 +70,134 @@ PODS:
   - ZYCornerRadius (1.0.2)
 
 DEPENDENCIES:
-  - AIFlatSwitch
+  - AIFlatSwitch (~> 1.0.2)
   - AlamofireDomain (~> 4.0)
-  - AVOSCloud
-  - CocoaLumberjack/Swift
-  - Crashlytics
-  - DZNEmptyDataSet
-  - Eureka (from `https://github.com/xmartlabs/Eureka.git`, branch `feature/Xcode9-Swift3_2`)
-  - Fabric
-  - FMDB
-  - GzipSwift (from `https://github.com/1024jp/GzipSwift.git`, branch `swift4`)
-  - Kanna (~> 2.1.0)
-  - KMPlaceholderTextView
-  - LTMorphingLabel
-  - MJRefresh
-  - NVActivityIndicatorView
+  - AVOSCloud (~> 11.3.0)
+  - CocoaLumberjack/Swift (~> 3.4.2)
+  - Crashlytics (~> 3.10.5)
+  - DZNEmptyDataSet (~> 1.8.1)
+  - Eureka (~> 4.2.0)
+  - Fabric (~> 1.7.9)
+  - FMDB (~> 2.7.2)
+  - GzipSwift
+  - Kanna (~> 4.0.0)
+  - KMPlaceholderTextView (~> 1.3.0)
+  - LTMorphingLabel (~> 0.5.7)
+  - MJRefresh (~> 3.1.15.3)
+  - NVActivityIndicatorView (~> 4.3.0)
   - Pitaya (from `https://github.com/johnlui/Pitaya.git`)
-  - PromiseKit
-  - PromiseKit/Alamofire
-  - Qiniu
+  - PromiseKit (~> 4.2.0)
+  - PromiseKit/Alamofire (~> 4.2.0)
+  - Qiniu (~> 7.2.4)
   - Reveal-SDK (~> 11)
   - RSKImageCropper (from `https://github.com/BrikerMan/RSKImageCropper.git`)
-  - RxSwift (~> 3.0)
-  - SnapKit
-  - SVProgressHUD
+  - RxSwift (~> 4.2.0)
+  - SnapKit (~> 4.0.0)
+  - SVProgressHUD (~> 2.2.5)
   - SwiftyStoreKit
-  - SwipeBack
-  - Toaster
-  - UITableView+FDTemplateLayoutCell_Bell
-  - UMengAnalytics-NO-IDFA
-  - WSProgressHUD
-  - YYImage/WebP
-  - YYModel
-  - YYText (from `https://github.com/BrikerMan/YYText.git`)
-  - YYWebImage
-  - ZYCornerRadius
+  - SwipeBack (~> 1.1.1)
+  - Toaster (~> 2.1.1)
+  - "UITableView+FDTemplateLayoutCell_Bell (~> 1.5.0)"
+  - UMCAnalytics
+  - UMCCommon
+  - UMCSecurityPlugins
+  - WSProgressHUD (~> 1.1.3)
+  - YYImage/WebP (~> 1.0.4)
+  - YYModel (~> 1.0.4)
+  - YYText
+  - YYWebImage (~> 1.0.5)
+  - ZYCornerRadius (~> 1.0.2)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - AIFlatSwitch
+    - Alamofire
+    - AlamofireDomain
+    - AVOSCloud
+    - CocoaLumberjack
+    - Crashlytics
+    - DZNEmptyDataSet
+    - Eureka
+    - Fabric
+    - FMDB
+    - GzipSwift
+    - HappyDNS
+    - Kanna
+    - KMPlaceholderTextView
+    - LTMorphingLabel
+    - MJRefresh
+    - NVActivityIndicatorView
+    - PromiseKit
+    - Qiniu
+    - Reveal-SDK
+    - RxSwift
+    - Shimmer
+    - SnapKit
+    - SVProgressHUD
+    - SwiftyStoreKit
+    - SwipeBack
+    - Toaster
+    - "UITableView+FDTemplateLayoutCell_Bell"
+    - UMCAnalytics
+    - UMCCommon
+    - UMCSecurityPlugins
+    - WSProgressHUD
+    - YYCache
+    - YYImage
+    - YYModel
+    - YYText
+    - YYWebImage
+    - ZYCornerRadius
 
 EXTERNAL SOURCES:
-  Eureka:
-    :branch: feature/Xcode9-Swift3_2
-    :git: https://github.com/xmartlabs/Eureka.git
-  GzipSwift:
-    :branch: swift4
-    :git: https://github.com/1024jp/GzipSwift.git
   Pitaya:
     :git: https://github.com/johnlui/Pitaya.git
   RSKImageCropper:
     :git: https://github.com/BrikerMan/RSKImageCropper.git
-  YYText:
-    :git: https://github.com/BrikerMan/YYText.git
 
 CHECKOUT OPTIONS:
-  Eureka:
-    :commit: 170433bedb6db4228da60eb6c866156b6b29e666
-    :git: https://github.com/xmartlabs/Eureka.git
-  GzipSwift:
-    :commit: 72e16b884600b98ac77a871daecaea34aec87f8e
-    :git: https://github.com/1024jp/GzipSwift.git
   Pitaya:
     :commit: 8b9775dd795c2f135ff63f6df74a7085332d3326
     :git: https://github.com/johnlui/Pitaya.git
   RSKImageCropper:
     :commit: bd06a56738362d036fc5d53728834f8412ff2071
     :git: https://github.com/BrikerMan/RSKImageCropper.git
-  YYText:
-    :commit: d20cdd40e109456f831774f7d0c2499044d68a33
-    :git: https://github.com/BrikerMan/YYText.git
 
 SPEC CHECKSUMS:
-  AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   AIFlatSwitch: 5ab22806eeff3e09d585c2f13d22bfa6e3427191
-  Alamofire: 2d95912bf4c34f164fdfc335872e8c312acaea4a
+  Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
   AlamofireDomain: 6a17c975e5fe8c10d8dbfdb1ab28e6dd0ae7cd41
-  AVOSCloud: c2cbba727f10776c995108d7e8fd3142d703ebaa
-  CocoaLumberjack: 8311463ddf9ee86a06ef92a071dd656c89244500
-  Crashlytics: 79e236942ca1e7fc641df1feb9a275360a78ab6a
+  AVOSCloud: 6b3711de627beb1a26232b496a2822d713e3b8d5
+  CocoaLumberjack: db7cc9e464771f12054c22ff6947c5a58d43a0fd
+  Crashlytics: 7f2e38d302d9da96475b3d64d86fb29e31a542b7
   DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
-  Eureka: 5b9418d7bfdc21ca977d69d124a6409f3e9af2c7
-  Fabric: 5911403591946b8228ab1c51d98f1d7137e863c6
-  FMDB: 854a0341b4726e53276f2a8996f06f1b80f9259a
-  GzipSwift: 502e99b339a441575d762ba234e10250bc491d29
-  HappyDNS: 06a9fed2796663fd87626dbf02552933265bf059
-  Kanna: 9b4b086c218703f2b94f5b21a466217dd2f9332e
+  Eureka: 0748c7bbb2560130e43c7bfa83e99c98854a1f42
+  Fabric: a2917d3895e4c1569b9c3170de7320ea1b1e6661
+  FMDB: 6198a90e7b6900cfc046e6bc0ef6ebb7be9236aa
+  GzipSwift: 1a5bc5f7827e09846b0635b5079f1224bc3b1c3a
+  HappyDNS: dc6a164ee81979093123c241c6353bcf0218add6
+  Kanna: d5ae2a26472f7e7a474e7f36a9cd8aa2c8c63ad3
   KMPlaceholderTextView: 2bbcd19a273648a80a61e1e48f9743a24d8930e3
-  LTMorphingLabel: b85b6c1c5d0c4203e22f8d3dca722546f67b8410
-  MJRefresh: 9af70f5f9327a2cf87f0fb5929f35fcc2fa638ea
-  NVActivityIndicatorView: 9f52a7f84bf5c6a798722c450fe3c198e01c56ed
+  LTMorphingLabel: 9d1c38bd602fe505f264d3e9fdb780995142f275
+  MJRefresh: b48380ae2b927b46c4ef000de9adb8dc748e1df7
+  NVActivityIndicatorView: 963f62bf9f993fcf23218e55958e5b1761b9504c
   Pitaya: 9e6a94903cbce6cdab9ad8b82e88142f4abd770d
-  PromiseKit: 08dfb783c161ddcd95b7912421f14c5113fd8318
-  Qiniu: 77a3dba411556a383d72d17e842345a9d4c83252
+  PromiseKit: 00e8886881f151c7e573d06b437915b0bb2970ec
+  Qiniu: 65384bca1cdb0480a68d9b9b8f54db53418c0355
   Reveal-SDK: 7fa13d04bb55db61ff2342a990cf731d5159361d
   RSKImageCropper: 98ae426eb4eb11b733ff87f8e2542a480f4fa8e6
-  RxSwift: 3789a1af753002a14edecdb698a2424624296a9c
+  RxSwift: 99e10317ddfcc7fbe01356aafd118fde4a0be104
   Shimmer: c5374be1c2b0c9e292fb05b339a513cf291cac86
-  SnapKit: 1ca44df72cfa543218d177cb8aab029d10d86ea7
-  SVProgressHUD: c404a55d78acbeb7ebb78b76d3faf986475a6994
-  SwiftyStoreKit: c5cb38110cb01b55b9c5f25d7f69d0083650b2a4
+  SnapKit: a42d492c16e80209130a3379f73596c3454b7694
+  SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
+  SwiftyStoreKit: 9ebd15971e28aa2989825fe8bc092eb5f75dd0b2
   SwipeBack: d6759601b40da1f4161033feb30ab475d7d04322
   Toaster: a6c9532de1ded8105e77376f7dffeb2e12b46dbb
-  UITableView+FDTemplateLayoutCell_Bell: ee65b057dbbe937bb6764f33d4ca6910d05a0efd
-  UMengAnalytics-NO-IDFA: 16666e32edce5be44ae5b14aaaa7f3582e09d6ab
-  WSProgressHUD: e214ab3dd863115bd69ede25cb3b38e27f78c468
+  "UITableView+FDTemplateLayoutCell_Bell": ee65b057dbbe937bb6764f33d4ca6910d05a0efd
+  UMCAnalytics: 4667788559a72f2fa5077117d1b8802a3b6eb6bb
+  UMCCommon: 4392868ac47ff1b101663106bb114ba616fabbad
+  UMCSecurityPlugins: 0831a08f3988f3cea9f1d3a7626cd9bee4fef150
+  WSProgressHUD: a0902809c8af112fb34b004fdc75c16eb85167a3
   YYCache: 8105b6638f5e849296c71f331ff83891a4942952
   YYImage: 1e1b62a9997399593e4b9c4ecfbbabbf1d3f3b54
   YYModel: 2a7fdd96aaa4b86a824e26d0c517de8928c04b30
@@ -189,6 +205,6 @@ SPEC CHECKSUMS:
   YYWebImage: 5f7f36aee2ae293f016d418c7d6ba05c4863e928
   ZYCornerRadius: f0af817be7805b5c63d793042ca7a03f81e14069
 
-PODFILE CHECKSUM: 01bce229c06bf0458ebab54a1aa8e81e81f28b7d
+PODFILE CHECKSUM: 0ec2b613e9f6783f90f64a4a05d1407576843d2e
 
-COCOAPODS: 1.3.1
+COCOAPODS: 1.5.3

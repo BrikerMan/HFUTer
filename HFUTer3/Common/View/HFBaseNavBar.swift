@@ -54,7 +54,7 @@ class HFBaseNavBar: HFXibView {
         }
     }
     
-    func updateTintColor() {
+    @objc func updateTintColor() {
         view?.backgroundColor = HFTheme.TintColor
     }
     

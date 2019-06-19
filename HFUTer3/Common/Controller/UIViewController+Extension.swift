@@ -16,7 +16,7 @@ extension UIViewController {
             let paragraphStyle = NSMutableParagraphStyle()
             paragraphStyle.alignment = .left
             messageText = NSMutableAttributedString(string: message,
-                                                    attributes: [NSParagraphStyleAttributeName: paragraphStyle,NSFontAttributeName : UIFont.systemFont(ofSize: 12)])
+                                                    attributes: [NSAttributedStringKey.paragraphStyle: paragraphStyle,NSAttributedStringKey.font : UIFont.systemFont(ofSize: 12)])
         }
         
         self.showAttAlert(title: title, message: messageText, actions: actions)

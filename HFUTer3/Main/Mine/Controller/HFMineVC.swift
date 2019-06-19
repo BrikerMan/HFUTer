@@ -78,17 +78,17 @@ class HFMineVC: HFBasicViewController {
     destinationVC.hidesBottomBarWhenPushed = true
   }
   
-  func showBundge() {
+  @objc func showBundge() {
     shouldShowBandge = true
     tableView.reloadData()
   }
   
-  func clearBundge() {
+  @objc func clearBundge() {
     shouldShowBandge = false
     tableView.reloadData()
   }
   
-  func updateViewData() {
+  @objc func updateViewData() {
     tableView.reloadData()
   }
 }

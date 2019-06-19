@@ -80,8 +80,8 @@ class HFMineCommentsTableViewCell: UITableViewCell, NibReusable {
         
         let titleText = NSAttributedString(string: model.content,
                                            attributes: [
-                                            NSFontAttributeName: UIFont.systemFont(ofSize: 14),
-                                            NSForegroundColorAttributeName: HFTheme.DarkTextColor])
+                                            NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14),
+                                            NSAttributedStringKey.foregroundColor: HFTheme.DarkTextColor])
         
         let titleLayout = YYTextLayout(container: titleContainer, text: titleText)!
         model.layoutCache["titleLayout"] = titleLayout
@@ -91,19 +91,19 @@ class HFMineCommentsTableViewCell: UITableViewCell, NibReusable {
             let name = original.name.isBlank ? "匿名" : original.name
             originalText.append(NSMutableAttributedString(string: name + "：",
                                                           attributes: [
-                                                            NSFontAttributeName: UIFont.systemFont(ofSize: 12),
-                                                            NSForegroundColorAttributeName: HFTheme.TintColor
+                                                            NSAttributedStringKey.font: UIFont.systemFont(ofSize: 12),
+                                                            NSAttributedStringKey.foregroundColor: HFTheme.TintColor
                 ]))
             
             originalText.append(NSMutableAttributedString(string: original.content,
                                                           attributes: [
-                                                            NSFontAttributeName: UIFont.systemFont(ofSize: 12),
-                                                            NSForegroundColorAttributeName: HFTheme.DarkTextColor
+                                                            NSAttributedStringKey.font: UIFont.systemFont(ofSize: 12),
+                                                            NSAttributedStringKey.foregroundColor: HFTheme.DarkTextColor
                 ]))
         } else {
             originalText = NSMutableAttributedString(string: "表白已被删除", attributes: [
-                NSFontAttributeName: UIFont.systemFont(ofSize: 12),
-                NSForegroundColorAttributeName: HFTheme.DarkTextColor
+                NSAttributedStringKey.font: UIFont.systemFont(ofSize: 12),
+                NSAttributedStringKey.foregroundColor: HFTheme.DarkTextColor
                 ])
         }
         
@@ -122,7 +122,7 @@ class HFMineCommentsTableViewCell: UITableViewCell, NibReusable {
         att.append(date)
         
         if model.name == "" {
-            let poster = NSAttributedString(string: " #匿名发布", attributes: [NSForegroundColorAttributeName: Theme.TintColor])
+            let poster = NSAttributedString(string: " #匿名发布", attributes: [NSAttributedStringKey.foregroundColor: Theme.TintColor])
             att.append(poster)
         }
         model.layoutCache["dateAttText"] = att

@@ -44,7 +44,7 @@ struct Plist {
     self.name = name + ".plist"
     let path = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: "group.eliyar.biz.hfuter")
     let pathString = path!.absoluteString.replacingOccurrences(of:"file:///private", with: "").replacingOccurrences(of:"file:///", with: "")
-    destPath = (pathString as NSString).appendingPathComponent(name).characters.split{$0 == "."}.map(String.init).first!
+    destPath = (pathString as NSString).appendingPathComponent(name).split{$0 == "."}.map(String.init).first!
   }
   
   

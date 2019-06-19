@@ -128,7 +128,7 @@ class HFMineDonateVC: HFBaseViewController {
                                                         self.productes.removeAll()
                                                         for product in result.retrievedProducts {
                                                             self.productes.append(product)
-                                                            self.models.append((product.productIdentifier, product.localizedTitle, product.localizedDescription, Int(product.price)))
+                                                            self.models.append((product.productIdentifier, product.localizedTitle, product.localizedDescription, Int(truncating: product.price)))
                                                         }
                                                         self.isLoadingAPI = false
                                                         runOnMainThread {

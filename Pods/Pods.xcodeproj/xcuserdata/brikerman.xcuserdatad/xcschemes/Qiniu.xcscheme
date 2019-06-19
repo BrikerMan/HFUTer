@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0700"
+   LastUpgradeVersion = "0930"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -13,11 +13,11 @@
             buildForProfiling = "YES"
             buildForArchiving = "YES">
             <BuildableReference
-               BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'EC224220EBD8FFC780479C6DCE93A7CC'
-               BlueprintName = 'Qiniu'
-               ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'Qiniu.framework'>
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "DAEA4A96D163475509B20D7D0BEE731B"
+               BlueprintName = "Qiniu"
+               ReferencedContainer = "container:Pods.xcodeproj"
+               BuildableName = "Qiniu.framework">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

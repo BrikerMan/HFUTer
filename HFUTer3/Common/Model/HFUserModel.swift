@@ -11,31 +11,31 @@ import YYModel
 
 class HFUserModel: HFBaseModel {
   /// id
-  var id = 0
+  @objc var id = 0
   /// 学号
-  var sid = ""
+  @objc var sid = ""
   /// 性别
-  var sex = ""
+  @objc var sex = ""
   /// 邮箱
-  var email = ""
+  @objc var email = ""
   /// 姓名
-  var name = ""
+  @objc var name = ""
   /// 头像
-  var image = ""
+  @objc var image = ""
   /// 学院
-  var college = ""
+  @objc var college = ""
   /// 专业
-  var major = ""
+  @objc var major = ""
   /// 是否为宣城校区
-  var xc = false
+  @objc var xc = false
   /// 是否绑定了信息门户
-  var status_jwxt = false
+  @objc var status_jwxt = false
   /// 是否绑定了教务系统
-  var status_xxmh = false
+  @objc var status_xxmh = false
   /// 是否绑定了新教务系统
-  var status_new_ims = false
+  @objc var status_new_ims = false
   /// 密码
-  var password = ""
+  @objc var password = ""
   
   func save() {
     let dic = self.yy_modelToJSONObject() as! NSDictionary

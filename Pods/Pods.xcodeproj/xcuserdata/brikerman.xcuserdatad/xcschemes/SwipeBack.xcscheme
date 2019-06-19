@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0700"
+   LastUpgradeVersion = "0930"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -13,11 +13,11 @@
             buildForProfiling = "YES"
             buildForArchiving = "YES">
             <BuildableReference
-               BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '045A833314D6F0D8DC5067814C03CFE4'
-               BlueprintName = 'SwipeBack'
-               ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'SwipeBack.framework'>
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "724547D0D6CF9AEFD4341A4155BF0D11"
+               BlueprintName = "SwipeBack"
+               ReferencedContainer = "container:Pods.xcodeproj"
+               BuildableName = "SwipeBack.framework">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

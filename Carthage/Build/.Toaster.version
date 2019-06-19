@@ -1,0 +1,18 @@
+{
+  "iOS" : [
+    {
+      "hash" : "6afd6ec246d10b7d1df25191d1c97ab13f3dd753f667c5f21943d8a9f658cc9e",
+      "name" : "Toaster"
+    }
+  ],
+  "commitish" : "2.1.1",
+  "watchOS" : [
+
+  ],
+  "tvOS" : [
+
+  ],
+  "Mac" : [
+
+  ]
+}

@@ -123,7 +123,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     } else {
       JPUSHService.setTags(Set(["push", testflight]), aliasInbackground: "000000")
     }
-    let currentInstallation = AVInstallation.current()
+    let currentInstallation = AVInstallation.default()
     let sid = DataEnv.user?.sid ?? "\(000000)"
     
     currentInstallation.setDeviceTokenFrom(deviceToken)
@@ -165,10 +165,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     AVOSCloud.setApplicationId(LeanCLoudAppID, clientKey: LeanCLoudAppKey)
     AVOSCloud.setLogLevel(AVLogLevelNone)
     
-    let conf = UMAnalyticsConfig()
-    conf.appKey = UmengKey
-    MobClick.start(withConfigure: conf)
-    MobClick.setAppVersion(ez.appVersion!)
+    UMConfigure.initWithAppkey(UmengKey, channel: "App Store")
+//    let conf = UMAnalyticsConfig()
+//    conf.appKey = UmengKey
+//    MobClick.start(withConfigure: conf)
+//    MobClick.setAppVersion(ez.appVersion!)
     
     Fabric.with([Crashlytics.self])
   }

@@ -146,8 +146,8 @@ class HFCommunityLoveWallListCell: UITableViewCell, NibReusable {
         }
         
         let attText = NSMutableAttributedString(string: model.content, attributes: [
-            NSFontAttributeName             : UIFont.systemFont(ofSize: 14),
-            NSForegroundColorAttributeName  : HFTheme.DarkTextColor,
+            NSAttributedStringKey.font             : UIFont.systemFont(ofSize: 14),
+            NSAttributedStringKey.foregroundColor  : HFTheme.DarkTextColor,
             ])
         
         let width = ScreenWidth - 20

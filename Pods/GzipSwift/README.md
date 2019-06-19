@@ -2,7 +2,7 @@
 GzipSwift
 ========================
 
-[![Swift](https://img.shields.io/badge/Swift-4.0.0-blue.svg)]()
+[![Swift](https://img.shields.io/badge/Swift-4.0.2-blue.svg)]()
 [![platform](https://img.shields.io/badge/platform-macOS%20|%20iOS%20|%20watchOS%20|%20tvOS%20|%20Linux-blue.svg)]()
 [![Carthage compatible](https://img.shields.io/badge/Carthage-✔-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 [![SPM compatible](https://img.shields.io/badge/SPM-✔-4BC51D.svg?style=flat)](https://swift.org/package-manager/)
@@ -13,7 +13,7 @@ GzipSwift
 __GzipSwift__ is a framework with an extension of Data written in Swift. It enables compress/decompress gzip using zlib.
 
 - __Requirements__: OS X 10.9 / iOS 8 / watchOS 2 / tvOS 9 or later
-- __Swift version__: Swift 4.0.0
+- __Swift version__: Swift 4.0.2
 
 
 ## Usage
@@ -27,7 +27,7 @@ let optimizedData: Data = try! data.gzipped(level: .bestCompression)
 
 // gunzip
 let decompressedData: Data
-if decompressedData.isGzipped {
+if data.isGzipped {
     decompressedData = try! data.gunzipped()
 } else {
     decompressedData = data
@@ -49,7 +49,7 @@ if decompressedData.isGzipped {
 GzipSwift is [Carthage](https://github.com/Carthage/Carthage) compatible. You can easily build GzipSwift adding the following line to your `Cartfile`:
 
 ```ruby
-github "1024jp/GzipSwift" "swift4"
+github "1024jp/GzipSwift"
 ```
 
 ### CocoaPods
@@ -57,7 +57,7 @@ GzipSwift is available through [CocoaPods](http://cocoapods.org). To install
 it, simply add the following line to your `Podfile`:
 
 ```ruby
-pod 'GzipSwift', :git => 'https://github.com/1024jp/GzipSwift.git', :branch => 'swift4'
+pod 'GzipSwift'
 ```
 
 ### Swift Package Manager

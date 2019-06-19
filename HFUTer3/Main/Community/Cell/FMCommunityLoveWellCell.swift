@@ -96,7 +96,7 @@ class FMCommunityLoveWellCell: UITableViewCell, NibReusable {
         model.favorite.asObservable().subscribe(onNext: { [weak self] (element) in
             let image = element ? "fm_community_love_wall_like_fill" : "fm_community_love_wall_like"
             self?.likeImageView.image = UIImage(named: image)
-        }).addDisposableTo(disposeBag)
+        }).disposed(by: disposeBag)
         
         prepareUIForImage(model.cImage)
 
@@ -111,11 +111,11 @@ class FMCommunityLoveWellCell: UITableViewCell, NibReusable {
         }
         timeLabel.text  = Utilities.getTimeStringFromTimeStamp(model.date_int)
         
-        let textAttributes   = [ NSFontAttributeName: UIFont.systemFont(ofSize: 14),
-                                 NSForegroundColorAttributeName: HFTheme.DarkTextColor ]
+        let textAttributes: [NSAttributedStringKey : Any] = [ NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14),
+                                 NSAttributedStringKey.foregroundColor: HFTheme.DarkTextColor ]
         
-        let atTextAttributes = [ NSFontAttributeName: UIFont.systemFont(ofSize: 14),
-                                 NSForegroundColorAttributeName: HFTheme.TintColor ] as [String : Any]
+        let atTextAttributes: [NSAttributedStringKey : Any] = [ NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14),
+                                 NSAttributedStringKey.foregroundColor: HFTheme.TintColor ]
         
         if model.at.count == 1 {
             let string = NSMutableAttributedString(string: "@\(model.at[0].name)", attributes: atTextAttributes)

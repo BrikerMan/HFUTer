@@ -75,7 +75,7 @@ class FMCommunityLostAndFindCell: UITableViewCell, NibReusable {
         thingLabel.text    = model.thing
         timeSumLabel.text  = model.time
         
-        infoViewHeight.priority = model.place.isBlank ? 750 : 250
+        infoViewHeight.priority = UILayoutPriority(rawValue: UILayoutPriority.RawValue(model.place.isBlank ? 750 : 250))
         
         
         if model.type == 0 {

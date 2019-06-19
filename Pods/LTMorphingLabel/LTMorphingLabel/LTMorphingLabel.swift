@@ -102,6 +102,8 @@ typealias LTMorphingSkipFramesClosure =
     var newRects = [CGRect]()
     var charHeight: CGFloat = 0.0
     var skipFramesCount: Int = 0
+
+    fileprivate var displayLink: CADisplayLink?
     
     #if TARGET_INTERFACE_BUILDER
     let presentingInIB = true
@@ -119,7 +121,7 @@ typealias LTMorphingSkipFramesClosure =
         }
     }
     
-    override open var text: String! {
+    override open var text: String? {
         get {
             return super.text ?? ""
         }
@@ -144,7 +146,7 @@ typealias LTMorphingSkipFramesClosure =
                 morphingDuration = 0.01
                 morphingProgress = 0.5
             } else if previousText != text {
-                displayLink.isPaused = false
+                start()
                 let closureKey = "\(morphingEffect.description)\(LTMorphingPhases.start)"
                 if let closure = startClosures[closureKey] {
                     return closure()
@@ -152,6 +154,24 @@ typealias LTMorphingSkipFramesClosure =
                 
                 delegate?.morphingDidStart?(self)
             }
+        }
+    }
+
+    open func start() {
+        guard displayLink == nil else { return }
+        displayLink = CADisplayLink(target: self, selector: #selector(displayFrameTick))
+        displayLink?.add(to: .current, forMode: .commonModes)
+    }
+
+    open func stop() {
+        displayLink?.remove(from: .current, forMode: .commonModes)
+        displayLink?.invalidate()
+        displayLink = nil
+    }
+    
+    open var textAttributes: [NSAttributedStringKey: Any]? {
+        didSet {
+            setNeedsLayout()
         }
     }
     
@@ -180,19 +200,9 @@ typealias LTMorphingSkipFramesClosure =
             setNeedsLayout()
         }
     }
-    
-    fileprivate lazy var displayLink: CADisplayLink = {
-        let displayLink = CADisplayLink(
-            target: self,
-            selector: #selector(LTMorphingLabel.displayFrameTick)
-        )
-        displayLink.add(to: .current, forMode: .commonModes)
-        return displayLink
-        }()
 
     deinit {
-        displayLink.remove(from: .current, forMode: .commonModes)
-        displayLink.invalidate()
+        stop()
     }
     
     lazy var emitterView: LTEmitterView = {
@@ -205,7 +215,8 @@ typealias LTMorphingSkipFramesClosure =
 // MARK: - Animation extension
 extension LTMorphingLabel {
 
-    func displayFrameTick() {
+    @objc func displayFrameTick() {
+        guard let displayLink = displayLink else { return }
         if displayLink.duration > 0.0 && totalFrames == 0 {
             var frameRate = Float(0)
             if #available(iOS 10.0, tvOS 10.0, *) {
@@ -223,7 +234,7 @@ extension LTMorphingLabel {
             }
             totalFrames = Int(ceil(morphingDuration / frameRate))
 
-            let totalDelay = Float((text!).characters.count) * morphingCharacterDelay
+            let totalDelay = Float((text!).count) * morphingCharacterDelay
             totalDelayFrames = Int(ceil(totalDelay / frameRate))
         }
 
@@ -247,7 +258,7 @@ extension LTMorphingLabel {
                 onProgress(self, morphingProgress)
             }
         } else {
-            displayLink.isPaused = true
+            stop()
 
             delegate?.morphingDidComplete?(self)
         }
@@ -259,12 +270,12 @@ extension LTMorphingLabel {
         var charRects = [CGRect]()
         var leftOffset: CGFloat = 0.0
         
-        charHeight = "Leg".size(attributes: [NSFontAttributeName: font]).height
+        charHeight = "Leg".size(withAttributes: [.font: font]).height
         
         let topOffset = (bounds.size.height - charHeight) / 2.0
 
-        for char in textToDraw.characters {
-            let charSize = String(char).size(attributes: [NSFontAttributeName: font])
+        for char in textToDraw {
+            let charSize = String(char).size(withAttributes: [.font: font])
             charRects.append(
                 CGRect(
                     origin: CGPoint(
@@ -399,7 +410,7 @@ extension LTMorphingLabel {
         var limbo = [LTCharacterLimbo]()
         
         // Iterate original characters
-        for (i, character) in previousText.characters.enumerated() {
+        for (i, character) in previousText.enumerated() {
             var progress: Float = 0.0
             
             if let closure = progressClosures[
@@ -415,7 +426,7 @@ extension LTMorphingLabel {
         }
         
         // Add new characters
-        for (i, character) in (text!).characters.enumerated() {
+        for (i, character) in (text!).enumerated() {
             if i >= diffResults?.0.count {
                 break
             }
@@ -459,6 +470,11 @@ extension LTMorphingLabel {
 extension LTMorphingLabel {
     
     override open func didMoveToSuperview() {
+        guard nil != superview else {
+            stop()
+            return
+        }
+
         if let s = text {
             text = s
         }
@@ -491,13 +507,18 @@ extension LTMorphingLabel {
                 }(charLimbo)
 
             if !willAvoidDefaultDrawing {
-                var attrs: [String: Any] = [
-                    NSForegroundColorAttributeName: textColor.withAlphaComponent(charLimbo.alpha)
+                var attrs: [NSAttributedStringKey: Any] = [
+                    .foregroundColor: textColor.withAlphaComponent(charLimbo.alpha)
                 ]
 
                 if let font = UIFont(name: font.fontName, size: charLimbo.size) {
-                    attrs[NSFontAttributeName] = font
+                    attrs[.font] = font
                 }
+                
+                for (key, value) in textAttributes ?? [:] {
+                    attrs[key] = value
+                }
+                
                 let s = String(charLimbo.char)
                 s.draw(in: charRect, withAttributes: attrs)
             }

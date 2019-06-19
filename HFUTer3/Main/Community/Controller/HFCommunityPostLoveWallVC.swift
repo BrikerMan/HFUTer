@@ -25,9 +25,10 @@ class HFCommunityPostLoveWallVC: HFFormViewController {
             }
             
             +++ Section()
-            <<< ImageRow("cover") {
-                $0.title = "封面照片（可选）"
-            }
+            // TODO: 图片选择
+//            <<< ImageRow("cover") {
+//                $0.title = "封面照片（可选）"
+//            }
             <<< SwitchRow("anonymous"){
                 $0.title = "匿名发布"
                 $0.value = false

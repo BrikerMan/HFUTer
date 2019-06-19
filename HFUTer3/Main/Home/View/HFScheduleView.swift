@@ -54,12 +54,12 @@ class HFScheduleView: HFView {
             kSchedule.cellWidth  = (ScreenWidth - 30) / CGFloat(kSchedule.day)
             self?.setupTopView()
             self?.setup(with: self?.schedules ?? [], week: self?.week ?? 0)
-        }).addDisposableTo(disposeBag)
+        }).disposed(by: disposeBag)
         
         
         DataEnv.settings.scheduleShowDayDate.asObservable().subscribe(onNext: { [weak self] (element) in
             self?.setup(week: self?.week ?? 0)
-        }).addDisposableTo(disposeBag)
+        }).disposed(by: disposeBag)
         
         
         DataEnv.settings.scheduleBackImage.asObservable().subscribe(onNext: { [weak self] (element) in
@@ -73,7 +73,7 @@ class HFScheduleView: HFView {
                 self?.imageView.image = nil
             }
             self?.updateSave()
-        }).addDisposableTo(disposeBag)
+        }).disposed(by: disposeBag)
         
         scrollView.mj_header = MJRefreshNormalHeader(refreshingBlock: { [weak self] in
             self?.delegate?.scheduleViewDidStartRefresh()
@@ -122,15 +122,15 @@ class HFScheduleView: HFView {
             
             let dayName = NSAttributedString(string: kSchedule.dayNamesList[index],
                                              attributes: [
-                                                NSFontAttributeName: boldfont,
-                                                NSForegroundColorAttributeName: color])
+                                                NSAttributedStringKey.font: boldfont,
+                                                NSAttributedStringKey.foregroundColor: color])
             att.append(dayName)
             if DataEnv.settings.scheduleShowDayDate.value {
                 
                 let dateAtt = NSAttributedString(string: "\n\(dates[index])",
                     attributes: [
-                        NSFontAttributeName: font,
-                        NSForegroundColorAttributeName: color])
+                        NSAttributedStringKey.font: font,
+                        NSAttributedStringKey.foregroundColor: color])
                 att.append(dateAtt)
             }
             

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0700"
+   LastUpgradeVersion = "0930"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -13,11 +13,11 @@
             buildForProfiling = "YES"
             buildForArchiving = "YES">
             <BuildableReference
-               BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'D53804E34279A83A61915C6ACA3C0D06'
-               BlueprintName = 'KMPlaceholderTextView'
-               ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'KMPlaceholderTextView.framework'>
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "D53804E34279A83A61915C6ACA3C0D06"
+               BlueprintName = "KMPlaceholderTextView"
+               ReferencedContainer = "container:Pods.xcodeproj"
+               BuildableName = "KMPlaceholderTextView.framework">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

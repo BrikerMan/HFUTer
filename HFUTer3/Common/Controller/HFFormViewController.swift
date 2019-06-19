@@ -104,17 +104,17 @@ class HFFormViewController: FormViewController, UIGestureRecognizerDelegate {
 
         }
 
-        ImageRow.defaultCellSetup = { cell,row in
-            cell.height = { return 80 }
-        }
-        
-        ImageRow.defaultCellUpdate = { cell,row in
-            cell.textLabel?.textColor        = HFTheme.DarkTextColor
-            cell.textLabel?.font             = UIFont.systemFont(ofSize: 14)
-            cell.accessoryView?.frame.size = CGSize(width: 50, height: 50)
-            cell.accessoryView?.layer.cornerRadius = 3
-            
-        }
+//        ImageRow.defaultCellSetup = { cell,row in
+//            cell.height = { return 80 }
+//        }
+//        
+//        ImageRow.defaultCellUpdate = { cell,row in
+//            cell.textLabel?.textColor        = HFTheme.DarkTextColor
+//            cell.textLabel?.font             = UIFont.systemFont(ofSize: 14)
+//            cell.accessoryView?.frame.size = CGSize(width: 50, height: 50)
+//            cell.accessoryView?.layer.cornerRadius = 3
+//            
+//        }
         
         SwitchRow.defaultCellUpdate = { cell,row in
             cell.textLabel?.textColor        = HFTheme.DarkTextColor
